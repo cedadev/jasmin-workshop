@@ -25,16 +25,20 @@ import pandas
 
 
 # Global variables
-years = range(2000, 2018) # maxs 2000..2017 - python range rule
+years = range(2000, 2018)  # results in list 2000..2017 - python range rule
 dir_template = '/badc/ukmo-midas-open/data/uk-daily-temperature-obs/dataset-version-201901/{}'
-var_name = 'max_air_temp'
 
+VAR_NAME = 'max_air_temp'
 OUTPUT_DIR = '../outputs'
 
 
 def _count_header(fpath):
     """
-!!!DOC
+    Detects and returns the length of the header section in a CSV file where
+    the header ends with a line "data".
+
+    :param fpath: File path [string]
+    :return: length of the header [int]
     """
     with open(fpath) as reader:
 
@@ -45,12 +49,17 @@ def _count_header(fpath):
             raise Exception('Cannot find "data" line in file: {}'.format(fpath))
 
 
-def calculate_max(files):
+def calculate_max(files, var_name=VAR_NAME):
     """
+    Calculate the maximum value of the variable `var_name` found in all `files`.
+    Loops through a set of station CSV files and returns the maximum value found.
 
+    :param files: sequence of file paths [list]
+    :param var_name: variable name indicated in column name [string]
+    :return: maximum value [float]
     """
     # Set an initial maximum that will definitely be overtaken
-    mx = -1000
+    mx = -1000.
 
     for fpath in files:
         header_count = _count_header(fpath)
@@ -68,9 +77,17 @@ def calculate_max(files):
     return mx
 
 
-def calculate_county_max(county):
+def calculate_county_max(county, var_name=VAR_NAME):
     """
+    Calculate a time series of maximum annual values for the given `county` and
+    variable `var_name`.
+    All stations within the county are read and the maximum is extracted from all
+    of them per year.
+    The time series is written to a CSV file.
 
+    :param county: name of county/region [string]
+    :param var_name: variable name indicated in column name [string]
+    :return: None
     """
     dr = dir_template.format(county)
 
@@ -96,8 +113,10 @@ def calculate_county_max(county):
 
 def main():
     """
-    !!!DOCUMENT
+    Main function to manage the workflow. Parses command-line arguments
+    before calculating country annual time series.
 
+    :return: None
     """
     # Parse command-line arguments first
     parser = argparse.ArgumentParser()

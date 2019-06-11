@@ -7,6 +7,8 @@ create-counties-file.py
 A script to create a file containing a set of randomly selected counties from the
 MIDAS-Open UK daily temperature data set.
 
+Writes counties list to an output file.
+
 Usage:
 ------
 
@@ -26,14 +28,20 @@ LIMIT = 20
 OUTPUT_DIR = '../outputs'
 
 
-def main():
+def create_counties_file(limit=LIMIT):
     """
-    !!!DOCUMENT
+    Gets a list of available counties for which data exists based
+    on the directories found. Writes a random set of these of length
+    `LIMIT` to the output file.
 
+    Output file format is one county name per line.
+
+    :param limit: number of counties to write to output file [string].
+    :return: None
     """
     counties = os.listdir(counties_dir)
-    counties = [county for county in counties 
-                   if county[0] != '0' and not county.startswith('midas')]
+    counties = [county for county in counties
+                if county[0] != '0' and not county.startswith('midas')]
     random.shuffle(counties)
 
     output_file = os.path.join(OUTPUT_DIR, 'counties.txt')
@@ -47,6 +55,6 @@ def main():
 # The section below is run if the module is executed as a script
 if __name__ == '__main__':
 
-    main()
+    create_counties_file()
 
 
