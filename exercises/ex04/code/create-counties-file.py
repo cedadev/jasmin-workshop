@@ -25,7 +25,7 @@ import random
 counties_dir = '/badc/ukmo-midas-open/data/uk-daily-temperature-obs/dataset-version-201901'
 LIMIT = 20
     
-OUTPUT_DIR = '../outputs'
+OUTPUT_DIR = './outputs'
 
 
 def create_counties_file(limit=LIMIT):

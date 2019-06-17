@@ -21,3 +21,4 @@ An example file can be found at:
 
     /badc/ukmo-midas-open/data/uk-daily-temperature-obs/dataset-version-201901/devon/01359_cheldon-barton/qc-version-1/midas-open_uk-daily-temperature-obs_dv-201901_devon_01359_cheldon-barton_qcv-1_1977.csv
 
+All outputs are written to a local './outputs' directory.

@@ -19,7 +19,7 @@ import matplotlib
 matplotlib.use('agg')
 
 # Global variables
-OUTPUT_DIR = '../outputs'
+OUTPUT_DIR = './outputs'
 
 
 def plot_time_series():

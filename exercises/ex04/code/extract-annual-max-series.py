@@ -29,7 +29,7 @@ years = range(2000, 2018)  # results in list 2000..2017 - python range rule
 dir_template = '/badc/ukmo-midas-open/data/uk-daily-temperature-obs/dataset-version-201901/{}'
 
 VAR_NAME = 'max_air_temp'
-OUTPUT_DIR = '../outputs'
+OUTPUT_DIR = './outputs'
 
 
 def _count_header(fpath):
