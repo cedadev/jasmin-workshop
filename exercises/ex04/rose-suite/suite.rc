@@ -1,0 +1,34 @@
+[cylc]
+    UTC mode = True # Ignore DST
+[scheduling]
+    [[dependencies]]
+        graph = """
+            setup => start 
+            start => PROCESSING
+            PROCESSING:succeed-all => finish"""
+
+[runtime]
+    [[root]]
+        # This is applied before every task
+        pre-script="""set -eu"""
+        [[[job]]]
+            batch system = lsf
+            execution time limit = PT5M
+        [[[directives]]]
+            -q=short-serial
+            -n=1
+    [[setup]]
+        script = """git clone https://github.com/cedadev/jasmin-workshop workshop-repo 
+cp workshop-repo/exercises/ex04/code/* $ROSE_DATA/
+rm -fr workshop-repo"""
+    [[start]]
+        script = """echo Start task"""
+    [[PROCESSING]]
+        script = """echo Processing task"""
+    [[process_1, process_2, process_3, process_4, process_5, process_6, \
+    process_7, process_8, process_9, process_10, process_11, process_12, \
+    process_13, process_14, process_15, process_16, process_17, process_18, \
+    process_19, process_20]]
+        inherit = PROCESSING
+    [[finish]]
+        script = """echo Final task"""
