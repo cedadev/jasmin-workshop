@@ -1,7 +1,7 @@
 [cylc]
     UTC mode = True # Ignore DST
     [[parameters]]
-        county_index = 1..20
+        county = 1..20
 
 [scheduling]
     [[dependencies]]
@@ -22,14 +22,17 @@
             -n=1
     [[clone_repo]]
         script = """git clone https://github.com/cedadev/jasmin-workshop workshop-repo
-cp workshop-repo/exercises/ex04/code/* $ROSE_DATA/
+cp workshop-repo/exercises/ex04/code/* ${CYLC_SUITE_RUN_DIR}/
 rm -fr workshop-repo"""
     [[get_counties]]
         script = """module load jaspy
+cd ${CYLC_SUITE_RUN_DIR}/
 python create-counties-file.py"""
     [[process<county>]]
         script = """module load jaspy
-python extract-annual-max-series.py ${CYLC_TASK_PARAM_<county>}"""
+cd ${CYLC_SUITE_RUN_DIR}/
+python extract-annual-max-series.py ${CYLC_TASK_PARAM_county}"""
     [[plot]]
         script = """module load jaspy
+cd ${CYLC_SUITE_RUN_DIR}/
 python plot-county-temps.py"""
