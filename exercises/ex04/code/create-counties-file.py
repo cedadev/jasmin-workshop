@@ -26,6 +26,8 @@ counties_dir = '/badc/ukmo-midas-open/data/uk-daily-temperature-obs/dataset-vers
 LIMIT = 20
     
 OUTPUT_DIR = './outputs'
+if not os.path.isdir(OUTPUT_DIR):
+    os.mkdir(OUTPUT_DIR)
 
 
 def create_counties_file(limit=LIMIT):
@@ -43,6 +45,7 @@ def create_counties_file(limit=LIMIT):
     counties = [county for county in counties
                 if county[0] != '0' and not county.startswith('midas')]
     random.shuffle(counties)
+    counties.sort()
 
     output_file = os.path.join(OUTPUT_DIR, 'counties.txt')
 

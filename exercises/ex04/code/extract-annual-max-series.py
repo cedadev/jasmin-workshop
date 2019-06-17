@@ -32,6 +32,18 @@ VAR_NAME = 'max_air_temp'
 OUTPUT_DIR = './outputs'
 
 
+def get_county(index):
+    """
+    Reads the 'counties.txt' file and returns the county at index `index`.
+    Index is counted from 1..20.
+
+    :param index: index of county to extract [int]
+    :return: county name 
+    """
+    counties = open(os.path.join(OUTPUT_DIR, 'counties.txt')).read().strip().split()
+    return counties[index - 1]
+
+
 def _count_header(fpath):
     """
     Detects and returns the length of the header section in a CSV file where
@@ -120,10 +132,11 @@ def main():
     """
     # Parse command-line arguments first
     parser = argparse.ArgumentParser()
-    parser.add_argument("county", type=str, help="The name of a county")
+    parser.add_argument('county_index', type=int, 
+                        help='The index of the county in the "counties.txt" file')
     args = parser.parse_args()
 
-    county = args.county.lower()
+    county = get_county(args.county_index)
   
     try:
         calculate_county_max(county) 
