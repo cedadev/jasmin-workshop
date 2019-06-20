@@ -5,8 +5,8 @@
 # Usage:    submit-all.sh
 #
 
-EXTRACTOR=exercises/ex3/extract-era-data.sh
-OUTPUTS_DIR=exercises/users/$USER/ex3/lotus-outputs
+EXTRACTOR=exercises/ex5/extract-era-data.sh
+OUTPUTS_DIR=exercises/users/$USER/ex5/lotus-outputs
 
 mkdir -p $OUTPUTS_DIR
 
