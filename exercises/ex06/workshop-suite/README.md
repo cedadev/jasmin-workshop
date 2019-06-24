@@ -47,10 +47,33 @@ The final output graph is written to:
 $HOME/cylc-run/workshop-suite/outputs/annual-max-temp-time-series.png
 ```
 
-### Viewing the output graph
+### View the final time series graph of maximum temperatures
 
 You can view the output graph with this command:
 
 ```
 display $HOME/cylc-run/workshop-suite/outputs/annual-max-temp-time-series.png
 ```
+
+## Additional Rose & Cylc commands
+
+### Stopping a suite that is running
+
+If you need to stop the suite you can use:
+
+```
+cylc stop 'workshop-suite'
+```
+
+### Viewing the workflow graph of the suite
+
+To view the workflow graph of your suite _without_ running it, use:
+
+```
+rose suite-run -i
+cylc graph example-suite
+```
+
+NOTE: the `-i` option means "install only" - so this will not run the suite.
+
+

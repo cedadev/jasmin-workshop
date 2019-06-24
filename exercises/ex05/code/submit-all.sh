@@ -5,8 +5,8 @@
 # Usage:    submit-all.sh
 #
 
-EXTRACTOR=exercises/ex5/extract-era-data.sh
-OUTPUTS_DIR=exercises/users/$USER/ex5/lotus-outputs
+EXTRACTOR=$PWD/extract-era-data.sh
+OUTPUTS_DIR=/group_workspaces/jasmin2/workshop/users/$USER/ex05/lotus-outputs
 
 mkdir -p $OUTPUTS_DIR
 queue=workshop

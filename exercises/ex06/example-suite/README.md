@@ -6,7 +6,7 @@
 
 ## To stop the suite (if failed/still running)
 
-`cylc stop 'workshop-suite'`
+`cylc stop 'example-suite'`
 
 ## To clean out the suite working directory
 
@@ -30,27 +30,32 @@ By default this will be under:
 $HOME/cylc-run/<suite_name>/
 ```
 
-### Working directory for Workshop example suite
+### Stopping a suite that is running
 
-In the case of the `workshop-suite` the working directory will be:
+If you need to stop the suite you can use:
 
 ```
-$HOME/cylc-run/workshop-suite/
+cylc stop 'example-suite'
 ```
 
-The workshop suite uses this as the common location for all scripts and the outputs
+### Working directory for the example suite
+
+In the case of the `example-suite` the working directory will be:
+
+```
+$HOME/cylc-run/example-suite/
+```
+
+The example suite uses this as the common location for all scripts and the outputs
 directory to be located in. 
 
-The final output graph is written to:
+### Viewing the workflow graph of the suite
+
+To view the workflow graph of your suite _without_ running it, use:
 
 ```
-$HOME/cylc-run/workshop-suite/outputs/annual-max-temp-time-series.png
+rose suite-run -i
+cylc graph example-suite
 ```
 
-### Viewing the output graph
-
-You can view the output graph with this command:
-
-```
-display $HOME/cylc-run/workshop-suite/outputs/annual-max-temp-time-series.png
-```
+NOTE: the `-i` option means "install only" - so this will not run the suite.

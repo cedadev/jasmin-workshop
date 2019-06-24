@@ -44,8 +44,9 @@ def create_counties_file(limit=LIMIT):
     counties = os.listdir(counties_dir)
     counties = [county for county in counties
                 if county[0] != '0' and not county.startswith('midas')]
+
     random.shuffle(counties)
-    counties.sort()
+    counties = sorted(counties[:LIMIT])
 
     output_file = os.path.join(OUTPUT_DIR, 'counties.txt')
 

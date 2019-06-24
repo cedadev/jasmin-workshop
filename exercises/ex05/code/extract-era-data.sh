@@ -10,8 +10,7 @@ YYYY=$(echo $day | cut -c1-4)
 MM=$(echo $day | cut -c5-6)
 DD=$(echo $day | cut -c7-8)
 
-OUTPUT_DIR=/gws/nopw/j04/workshop/users/$USER/ex3
-OUTPUT_DIR=~/workshop/users/$USER/ex3
+OUTPUT_DIR=/group_workspaces/jasmin2/workshop/users/$USER/ex05/outputs
 mkdir -p $OUTPUT_DIR
 
 VAR_ID=TCC
