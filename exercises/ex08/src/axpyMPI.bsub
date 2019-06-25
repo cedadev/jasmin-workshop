@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# set job submission options
+
+# specify the LOTUS queue -q <queue-name>
+#BSUB -q workshop
+
+# standard job output and error files
+#BSUB -o axpyMPI.%J.out 
+#BSUB -e axpyMPI.%J.err
+
+# Assign a name to the job  -J "<job_name>" 
+#BSUB -J "axpyMPI"
+
+# Maximum runtime or walltime -W HH:MM
+#BSUB -W 00:30
+
+# Specify the number of cores 
+#BSUB -n 4
+# Distribute cores accross two LOTUS hosts
+#BSUB -R "span[ptile=2]"
+
+# Submit the job
+mpirun.lotus axpyMPI.exe
+
+
