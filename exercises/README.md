@@ -1,12 +1,13 @@
 # Exercise structure
 
-Top-level directory:
- `jasmin-workshop/exercises/ex01`
+A directory per exercise, e.g.:
+ `.../exercises/ex01`
  
-Sub-directories:
+Possible sub-directories per exercise:
 
 ```
     code/
     data/
     etc/
+    <other>/
 ```

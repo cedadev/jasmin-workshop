@@ -59,10 +59,28 @@ display $HOME/cylc-run/workshop-suite/outputs/annual-max-temp-time-series.png
 
 ### Stopping a suite that is running
 
+Note: In our example suite, named 'example-suite', you would change the value of '<SUITE>' to
+'example-suite' in the following commands.
+
 If you need to stop the suite you can use:
 
 ```
-cylc stop 'workshop-suite'
+cylc stop '<SUITE>'
+```
+
+The `cylc stop` command may not stop the suite immediately - because it will wait for submitted
+and running tasks to complete.
+
+To kill the submitted and running tasks before stopping the suite, use:
+
+```
+cylc stop --kill '<SUITE>'
+```
+
+To stop the suite regardless of submitted and running tasks, use:
+
+```
+cylc stop --now '<SUITE>'
 ```
 
 ### Viewing the workflow graph of the suite
