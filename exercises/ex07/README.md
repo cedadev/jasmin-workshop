@@ -1,1 +1,3 @@
-Exercise 6
+# Exercise 7
+
+Manage a multi-step workflow
