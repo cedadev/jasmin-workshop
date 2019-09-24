@@ -1,1 +1,3 @@
-Exercise 6
+# Exercise 6
+
+Choosing the right storage for your workflow
