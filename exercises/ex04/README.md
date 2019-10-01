@@ -1,3 +1,3 @@
 # Exercise 4
 
-Processing on the scientific analysis servers
+A script to extract 1 variable from a file in the CEDA Archive

@@ -1,4 +1,4 @@
-# Exercise 06 - Managing a multi-step workflow 
+# Exercise 07 - Managing a multi-step workflow 
 
 ## Scenario
 
