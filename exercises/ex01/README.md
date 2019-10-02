@@ -1,3 +1,3 @@
 # Exercise 1
 
-Accessing and using the JASMIN scientific analyis severs
+Accessing and using the JASMIN scientific analysis severs
