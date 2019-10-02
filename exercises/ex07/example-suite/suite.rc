@@ -18,7 +18,7 @@
             batch system = lsf
             execution time limit = PT5M
         [[[directives]]]
-            -q=short-serial
+            -q=workshop
             -n=1
     [[initialise]]
         script = """echo 'do something'"""

@@ -18,11 +18,11 @@
             batch system = lsf
             execution time limit = PT5M
         [[[directives]]]
-            -q=short-serial
+            -q=workshop
             -n=1
     [[clone_repo]]
         script = """git clone https://github.com/cedadev/jasmin-workshop workshop-repo
-cp workshop-repo/exercises/ex06/code/* ${CYLC_SUITE_RUN_DIR}/
+cp workshop-repo/exercises/ex07/code/* ${CYLC_SUITE_RUN_DIR}/
 rm -fr workshop-repo"""
     [[get_counties]]
         script = """module load jaspy
