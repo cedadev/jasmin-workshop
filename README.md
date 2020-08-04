@@ -16,3 +16,5 @@ If you are unable to attend one of the workshops in person, you may find it usef
 | ex07 | Manage a multi-step workflow | [Resources](./exercises/ex07) |
 | ex08 | Building your own Python 3 environment | [Resources](./exercises/ex08) |
 | ex09 | Compile and run parallel Fortran code on LOTUS | [Resources](./exercises/ex09)
+
+If you are using the materials individually (outside of an organised workshop event) then you will need to use your own JASMIN account and a group workspace which you already belong to, rather than the training accounts, and workshop group workspace, respectively. Instead of the workshop LOTUS queue, please use the short-serial queue in this case.
