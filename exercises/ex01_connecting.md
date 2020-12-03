@@ -124,7 +124,7 @@ In this case, you will need to work out what is wrong before you will be able to
 ```
 $ ssh -A fred001@login1.jasmin.ac.uk
 ```
-> **_NOTE:_**  Your username on JASMIN (`fred001`) may not be the same as your username on your local machine (`fredbloggs`). You must specify the username with which to connect to JASMIN.
+> **_NOTE:_**  Your username on JASMIN (`fred001`) may not be the same as your username on your local machine (`fredbloggs`). You must specify the username associated with your JASMIN account.
 
 > **_NOTE:_**  The -A option is needed for "agent forwarding", which enables your key to be made available for an onward connection to a subsequent server: we need this for our connection to a `sci` machine.
 
