@@ -154,7 +154,7 @@ On the login server:
 
 ```
 $ ssh-add -l
-4096 SHA256:L7D9ATLsBVl5zIPI6EZGsXqHn31pQVyXFhYhphEj7hU /Users/fredbloggs/.ssh/id_rsa_jasmin (RSA)
+2048 SHA256:iqX3NkPCpschVdqPxVde/ujap2cM0mYaAYYedzBGPaI /home/fredbloggs/.ssh/id_rsa_jasmin (RSA)
 ```
 A message like `error fetching identities for protocol 1: agent refused operation` can be ignored as long as at least 1 identity is listed, as above.
 
