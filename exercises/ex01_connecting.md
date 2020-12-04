@@ -83,77 +83,77 @@ If you are using your own account, you will need to have completed these steps y
       * Mac or Linux
           * Use the native Terminal app.
 
-  * Load your ssh key locally
-    * On Windows:
-      * Use MobAgent to load your SSH private key ([see how to do this](https://help.jasmin.ac.uk/article/4832-mobaxterm)).  **Recommended method**
-      * This ensures that it will be avialable for all sessions which you initiate.
-      * An alternative, which just works within the **current** session, is to use the instructions for Mac and Linux, shown below (but if you open another terminal window you may need to repeat this step for each window).
+    * Load your ssh key locally
+      * On Windows:
+        * Use MobAgent to load your SSH private key ([see how to do this](https://help.jasmin.ac.uk/article/4832-mobaxterm)).  **Recommended method**
+        * This ensures that it will be avialable for all sessions which you initiate.
+        * An alternative, which just works within the **current** session, is to use the instructions for Mac and Linux, shown below (but if you open another terminal window you may need to repeat this step for each window).
 
-    * On a Mac or Linux system:
+      * On a Mac or Linux system:
 
-        ```
-        $ eval $(ssh-agent -s)
-        $ ssh-add ~/.ssh/id_rsa_jasmin
-        Enter passphrase for /home/fredbloggs/.ssh/id_rsa_jasmin:
-        Identity added: /home/fredbloggs/.ssh/id_rsa_jasmin (/home/users/fred001/.ssh/id_rsa_jasmin)
-        ```
+          ```
+          $ eval $(ssh-agent -s)
+          $ ssh-add ~/.ssh/id_rsa_jasmin
+          Enter passphrase for /home/fredbloggs/.ssh/id_rsa_jasmin:
+          Identity added: /home/fredbloggs/.ssh/id_rsa_jasmin (/home/users/fred001/.ssh/id_rsa_jasmin)
+          ```
 
-        > **_NOTE:_**  The `$` symbol preceding commands represents the command prompt on your system. You do not need to type this symbol. Lines not preceded by a `$` symbol represent output.
+          > **_NOTE:_**  The `$` symbol preceding commands represents the command prompt on your system. You do not need to type this symbol. Lines not preceded by a `$` symbol represent output.
 
-        > **_NOTE:_**  The path to your key (e.g. `/home/fredbloggs/.ssh/`) relates to the location of your private key on your own machine, NOT on JASMIN. There should be NO NEED to put your private key anywhere on JASMIN, and you will keep it more secure by keeping it ONLY on your local machine.
+          > **_NOTE:_**  The path to your key (e.g. `/home/fredbloggs/.ssh/`) relates to the location of your private key on your own machine, NOT on JASMIN. There should be NO NEED to put your private key anywhere on JASMIN, and you will keep it more secure by keeping it ONLY on your local machine.
 
 
-        * You can configure your shell to load your key automatically, by adding the `ssh-add` command (shown above) to your ~/.bash_profile file. This will be executed as open each new session.
-        * You will still be prompted for the passphrase in each new window you open, although Mac users can securely add their passphrase to KeyChain using the `-K` option with `ssh-add`.
-        * On a Linux system, your Desktop Manager may provide a utility to load your key at login time and have it persistently available to any new terminal session you open (this is what the MobAgent utility emulates in MobaXterm on Windows).
+          * You can configure your shell to load your key automatically, by adding the `ssh-add` command (shown above) to your ~/.bash_profile file. This will be executed as open each new session.
+          * You will still be prompted for the passphrase in each new window you open, although Mac users can securely add their passphrase to KeyChain using the `-K` option with `ssh-add`.
+          * On a Linux system, your Desktop Manager may provide a utility to load your key at login time and have it persistently available to any new terminal session you open (this is what the MobAgent utility emulates in MobaXterm on Windows).
 
-  * Check that your key is loaded
-    ```
-    $ ssh-add -l
-    2048 SHA256:iqX3NkPCpschVdqPxVde/ujap2cM0mYaAYYedzBGPaI /home/fredbloggs/.ssh/id_rsa_jasmin (RSA)
-    ```
-    If it has not worked, you may see something like this:
-    ```
-    $ ssh-add -l
-    The agent has no identities.
-    ```
-    In this case, you will need to work out what is wrong before you will be able to connect.
+    * Check that your key is loaded
+      ```
+      $ ssh-add -l
+      2048 SHA256:iqX3NkPCpschVdqPxVde/ujap2cM0mYaAYYedzBGPaI /home/fredbloggs/.ssh/id_rsa_jasmin (RSA)
+      ```
+      If it has not worked, you may see something like this:
+      ```
+      $ ssh-add -l
+      The agent has no identities.
+      ```
+      In this case, you will need to work out what is wrong before you will be able to connect.
 
-  * Initiate an SSH connection to a login server
+    * Initiate an SSH connection to a login server
 
-```
-$ ssh -A fred001@login1.jasmin.ac.uk
-```
-> **_NOTE:_**  Your username on JASMIN (`fred001`) may not be the same as your username on your local machine (`fredbloggs`). You must specify the username associated with your JASMIN account.
+      ```
+      $ ssh -A fred001@login1.jasmin.ac.uk
+      ```
+      > **_NOTE:_**  Your username on JASMIN (`fred001`) may not be the same as your username on your local machine (`fredbloggs`). You must specify the username associated with your JASMIN account.
 
-> **_NOTE:_**  The -A option is needed for "agent forwarding", which enables your key to be made available for an onward connection to a subsequent server: we need this for our connection to a `sci` machine.
+      > **_NOTE:_**  The -A option is needed for "agent forwarding", which enables your key to be made available for an onward connection to a subsequent server: we need this for our connection to a `sci` machine.
 
-  * Note the list of availble `sci` servers
+    * Note the list of availble `sci` servers
 
-Once you have successfully logged in, you should be present with the "message of the day" (MOTD), which includes a list of the available `sci` servers and lists the number of users and the available memory on each. This is useful in selecting one which is not overloaded: 
+      Once you have successfully logged in, you should be present with the "message of the day" (MOTD), which includes a list of the available `sci` servers and lists the number of users and the available memory on each. This is useful in selecting one which is not overloaded: 
 
-![](https://d33v4339jhl8k0.cloudfront.net/docs/assets/564b4bd3c697910ae05f445c/images/5fc92e11de1bfa158fb55239/file-dKz1hO4aLb.png)
+      ![](https://d33v4339jhl8k0.cloudfront.net/docs/assets/564b4bd3c697910ae05f445c/images/5fc92e11de1bfa158fb55239/file-dKz1hO4aLb.png)
 
-  * Check what directory you are in
-    ```
-    $ pwd
-    /home/users/fred001
-    ```
-  * Check usage of your home directory
-    ```
-    $ pdu -sh 
-    16G
-    ```
-    This shows 16G (gigabytes) being used, against your quota of 100G.
+    * Check what directory you are in
+      ```
+      $ pwd
+      /home/users/fred001
+      ```
+    * Check usage of your home directory
+      ```
+      $ pdu -sh 
+      16G
+      ```
+      This shows 16G (gigabytes) being used, against your quota of 100G.
 
-  * Check that your SSH key is availble to make an onward connection
+    * Check that your SSH key is availble to make an onward connection
 
-    As before, we can use the `ssh-add` command to check that our key is loaded. Remember that path it mentions relates to where it was loaded from on your local system. On the login server:
+      As before, we can use the `ssh-add` command to check that our key is loaded. Remember that path it mentions relates to where it was loaded from on your local system. On the login server:
 
-    ```
-    $ ssh-add -l
-    2048 SHA256:iqX3NkPCpschVdqPxVde/ujap2cM0mYaAYYedzBGPaI /home/fredbloggs/.ssh/id_rsa_jasmin (RSA)
-    ```
+      ```
+      $ ssh-add -l
+      2048 SHA256:iqX3NkPCpschVdqPxVde/ujap2cM0mYaAYYedzBGPaI /home/fredbloggs/.ssh/id_rsa_jasmin (RSA)
+      ```
 
 
 1. Connect to a login server using the graphical NX client
@@ -189,6 +189,6 @@ Once you have successfully logged in, you should be present with the "message of
         ```
         You should see a clock face appear on your desktop. Close this with `CTRL + c`.
 
-> **_NOTE:_**  You may find that the NX graphical desktop client is a more convenient interface to use for everyday use, and can be easier to set up than the various SSH Agent configurations needed on different platforms.
+  > **_NOTE:_**  You may find that the NX graphical desktop client is a more convenient interface to use for everyday use, and can be easier to set up than the various SSH Agent configurations needed on different platforms.
 
-As [described here](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx), the `nx-login` servers include a Firefox web browser which can be used for using some web-based tools which may only be available within JASMIN. Please do not use them for general web browsing, and please use firefox on the `nx-login` machines rather than the `sci` machines, to preserve resources for processing on the `sci` machines.
+  > **_NOTE:_**  As [described here](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx), the `nx-login` servers include a Firefox web browser which can be used for using some web-based tools which may only be available within JASMIN. Please do not use them for general web browsing, and please use firefox on the `nx-login` machines rather than the `sci` machines, to preserve resources for processing on the `sci` machines.
