@@ -19,9 +19,9 @@ After competing this exercise I will be able to:
 
 ### JASMIN resources
 
-* Transfer server: xfer[12].jasmin.ac.uk
+* Transfer server: `xfer[12].jasmin.ac.uk`
 * Home directory: `/home/users/fred001`
-* `workshop` Group workspace at `/group_workspaces/jasmin2/workshop`
+* `workshop` group workspace at `/group_workspaces/jasmin2/workshop`
 
 ### Local resources
 
@@ -36,7 +36,7 @@ After competing this exercise I will be able to:
 1. Make a destination directory for yourself within the `workshop` group workspace
 1. Copy the the directory and its contents to the destination directory using the transfer server
 1. Check that the ownership and persmissions on your directory within the group workspace allow reading, and, if you choose, writing, by other members.
-1. Using command line tools or a script you have written, download a test file from http://speedtest.tele2.net/100MB.zip, then delete it.
+1. Using command line tools, download a test file from http://speedtest.tele2.net/100MB.zip, then delete it.
 
 ### Review
 
@@ -47,7 +47,7 @@ This exercise demonstrates how to use a transfer server to:
 * Check permissions on the data to make sure it’s visible by collaborators
 * Download some data from an external data source
 
-We have looked at some basic methods suitable for small datasets or where speed is not critical. For larger data transfers or over longer distances (international/intercontinental), it is recommended to consider other available options which could be more efficient, depending on source & destination. See [ex10](ex10_advanced_data_transfer.md) or consult the information at [https://help.jasmin.ac.uk/article/219-data-transfer-overview](https://help.jasmin.ac.uk/article/219-data-transfer-overview)
+We have looked at some basic methods suitable for small datasets or where speed is not critical. For larger data transfers or over longer distances (international/intercontinental), it is recommended to consider other available options which could be more efficient, depending on source & destination. See [ex10](ex10_advanced_data_transfer.md) or consult the [documentation here](https://help.jasmin.ac.uk/article/219-data-transfer-overview)
 
 
 ### Alternative approaches and best practice
@@ -154,13 +154,13 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     Each Group Workspace has its own group. In this case, it's `gws_workshop`. You can check that you belong to that group with the following command:
     ```
     $ groups
-    users workshop
+    users gws_workshop
     ```
     Now we can change the group ownership of the files and directories (all in one go) to `workshop` with the `chgrp` command:
     ```
-    $ chgrp -R workshop mydata
+    $ chgrp -R gws_workshop mydata
     ```
-    Now all the files/directories belong to the workshop group, but we haven't yet granted read permission to other people in the group. Since files need to be `rw-r-----` (640) and directories need to be (rwxr-x---) (755), we could set these at the top level as follows,
+    Now all the files/directories belong to the workshop group, but we haven't yet granted read permission to other people in the group. Since files need to be `rw-r-----` (`640`) and directories need to be (`rwxr-x---`) (`755`), we could set these at the top level as follows,
     ```
     chmod -R g+rX mydata
     ```
@@ -215,7 +215,7 @@ Saving to: ‘/dev/null’
 
 2020-12-04 12:38:16 (179 MB/s) - ‘/dev/null’ saved [104857600/104857600]
 ```
-Here, we've got a result of 179MB/s which is pretty good. All sorts of factors can contribute to slow transfer performance but this is one way of eliminating this particular machine as the bottleneck: quite often the reason is a slow server at the other end, or complex directory structures full of small files which slow things down. For more discussion of transfer performance, see [ex10](ex10_advanced_data_transfer.md).
+Here, we've got a result of 179MB/s which is pretty good. All sorts of factors can contribute to slow transfer performance but this apprach can be helpful in eliminating this particular machine as the bottleneck. Quite often the reason is a slow server at the other end, or complex directory structures full of small files which slow things down. For more discussion of transfer performance, see [ex10](ex10_advanced_data_transfer.md).
 
 The equivalent using `curl` would be:
 ```
