@@ -189,43 +189,40 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
 1. Using command line tools or a script you have written, download a test file from http://speedtest.tele2.net/100MB.zip, then delete it.
 
-We can use either `curl` or `wget` to fetch a remote data file via HTTP from within JASMIN. These utilities are installed on the transfer servers.
+    We can use either `curl` or `wget` to fetch a remote data file via HTTP from within JASMIN. These utilities are installed on the transfer servers.
 
-The speed test site http://speedtest.tele2.net/ provides a number of different files which can be used to test download performance, but also to test the functionality of any tools to check they're working properly.
+    The speed test site http://speedtest.tele2.net/ provides a number of different files which can be used to test download performance, but also to test the functionality of any tools to check they're working properly.
 
-```
-$ wget http://speedtest.tele2.net/100MB.zip
-```
-Followed by this to delete the file:
-```
-$ rm 100MB.zip
-```
-We're deleting the file straight after downloading it, so an alternative is to specifying the output file as the null device, which means it's not actually written to storage:
-```
-$ wget -O/dev/null http://speedtest.tele2.net/100MB.zip
-$ wget -O/dev/null http://speedtest.tele2.net/100MB.zip
---2020-12-04 12:38:16--  http://speedtest.tele2.net/100MB.zip
-Resolving speedtest.tele2.net (speedtest.tele2.net)... 90.130.70.73, 2a00:800:1010::1
-Connecting to speedtest.tele2.net (speedtest.tele2.net)|90.130.70.73|:80... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 104857600 (100M) [application/zip]
-Saving to: ‘/dev/null’
+    ```
+    $ wget http://speedtest.tele2.net/100MB.zip
+    ```
+    Followed by this to delete the file:
+    ```
+    $ rm 100MB.zip
+    ```
+    We're deleting the file straight after downloading it, so an alternative is to specifying the output file as the null device, which means it's not actually written to storage:
+    ```
+    $ wget -O/dev/null http://speedtest.tele2.net/100MB.zip
+    $ wget -O/dev/null http://speedtest.tele2.net/100MB.zip
+    --2020-12-04 12:38:16--  http://speedtest.tele2.net/100MB.zip
+    Resolving speedtest.tele2.net (speedtest.tele2.net)... 90.130.70.73, 2a00:800:1010::1
+    Connecting to speedtest.tele2.net (speedtest.tele2.net)|90.130.70.73|:80... connected.
+    HTTP request sent, awaiting response... 200 OK
+    Length: 104857600 (100M) [application/zip]
+    Saving to: ‘/dev/null’
 
-100%[==============================================================================>] 104,857,600  179MB/s   in 0.6s   
+    100%[==============================================================================>] 104,857,600  179MB/s   in 0.6s   
 
-2020-12-04 12:38:16 (179 MB/s) - ‘/dev/null’ saved [104857600/104857600]
-```
-Here, we've got a result of 179MB/s which is pretty good. All sorts of factors can contribute to slow transfer performance but this apprach can be helpful in eliminating this particular machine as the bottleneck. Quite often the reason is a slow server at the other end, or complex directory structures full of small files which slow things down. For more discussion of transfer performance, see [ex10](ex10_advanced_data_transfer.md).
+    2020-12-04 12:38:16 (179 MB/s) - ‘/dev/null’ saved [104857600/104857600]
+    ```
+    Here, we've got a result of 179MB/s which is pretty good. All sorts of factors can contribute to slow transfer performance but this apprach can be helpful in eliminating this particular machine as the bottleneck. Quite often the reason is a slow server at the other end, or complex directory structures full of small files which slow things down. For more discussion of transfer performance, see [ex10](ex10_advanced_data_transfer.md).
 
-The equivalent using `curl` would be:
-```
-$ $ curl -o /dev/null http://speedtest.tele2.net/100MB.zip
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100  100M  100  100M    0     0   195M      0 --:--:-- --:--:-- --:--:--  196M
-```
+    The equivalent using `curl` would be:
+    ```
+    $ $ curl -o /dev/null http://speedtest.tele2.net/100MB.zip
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                    Dload  Upload   Total   Spent    Left  Speed
+    100  100M  100  100M    0     0   195M      0 --:--:-- --:--:-- --:--:--  196M
+    ```
 
-Both `wget` and `curl` are very useful and feature-rich transfer tools and can do a lot more than shown here: read the relevant `man` pages for more information. You can also build your own transfer tools using packages such as `requests` in Python (see [ex10](ex10_advanced_data_transfer.md))
-
-
-
+    Both `wget` and `curl` are very useful, feature-rich transfer tools and can do a lot more than shown here: read the relevant `man` pages for more information. You can also build your own transfer tools using packages such as `requests` in Python (see [ex10](ex10_advanced_data_transfer.md))
