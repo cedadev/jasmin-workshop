@@ -1,11 +1,6 @@
 ---
 title: Connecting to JASMIN
-author: Author
-contact: Email
-draft: false
-sensitive: false
-reason: few words describing purpose of this doc
-version: 0.1 \today
+author: Matt Pritchard
 ---
 
 ### Scenario
