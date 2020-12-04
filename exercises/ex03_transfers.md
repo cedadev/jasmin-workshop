@@ -93,7 +93,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     ```
     $ mkdir -p mydata/01 mydata/02
     $ echo "This is a test file" > mydata/01/file01.txt
-    $ echo "This is also a test file" > mydata/02/fie02.txt
+    $ echo "This is also a test file" > mydata/02/file02.txt
     ```
     Check what you have created:
     ```
@@ -116,11 +116,11 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     $ exit
     ```
 
-    > **_NOTE:_**  Here we used the `$USER` environment variable which contains your JASMIN username..
+    > **_NOTE:_**  Above, we used the `$USER` environment variable which contains your JASMIN username.
 
     Back on your local machine, recursively copy the directory using `scp`:
     ```
-    scp -r mydata fred001@xfer1.jasmin.ac.uk:/group_workspaces/jasmin2/workshop/$USER/
+    scp -r mydata fred001@xfer1.jasmin.ac.uk:/group_workspaces/jasmin2/workshop/fred001/
     ```
 
     Log back in to the transfer server to inspect your destination directory:
