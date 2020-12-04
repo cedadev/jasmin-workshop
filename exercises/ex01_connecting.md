@@ -40,21 +40,21 @@ At the end of this exercise I will be able to:
 This is the outline of what you need to do. The recommended way of doing each step is covered in the "Cheat Sheet" but you may wish to try solving it for yourself first.
 
 1. Connect to a `login` server using a terminal client
-  * Load your ssh key locally
-  * Initiate an SSH connection to a login server
-  * Note the list of availble `sci` servers 
-  * Check what directory you are in
-  * Check usage of your home directory
-  * Check that your SSH key is availble to make an onward connection
+   * Load your ssh key locally
+   * Initiate an SSH connection to a login server
+   * Note the list of availble `sci` servers 
+   * Check what directory you are in
+   * Check usage of your home directory
+   * Check that your SSH key is availble to make an onward connection
 1. Connect to a login server using the graphical NX client
-  * Make a connection profile for one `nx-login` server
-  * Connect to that server
-  * Check that your SSH key is availble to make an onward connection
-  * Bring up the list of available `sci` servers
+   * Make a connection profile for one `nx-login` server
+   * Connect to that server
+   * Check that your SSH key is availble to make an onward connection
+   * Bring up the list of available `sci` servers
 1. Make an onward connection to a `sci` server
-  * Login to the `sci` server
-  * Run a simple command
-  * Run a command which produces graphical output
+   * Login to the `sci` server
+   * Run a simple command
+   * Run a command which produces graphical output
 
 ### Questions to test yourself
 
@@ -62,11 +62,15 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 
 1. What is different about servers `login2.jasmin.ac.uk` and `nx-login2.jasmin.ac.uk` compared to their siblings?
 2. How often is your home directory backed up? How would you go about restoring files if you accidentally deleted something from your home directory?
-3. What shell is used by default on JASMIN? How would you customise your shell environment (e.g. aliases, environment variables)?
+3. What shell is used by default on JASMIN? How can you tell? How would you customise your shell environment (e.g. aliases, environment variables)?
 
 ### Review / alternative approaches / best practice
 
-
+* Your SSH key must be protected with a strong passphrase.
+* You must not share your SSH key with any other user.
+* You must not edit your ~/.ssh/authorized_keys file on JASMIN. This is populated automatically with the (one) key you upload to your JASMIN account profile, so will be over-written if you edit it.
+* The login servers perform 1 simple function and so should not be used for any processing, just as a "hop" to other systems within JASMIN.
+* Check for a less-busy `sci` machine before connecting. Setting up an alias to 1 particular machine can be counter-productive.
 
 ### Cheat Sheet
 
@@ -78,46 +82,46 @@ If you are using your own account, you will need to have completed these steps y
    * Choose your `login` server from the list in the [help doc](https://help.jasmin.ac.uk/article/191-login-servers).
    * Choose your terminal client
       * This is the application with which you will make an SSH connection
-   * On Windows:
-      * MobaXterm is our recommended client.
-   * Mac or Linux
-      * Use the native Terminal app.
+      * On Windows:
+          * MobaXterm is our recommended client.
+      * Mac or Linux
+          * Use the native Terminal app.
 
   * Load your ssh key locally
-   * On Windows:
+    * On Windows:
       * Use MobAgent to load your SSH private key ([see how to do this](https://help.jasmin.ac.uk/article/4832-mobaxterm)).  **Recommended method**
       * This ensures that it will be avialable for all sessions which you initiate.
       * An alternative, which just works within the **current** session, is to use the instructions for Mac and Linux, shown below (but if you open another terminal window you may need to repeat this step for each window).
 
-   * On a Mac or Linux system:
+    * On a Mac or Linux system:
 
-```
-$ eval $(ssh-agent -s)
-$ ssh-add ~/.ssh/id_rsa_jasmin
-Enter passphrase for /home/fredbloggs/.ssh/id_rsa_jasmin:
-Identity added: /home/fredbloggs/.ssh/id_rsa_jasmin (/home/users/fred001/.ssh/id_rsa_jasmin)
-```
+        ```
+        $ eval $(ssh-agent -s)
+        $ ssh-add ~/.ssh/id_rsa_jasmin
+        Enter passphrase for /home/fredbloggs/.ssh/id_rsa_jasmin:
+        Identity added: /home/fredbloggs/.ssh/id_rsa_jasmin (/home/users/fred001/.ssh/id_rsa_jasmin)
+        ```
 
-> **_NOTE:_**  The `$` symbol preceding commands represents the command prompt on your system. You do not need to type this symbol. Lines not preceded by a `$` symbol represent output.
+        > **_NOTE:_**  The `$` symbol preceding commands represents the command prompt on your system. You do not need to type this symbol. Lines not preceded by a `$` symbol represent output.
 
-> **_NOTE:_**  The path to your key (e.g. `/home/fredbloggs/.ssh/`) relates to the location of your private key on your own machine, NOT on JASMIN. There should be NO NEED to put your private key anywhere on JASMIN, and you will keep it more secure by keeping it ONLY on your local machine.
+        > **_NOTE:_**  The path to your key (e.g. `/home/fredbloggs/.ssh/`) relates to the location of your private key on your own machine, NOT on JASMIN. There should be NO NEED to put your private key anywhere on JASMIN, and you will keep it more secure by keeping it ONLY on your local machine.
 
 
-   * On a Mac or Linux system, you can configure your shell to automatically load your key, by adding the `ssh-add` command (shown above) to your ~/.bash_profile file.
-   * You will still be prompted for the passphrase in each new window you open, although Mac users can securely add their passphrase to KeyChain using the `-K` option with `ssh-add`.
-   * On a Linux system, your Desktop Manager may provide a utility to load your key at login time and have it persistently available to any new terminal session you open (this is what the MobAgent utility emulates in MobaXterm on Windows).
+        * You can configure your shell to load your key automatically, by adding the `ssh-add` command (shown above) to your ~/.bash_profile file. This will be executed as open each new session.
+        * You will still be prompted for the passphrase in each new window you open, although Mac users can securely add their passphrase to KeyChain using the `-K` option with `ssh-add`.
+        * On a Linux system, your Desktop Manager may provide a utility to load your key at login time and have it persistently available to any new terminal session you open (this is what the MobAgent utility emulates in MobaXterm on Windows).
 
   * Check that your key is loaded
-```
-$ ssh-add -l
-2048 SHA256:iqX3NkPCpschVdqPxVde/ujap2cM0mYaAYYedzBGPaI /home/fredbloggs/.ssh/id_rsa_jasmin (RSA)
-```
-If it has not worked, you may see something like this:
-```
-$ ssh-add -l
-The agent has no identities.
-```
-In this case, you will need to work out what is wrong before you will be able to connect.
+    ```
+    $ ssh-add -l
+    2048 SHA256:iqX3NkPCpschVdqPxVde/ujap2cM0mYaAYYedzBGPaI /home/fredbloggs/.ssh/id_rsa_jasmin (RSA)
+    ```
+    If it has not worked, you may see something like this:
+    ```
+    $ ssh-add -l
+    The agent has no identities.
+    ```
+    In this case, you will need to work out what is wrong before you will be able to connect.
 
   * Initiate an SSH connection to a login server
 
@@ -135,36 +139,60 @@ Once you have successfully logged in, you should be present with the "message of
 ![](https://d33v4339jhl8k0.cloudfront.net/docs/assets/564b4bd3c697910ae05f445c/images/5fc92e11de1bfa158fb55239/file-dKz1hO4aLb.png)
 
   * Check what directory you are in
-```
-$ pwd
-/home/users/fred001
-```
+    ```
+    $ pwd
+    /home/users/fred001
+    ```
   * Check usage of your home directory
-```
-$ pdu -sh 
-16G
-```
-This shows 16G (gigabytes) being used, against your quota of 100G.
+    ```
+    $ pdu -sh 
+    16G
+    ```
+    This shows 16G (gigabytes) being used, against your quota of 100G.
 
   * Check that your SSH key is availble to make an onward connection
 
-As before, we can use the ssh-add command to check that our key is loaded. Again, the path it mentions relates to where it came from on your local system, not the path on JASMIN, since it should not be stored on JASMIN: 
+    As before, we can use the `ssh-add` command to check that our key is loaded. Remember that path it mentions relates to where it was loaded from on your local system. On the login server:
 
-On the login server:
+    ```
+    $ ssh-add -l
+    2048 SHA256:iqX3NkPCpschVdqPxVde/ujap2cM0mYaAYYedzBGPaI /home/fredbloggs/.ssh/id_rsa_jasmin (RSA)
+    ```
 
-```
-$ ssh-add -l
-2048 SHA256:iqX3NkPCpschVdqPxVde/ujap2cM0mYaAYYedzBGPaI /home/fredbloggs/.ssh/id_rsa_jasmin (RSA)
-```
-A message like `error fetching identities for protocol 1: agent refused operation` can be ignored as long as at least 1 identity is listed, as above.
 
 1. Connect to a login server using the graphical NX client
-  * Make a connection profile for one `nx-login` server
-  * Connect to that server
-  * Check that your SSH key is availble to make an onward connection
-  * Bring up the list of available `sci` servers
-1. Make an onward connection to a `sci` server
-  * Login to the `sci` server
-  * Run a simple command
-  * Run a command which produces graphical output
+   * Follow the steps [described here](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx) for setting up NoMachine Enterprise Client for making a connection to JASMIN.
+   * Open a "Terminal" window from the Activities menu
+   * Type the following to retreive the "Message of the Day", listing available `sci` servers and their current usage:
+   ```
+   $ cat /etc/motd
+   ``` 
 
+1. Make an onward connection to a `sci` server
+     * Login to the `sci` server
+
+        It can be useful to repeat the `ssh-add -l` command to check that your SSH key is still available (now on the login server) before making your onward connection. You should get a similar result to that above. If not, go back and check that you enabled "forward authentication" in the NX connection profile settings for this login server.
+
+        This time, because we want graphics to enable any graphics output to be sent back to this virtual desktop, we need to include the `-X` option with the `ssh` command:
+        ```
+        $ ssh -AX fred001@sci1.jasmin.ac.uk
+        ```
+
+     * Run a simple command
+
+        We are now able to run a simple command on the sci server (you should see that the prompt has changed, but this command returns the name of the host so should confirms that you are now on the `sci` server)
+        ```
+        $ hostname
+        sci1.jasmin.ac.uk
+        ```
+     * Run a command which produces graphical output
+
+        Try running a (very) simple graphical application and check that it appears normally:
+        ```
+        $ xclock
+        ```
+        You should see a clock face appear on your desktop. Close this with `CTRL + c`.
+
+> **_NOTE:_**  You may find that the NX graphical desktop client is a more convenient interface to use for everyday use, and can be easier to set up than the various SSH Agent configurations needed on different platforms.
+
+As [described here](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx), the `nx-login` servers include a Firefox web browser which can be used for using some web-based tools which may only be available within JASMIN. Please do not use them for general web browsing, and please use firefox on the `nx-login` machines rather than the `sci` machines, to preserve resources for processing on the `sci` machines.
