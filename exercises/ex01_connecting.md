@@ -66,6 +66,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 * You must not edit your ~/.ssh/authorized_keys file on JASMIN. This is populated automatically with the (one) key you upload to your JASMIN account profile, so will be over-written if you edit it.
 * The login servers perform 1 simple function and so should not be used for any processing, just as a "hop" to other systems within JASMIN.
 * Check for a less-busy `sci` machine before connecting. Setting up an alias to 1 particular machine can be counter-productive.
+* Don't use the `nx-login` servers for a regular terminal session: only use them via the NX client for a graphical desktop. This preserves resources and performance for those users who need it.
 
 ### Cheat Sheet
 
