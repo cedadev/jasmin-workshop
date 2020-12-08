@@ -1,6 +1,6 @@
 ---
 title: Exercise NN Template
-author: Author
+author: Matt Pritchard
 contact: Email
 draft: false
 sensitive: false
