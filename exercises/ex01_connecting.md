@@ -23,6 +23,7 @@ At the end of this exercise I will be able to:
  * JASMIN account with SSH public key uploaded and `jasmin-login` privilege
  * login servers: `login[1234].jasmin.ac.uk`
  * nx-login servers: `nx-login[123].jasmin.ac.uk`
+ * help documentation at https://help.jasmin.ac.uk
 
 ### Local resources
  * SSH private key & passphrase
