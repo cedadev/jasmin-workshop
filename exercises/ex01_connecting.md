@@ -28,8 +28,8 @@ At the end of this exercise I will be able to:
 ### Local resources
  * SSH private key & passphrase
  * Client applications:
-   * a terminal client e.g. Mac/Linux Terminal, MobaXterm for Windows
-   * NX Enterprise Client
+   * a terminal client e.g. Mac/Linux Terminal, [MobaXterm](https://mobaxterm.mobatek.net/download-home-edition.html) for Windows
+   * [NX Enterprise Client](https://www.nomachine.com/download-enterprise#NoMachine-Enterprise-Client)
 
 ### Your task
 
