@@ -37,14 +37,14 @@ This is the outline of what you need to do. The recommended way of doing each st
 1. Connect to a `login` server using a terminal client
    * Load your ssh key locally
    * Initiate an SSH connection to a login server
-   * Note the list of availble `sci` servers 
+   * Note the list of available `sci` servers 
    * Check what directory you are in
    * Check usage of your home directory
    * Check that your SSH key is availble to make an onward connection
 1. Connect to a login server using the graphical NX client
    * Make a connection profile for one `nx-login` server
    * Connect to that server
-   * Check that your SSH key is availble to make an onward connection
+   * Check that your SSH key is available to make an onward connection
    * Bring up the list of available `sci` servers
 1. Make an onward connection to a `sci` server
    * Login to the `sci` server
