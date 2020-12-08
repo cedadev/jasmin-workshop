@@ -42,7 +42,7 @@ This is the outline of what you need to do. The recommended way of doing each st
    * Note the list of available `sci` servers 
    * Check what directory you are in
    * Check usage of your home directory
-   * Check that your SSH key is availble to make an onward connection
+   * Check that your SSH key is available to make an onward connection
 1. Connect to a login server using the Nomachine Enterprise Client
    * Make a connection profile for one `nx-login` server
    * Connect to that server
@@ -130,7 +130,7 @@ If you are using your own account, you will need to have completed these steps y
 
       > **_NOTE:_**  The -A option is needed for "agent forwarding", which enables your key to be made available for an onward connection to a subsequent server: we need this for our connection to a `sci` machine.
 
-    * Note the list of availble `sci` servers
+    * Note the list of available `sci` servers
 
       Once you have successfully logged in, you should be present with the "message of the day" (MOTD), which includes a list of the available `sci` servers and lists the number of users and the available memory on each. This is useful in selecting one which is not overloaded: 
 
