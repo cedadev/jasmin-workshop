@@ -42,7 +42,7 @@ This is the outline of what you need to do. The recommended way of doing each st
    * Check what directory you are in
    * Check usage of your home directory
    * Check that your SSH key is availble to make an onward connection
-1. Connect to a login server using the graphical NX client
+1. Connect to a login server using the Nomachine Enterprise Client
    * Make a connection profile for one `nx-login` server
    * Connect to that server
    * Check that your SSH key is available to make an onward connection
