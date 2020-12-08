@@ -148,7 +148,7 @@ If you are using your own account, you will need to have completed these steps y
       ```
       This shows 16G (gigabytes) being used, against your quota of 100G.
 
-    * Check that your SSH key is availble to make an onward connection
+    * Check that your SSH key is available to make an onward connection
 
       As before, we can use the `ssh-add` command to check that our key is loaded. Remember that path it mentions relates to where it was loaded from on your local system. On the login server:
 
