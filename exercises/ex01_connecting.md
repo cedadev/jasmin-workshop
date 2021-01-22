@@ -193,4 +193,23 @@ If you are using your own account, you will need to have completed these steps y
 
   > **_NOTE:_**  You may find that the NX graphical desktop client is a more convenient interface to use for everyday use, and can be easier to set up than the various SSH Agent configurations needed on different platforms.
 
-  > **_NOTE:_**  As [described here](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx), the `nx-login` servers include a Firefox web browser which can be used for using some web-based tools which may only be available within JASMIN. Please do not use them for general web browsing, and please use firefox on the `nx-login` machines rather than the `sci` machines, to preserve resources for processing on the `sci` machines.
+  > **_NOTE:_**  As [described here](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx), the `nx-login` servers include a Firefox web browser which can be used for using some web-based tools which may only be available within JASMIN. Please do not use them for general web browsing, and please use firefox on the `nx-login` machines rather than the `sci` machines, to preserve resources for processing on the `sci` machines. The same article also discusses why using the NX client significantly improves performance for graphical applications run on JASMIN, if you're viewing the output somewhere remote to JASMIN.
+
+  ### Answers to questions
+
+> 1. What is different about servers `login2.jasmin.ac.uk` and `nx-login2.jasmin.ac.uk` compared to their siblings?
+
+These provide a contingency option for users whose home network can't be configured to provide a forward and reverse DNS lookup. Details in the ["Check network details"](https://help.jasmin.ac.uk/article/190-check-network-details) help doc. If you're not sure what that means, please speak to your local IT support desk. 
+
+> 2. How often is your home directory backed up? How would you go about restoring files if you accidentally deleted something from your home directory?
+
+See [this article](https://help.jasmin.ac.uk/article/176-storage) about how you can restore data accidentally deleted from your home directory for up to a week. It also mentions the tape backups which run on a 3-4 week cycle.
+
+> 3. What shell is used by default on JASMIN? How can you tell? How would you customise your shell environment (e.g. aliases, environment variables)?
+
+You can check what shell is being used by checking the value of the `$SHELL` environment variable wherever you are logged in on JASMIN:
+```
+$ echo $SHELL
+/bin/bash
+```
+The `bash` shell is used on JASMIN. Please refer to [official documentation](https://www.gnu.org/software/bash/) to learn about its capabilities and how to customise your own environment.
