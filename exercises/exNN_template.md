@@ -65,7 +65,7 @@ This page, or multiple pages, should have a detailed example of how to work thro
 Hopefully the examples above show how basic MarkDown formatting works.
 Looking at the MarkDown source for this file shows how to format a [link](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf), while following the link itself takes you to a MarkDown Syntax CheatSheet.
 
-
+> **_NOTE:_**  You can make important notes stand out like this. They will appear as a block with a highlight at the side.
 
 
 
