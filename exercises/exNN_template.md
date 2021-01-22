@@ -1,12 +1,11 @@
 ---
 title: Exercise NN Template
 author: Matt Pritchard
-contact: Email
-draft: false
-sensitive: false
-reason: few words describing purpose of this doc
-version: 0.1 \today
 ---
+
+> **_NOTE:_**  This template should be copied and named `README.md` within each `exNN` directory.
+
+# Exercise NN Template
 
 ### Scenario
 
