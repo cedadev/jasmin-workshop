@@ -3,6 +3,8 @@ title: Connecting to JASMIN
 author: Matt Pritchard
 ---
 
+# Exercise 1: Connecting to JASMIN
+
 ### Scenario
 
 I want to connect to JASMIN from my own computer to do some work.
