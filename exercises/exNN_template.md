@@ -5,7 +5,7 @@ author: Matt Pritchard
 
 > **_NOTE:_**  The markdown content of this template should be copied to a new file named `README.md` within each `exNN` directory.
 
-# Exercise NN Template
+# Exercise NN: Template
 
 ### Scenario
 
