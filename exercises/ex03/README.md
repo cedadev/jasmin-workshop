@@ -34,10 +34,10 @@ After competing this exercise I will be able to:
 
 1. Make a simple text file or script on your local machine
 1. Copy it to your home directory on a jasmin transfer server
-1. Make a directory on your local machine and create a few simple files in it (representing some data that you want to share). This is the source directory.
-1. Make a destination directory for yourself within the `workshop` group workspace
+1. Make a directory on your local machine and create a few simple files in it (representing some data that you want to share). This is the **source** directory.
+1. Make a **destination** directory for yourself within the `workshop` group workspace
 1. Copy the the source directory and its contents to the destination directory using the transfer server
-1. Check that the ownership and persmissions on your directory within the group workspace allow reading, and, if you choose, writing, by other members.
+1. Check that the ownership and permissions on your directory within the group workspace allow reading, and, if you choose, writing, by other members.
 1. Using command line tools, download a test file from http://speedtest.tele2.net/100MB.zip to your destination directory in the `workshop` group workspace, then delete it.
 
 ### Review
