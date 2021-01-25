@@ -78,7 +78,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
 1. How could you share data on JASMIN with users outside of JASMIN?
 
-1. Why are transfer methods based on SSH not very efficient?
+1. **Why** are transfer methods based on SSH not very efficient over long distances?
 
 # Cheatsheet
 
