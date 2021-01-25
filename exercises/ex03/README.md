@@ -16,7 +16,7 @@ After competing this exercise I will be able to:
 * Copy a small text file from my local machine to my JASMIN home directory using a transfer server.
 * Copy a directory tree of data files recursively from my local machine to the `workshop` group workspace.
 * Understand permissions and ownership needed for group access.
-* Understand the limitations of some transfers methods.
+* Be aware of the limitations of some transfers methods.
 * Pull in data from an external data source using a transfer server
 
 ### JASMIN resources
