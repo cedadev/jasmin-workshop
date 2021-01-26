@@ -59,6 +59,11 @@ Could also include examples of different pointers of ways to complete the exerci
 
 This page, or multiple pages, should have a detailed example of how to work through the exercise. Including specific commands and paths than need to be used. Plus any other hints/tips that might be useful - like links to help documentation.
 
+```
+$ command prefixed by "$"
+output would show here
+```
+
 ### Formatting
 
 Hopefully the examples above show how basic MarkDown formatting works.
