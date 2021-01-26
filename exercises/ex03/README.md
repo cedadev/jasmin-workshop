@@ -51,7 +51,7 @@ This exercise demonstrates how to use a transfer server to:
 * Check permissions on the data to make sure it’s visible by collaborators
 * Download some data from an external data source
 
-We have looked at some basic methods suitable for small datasets or where speed is not critical. For larger data transfers or over longer distances (international/intercontinental), it is recommended to consider other available options which could be more efficient, depending on source & destination. See [ex10](ex10_advanced_data_transfer.md) or consult the [documentation here](https://help.jasmin.ac.uk/article/219-data-transfer-overview)
+We have looked at some basic methods suitable for small datasets or where speed is not critical. For larger data transfers or over longer distances (international/intercontinental), it is recommended to consider other available options which could be more efficient, depending on source & destination. See [exercise 10](../ex10) or consult the [documentation here](https://help.jasmin.ac.uk/article/219-data-transfer-overview)
 
 
 ### Alternative approaches and best practice
