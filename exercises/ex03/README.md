@@ -144,12 +144,12 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
     Back on your local machine, recursively copy the directory using `scp`:
     ```
-    scp -r mydata fred001@xfer1.jasmin.ac.uk:/gws/pw/j05/workshop/fred001/
+    scp -r mydata fred001@xfer1.jasmin.ac.uk:/gws/pw/j05/workshop/users/fred001/
     ```
 
     In your other terminal window on (or log back in to) the transfer server, inspect your destination directory:
     ```
-    $ cd /gws/pw/j05/workshop/$USER
+    $ cd /gws/pw/j05/workshop/users/$USER
     $ find .
     ./mydata
     ./mydata/02
