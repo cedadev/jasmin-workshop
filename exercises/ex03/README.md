@@ -21,14 +21,16 @@ After competing this exercise I will be able to:
 
 ### JASMIN resources
 
+* Account with valid `jasmin-login` privilege
 * Transfer server: `xfer[12].jasmin.ac.uk` (1 or 2)
 * Home directory: `/home/users/fred001` (replace with your username)
 * `workshop` group workspace at `/gws/pw/j05/workshop`
 
 ### Local resources
 
-*   A terminal client on my local machine
-*   Local directory: `/Users/fredbloggs/` (choose your own)
+*  A terminal client on my local machine
+*  SSH key already loaded (see [exercise 01](../ex01))
+*  Local directory: `/Users/fredbloggs/` (choose your own)
 
 ### Instructions
 
