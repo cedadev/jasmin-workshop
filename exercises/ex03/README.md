@@ -59,11 +59,11 @@ We have looked at some basic methods suitable for small datasets or where speed 
 * In addition to `scp`, alternative tools `sftp` and `rsync` also enable simple data transfer.
 * We have seen that `rsync` can be used to synchronise a local and remote directory: it can be configured to only copy those data that are new or have changed: more efficient if you're running it repeatedly.
 * `sftp` is very useful and is also the underlying protocol used in many third-party tools.
-* [rclone](rclone) can be configured against a server which support `sftp` and can do synchronisation too. It also talks to a whole variety of storage backends such as cloud and object storage.   
+* [rclone](https://rclone.org) can be configured to interace with various storage backends, including an SFTP server (like the transfer server used above), and can do synchronisation like `rsync`. It also talks to a whole variety of other storage backends such as cloud and object storage.   
 * Some third-party tools exist which provide graphical interfaces for transfers using `sftp`, e.g. [FileZilla](https://filezilla-project.org/), [CyberDuck](https://cyberduck.io/)
-* Some editors (e.g. [VS Code](https://code.visualstudio.com/)) have extensions which enable you to setup SSH connections to edit & save files remotely. This can be useful for editing files on JASMIN, but from the convenience of your own desktop environment on your local machine.
-* NONE of the transfer methods we have looked at based on the SSH protocol perform well for large volumes of data or over long distances. Define "large" or "long"?
-* see [ex10](ex10_advanced_data_transfer.md) for advice about:
+* Some editors (e.g. [VS Code](https://code.visualstudio.com/)) have extensions which enable you to setup SSH connections to edit & save files remotely. This can be useful for editing files on JASMIN, but from the convenience of your own local desktop environment.
+* NONE of the SSH-based transfer methods we have looked at perform well for large volumes of data or over long distances. Define "large" or "long"?
+* see [ex10](../ex10) for advice about:
     * More efficient data transfers for large data / longer distances
     * Automated transfers
     * Transfers within JASMIN
@@ -287,7 +287,7 @@ Talk to your Group Workspace manager about how they would like users to organise
 
 > 1. How could you share data on JASMIN with users outside of JASMIN?
 
-Using the logic above, you could set the permissions on the file/directory so that they're "world-readable" ...but can the "world" see the file? Not by default. File systems on JASMIN aren't visible outside of JASMIN, and can't be mounted remotely.
+Using the logic above, you could set the permissions on the file/directory so that they're "world-readable" ...but can the outside "world" see the file? Not by default. File systems on JASMIN aren't visible outside of JASMIN, and can't be mounted remotely.
 
 There are a couple of methods by which this can be done, however:
 
