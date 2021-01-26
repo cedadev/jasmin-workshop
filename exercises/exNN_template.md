@@ -57,7 +57,7 @@ Could also include examples of different pointers of ways to complete the exerci
 
 ### Cheat Sheet
 
-This page, or multiple pages, should have a detailed example of how to work through the exercise. Including specific commands and paths than need to be used. Plus any other hints/tips that might be useful - like links to help documentation.
+This page, or multiple pages, should have a detailed example of how to work through the exercise. Including specific commands and paths than need to be used. Plus any other hints/tips that might be useful - like links to help documentation. Paths, hostnames can be marked up like this e.g. `workshop`.
 
 ```
 $ command prefixed by "$"
