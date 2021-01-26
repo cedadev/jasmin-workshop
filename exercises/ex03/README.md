@@ -87,10 +87,11 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 1. Make a small text file on your local machine containing a bash script which you could run on JASMIN.
     ```
     $ echo "This is a readme file" > README.txt
-    $ scp test_file.txt fred001@xfer1.jasmin.ac.uk:~/
+    $ scp README.txt fred001@xfer1.jasmin.ac.uk:~/
     ```
 
-    The `echo` command makes the text file for us. Use some other file if you have one handy.
+    The `echo` command makes the text file for us. Use some other small file if you have one handy, or create one
+    in your favorite text editor on your local machine.
     We then copy it using the `scp` command, specifying our home directory `~/` as the path.
 
 1. Make a small tree of directories on your **local** machine and create 2 files somewhere in those directories.
@@ -109,28 +110,46 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     mydata/01/file01.txt
     ```
     Make yourself a directory in the `workshop` group workspace:
-    First log in to the transfer server: (substitute `fred001` for your own JASMIN username)
+    First log in to the transfer server: (substitute `fred001` for your own JASMIN username).
+    You may find it useful to open another terminal window for this (don't forget to check first whether your
+    SSH key is loaded: see [exercise 01](../ex01) ).
+    
     ```
     $ ssh -A fred001@xfer1.jasmin.ac.uk
     ```
-    Go to the workspace directory and make your own user directory there, then log out:
+    Go to the workspace directory and make your own user directory there:
     ```
-    $ cd /group_workspaces/jasmin2/workshop/
-    $ mkdir $USER
-    $ exit
+    $ cd /gws/pw/j05/workshop
+    $ ls
+    users
     ```
-
-    > **_NOTE:_**  Above, we used the `$USER` environment variable which contains your JASMIN username.
+    We have set out the GWS so that it has a directory called `users` where you can make your own sub-directories
+    for working through these exercises.
+    This helps keep things orgnanised. Make a directory for yourself, named as per your account
+    username:
+    
+    > **_NOTE:_** Below, we use the `$USER` environment variable which contains your JASMIN username.
+    
+    > **_NOTE:_** We will clear out these directories, and the home directories of the training accounts, after each workshop event. 
+    Normally you will have ~48hrs after the end of the workshop event to collect any data or code which you may want to keep.
+    If you are working through these exercises outside of an organised event, please clean up after yourself and 
+    do not expect these data to persist.
+    
+    ```
+    $ echo $USER             # check what is held in this environment variable
+    $ mkdir users/$USER      # make a directory for yourself underneath the "users" directory
+    $ ls -ld users/$USER      # check what you have created: note the ownerhsip & permissions
+    drwxr-sr-x 2 fred001 gws_workshop 4096 Jan 26 11:26 users/fred001
+    ```
 
     Back on your local machine, recursively copy the directory using `scp`:
     ```
-    scp -r mydata fred001@xfer1.jasmin.ac.uk:/group_workspaces/jasmin2/workshop/fred001/
+    scp -r mydata fred001@xfer1.jasmin.ac.uk:/gws/pw/j05/workshop/fred001/
     ```
 
-    Log back in to the transfer server to inspect your destination directory:
+    In your other terminal window on (or log back in to) the transfer server, inspect your destination directory:
     ```
-    $ ssh -A fred001@xfer1.jasmin.ac.uk
-    $ cd /group_workspaces/jasmin2/workshop/$USER
+    $ cd /gws/pw/j05/workshop/$USER
     $ find .
     ./mydata
     ./mydata/02
@@ -240,7 +259,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 You can first check the existing permissions on a file with:
 ```
 $ ls -l myfile.txt
--rw-r--r-- 1 fredbloggs gws_workshop 0 Jan 22 17:01 myfile.txt
+-rw-r--r-- 1 fred001 gws_workshop 0 Jan 22 17:01 myfile.txt
 ```
 
 The group "read" permission is already set: this is the second "r", whereas the user permissions are currently set to `rw`, i.e. read and write.
@@ -256,7 +275,7 @@ $ chmod 664 myfile.txt
 Check again:
 ```
 $ ls -l myfile.txt
--rw-rw--r-- 1 fredbloggs gws_workshop 0 Jan 22 17:01 myfile.txt
+-rw-rw--r-- 1 fred001 gws_workshop 0 Jan 22 17:01 myfile.txt
 ```
 Now we can see that the second set of permissions also has the `w` permission for write. You'd need to do similar for directories, but remember that for directories you also need to set the `x` (execute) permission. 
 
@@ -270,7 +289,7 @@ Using the logic above, you could set the permissions on the file/directory so th
 
 There are a couple of methods by which this can be done, however:
 
-* Ask your Group Workspace manager to consider requesting that the GWS is set up with a `public` area which is [shared via HTTP](https://help.jasmin.ac.uk/article/202-share-gws-data-via-http). This means that the data below that `public` directory is openly available to anyone on the internet with a HTTP client such as a browser or tool like `wget` or `curl`. That can be a good way of disseminating results and small amounts of data to external collaborators who are not users of JASMIN. But this should be used with care, and must not be used for hosting a project web site: that's not what that service is for.
+* Ask your Group Workspace manager to consider requesting that the GWS is set up with a `public` area which is [shared via HTTP](https://help.jasmin.ac.uk/article/202-share-gws-data-via-http). This means that the data below that `public` directory is openly available to anyone on the internet with a HTTP client such as a browser or a tool like `wget` or `curl`. That can be a good way of disseminating results and small amounts of data to external collaborators who are not users of JASMIN. But this should be used with care, and must not be used for hosting a project web site: that's not what that service is for.
 
 * A similar service OPeNDAP4GWS can be used to provide an OPeNDAP interface on top of data inside a GWS. Ask your GWS manager to contact the helpdesk for further details. 
 
