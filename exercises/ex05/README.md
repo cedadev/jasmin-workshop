@@ -31,7 +31,7 @@ After competing this exercise I will be able to:
 
 ### Local resources
 
- * Local SSH client and JASMIN credentials
+ * Local SSH client and JASMIN credentials.
 
 ### Your task
 
