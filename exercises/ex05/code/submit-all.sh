@@ -16,7 +16,7 @@ for i in $(seq 0 1); do
 
     day=$(date -d "2018-01-01 $i days" +%Y%m%d)
     echo "[INFO] Submitting job to LOTUS for date: $day"
-    bsub -q $queue -W 00:05 -We 00:01 -o $OUTPUTS_DIR/${day}.%J.out -e $OUTPUTS_DIR/${day}.%J.err $EXTRACTOR $day 
+    sbatch -q $queue -t 5 -o $OUTPUTS_DIR/${day}.%j.out -e $OUTPUTS_DIR/${day}.%j.err $EXTRACTOR $day 
 
 done
 

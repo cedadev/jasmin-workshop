@@ -98,18 +98,18 @@ Alternative approaches could include:
 
             [https://help.jasmin.ac.uk/article/112-how-to-allocate-resources#memcontrol](https://help.jasmin.ac.uk/article/112-how-to-allocate-resources#memcontrol)
 
-*   _Have any files been accidentally left on the system? (E.g. in `/tmp/`)_
-    *   It is important to clean up any temporary files that you no longer need. 
-    *   Please check whether the tools you use have left any files in "`/tmp/`".
-
 
 This demonstrates best practice:
- * Build up in stages before running your full workflow on LOTUS
+* Build up in stages before running your full workflow on LOTUS
     1. Check your code - is it _really_ doing what you think it is doing?
     1. Run locally (on a `sci` server) for one iteration.
     1. Run for one or two iterations on LOTUS.
     1. Check everything ran correctly on LOTUS.
     1. Submit your full batch of jobs to LOTUS.
+
+*   _Have any files been accidentally left on the system? (E.g. in `/tmp/`)_
+    *   It is important to clean up any temporary files that you no longer need. 
+    *   Please check whether the tools you use have left any files in "`/tmp/`".
 
 ### Cheat Sheet
 
@@ -139,8 +139,8 @@ This demonstrates best practice:
 1. Write a script, called "`submit-all.sh`", to loop over dates from 01/09/2018 to 02/09/2018 and submit the "`extract-era-data.sh`" script to LOTUS for each day:
 
     * You should define the following LOTUS directives:
-        * Standard output file - please ensure this is unique to each job by including the "`%J`" variable in the file name.
-        * Standard error file - please ensure this is unique to each job by including the "`%J`" variable in the file name.
+        * Standard output file - please ensure this is unique to each job by including the "`%j`" variable in the file name.
+        * Standard error file - please ensure this is unique to each job by including the "`%j`" variable in the file name.
     * Queue name:
         * We will use the main queue for quick serial jobs: "`short-serial`"
     * Job duration - to allocate a maximum run-time to the job, e.g.: "`00:05`" (5 mins)
