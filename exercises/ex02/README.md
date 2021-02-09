@@ -8,7 +8,7 @@ I need to do a random sampling of my dataset to estimate the distribution of sam
 
 ### Objectives 
 
-After competing this exercise I will be able to:
+After completing this exercise I will be able to:
 * **execute** a computing task on the sci machine from a command line
  * **monitor** CPU and memory resources usage of my computing task
  * **understand** the modules environemnt e.g. JASPY and software on JASMIN
@@ -37,7 +37,7 @@ This is the outline of what you need to do. The recommended way of doing each st
    * Access a JASMIN login server on each terminal (see exercise 01)
    * Choose a Sci server with the lowest load 
    * Login to the chosen sci server on each terminal
- > **_NOTE:_**  The purpose of having two SSH terminal sessions running on the same sci server is to facilitate compute and monitoring. One terminal is for executing commands on the sci while the second terminal is for monitoring user processes (or editing a script)
+> **_NOTE:_**  The purpose of having two SSH terminal sessions running on the same sci server is to facilitate compute and monitoring. One terminal is for executing commands on the sci while the second terminal is for monitoring user processes (or editing a script)
 1. Execute the Python example script on the sci 
    * Copy the Python example script (shown in the JASMIN resources section) to your current working directory 
    * Enable a Python environemnt via the module `jaspy` by executing  the command `module add jaspy`
@@ -67,6 +67,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
 1. Is there a limit on the number of processes running on the sci server at any given time per a user?
 1. What software is available via module environment?
+1. What tasks are not suitable to run on the sci machines?
 1. What text editor are available on JASMIN?
 
 ### Review / alternative approaches / best practice
@@ -90,7 +91,6 @@ https://help.jasmin.ac.uk/article/176-storage
 
 ### Cheat Sheet
 
-
 1. Login to a JASMIN scientific analysis server
    * Login to the chosen sci server from a JASMIN login server
    ```
@@ -104,6 +104,9 @@ https://help.jasmin.ac.uk/article/176-storage
    * Enable a Python environemnt via the module `jaspy` by executing  the command `module add jaspy`
    ```
    $ module add jaspy
+   $ module list
+   Currently Loaded Modulefiles:
+     1) jaspy/3.7/r20200606
    ```
    * Execute the Python script `python random-number-gen.py` 
    ```
@@ -121,12 +124,72 @@ https://help.jasmin.ac.uk/article/176-storage
    * Execute the Linux command `top -u <username>` 
    ```
    $ top -u <username>
-    output a table   
    ```
-   * Which process is running?
-   The Python process and the monitoring utility `top`
-   * How many users are sharing the sci server?
+   ![](Top-output-01.png)
+   ![](Top-output-04.png)
+   ![](Top-output-02.png)
+   * Which process is running? give the process ID
+   ```
+   $ ps -u <username>
+
+   ```
    * Sort all processes per CPU usage Execute `top` 
+   ```
+   $ top 
+    insert a table or an image ???
+   ```
    * To exit the monitoring tool `top` press the keyboard letter `q` 
+1. Make changes to the Python example and re-execute it
+   * Open the Python script file in a text editor e.g. vim, emacs
+   ```
+   $ vim random-number-gen.py
+   ```
+   * Decrease the size of the random numbers from 1024 to 500
+   ```
+   # Number of random numbers to be generated 
+   nran = 1024
+   ```
+   * Save the file and exit the text editor 
+   ```
+   :wq
+   ```
+1. Compare the compute resources to generate the set 1024 and 500 random number 
+   * Execute `python random-number-gen.py`
+   ```
+   $ python random-number-gen.py
+   500 ======>>> random numbers
+   I am sleeping for 40 seconds so you can check the resources usage
+   ```
+   * Monitor and note the memory and CPU usage 
+   ```
+   $top -u <username>
+   ```
+   ![](Top-output-03.png)
+     * What can you conclude?   
+The process's memory usage was reduced by 70 %
+1. Logout from the sci server to end your SSH session on JASMIN 
+```
+$ logout
+Connection to sci<number>.jasmin.ac.uk closed.   
+```
+### Answers to questions
 
+> 1. Is there a limit on the number of processes running on the sci server at any given time per a user?
 
+There is no limit on the number of processes launched by a user on the scientific anaylsis servers. However, the user should limit the number of processes to a minimum 2 as the resource is shared by other users.
+
+> 2. What software is available via module environment?
+
+JASPY, jasmin_sci, Intel/GNU compiler, NetCDF library, IDL.
+
+> 3. What tasks are not suitable to run on the sci machines?
+
+MPI parallel codes and multithreaded applications 
+
+> 4. What text editor or IDE are available on JASMIN?
+
+Emacs, vim, nedit, geany, ferret
+
+> 5. Can I install software on JASMIN?
+
+You can install software in the user home directory if the software licence allows it
