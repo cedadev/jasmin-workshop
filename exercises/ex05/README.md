@@ -14,19 +14,19 @@ Having established (in exercise 4) that I can extract the total cloud cover ("TC
  
 After completing this exercise I will be able to:
 
- * **write** scripts to batch up the processes
- * **submit** the scripts to LOTUS cluster 
+ 1. **write** scripts to batch up the processes
+ 1. **submit** the scripts to LOTUS cluster 
 
 ### JASMIN resources
 
- * LOTUS batch processing cluster
- * Space to store the output file: `/group_workspaces/jasmin2/workshop/users/$USER/ex05`
- * Access to the CDO (Climate Data Operators) tool
- * Read-access to the ERA-Interim data set in the CEDA archive - requires a CEDA account
+ 1. LOTUS batch processing cluster
+ 1. Space to store the output file: `/group_workspaces/jasmin2/workshop/users/$USER/ex05`
+ 1. Access to the CDO (Climate Data Operators) tool
+ 1. Read-access to the ERA-Interim data set in the CEDA archive - requires a CEDA account
 
 ### Local resources
 
- * SSH client (to login to JASMIN)
+ 1. SSH client (to login to JASMIN)
 
 ### Your task
 
@@ -53,46 +53,46 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 ### Review / alternative approaches / best practice
 
 This exercise demonstrates how to:
- * Create a script that takes an argument to process a single component (day) of an overall task. 
- * Create a wrapper script that loops through all the components that need to be processed.
- * Submit each component as a LOTUS job using the `sbatch` command.
- * Define the command-line arguments for the `sbatch` command.
- * Use other LSF commands, such as `squeue` (to monitor progress) and `scancel` (to cancel jobs).
+ 1. Create a script that takes an argument to process a single component (day) of an overall task. 
+ 1. Create a wrapper script that loops through all the components that need to be processed.
+ 1. Submit each component as a LOTUS job using the `sbatch` command.
+ 1. Define the command-line arguments for the `sbatch` command.
+ 1. Use other LSF commands, such as `squeue` (to monitor progress) and `scancel` (to cancel jobs).
 
 This is a basic workflow suitable for small tasks and setting up your processing. When the amount of processing increases then it makes good sense to move on to using the LOTUS batch cluster.
 
 Alternative approaches could include:
- * Write the output to a `scratch` directory
-   * There are two main scenarios in which you might write the output to a scratch directory:
+ 1. Write the output to a `scratch` directory
+   1. There are two main scenarios in which you might write the output to a scratch directory:
      1. You only need to store the output file for temporary use (such as intermediate files in your workflow).
      1. You want to write outputs to scratch before moving them to a GWS.
-   * The Help page ([https://help.jasmin.ac.uk/article/176-storage#diskmount](https://help.jasmin.ac.uk/article/176-storage#diskmount)) tells us that there are two types of scratch space:
-        *   `/work/scratch` – supports parallel writes
-        *   `/work/scratch-nompiio` – does NOT support parallel writes
-    *   Since we do not need parallel write capability, we can use the "`nompiio`" version.
-    *   You need to set up a directory under "`/work/scratch-nompiio"` as your username:
+   1. The Help page ([https://help.jasmin.ac.uk/article/176-storage#diskmount](https://help.jasmin.ac.uk/article/176-storage#diskmount)) tells us that there are two types of scratch space:
+        1.   `/work/scratch` – supports parallel writes
+        1.   `/work/scratch-nompiio` – does NOT support parallel writes
+    1.   Since we do not need parallel write capability, we can use the "`nompiio`" version.
+    1.   You need to set up a directory under "`/work/scratch-nompiio"` as your username:
  
             MYSCRATCH=/work/scratch-nompiio/$USER
             mkdir -p $MYSCRATCH
  
-   *   Then you would write output files/directories under your scratch space, e.g.:
+   1.   Then you would write output files/directories under your scratch space, e.g.:
 
             OUTPUT_FILE=$MYSCRATCH/output.nc
             ...some_process... > $OUTPUT_FILE
 
-    *   When you have finished with the file, tidy up (good practice).
+    1.   When you have finished with the file, tidy up (good practice).
 
             rm $OUTPUT_FILE
 
-    *   Do not leave data on the "scratch" areas when you have finished your workflow.
-        *   Please remove any temporary files/directories that you have created.
-        *   You cannot rely on the data persisting in the "scratch" areas.
+    1.   Do not leave data on the "scratch" areas when you have finished your workflow.
+        1.   Please remove any temporary files/directories that you have created.
+        1.   You cannot rely on the data persisting in the "scratch" areas.
 
 *   Specify the memory requirements of your job:
-    *   If your job has a significant memory footprint:
-        *   Run a single iteration on LOTUS and review the standard output file to examine the memory usage.
-        *   You can then reserve a memory allocation when you submit your subsequent jobs.
-        *   See help pages:
+    1.   If your job has a significant memory footprint:
+        1.   Run a single iteration on LOTUS and review the standard output file to examine the memory usage.
+        1.   You can then reserve a memory allocation when you submit your subsequent jobs.
+        1.   See help pages:
 
             [https://help.jasmin.ac.uk/article/115-how-to-estimate-job-resources](https://help.jasmin.ac.uk/article/115-how-to-estimate-job-resources)
 
@@ -108,8 +108,8 @@ This demonstrates best practice:
     1. Submit your full batch of jobs to LOTUS.
 
 *   _Have any files been accidentally left on the system? (E.g. in `/tmp/`)_
-    *   It is important to clean up any temporary files that you no longer need. 
-    *   Please check whether the tools you use have left any files in "`/tmp/`".
+    1.   It is important to clean up any temporary files that you no longer need. 
+    1.   Please check whether the tools you use have left any files in "`/tmp/`".
 
 ### Cheat Sheet
 
@@ -124,13 +124,13 @@ This demonstrates best practice:
         ssh jasmin-sci5 # Could use sci[123456]
 
 1. Write an "`extract-era-data.sh`" wrapper script that calls the CDO extraction command, that:
-    * Takes a date string ("`YYYYMMDD`") as a command-line argument
-    * Locates the 4 x 6-hourly input file paths for the date provided
-    * Activates environment containing the CDO tool
-    * For each 6-hourly file:
-        * Defines the output file path
-        * Run the CDO tool to extract the "TCC" variable from the input file to the output file
-    * If you are stuck, you can use the script located at:
+    1. Takes a date string ("`YYYYMMDD`") as a command-line argument
+    1. Locates the 4 x 6-hourly input file paths for the date provided
+    1. Activates environment containing the CDO tool
+    1. For each 6-hourly file:
+        1. Defines the output file path
+        1. Run the CDO tool to extract the "TCC" variable from the input file to the output file
+    1. If you are stuck, you can use the script located at:
 
         `/group_workspaces/jasmin2/workshop/exercises/ex05/code/extract-era-data.sh`
 
@@ -138,21 +138,21 @@ This demonstrates best practice:
 
 1. Write a script, called "`submit-all.sh`", to loop over dates from 01/09/2018 to 02/09/2018 and submit the "`extract-era-data.sh`" script to LOTUS for each day:
 
-    * You should define the following LOTUS directives:
-        * Standard output file - please ensure this is unique to each job by including the "`%j`" variable in the file name.
-        * Standard error file - please ensure this is unique to each job by including the "`%j`" variable in the file name.
-    * Queue name:
-        * We will use the main queue for quick serial jobs: "`short-serial`"
-    * Job duration - to allocate a maximum run-time to the job, e.g.: "`00:05`" (5 mins)
-    * Estimated duration - to hint the actual run-time of the job, e.g.: "`00:01`" (1 min)
-        * Setting a low estimate will increase the likelihood of the job being scheduled to run quickly.
+    1. You should define the following LOTUS directives:
+        1. Standard output file - please ensure this is unique to each job by including the "`%j`" variable in the file name.
+        1. Standard error file - please ensure this is unique to each job by including the "`%j`" variable in the file name.
+    1. Queue name:
+        1. We will use the main queue for quick serial jobs: "`short-serial`"
+    1. Job duration - to allocate a maximum run-time to the job, e.g.: "`00:05`" (5 mins)
+    1. Estimated duration - to hint the actual run-time of the job, e.g.: "`00:01`" (1 min)
+        1. Setting a low estimate will increase the likelihood of the job being scheduled to run quickly.
 
-    * The Help page on submitting LOTUS jobs is here:
+    1. The Help page on submitting LOTUS jobs is here:
         [https://help.jasmin.ac.uk/article/4890-how-to-submit-a-job-to-slurm](https://help.jasmin.ac.uk/article/4890-how-to-submit-a-job-to-slurm)
 
-    * And use the "`sbatch`" command to submit each job.
+    1. And use the "`sbatch`" command to submit each job.
 
-    * If you need some advice you can use the script at:
+    1. If you need some advice you can use the script at:
 
         `/group_workspaces/jasmin2/workshop/exercises/ex05/code/submit-all.sh`
 
@@ -161,7 +161,7 @@ This demonstrates best practice:
 1. Run the "`submit-all.sh`" script
 
 1. Examine which jobs are in the queue
-    * Type "`squeue`" to review any running jobs.
+    1. Type "`squeue`" to review any running jobs.
 
 1. Examine the standard output and standard error files.
 
@@ -172,6 +172,6 @@ This demonstrates best practice:
 1. Examine which jobs are in the queue
 
 1. Kill one of the jobs whilst it is still running - just to see how it is done:
-    * Use the "`scancel`" command:
+    1. Use the "`scancel`" command:
 
             scancel <job_id>
