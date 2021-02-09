@@ -14,35 +14,35 @@ Having established (in exercise 4) that I can extract the total cloud cover ("TC
  
 After completing this exercise I will be able to:
 
- 1. **write** scripts to batch up the processes
- 1. **submit** the scripts to LOTUS cluster 
+1. **write** scripts to batch up the processes
+1. **submit** the scripts to LOTUS cluster 
 
 ### JASMIN resources
 
- 1. LOTUS batch processing cluster
- 1. Space to store the output file: `/group_workspaces/jasmin2/workshop/users/$USER/ex05`
- 1. Access to the CDO (Climate Data Operators) tool
- 1. Read-access to the ERA-Interim data set in the CEDA archive - requires a CEDA account
+1. LOTUS batch processing cluster
+1. Space to store the output file: `/group_workspaces/jasmin2/workshop/users/$USER/ex05`
+1. Access to the CDO (Climate Data Operators) tool
+1. Read-access to the ERA-Interim data set in the CEDA archive - requires a CEDA account
 
 ### Local resources
 
- 1. SSH client (to login to JASMIN)
+1. SSH client (to login to JASMIN)
 
 ### Your task
 
 This is the outline of what you need to do. The recommended way of doing each step is covered in the "Cheat Sheet" but you may wish to try solving it for yourself first.
 
- 1. Start an ssh-agent session and add your JASMIN private key
- 1. SSH to a scientific analysis server
- 1. Write an "`extract-era-data.sh`" wrapper script that calls the CDO extraction command
- 1. Write a script, called "`submit-all.sh`", to loop over dates from **01**/09/2018 to **02**/09/2018 and submit the "`extract-era-data.sh`" script to LOTUS for each day
- 1. Run the "`submit-all.sh`" script
- 1. Examine which jobs are in the queue
- 1. Examine the standard output and standard error files
- 1. Modify "`submit-all.sh`" so that it will run for all 30 days in September 2018
- 1. Re-run the "`submit-all.sh`" script
- 1. Examine which jobs are in the queue
- 1. Kill one of the jobs - just to see how it is done
+1. Start an ssh-agent session and add your JASMIN private key
+1. SSH to a scientific analysis server
+1. Write an "`extract-era-data.sh`" wrapper script that calls the CDO extraction command
+1. Write a script, called "`submit-all.sh`", to loop over dates from **01**/09/2018 to **02**/09/2018 and submit the "`extract-era-data.sh`" script to LOTUS for each day
+1. Run the "`submit-all.sh`" script
+1. Examine which jobs are in the queue
+1. Examine the standard output and standard error files
+1. Modify "`submit-all.sh`" so that it will run for all 30 days in September 2018
+1. Re-run the "`submit-all.sh`" script
+1. Examine which jobs are in the queue
+1. Kill one of the jobs - just to see how it is done
 
 ### Questions to test yourself
 
@@ -53,20 +53,20 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 ### Review / alternative approaches / best practice
 
 This exercise demonstrates how to:
- 1. Create a script that takes an argument to process a single component (day) of an overall task. 
- 1. Create a wrapper script that loops through all the components that need to be processed.
- 1. Submit each component as a LOTUS job using the `sbatch` command.
- 1. Define the command-line arguments for the `sbatch` command.
- 1. Use other LSF commands, such as `squeue` (to monitor progress) and `scancel` (to cancel jobs).
+1. Create a script that takes an argument to process a single component (day) of an overall task. 
+1. Create a wrapper script that loops through all the components that need to be processed.
+1. Submit each component as a LOTUS job using the `sbatch` command.
+1. Define the command-line arguments for the `sbatch` command.
+1. Use other LSF commands, such as `squeue` (to monitor progress) and `scancel` (to cancel jobs).
 
 This is a basic workflow suitable for small tasks and setting up your processing. When the amount of processing increases then it makes good sense to move on to using the LOTUS batch cluster.
 
 Alternative approaches could include:
- 1. Write the output to a `scratch` directory
-   1. There are two main scenarios in which you might write the output to a scratch directory:
-     1. You only need to store the output file for temporary use (such as intermediate files in your workflow).
-     1. You want to write outputs to scratch before moving them to a GWS.
-   1. The Help page ([https://help.jasmin.ac.uk/article/176-storage#diskmount](https://help.jasmin.ac.uk/article/176-storage#diskmount)) tells us that there are two types of scratch space:
+1. Write the output to a `scratch` directory
+    1. There are two main scenarios in which you might write the output to a scratch directory:
+        1. You only need to store the output file for temporary use (such as intermediate files in your workflow).
+        1. You want to write outputs to scratch before moving them to a GWS.
+    1. The Help page ([https://help.jasmin.ac.uk/article/176-storage#diskmount](https://help.jasmin.ac.uk/article/176-storage#diskmount)) tells us that there are two types of scratch space:
         1.   `/work/scratch` – supports parallel writes
         1.   `/work/scratch-nompiio` – does NOT support parallel writes
     1.   Since we do not need parallel write capability, we can use the "`nompiio`" version.
@@ -75,7 +75,7 @@ Alternative approaches could include:
             MYSCRATCH=/work/scratch-nompiio/$USER
             mkdir -p $MYSCRATCH
  
-   1.   Then you would write output files/directories under your scratch space, e.g.:
+    1.   Then you would write output files/directories under your scratch space, e.g.:
 
             OUTPUT_FILE=$MYSCRATCH/output.nc
             ...some_process... > $OUTPUT_FILE
@@ -100,14 +100,14 @@ Alternative approaches could include:
 
 
 This demonstrates best practice:
-* Build up in stages before running your full workflow on LOTUS
+1. Build up in stages before running your full workflow on LOTUS
     1. Check your code - is it _really_ doing what you think it is doing?
     1. Run locally (on a `sci` server) for one iteration.
     1. Run for one or two iterations on LOTUS.
     1. Check everything ran correctly on LOTUS.
     1. Submit your full batch of jobs to LOTUS.
 
-*   _Have any files been accidentally left on the system? (E.g. in `/tmp/`)_
+1.  _Have any files been accidentally left on the system? (E.g. in `/tmp/`)_
     1.   It is important to clean up any temporary files that you no longer need. 
     1.   Please check whether the tools you use have left any files in "`/tmp/`".
 
