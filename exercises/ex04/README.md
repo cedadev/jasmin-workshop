@@ -12,7 +12,7 @@ I am working on a project studying global cloud cover. I am looking at a case st
 
 ### Objectives
  
-After competing this exercise I will be able to:
+After completing this exercise I will be able to:
 
  * **locate data** from the CEDA archive on the JASMIN file system
  * **run a command-line tool** to extract data from the CEDA archive
