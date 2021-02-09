@@ -20,7 +20,7 @@ After completing this exercise I will be able to:
 ### JASMIN resources
 
 1. LOTUS batch processing cluster
-1. Space to store the output file: `/group_workspaces/jasmin2/workshop/users/$USER/ex05`
+1. Space to store the output file: `/gws/nopw/j04/workshop/users/$USER/ex05`
 1. Access to the CDO (Climate Data Operators) tool
 1. Read-access to the ERA-Interim data set in the CEDA archive - requires a CEDA account
 
@@ -132,7 +132,7 @@ This demonstrates best practice:
         1. Run the CDO tool to extract the "TCC" variable from the input file to the output file
     1. If you are stuck, you can use the script located at:
 
-        `/group_workspaces/jasmin2/workshop/exercises/ex05/code/extract-era-data.sh`
+        `/gws/nopw/j04/workshop/exercises/ex05/code/extract-era-data.sh`
 
         [ Source: [https://github.com/cedadev/jasmin-workshop/blob/master/exercises/ex05/code/extract-era-data.sh](https://github.com/cedadev/jasmin-workshop/blob/master/exercises/ex05/code/extract-era-data.sh) ]
 
@@ -154,7 +154,7 @@ This demonstrates best practice:
 
     1. If you need some advice you can use the script at:
 
-        `/group_workspaces/jasmin2/workshop/exercises/ex05/code/submit-all.sh`
+        `/gws/nopw/j04/workshop/exercises/ex05/code/submit-all.sh`
 
         [ Source: [https://github.com/cedadev/jasmin-workshop/blob/master/exercises/ex05/code/submit-all.sh](https://github.com/cedadev/jasmin-workshop/blob/master/exercises/ex05/code/submit-all.sh) ]
 
