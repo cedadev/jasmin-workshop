@@ -44,12 +44,6 @@ This is the outline of what you need to do. The recommended way of doing each st
 1. Examine which jobs are in the queue
 1. Kill one of the jobs - just to see how it is done
 
-### Questions to test yourself
-
-All too easy? Here are some questions to test your knowledge an understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk)
-
-
-
 ### Review / alternative approaches / best practice
 
 This exercise demonstrates how to:
