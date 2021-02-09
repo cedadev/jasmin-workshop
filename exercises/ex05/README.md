@@ -14,19 +14,19 @@ Having established (in exercise 4) that I can extract the total cloud cover ("TC
  
 After completing this exercise I will be able to:
 
-1. **write** scripts to batch up the processes
-1. **submit** the scripts to LOTUS cluster 
+* **write** scripts to batch up the processes
+* **submit** the scripts to LOTUS cluster 
 
 ### JASMIN resources
 
-1. LOTUS batch processing cluster
-1. Space to store the output file: `/gws/nopw/j04/workshop/users/$USER/ex05`
-1. Access to the CDO (Climate Data Operators) tool
-1. Read-access to the ERA-Interim data set in the CEDA archive - requires a CEDA account
+* LOTUS batch processing cluster
+* Space to store the output file: `/gws/nopw/j04/workshop/users/$USER/ex05`
+* Access to the CDO (Climate Data Operators) tool
+* Read-access to the ERA-Interim data set in the CEDA archive - requires a CEDA account
 
 ### Local resources
 
-1. SSH client (to login to JASMIN)
+* SSH client (to login to JASMIN)
 
 ### Your task
 
