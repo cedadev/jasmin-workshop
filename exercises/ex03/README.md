@@ -11,7 +11,7 @@ I want to copy some code from my own machine to my home directory on JASMIN. I a
 
 ### Objectives
 
-After competing this exercise I will be able to:
+After completing this exercise I will be able to:
 
 * Copy a small text file from my local machine to my JASMIN home directory using a transfer server.
 * Copy a directory tree of data files recursively from my local machine to the `workshop` group workspace.

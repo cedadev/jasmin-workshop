@@ -12,8 +12,8 @@ author: Matt Pritchard
 Purpose and overview of the exercise.
 
 ### Objectives
-
-After competing this exercise I will be able to:
+ 
+After completing this exercise I will be able to:
 
  * **do** something specific (should start with a **verb**)
  * **submit** a job to LOTUS
