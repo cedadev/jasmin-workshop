@@ -210,7 +210,9 @@ If it does not, then you can use the "contingency" login servers, currently `log
 
 We'll cover how to actually connect to the login servers in [exercise 1](../ex01), but please bear this in mind for your choice of server to connect to. 
 
-### Graphical desktop
+### Graphical desktop (Optional)
+
+> **_NOTE:_**  We are aware of some problems with the software needed for this part of the set up: possibly due to a problem with the latest version of the software. We are investigating further. So if this doesn't work for you, don't worry, it's not essential. Just use one of the command-line terminal clients described above for now.
 
 Using graphical applications over a wide-area network can be very slow, and is not recommended or supported on JASMIN. This service helps by providing a graphical desktop *within* the JASMIN environment, instead of on the end-user’s local machine at the end of a wide-area network path from JASMIN. A small client application enables you to connect to specific servers within JASMIN but send the graphics output back across the network to you in compressed form, resulting in much better performance.
 
