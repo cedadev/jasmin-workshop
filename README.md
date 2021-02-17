@@ -7,6 +7,7 @@ If you are unable to attend one of the workshops in person, you may find it usef
 
 | Exercise | Topic |
 | --- | --- |
+| [ex00](./exercises/ex00) | Getting set up for the JASMIN Workshop |
 | [ex01](./exercises/ex01) | Connecting to JASMIN |
 | ex02 | TODO |
 | [ex03](./exercises/ex03) | Transferring and sharing data |
