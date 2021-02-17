@@ -234,7 +234,7 @@ The instructions for downloading and installing the software vary by platform, b
 * Open the application
 * Follow one of the videos below to set it up so that it can use your private key. You will see that they're all fairly similar.
 
-See also our [help documentation](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx) for this service.
+For a full description of the steps involved, see also our [help documentation](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx) for this service.
 
 |Platform|Video|
 |-|-|
