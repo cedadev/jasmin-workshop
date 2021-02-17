@@ -4,7 +4,7 @@ Interactive computing using a sci server
 
 ### Scenario
 
-I need to do a random sampling of my dataset to estimate the distribution of sample mean. I need to use the random number generator function available in the numpy library in Python. I need to test this function by running a standalone Python script on the scientific analysis servers prior to running the statistical analysis script.
+I need to do a random sampling of my dataset to estimate the distribution of sample mean. I need to use the random number generator function available in the numpy library in Python. I need to test this function. I also need to check if there is a potential multithreading with Numpy array arithmetic e.g. dot product.
 
 ### Objectives 
 
@@ -125,9 +125,9 @@ https://help.jasmin.ac.uk/article/176-storage
    ```
    $ top -u <username>
    ```
-   ![](Top-output-01.png)
-   ![](Top-output-04.png)
-   ![](Top-output-02.png)
+   ![](images/Top-output-01.png)
+   ![](images/Top-output-04.png)
+   ![](images/Top-output-02.png)
    * Which process is running? give the process ID
    ```
    $ ps -u <username>
@@ -164,7 +164,7 @@ https://help.jasmin.ac.uk/article/176-storage
    ```
    $top -u <username>
    ```
-   ![](Top-output-03.png)
+   ![](images/Top-output-03.png)
      * What can you conclude?   
 The process's memory usage was reduced by 70 %
 1. Logout from the sci server to end your SSH session on JASMIN 
