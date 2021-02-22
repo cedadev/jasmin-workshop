@@ -5,6 +5,8 @@ author: Matt Pritchard
 
 # Exercise 1: Connecting to JASMIN
 
+> **_NOTE:_**  This exercise assumes that you have already completed [exercise 0: Getting set up for the JASMIN workshop](../ex00), about setting up your local machine with everything you need to connect to JASMIN.
+
 ### Scenario
 
 I want to connect to JASMIN from my own computer to do some work.
@@ -15,7 +17,7 @@ At the end of this exercise I will be able to:
 
  * **Connect** to a JASMIN login server using:
    * a simple terminal client
-   * a graphical desktop client
+   * a graphical desktop client (optional)
  * **Locate** my home directory
  * **Make an onward connection** to a sci server
  * **Run** a simple command
@@ -28,11 +30,10 @@ At the end of this exercise I will be able to:
  * help documentation at https://help.jasmin.ac.uk
 
 ### Local resources
- * SSH private key & passphrase
- * Client applications:
-   * a terminal client e.g. Mac/Linux Terminal, [MobaXterm](https://mobaxterm.mobatek.net/download-home-edition.html) for Windows
-   * [NX Enterprise Client](https://www.nomachine.com/download-enterprise#NoMachine-Enterprise-Client)
- * Network connection matching [JASMIN requirements](https://help.jasmin.ac.uk/article/190-check-network-details)
+ * Local machine set up as per [exercise 0](../ex00), including:
+    * SSH client application
+    * JASMIN credentials
+    * suitable network connection.
 
 ### Your task
 
@@ -45,8 +46,8 @@ This is the outline of what you need to do. The recommended way of doing each st
    * Check what directory you are in
    * Check usage of your home directory
    * Check that your SSH key is available to make an onward connection
-1. Connect to a login server using the Nomachine Enterprise Client
-   * Make a connection profile for one `nx-login` server
+1. Connect to a login server using the Nomachine Enterprise Client (Optional)
+   * Make a connection profile for one of the `nx-login` servers
    * Connect to that server
    * Check that your SSH key is available to make an onward connection
    * Bring up the list of available `sci` servers
@@ -67,68 +68,42 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 
 * Your SSH key must be protected with a strong passphrase.
 * You must not share your SSH key with any other user.
-* You must not edit your ~/.ssh/authorized_keys file on JASMIN. This is populated automatically with the (one) key you upload to your JASMIN account profile, so will be over-written if you edit it.
-* The login servers perform 1 simple function and so should not be used for any processing, just as a "hop" to other systems within JASMIN.
-* Check for a less-busy `sci` machine before connecting. Setting up an alias to 1 particular machine can be counter-productive.
+* You must not edit your `~/.ssh/authorized_keys` file on JASMIN. This is populated automatically with the (one) key you upload to your JASMIN account profile, so will be over-written if you edit it.
+* The login servers perform one simple function so should not be used for any processing, only as a "hop" to other systems within JASMIN.
+* Check for a less-busy `sci` machine before connecting. Setting up an alias to one particular machine can be counter-productive.
 * Don't use the `nx-login` servers for a regular terminal session: only use them via the NX client for a graphical desktop. This preserves resources and performance for those users who need it.
 
 ### Cheat Sheet
 
 > **_NOTE:_**  The prerequisties to this exercise mentioned that you need to have an SSH key pair, have uploaded the public key to your JASMIN account profile and that your JASMIN account has been granted the `jasmin-login` privilege. If you are using one of the training accounts, then these steps will have been done for you and you should use the credentials which you will have been given for this workshop.
-If you are using your own account, you will need to have completed these steps yourself: [start here](https://help.jasmin.ac.uk/article/185-generate-ssh-key-pair)).
+If you are using your *own* account (outside of one of our organised training events), you will need to have completed these steps yourself: [start here](https://help.jasmin.ac.uk/article/185-generate-ssh-key-pair)).
 
 1. Connect to a `login` server using a terminal client
 
    * Choose your `login` server from the list in the [help doc](https://help.jasmin.ac.uk/article/191-login-servers).
-   * Choose your terminal client
-      * This is the application with which you will make an SSH connection
-      * On Windows:
-          * MobaXterm is our recommended client.
-      * Mac or Linux
-          * Use the native Terminal app.
 
-    * Load your ssh key locally
-      * On Windows:
-        * Use MobAgent to load your SSH private key ([see how to do this](https://help.jasmin.ac.uk/article/4832-mobaxterm)).  **Recommended method**
-        * This ensures that it will be avialable for all sessions which you initiate.
-        * An alternative, which just works within the **current** session, is to use the instructions for Mac and Linux, shown below (but if you open another terminal window you may need to repeat this step for each window).
-
-      * On a Mac or Linux system:
-
-          ```
-          $ eval $(ssh-agent -s)
-          $ ssh-add ~/.ssh/id_rsa_jasmin
-          Enter passphrase for /home/fredbloggs/.ssh/id_rsa_jasmin:
-          Identity added: /home/fredbloggs/.ssh/id_rsa_jasmin (/home/users/fred001/.ssh/id_rsa_jasmin)
-          ```
-
-          > **_NOTE:_**  The `$` symbol preceding commands represents the command prompt on your system. You do not need to type this symbol. Lines not preceded by a `$` symbol represent output.
-
-          > **_NOTE:_**  The path to your key (e.g. `/home/fredbloggs/.ssh/`) relates to the location of your private key on your own machine, NOT on JASMIN. There should be NO NEED to put your private key anywhere on JASMIN, and you will keep it more secure by keeping it ONLY on your local machine.
-
-
-          * You can configure your shell to load your key automatically, by adding the `ssh-add` command (shown above) to your ~/.bash_profile file. This will be executed as open each new session.
-          * You will still be prompted for the passphrase in each new window you open, although Mac users can securely add their passphrase to KeyChain using the `-K` option with `ssh-add`.
-          * On a Linux system, your Desktop Manager may provide a utility to load your key at login time and have it persistently available to any new terminal session you open (this is what the MobAgent utility emulates in MobaXterm on Windows).
+    * If you have set up your own machine as suggested in [exercise 0: Getting set up for the JASMIN workshop](../ex00), your SSH private key should already be loaded.
 
     * Check that your key is loaded
       ```
       $ ssh-add -l
       2048 SHA256:iqX3NkPCpschVdqPxVde/ujap2cM0mYaAYYedzBGPaI /home/fredbloggs/.ssh/id_rsa_jasmin (RSA)
       ```
+      Note that the path, if included, is the path where the key was loaded from on your **local** machine.
+
       If it has not worked, you may see something like this:
       ```
       $ ssh-add -l
       The agent has no identities.
       ```
-      In this case, you will need to work out what is wrong before you will be able to connect.
+      In this case, you will need to work out what is wrong before you will be able to connect. Please see the advice in exercise 0 before proceeding.
 
     * Initiate an SSH connection to a login server
 
       ```
-      $ ssh -A fred001@login1.jasmin.ac.uk
+      $ ssh -A train050@login1.jasmin.ac.uk
       ```
-      > **_NOTE:_**  Your username on JASMIN (`fred001`) may not be the same as your username on your local machine (`fredbloggs`). You must specify the username associated with your JASMIN account.
+      > **_NOTE:_**  Your username on JASMIN (`train050` in this example, but yours may be different) may not be the same as your username on your local machine (`fredbloggs`). In the `ssh` command, you must specify the username associated with your JASMIN account.
 
       > **_NOTE:_**  The -A option is needed for "agent forwarding", which enables your key to be made available for an onward connection to a subsequent server: we need this for our connection to a `sci` machine.
 
@@ -138,10 +113,13 @@ If you are using your own account, you will need to have completed these steps y
 
       ![](https://d33v4339jhl8k0.cloudfront.net/docs/assets/564b4bd3c697910ae05f445c/images/5fc92e11de1bfa158fb55239/file-dKz1hO4aLb.png)
 
+      Here we can see that sci1 has 34 users logged in, with 12.3G of free memory and 36% CPU usage. Compare that to the other machines listed and choose one which suits the needs of what you plan to do. Note that some are physical servers and have more memory to start with (see [sci servers documentation](https://help.jasmin.ac.uk/article/121-sci-servers)) 
+
+
     * Check what directory you are in
       ```
       $ pwd
-      /home/users/fred001
+      /home/users/train050
       ```
     * Check usage of your home directory
       ```
@@ -159,6 +137,17 @@ If you are using your own account, you will need to have completed these steps y
       2048 SHA256:iqX3NkPCpschVdqPxVde/ujap2cM0mYaAYYedzBGPaI /home/fredbloggs/.ssh/id_rsa_jasmin (RSA)
       ```
 
+      Don't worry if this output includes the following message:
+      ```
+      error fetching identities for protocol 1: agent refused operation
+      ```
+      ...as long as the output includes the information about your key, showing that it's loaded. If it's not listed, or you get this message: 
+      
+      ```
+      Could not open a connection to your authentication agent.
+      ```
+      then you'll need to go back and try again (did you forget to enable "agent forwarding" on your initial connection? (`-A` option or tickbox, depending on your client)
+
 
 1. Connect to a login server using the graphical NX client
    * Follow the steps [described here](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx) for setting up NoMachine Enterprise Client for making a connection to JASMIN.
@@ -166,7 +155,8 @@ If you are using your own account, you will need to have completed these steps y
    * Type the following to retreive the "Message of the Day", listing available `sci` servers and their current usage:
    ```
    $ cat /etc/motd
-   ``` 
+   ```
+   This should display the same message as shown earlier in the command-line example.
 
 1. Make an onward connection to a `sci` server
      * Login to the `sci` server
@@ -175,7 +165,7 @@ If you are using your own account, you will need to have completed these steps y
 
         This time, because we want graphics to enable any graphics output to be sent back to this virtual desktop, we need to include the `-X` option with the `ssh` command:
         ```
-        $ ssh -AX fred001@sci1.jasmin.ac.uk
+        $ ssh -AX train050@sci1.jasmin.ac.uk
         ```
 
      * Run a simple command
@@ -195,7 +185,7 @@ If you are using your own account, you will need to have completed these steps y
 
   > **_NOTE:_**  You may find that the NX graphical desktop client is a more convenient interface to use for everyday use, and can be easier to set up than the various SSH Agent configurations needed on different platforms.
 
-  > **_NOTE:_**  As [described here](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx), the `nx-login` servers include a Firefox web browser which can be used for using some web-based tools which may only be available within JASMIN. Please do not use them for general web browsing, and please use firefox on the `nx-login` machines rather than the `sci` machines, to preserve resources for processing on the `sci` machines. The same article also discusses why using the NX client significantly improves performance for graphical applications run on JASMIN, if you're viewing the output somewhere remote to JASMIN.
+  > **_NOTE:_**  As [described here](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx), the `nx-login` servers include a Firefox web browser which can be used for using some web-based tools which may only be available within JASMIN. Please do not use them for general web browsing, and please use Firefox on the `nx-login` machines rather than the `sci` machines, to preserve resources for processing on the `sci` machines. The same article also discusses why using the NX client significantly improves performance for graphical applications run on JASMIN, if you're viewing the output somewhere remote to JASMIN.
 
   ### Answers to questions
 
