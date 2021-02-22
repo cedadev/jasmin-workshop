@@ -150,8 +150,11 @@ If you are using your *own* account (outside of one of our organised training ev
 
 
 1. Connect to a login server using the graphical NX client
-   * Follow the steps [described here](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx) for setting up NoMachine Enterprise Client for making a connection to JASMIN.
-   * Open a "Terminal" window from the Activities menu
+   * Exercise 0 involved setting up a connection profile to one of the `nx-login` machines. We now select that profile and use it to actually connect to the machine.
+   * You will be asked to confirm your username
+   * ...and the passphrase associated with your private key
+   * There will be be a few one-time screens to click through before you arrive at the graphical linux desktop on the remote machine.
+   * Once you're there, use the "Activities" menu, top left, to select the "Terminal" application: this should open a Terminal window where you can type further commands.
    * Type the following to retreive the "Message of the Day", listing available `sci` servers and their current usage:
    ```
    $ cat /etc/motd
