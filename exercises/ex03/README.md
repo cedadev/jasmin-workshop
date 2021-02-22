@@ -22,15 +22,18 @@ After competing this exercise I will be able to:
 ### JASMIN resources
 
 * Account with valid `jasmin-login` privilege
-* Transfer server: `xfer[12].jasmin.ac.uk` (1 or 2)
-* Home directory: `/home/users/fred001` (replace with your username)
+   * If you are using one of the training accounts this will have been set up for you
+* Transfer server: `xfer[12].jasmin.ac.uk` (`1` or `2`)
+* Home directory: `/home/users/train050` (replace with your username)
 * `workshop` group workspace at `/gws/pw/j05/workshop`
 
 ### Local resources
 
-*  A terminal client on my local machine
-*  SSH key already loaded (see [exercise 01](../ex01))
-*  Local directory: `/Users/fredbloggs/` (choose your own)
+*  Local machine set up as per [exercise 0](..ex00), with:
+    * SSH client application (use a command-line client for this exercise: you won't need the graphical desktop)
+    * SSH key and JASMIN credentials
+    * suitable network connection
+*  Directory on your local machine: `/Users/fredbloggs/` (choose your own)
 
 ### Instructions
 
@@ -89,7 +92,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 1. Make a small text file on your local machine containing a bash script which you could run on JASMIN.
     ```
     $ echo "This is a readme file" > README.txt
-    $ scp README.txt fred001@xfer1.jasmin.ac.uk:~/
+    $ scp README.txt train050@xfer1.jasmin.ac.uk:~/
     ```
 
     The `echo` command makes the text file for us. Use some other small file if you have one handy, or create one
@@ -112,12 +115,12 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     mydata/01/file01.txt
     ```
     Make yourself a directory in the `workshop` group workspace:
-    First log in to the transfer server: (substitute `fred001` for your own JASMIN username).
+    First log in to the transfer server: (substitute `train050` for your own JASMIN username).
     You may find it useful to open another terminal window for this (don't forget to check first whether your
     SSH key is loaded: see [exercise 01](../ex01) ).
     
     ```
-    $ ssh -A fred001@xfer1.jasmin.ac.uk
+    $ ssh -A train050@xfer1.jasmin.ac.uk
     ```
     Go to the workspace directory and make your own user directory there:
     ```
@@ -141,12 +144,12 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     $ echo $USER             # check what is held in this environment variable
     $ mkdir users/$USER      # make a directory for yourself underneath the "users" directory
     $ ls -ld users/$USER      # check what you have created: note the ownerhsip & permissions
-    drwxr-sr-x 2 fred001 gws_workshop 4096 Jan 26 11:26 users/fred001
+    drwxr-sr-x 2 train050 gws_workshop 4096 Jan 26 11:26 users/train050
     ```
 
     Back on your local machine, recursively copy the directory using `scp`:
     ```
-    scp -r mydata fred001@xfer1.jasmin.ac.uk:/gws/pw/j05/workshop/users/fred001/
+    scp -r mydata train050@xfer1.jasmin.ac.uk:/gws/pw/j05/workshop/users/train050/
     ```
 
     In your other terminal window on (or log back in to) the transfer server, inspect your destination directory:
@@ -163,18 +166,18 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     ```$ ls -lR mydata
     mydata:
     total 0
-    drwx------ 1 fred001 users 0 Dec  4 11:59 01
-    drwx------ 1 fred001 users 0 Dec  4 12:02 02
+    drwx------ 1 train050 users 0 Dec  4 11:59 01
+    drwx------ 1 train050 users 0 Dec  4 12:02 02
 
     mydata/01:
     total 0
-    -rw------- 1 fred001 users 20 Dec  4 11:59 file01.txt
+    -rw------- 1 train050 users 20 Dec  4 11:59 file01.txt
 
     mydata/02:
     total 0
-    -rw------- 1 fred001 users 25 Dec  4 11:59 file02.txt
+    -rw------- 1 train050 users 25 Dec  4 11:59 file02.txt
     ```
-    This looks OK but at the moment only `fred001` can read or write the files. We want anyone in the same group workspace to be able to read them, but only `fred001` to be able to write/modify them.
+    This looks OK but at the moment only `train050` can read or write the files. We want anyone in the same group workspace to be able to read them, but only `train050` to be able to write/modify them.
     If we were to leave them with group ownership of `users`, then when we change the permissions, they would become readable by anyone on JASMIN: this might not be what we want.
     Each Group Workspace has its own group. In this case, it's `gws_workshop`. You can check that you belong to that group with the following command:
     ```
@@ -200,16 +203,16 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     $ ls -lR mydata
     mydata:
     total 0
-    drwxr-x--- 1 fred001 gws_workshop 0 Dec  4 11:59 01
-    drwxr-x--- 1 fred001 gws_workshop 0 Dec  4 12:02 02
+    drwxr-x--- 1 train050 gws_workshop 0 Dec  4 11:59 01
+    drwxr-x--- 1 train050 gws_workshop 0 Dec  4 12:02 02
 
     mydata/01:
     total 0
-    -rw-r----- 1 fred001 gws_workshop 20 Dec  4 11:59 file01.txt
+    -rw-r----- 1 train050 gws_workshop 20 Dec  4 11:59 file01.txt
 
     mydata/02:
     total 0
-    -rw-r----- 1 fred001 gws_workshop 25 Dec  4 11:59 file02.txt
+    -rw-r----- 1 train050 gws_workshop 25 Dec  4 11:59 file02.txt
     ```
 
 1. Using command line tools or a script you have written, download a test file from http://speedtest.tele2.net/100MB.zip, then delete it.
@@ -261,7 +264,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 You can first check the existing permissions on a file with:
 ```
 $ ls -l myfile.txt
--rw-r--r-- 1 fred001 gws_workshop 0 Jan 22 17:01 myfile.txt
+-rw-r--r-- 1 train050 gws_workshop 0 Jan 22 17:01 myfile.txt
 ```
 
 The group "read" permission is already set: this is the second "r", whereas the user permissions are currently set to `rw`, i.e. read and write.
@@ -277,7 +280,7 @@ $ chmod 664 myfile.txt
 Check again:
 ```
 $ ls -l myfile.txt
--rw-rw--r-- 1 fred001 gws_workshop 0 Jan 22 17:01 myfile.txt
+-rw-rw--r-- 1 train050 gws_workshop 0 Jan 22 17:01 myfile.txt
 ```
 Now we can see that the second set of permissions also has the `w` permission for write. You'd need to do similar for directories, but remember that for directories you also need to set the `x` (execute) permission. 
 
