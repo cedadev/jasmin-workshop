@@ -150,7 +150,7 @@ If you are using your *own* account (outside of one of our organised training ev
 
 
 1. Connect to a login server using the graphical NX client
-   * Exercise 0 involved setting up a connection profile to one of the `nx-login` machines. We now select that profile and use it to actually connect to the machine.
+   * [Exercise 0](../ex00) involved setting up a connection profile to one of the `nx-login` machines. We now select that profile and use it to actually connect to the machine.
    * You will be asked to confirm your username
    * ...and the passphrase associated with your private key
    * There will be be a few one-time screens to click through before you arrive at the graphical linux desktop on the remote machine.
