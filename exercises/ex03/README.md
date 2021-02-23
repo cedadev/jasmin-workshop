@@ -62,15 +62,15 @@ We have looked at some basic methods suitable for small datasets or where speed 
 * In addition to `scp`, alternative tools `sftp` and `rsync` also enable simple data transfer.
 * We have seen that `rsync` can be used to synchronise a local and remote directory: it can be configured to only copy those data that are new or have changed: more efficient if you're running it repeatedly.
 * `sftp` is very useful and is also the underlying protocol used in many third-party tools.
-* [rclone](https://rclone.org) can be configured to interace with various storage backends, including an SFTP server (like the transfer server used above), and can do synchronisation like `rsync`. It also talks to a whole variety of other storage backends such as cloud and object storage.   
-* Some third-party tools exist which provide graphical interfaces for transfers using `sftp`, e.g. [FileZilla](https://filezilla-project.org/), [CyberDuck](https://cyberduck.io/)
+* [rclone](https://rclone.org) can be configured to interace with various storage backends, including an SFTP server (like the transfer server used above), and can do synchronisation like `rsync`. It also talks to a whole variety of other storage backends such as cloud and object storage.
+* Please **don't** install DropBox or other file-sharing software on JASMIN.
+* Some third-party tools exist which provide graphical interfaces for transfers using `sftp`, e.g. [FileZilla](https://filezilla-project.org/), [CyberDuck](https://cyberduck.io/). These are applications which you can install on your own machine, to talk to JASMIN via the protocols it supports.
 * Some editors (e.g. [VS Code](https://code.visualstudio.com/)) have extensions which enable you to setup SSH connections to edit & save files remotely. This can be useful for editing files on JASMIN, but from the convenience of your own local desktop environment.
 * NONE of the SSH-based transfer methods we have looked at perform well for large volumes of data or over long distances. Define "large" or "long"?
 * see [ex10](../ex10) for advice about:
     * More efficient data transfers for large data / longer distances
     * Automated transfers
     * Transfers within JASMIN
-
 
 
 ### Questions to test yourself
@@ -98,6 +98,15 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     The `echo` command makes the text file for us. Use some other small file if you have one handy, or create one
     in your favorite text editor on your local machine.
     We then copy it using the `scp` command, specifying our home directory `~/` as the path.
+
+    Log into the xfer server itself, to see the file that you copied in place in the destination directory:
+
+    ```
+    $ ssh -A train050@xfer1.jasmin.ac.uk
+    $ pwd
+    $ ls -l README.txt
+    
+    ```
 
 1. Make a small tree of directories on your **local** machine and create 2 files somewhere in those directories.
     ```
@@ -147,7 +156,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     drwxr-sr-x 2 train050 gws_workshop 4096 Jan 26 11:26 users/train050
     ```
 
-    Back on your local machine, recursively copy the directory using `scp`:
+    Back on your local machine, recursively copy the directory using `scp`:  (replace `train050` with your username)
     ```
     scp -r mydata train050@xfer1.jasmin.ac.uk:/gws/pw/j05/workshop/users/train050/
     ```
@@ -166,45 +175,63 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     ```$ ls -lR mydata
     mydata:
     total 0
-    drwx------ 1 train050 users 0 Dec  4 11:59 01
-    drwx------ 1 train050 users 0 Dec  4 12:02 02
+    drwxr-xr-x 1 train050 gws_workshop 0 Dec  4 11:59 01
+    drwxr-xr-x 1 train050 gws_workshop 0 Dec  4 12:02 02
 
     mydata/01:
     total 0
-    -rw------- 1 train050 users 20 Dec  4 11:59 file01.txt
+    -rw-r--r-- 1 train050 gws_workshop 20 Dec  4 11:59 file01.txt
 
     mydata/02:
     total 0
-    -rw------- 1 train050 users 25 Dec  4 11:59 file02.txt
-    ```
-    This looks OK but at the moment only `train050` can read or write the files. We want anyone in the same group workspace to be able to read them, but only `train050` to be able to write/modify them.
-    If we were to leave them with group ownership of `users`, then when we change the permissions, they would become readable by anyone on JASMIN: this might not be what we want.
-    Each Group Workspace has its own group. In this case, it's `gws_workshop`. You can check that you belong to that group with the following command:
-    ```
-    $ groups
-    users gws_workshop
-    ```
-    Now we can change the group ownership of the files and directories (all in one go) to `workshop` with the `chgrp` command:
-    ```
-    $ chgrp -R gws_workshop mydata
-    ```
-    Now all the files/directories belong to the workshop group, but we haven't yet granted read permission to other people in the group. Since files need to be `rw-r-----` (`640`) and directories need to be (`rwxr-x---`) (`755`), we could set these at the top level as follows,
-    ```
-    chmod -R g+rX mydata
-    ```
-    This sets the group execute permission on the directories as well, in one go. An alternative would be
-    ```
-    $ find mydata -type f -exec chmod 640 {} \;
-    $ find mydata -type d -exec chmod 750 {} \;
+    -rw-r--r-- 1 train050 gws_workshop 25 Dec  4 11:59 file02.txt
     ```
 
-    This gives us the permissions we want:
+    While there are plenty of good tutorials out there on UNIX permissions, let's talk about how they affect things on JASMIN.
+
+    These permissions may be what we want, but let's close them down for now, then work out how to open them up to people we want to share our data with: 
+
+    Try the following command, which will restrict the group and world permissions on everything in the `mydata` directory and below:
+
     ```
+    $ chmod -R go-rX mydata         # note capital X
+    $ ls -lR mydata
+    mydata:
+    total 128
+    drwx------ 2 train050 gws_workshop 4096 Feb 23 10:51 01
+    drwx------ 2 train050 gws_workshop 4096 Feb 23 10:51 02
+
+    mydata/01:
+    total 48
+    -rw------- 1 train050 gws_workshop 20 Feb 23 10:51 file01.txt
+
+    mydata/02:
+    total 48
+    -rw------- 1 train050 gws_workshop 25 Feb 23 10:51 file02.txt
+
+    ```
+
+    The directories `01` and `02` are signified by the extra `d` at the start, but all the files and directories have 3 sets of permissions: *User*, *Group* and *wOrld* (u, g, o). We are also told about which user and what group they belong to.
+
+    ```
+    drwx------ 1 train050 gws_workshop 0 Dec  4 11:59 01
+     rwx         : user
+        ---      : group
+           ---   : world
+
+    ```
+
+    This tells us that directory `01` belongs to user `train050` and group `gws_workshop`. Its user permissions are `rwx` (read, write, execute) but its group and world permissions are now not set (`---`).
+
+    If we want to open up directory `01` so that members of the same group `gws_workshop` can read it, but non-members still can't, we could set the group read permission. For directories, we need to add the `x` or execute permission as well: the capital `X` in the command means that it will work out the right change to make for files and directories:
+
+    ```
+    $ chmod -R g+rX mydata/01
     $ ls -lR mydata
     mydata:
     total 0
     drwxr-x--- 1 train050 gws_workshop 0 Dec  4 11:59 01
-    drwxr-x--- 1 train050 gws_workshop 0 Dec  4 12:02 02
+    drwx------ 1 train050 gws_workshop 0 Dec  4 12:02 02
 
     mydata/01:
     total 0
@@ -212,8 +239,35 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
     mydata/02:
     total 0
-    -rw-r----- 1 train050 gws_workshop 25 Dec  4 11:59 file02.txt
+    -rw------- 1 train050 gws_workshop 25 Dec  4 11:59 file02.txt
     ```
+
+    Here, we've changed the permissions on a directory recursively, i.e. including everything beneath it as well. You can modify the permissions on a file or set of files individually, but bear in mind they will also be affected by any directories they sit in.
+
+    Note that the group ownership of a file or directory in a group workspace might be different from any files you've created in your home directory. Check the permissions on the README.txt file you wrote there earlier:
+
+    ```
+    $ ls -l ~/README.txt 
+    -rw-r--r-- 1 train050 users 22 Feb 23 10:48 /home/users/train050/README.txt
+    ```
+
+    By default, files you create in your home directory belong to group `users` (which is the default group for all users with `jasmin-login` privilege). You can check what groups you belong to with the `groups` command:
+
+    ```
+    $ groups
+    users open gws_workshop
+    ```
+
+    Normally, the top-level directory of a group workspace is set so that files and directories created beneath them inherit the group ownership of the top-level directory, but this can be over-ridden. If for some reason you've got files which belong to the `users` group, then the group permissions which are set on those files are affected by whether a user belongs to *that* group instead, so you might need to change them to belong to the `gws_workshop` group first.
+
+    You can do this with the `chgrp` command, and it can be used recursively on a directory to change all the items in a directory tree (...but you have to have the right permissions to be able to modify them!)
+
+    ```
+    $ chgrp -R gws_workshop mydata
+    ```
+
+
+
 
 1. Using command line tools or a script you have written, download a test file from http://speedtest.tele2.net/100MB.zip, then delete it.
 
@@ -292,11 +346,11 @@ Talk to your Group Workspace manager about how they would like users to organise
 
 Using the logic above, you could set the permissions on the file/directory so that they're "world-readable" ...but can the outside "world" see the file? Not by default. File systems on JASMIN aren't visible outside of JASMIN, and can't be mounted remotely.
 
-There are a couple of methods by which this can be done, however:
+This can be arranged, however:
 
 * Ask your Group Workspace manager to consider requesting that the GWS is set up with a `public` area which is [shared via HTTP](https://help.jasmin.ac.uk/article/202-share-gws-data-via-http). This means that the data below that `public` directory is openly available to anyone on the internet with a HTTP client such as a browser or a tool like `wget` or `curl`. That can be a good way of disseminating results and small amounts of data to external collaborators who are not users of JASMIN. But this should be used with care, and must not be used for hosting a project web site: that's not what that service is for.
 
-* A similar service OPeNDAP4GWS can be used to provide an OPeNDAP interface on top of data inside a GWS. Ask your GWS manager to contact the helpdesk for further details. 
+* Using Object Storage could provide more flexible sharing options: use of this is something your GWS manager would need to discuss with the JASMIN team.
 
 > 1. Why are transfer methods based on SSH not very efficient?
 
