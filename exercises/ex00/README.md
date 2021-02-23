@@ -72,7 +72,7 @@ Here are our recommendations:
 
 > **_NOTE:_**  We recognise that other applications are available for each of these choices, but in order to keep the instructions as similar as possible between different platforms, we would ask that you stick to these recommendations at least for use during the workshop. If you choose another option and it doesn't work as you hope, we may not be able to help.
 
-For the options marked `*` above, you'll need to download and install software to run on your local machine. You should check that you have sufficient privileges (permissions) on your local machine to do this. If in doubt, ask the IT support team responsible for your **local** machine.
+For the options marked `*` above, **you'll need to download and install software to run on your own/local machine, to do this before taking part in the workshop**. You should check that you have sufficient privileges (permissions) on your local machine to do this. If in doubt, ask the IT support team responsible for your **local** machine.
 
 We'll cover all of these combinations, so please follow the instructions relevant to your local machine to ensure you have everything you need for the workshop.
 
@@ -116,7 +116,7 @@ Our recommended choice for a terminal application on Windows is **MobaXterm**.
 
 #### Software installation
 * Download from [MobaXterm](https://mobaxterm.mobatek.net/).
-* Choose the "Home Edition" (free), then either the "Installer edition" or "Portable Edition" and follow the instructions.|
+* Choose the "Home Edition" (free), then either the "Installer edition" or "Portable Edition" and follow the instructions.
 
 [![MobaXterm v20.6 setup on Windows, loading private key](https://img.youtube.com/vi/yG8yyTt2R-0/0.jpg)](https://www.youtube.com/watch?v=yG8yyTt2R-0)
 
@@ -132,6 +132,9 @@ In the above video, you can see the steps needed to load the key, i.e:
 Click "Start local terminal".
 
 You can then check that your key is correctly loaded with this command in the terminal window: 
+
+> **_NOTE:_**  In this exercise, all the workshop exercises and in JASMIN documentation, when we're showing commands and their output, the `$` at the start of a line simply represents the command prompt: **it is not a character which you need to type**. Lines without the `$` at the start represent output from a command.
+
 
 ```
 $ ssh-add -l
@@ -214,9 +217,11 @@ We'll cover how to actually connect to the login servers in [exercise 1](../ex01
 
 > **_NOTE:_**  We are aware of some problems with the software needed for this part of the set up: possibly due to a problem with the latest version of the software. We are investigating further. So if this doesn't work for you, don't worry, it's not essential. Just use one of the command-line terminal clients described above for now.
 
-Using graphical applications over a wide-area network can be very slow, and is not recommended or supported on JASMIN. This service helps by providing a graphical desktop *within* the JASMIN environment, instead of on the end-user’s local machine at the end of a wide-area network path from JASMIN. A small client application enables you to connect to specific servers within JASMIN but send the graphics output back across the network to you in compressed form, resulting in much better performance.
+Using graphical applications over a wide-area network (such as the path between your university and JASMIN) can be very slow, and is not recommended or supported on JASMIN. This service helps by providing a graphical desktop *within* the JASMIN environment, instead of on the end-user’s local machine at the end of a long network path from JASMIN. A small client application enables you to connect to specific servers within JASMIN but send the graphics output back across the network to you in compressed form, resulting in much better performance.
 
-Via a web browser provided on this remote desktop environment, this also provides a means of accessing web-based resources within JASMIN which are not otherwise visible outside.
+In short: if you use this application for graphics, it'll work much better than using XWindows to your own machine (which may be what you're more used to doing)
+
+The virtual desktop provided by this service also includes a web browser ("within" JASMIN) so provides a means of accessing web-based resources which are not available outside of JASMIN's internal network (some specialist applications require this, and it should not be used for general web-browsing).
 
 So, why would you need to use this rather than the basic command-line terminal?
 * If anything you plan to do on JASMIN involves viewing or interacting with graphical output.
@@ -225,7 +230,7 @@ So, why would you need to use this rather than the basic command-line terminal?
 
 To use this service (and we'll cover **how** to in [exercise 1](../ex01) ) you will need to use an application called NoMachine Enterprise Client: this is a *client* in the same way as the other SSH terminal clients mentioned above (i.e. it connects to a *server* within JASMIN), but with the extra feature of being able to display your virtual desktop for you.  
 
-Each of the servers `nx-login[1,2,3].jasmin.ac.uk` has special software installed to enable connections made using the **NoMachine Enterprise Client**. So this client needs to be installed locally on your own machine if you want to use thise service.
+Each of the servers `nx-login[1,2,3].jasmin.ac.uk` has special software installed to enable connections made using the **NoMachine Enterprise Client**. So this client needs to be installed locally on your own machine if you want to use this service.
 
 The instructions for downloading and installing the software vary by platform, but once it's installed, it operates nearly identically across Windows, Mac and Linux.
 
