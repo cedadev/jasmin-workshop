@@ -1,5 +1,5 @@
 ---
-title: Exercise 04: Extract a variable from a file in the ERA-Interim dataset
+title: Exercise 04 - Extract a variable from a file in the ERA-Interim dataset
 author: Ag Stephens
 ---
 
@@ -48,8 +48,8 @@ This is the outline of what you need to do. The recommended way of doing each st
 
 All too easy? Here are some questions to test your knowledge an understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk)
 
-1. ***...?
-1. ***...?
+1. How did you activate the environment containing the CDO tool? Where can you find out more about the software environments available on JASMIN? Can you find out which other packages are available within the "jaspy" environment? 
+1. Can you try out some of the other operations available in the CDO tool? Are there other ways you can sub-select variables and temporal/spatial subsets?
 
 ### Review / alternative approaches / best practice
 
