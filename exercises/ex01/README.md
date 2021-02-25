@@ -39,6 +39,10 @@ At the end of this exercise I will be able to:
 
 This is the outline of what you need to do. The recommended way of doing each step is covered in the "Cheat Sheet" but you may wish to try solving it for yourself first.
 
+[![Ex01 Connecting to JASMIN - task](https://img.youtube.com/vi/yixQF_CqUFg/0.jpg)](https://www.youtube.com/watch?v=yixQF_CqUFg)
+
+In the above video, you can see the steps needed to do this task, i.e:
+
 1. Connect to a `login` server using a terminal client
    * Load your ssh key locally
    * Initiate an SSH connection to a login server
@@ -65,6 +69,10 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 3. What shell is used by default on JASMIN? How can you tell? How would you customise your shell environment (e.g. aliases, environment variables)?
 
 ### Review / alternative approaches / best practice
+
+[![Ex01 Connecting to JASMIN - Solutions and Discussion](https://img.youtube.com/vi/5aFUzvU2YYI/0.jpg)](https://www.youtube.com/watch?v=5aFUzvU2YYI)
+
+In the above video, you can see an overview of the solutions/best practice related to this task, i.e:
 
 * Your SSH key must be protected with a strong passphrase.
 * You must not share your SSH key with any other user.
