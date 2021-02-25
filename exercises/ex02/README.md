@@ -1,6 +1,10 @@
-# Exercise 2 
+---
+title: Interactive computing on a sci server
+author: Fatima Chami
+Videos: 
+---
 
-Interactive computing using a sci server
+# Exercise 2: Interactive computing on a sci server
 
 ### Scenario
 
