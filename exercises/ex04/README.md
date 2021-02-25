@@ -48,8 +48,8 @@ This is the outline of what you need to do. The recommended way of doing each st
 
 All too easy? Here are some questions to test your knowledge an understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk)
 
- 1. How did you activate the environment containing the CDO tool? Where can you find out more about the software environments available on JASMIN? Can you find out which other packages are available within the "jaspy" environment? 
- 1. Can you try out some of the other operations available in the CDO tool? Are there other ways you can sub-select variables and temporal/spatial subsets?
+ 1. Where can you find out more about the software environments available on JASMIN? 
+ 1. Can you find out which other packages are available within the "jaspy" environment? 
 
 ### Review / alternative approaches / best practice
 
@@ -129,3 +129,15 @@ Alternative appraoches could include:
                   TCC:standard_name = "cloud_area_fraction" ;
                   TCC:long_name = "Total cloud cover" ;
   ```
+
+### Answers to questions
+
+> 1. Where can you find out more about the software environments available on JASMIN?
+
+The JASMIN Help pages include an article about [software on JASMIN](https://help.jasmin.ac.uk/article/273-software-on-jasmin#common-software). This includes links to details of the "jaspy" and other software environments. 
+
+> 1. Can you find out which other packages are available within the "jaspy" environment?
+
+The "jaspy" environments are listed on our [jaspy Help page](https://help.jasmin.ac.uk/article/4729-jaspy-envs). You can follow links from there to find out about the different "jaspy" environments and the packages, and versions, they include.
+
+
