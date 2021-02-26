@@ -35,6 +35,14 @@ After completing this exercise I will be able to:
     * suitable network connection
 *  Directory on your local machine: `/Users/fredbloggs/` (choose your own)
 
+### Videos
+You can follow this exercise by watching the videos below, or by following the text of this article, or a combination of both.
+|  |  |
+| --- | --- |
+| Task | [![](https://img.youtube.com/vi/7Tv9uSH5_CE/mqdefault.jpg )](https://www.youtube.com/watch?v=7Tv9uSH5_CE) |
+| Solutions & Discussion | [![](https://img.youtube.com/vi/i5R6Qy6gTg8/mqdefault.jpg )](https://www.youtube.com/watch?v=i5R6Qy6gTg8) |
+
+
 ### Instructions
 
 1. Make a simple text file or script on your local machine
