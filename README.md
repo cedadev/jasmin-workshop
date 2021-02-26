@@ -6,8 +6,9 @@ The workshop makes use of the exercises and tutorials listed below to help users
 
 You should also watch the following overview presentation which explains the purpose, layout and important technical details of the JASMIN platform:
 
-Overview presentation (link to video coming soon)
+Overview presentation 
 
+[![](https://img.youtube.com/vi/HQjRDtgW3Fg/mqdefault.jpg )](https://www.youtube.com/watch?v=HQjRDtgW3Fg) 
 
 | Exercise | Topic |
 | --- | --- |
