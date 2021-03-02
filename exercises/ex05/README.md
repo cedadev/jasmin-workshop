@@ -49,8 +49,8 @@ This is the outline of what you need to do. The recommended way of doing each st
 All too easy? Here are some questions to test your knowledge an understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk)
 
  1. You have learnt about some basic commands to interact with SLURM scheduler (such as `sbatch` and `squeue`). This manages the submission and execution of jobs via the LOTUS queues. Which other commands might be useful when interacting with the scheduler? 
- 1. Which queues are available on LOTUS? What is the difference between them? Why would you choose one over another?
- 1. How can you instruct SLURM to allocate CPUs and memory to specific jobs when you run them? Can you change the allocations when the job is queuing? 
+ 2. Which queues are available on LOTUS? What is the difference between them? Why would you choose one over another?
+ 3. How can you instruct SLURM to allocate CPUs and memory to specific jobs when you run them? Can you change the allocations when the job is queuing? 
 
 ### Review / alternative approaches / best practice
 

@@ -49,21 +49,23 @@ This is the outline of what you need to do. The recommended way of doing each st
 All too easy? Here are some questions to test your knowledge an understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk)
 
  1. Where can you find out more about the software environments available on JASMIN? 
- 1. Can you find out which other packages are available within the "jaspy" environment? 
+ 2. Can you find out which other packages are available within the "jaspy" environment? 
 
 ### Review / alternative approaches / best practice
 
 This exercise demonstrates how to:
- * Login to JASMIN and access the scientific analysis servers (`sci[1-6].jasmin.ceda.ac.uk`)
+ * Login to JASMIN and access the scientific analysis servers (`sci[1-6].jasmin.ac.uk`)
  * Run a command-line tool interactively to read data from the CEDA archive
  * Write outputs to a JASMIN Group Workspace
 
 This is a basic workflow suitable for small tasks and setting up your processing. When the amount of processing increases then it makes good sense to move on to using the LOTUS batch cluster.
 
-Alternative appraoches could include:
+Alternative approaches could include:
  * Use the CEDA OpenDap server to extract the variable.
  * Use other tools to run the extraction.
  * Run as a batch job on LOTUS
+
+Best practice considerations:
  * Have any files been accidentally left on the system? (E.g. in `/tmp/`)
 
 ### Cheat Sheet
@@ -105,7 +107,7 @@ Alternative appraoches could include:
 
 6. Run the CDO tool to subset the file and extract the `TCC` variable
   * Consult the CDO manual to see how to extract a variable by name:
-    https://code.mpimet.mpg.de/projects/cdo/embedded/index.html#x1-1460002.3.3
+    https://code.mpimet.mpg.de/projects/cdo/embedded/index.html#x1-1460002.3
 
   * Run CDO:
 
@@ -136,7 +138,7 @@ Alternative appraoches could include:
 
 The JASMIN Help pages include an article about [software on JASMIN](https://help.jasmin.ac.uk/article/273-software-on-jasmin#common-software). This includes links to details of the "jaspy" and other software environments. 
 
-> 1. Can you find out which other packages are available within the "jaspy" environment?
+> 2. Can you find out which other packages are available within the "jaspy" environment?
 
 The "jaspy" environments are listed on our [jaspy Help page](https://help.jasmin.ac.uk/article/4729-jaspy-envs). You can follow links from there to find out about the different "jaspy" environments and the packages, and versions, they include.
 
