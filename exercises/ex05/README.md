@@ -19,10 +19,14 @@ After completing this exercise I will be able to:
 
 ### JASMIN resources
 
-* LOTUS batch processing cluster
-* Space to store the output file: `/gws/nopw/j04/workshop/users/$USER/ex05`
-* Access to the CDO (Climate Data Operators) tool
-* Read-access to the ERA-Interim data set in the CEDA archive - requires a CEDA account
+ * JASMIN account with SSH public key uploaded and `jasmin-login` privilege
+ * login servers: `login[1-4].jasmin.ac.uk`
+ * sci servers: `sci[1-6].jasmin.ac.uk`
+ * LOTUS batch processing cluster
+ * common software: CDO (Climate Data Operators) tool
+ * GWS (read/write): `/gws/nopw/j04/workshop`
+ * CEDA Archive (read-only): requires a CEDA account
+ * help documentation at https://help.jasmin.ac.uk
 
 ### Local resources
 
