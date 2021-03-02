@@ -19,10 +19,14 @@ After completing this exercise I will be able to:
 
 ### JASMIN resources
 
-* LOTUS batch processing cluster
-* Space to store the output file: `/gws/nopw/j04/workshop/users/$USER/ex05`
-* Access to the CDO (Climate Data Operators) tool
-* Read-access to the ERA-Interim data set in the CEDA archive - requires a CEDA account
+ * JASMIN account with SSH public key uploaded and `jasmin-login` privilege
+ * login servers: `login[1-4].jasmin.ac.uk`
+ * sci servers: `sci[1-6].jasmin.ac.uk`
+ * LOTUS batch processing cluster
+ * common software: CDO (Climate Data Operators) tool
+ * GWS (read/write): `/gws/nopw/j04/workshop`
+ * CEDA Archive (read-only): requires a CEDA account
+ * help documentation at https://help.jasmin.ac.uk
 
 ### Local resources
 
@@ -173,3 +177,18 @@ This demonstrates best practice:
     1. Use the "`scancel`" command:
 
             scancel <job_id>
+           
+
+### Answers to questions
+
+>  1. You have learnt about some basic commands to interact with SLURM scheduler (such as `sbatch` and `squeue`). This manages the submission and execution of jobs via the LOTUS queues. Which other commands might be useful when interacting with the scheduler? 
+
+Table 3 of this [help page](https://help.jasmin.ac.uk/article/4891-lsf-to-slurm-quick-reference) shows other SLURM commands, such as `scancel` and `scontrol`. You can find out more by typing `man <command>` at the command-line, e.g.: `man scancel`.
+
+> 2. Which queues are available on LOTUS? What is the difference between them? Why would you choose one over another?
+
+There is a [LOTUS queues help page](https://help.jasmin.ac.uk/article/4881-lotus-queues) which explains the capabilities of each SLURM queue.
+
+> 3. How can you instruct SLURM to allocate CPUs and memory to specific jobs when you run them? 
+
+Table 2 of this [help page](https://help.jasmin.ac.uk/article/4891-lsf-to-slurm-quick-reference) lists common command-line parameters that can be used to instruct SLURM how to allocate CPUs, memory and hosts to certain jobs.

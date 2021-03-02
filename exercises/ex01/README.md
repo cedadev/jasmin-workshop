@@ -35,9 +35,19 @@ At the end of this exercise I will be able to:
     * JASMIN credentials
     * suitable network connection.
 
+### Videos
+You can follow this exercise by watching the videos below, or by following the text of this article, or a combination of both.
+|  |  |
+| --- | --- |
+| Task | [![](https://img.youtube.com/vi/yixQF_CqUFg/mqdefault.jpg )](https://www.youtube.com/watch?v=yixQF_CqUFg) |
+| Solutions & Discussion | [![](https://img.youtube.com/vi/5aFUzvU2YYI/mqdefault.jpg )](https://www.youtube.com/watch?v=5aFUzvU2YYI) |
+
+
 ### Your task
 
 This is the outline of what you need to do. The recommended way of doing each step is covered in the "Cheat Sheet" but you may wish to try solving it for yourself first.
+
+In the text below, you can see the steps needed to do this task, i.e:
 
 1. Connect to a `login` server using a terminal client
    * Load your ssh key locally
