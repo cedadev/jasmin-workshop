@@ -6,16 +6,18 @@
 #
 
 EXTRACTOR=$PWD/extract-era-data.sh
-OUTPUTS_DIR=/group_workspaces/jasmin2/workshop/users/$USER/ex05/lotus-outputs
+OUTPUTS_DIR=/gws/nopw/j04/workshop/users/$USER/ex05/lotus-outputs
 
 mkdir -p $OUTPUTS_DIR
 queue=short-serial
 
 
-for i in $(seq 0 1); do
+for i in $(seq 1 2); do
 
-    day=$(date -d "2018-01-01 $i days" +%Y%m%d)
+    # Set the date
+    day=$(printf "201801%02d" $i)
     echo "[INFO] Submitting job to LOTUS for date: $day"
+    # Submit the job to LOTUS
     sbatch -q $queue -t 5 -o $OUTPUTS_DIR/${day}.%j.out -e $OUTPUTS_DIR/${day}.%j.err $EXTRACTOR $day 
 
 done
