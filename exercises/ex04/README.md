@@ -60,10 +60,12 @@ This exercise demonstrates how to:
 
 This is a basic workflow suitable for small tasks and setting up your processing. When the amount of processing increases then it makes good sense to move on to using the LOTUS batch cluster.
 
-Alternative appraoches could include:
+Alternative approaches could include:
  * Use the CEDA OpenDap server to extract the variable.
  * Use other tools to run the extraction.
  * Run as a batch job on LOTUS
+
+Best practice considerations:
  * Have any files been accidentally left on the system? (E.g. in `/tmp/`)
 
 ### Cheat Sheet
@@ -105,7 +107,7 @@ Alternative appraoches could include:
 
 6. Run the CDO tool to subset the file and extract the `TCC` variable
   * Consult the CDO manual to see how to extract a variable by name:
-    https://code.mpimet.mpg.de/projects/cdo/embedded/index.html#x1-1460002.3.3
+    https://code.mpimet.mpg.de/projects/cdo/embedded/index.html#x1-1460002.3
 
   * Run CDO:
 
