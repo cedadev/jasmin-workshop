@@ -203,6 +203,23 @@ You should see output like this:
 ```
 If not, you will need to try again before you will be able to log in to a remote host using the key.
 
+### Troubleshooting (all platforms)
+
+* If you see a message like the following, this means that you need to restrict the permissions on your key file so that only you (and no other users on your system) can read your key.
+```
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0644 for 'id_rsa_jasmin' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+```
+You can do this with a command like this (you'll need to do this in a terminal window):
+```
+chmod 600 <path>/id_rsa_jasmin  
+```
+where `<path>` is wherever you saved your key (see above: this can vary by platform).
+
 ### Network Considerations
 
 JASMIN is an academic research infrastructure primarily designed to be accessible from other acadmic research networks. As such, and as part of a layered approach to security, it is preferred that you access JASMIN from your institutional network. This means that if you are connecting from home via your home broadband internet service provider, it is preferred that you first access your insitutional network and then connect from a host there, or that you use your instutional Virtual Private Network (VPN) to obtain an IP address which belongs to your institutional network before making your connection.
