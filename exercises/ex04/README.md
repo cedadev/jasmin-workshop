@@ -32,6 +32,13 @@ After completing this exercise I will be able to:
 
  * Local SSH client and JASMIN credentials
 
+### Videos
+You can follow this exercise by watching the videos below, or by following the text of this article, or a combination of both.
+|  |  |
+| --- | --- |
+| Task | [![](https://img.youtube.com/vi/IPEJKF3FhRs/mqdefault.jpg )](https://www.youtube.com/watch?v=IPEJKF3FhRs) |
+| Solutions & Discussion | [![](https://img.youtube.com/vi/oWJEzhFEATg/mqdefault.jpg )](https://www.youtube.com/watch?v=oWJEzhFEATg) |
+
 ### Your task
 
 This is the outline of what you need to do. The recommended way of doing each step is covered in the "Cheat Sheet" but you may wish to try solving it for yourself first.
