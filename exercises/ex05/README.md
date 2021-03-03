@@ -76,17 +76,17 @@ Alternative approaches could include:
     1.   Since we do not need parallel write capability, we can use the "`nopw`" version.
     1.   You need to set up a directory under "`/work/scratch-nopw"` as your username:
  
-            MYSCRATCH=/work/scratch-nopw/$USER
-            mkdir -p $MYSCRATCH
+        MYSCRATCH=/work/scratch-nopw/$USER
+        mkdir -p $MYSCRATCH
  
     1.   Then you would write output files/directories under your scratch space, e.g.:
 
-            OUTPUT_FILE=$MYSCRATCH/output.nc
-            ...some_process... > $OUTPUT_FILE
+        OUTPUT_FILE=$MYSCRATCH/output.nc
+        ...some_process... > $OUTPUT_FILE
 
     1.   When you have finished with the file, tidy up (good practice).
 
-            rm $OUTPUT_FILE
+        rm $OUTPUT_FILE
 
     1.   Do not leave data on the "scratch" areas when you have finished your workflow.
         1.   Please remove any temporary files/directories that you have created.
