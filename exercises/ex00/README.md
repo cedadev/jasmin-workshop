@@ -274,6 +274,7 @@ You will be reminded of this during the course and should make sure you retrieve
 
 <br>
 
+Remember, actually connecting to JASMIN is the subject of [ex01](../ex01), so you don't necessarily need to try that step here.
+<br>
 Hopefully, if you've got this far, you should be good to go for the JASMIN Workshop. We look forward to seeing you there!
-
 
