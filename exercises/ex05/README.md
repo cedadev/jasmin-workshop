@@ -123,7 +123,7 @@ This demonstrates best practice:
 
 1. SSH to a scientific analysis server
 
-        ssh jasmin-sci5 # Could use sci[123456]
+        ssh sci5 # Could use sci[123456]
 
 1. Write an "`extract-era-data.sh`" wrapper script that calls the CDO extraction command, that:
     1. Takes a date string ("`YYYYMMDD`") as a command-line argument
