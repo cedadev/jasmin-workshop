@@ -18,7 +18,8 @@ for i in $(seq 1 2); do
     day=$(printf "201801%02d" $i)
     echo "[INFO] Submitting job to LOTUS for date: $day"
     # Submit the job to LOTUS
-    sbatch -p $queue -t 5 -o $OUTPUTS_DIR/${day}.%j.out -e $OUTPUTS_DIR/${day}.%j.err $EXTRACTOR $day 
+    sbatch -p $queue -t 5 -o $OUTPUTS_DIR/${day}.%j.out \
+           -e $OUTPUTS_DIR/${day}.%j.err $EXTRACTOR $day 
 
 done
 
