@@ -70,42 +70,42 @@ Alternative approaches could include:
     1. There are two main scenarios in which you might write the output to a scratch directory:
         1. You only need to store the output file for temporary use (such as intermediate files in your workflow).
         1. You want to write outputs to scratch before moving them to a GWS.
-    1. The Help page ([https://help.jasmin.ac.uk/article/176-storage#diskmount](https://help.jasmin.ac.uk/article/176-storage#diskmount)) tells us that there are two types of scratch space:
+    2. The Help page ([https://help.jasmin.ac.uk/article/176-storage#diskmount](https://help.jasmin.ac.uk/article/176-storage#diskmount)) tells us that there are two types of scratch space:
         1.   `/work/scratch-pw` – supports parallel writes
         1.   `/work/scratch-nopw` – does NOT support parallel writes
-    1.   Since we do not need parallel write capability, we can use the "`nopw`" version.
-    1.   You need to set up a directory under "`/work/scratch-nopw"` as your username:
- 
+    3.   Since we do not need parallel write capability, we can use the "`nopw`" version.
+    4.   You need to set up a directory under "`/work/scratch-nopw"` as your username:
+
         MYSCRATCH=/work/scratch-nopw/$USER
         mkdir -p $MYSCRATCH
+  
+    5.   Then you would write output files/directories under your scratch space, e.g.:
  
-    1.   Then you would write output files/directories under your scratch space, e.g.:
-
         OUTPUT_FILE=$MYSCRATCH/output.nc
         ...some_process... > $OUTPUT_FILE
-
-    1.   When you have finished with the file, tidy up (good practice).
+ 
+    6.   When you have finished with the file, tidy up (good practice).
 
         rm $OUTPUT_FILE
-
-    1.   Do not leave data on the "scratch" areas when you have finished your workflow.
+ 
+    7.   Do not leave data on the "scratch" areas when you have finished your workflow.
         1.   Please remove any temporary files/directories that you have created.
         1.   You cannot rely on the data persisting in the "scratch" areas.
 
-*   Specify the memory requirements of your job:
-    1.   If your job has a significant memory footprint:
+2. Specify the memory requirements of your job:
+    1. If your job has a significant memory footprint:
         1.   Run a single iteration on LOTUS and review the standard output file to examine the memory usage.
         1.   You can then reserve a memory allocation when you submit your subsequent jobs.
 
 This demonstrates best practice:
-1. Build up in stages before running your full workflow on LOTUS
+1. Build up in stages before running your full workflow on LOTUS:
     1. Check your code - is it _really_ doing what you think it is doing?
     1. Run locally (on a `sci` server) for one iteration.
     1. Run for one or two iterations on LOTUS.
     1. Check everything ran correctly on LOTUS.
     1. Submit your full batch of jobs to LOTUS.
 
-1.  _Have any files been accidentally left on the system? (E.g. in `/tmp/`)_
+1.  _Have any files been accidentally left on the system? (E.g. in `/tmp/`)_:
     1.   It is important to clean up any temporary files that you no longer need. 
     1.   Please check whether the tools you use have left any files in "`/tmp/`".
 
