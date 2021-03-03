@@ -65,20 +65,18 @@ This exercise demonstrates how to:
  1. Define the command-line arguments for the `sbatch` command.
  1. Use other SLURM commands, such as `squeue` (to monitor progress) and `scancel` (to cancel jobs).
 
-This is a basic workflow suitable for small tasks and setting up your processing. When the amount of processing increases then it makes good sense to move on to using the LOTUS batch cluster.
-
 Alternative approaches could include:
 1. Write the output to a `scratch` directory
     1. There are two main scenarios in which you might write the output to a scratch directory:
         1. You only need to store the output file for temporary use (such as intermediate files in your workflow).
         1. You want to write outputs to scratch before moving them to a GWS.
     1. The Help page ([https://help.jasmin.ac.uk/article/176-storage#diskmount](https://help.jasmin.ac.uk/article/176-storage#diskmount)) tells us that there are two types of scratch space:
-        1.   `/work/scratch` – supports parallel writes
-        1.   `/work/scratch-nompiio` – does NOT support parallel writes
-    1.   Since we do not need parallel write capability, we can use the "`nompiio`" version.
-    1.   You need to set up a directory under "`/work/scratch-nompiio"` as your username:
+        1.   `/work/scratch-pw` – supports parallel writes
+        1.   `/work/scratch-nopw` – does NOT support parallel writes
+    1.   Since we do not need parallel write capability, we can use the "`nopw`" version.
+    1.   You need to set up a directory under "`/work/scratch-nopw"` as your username:
  
-            MYSCRATCH=/work/scratch-nompiio/$USER
+            MYSCRATCH=/work/scratch-nopw/$USER
             mkdir -p $MYSCRATCH
  
     1.   Then you would write output files/directories under your scratch space, e.g.:
@@ -98,12 +96,6 @@ Alternative approaches could include:
     1.   If your job has a significant memory footprint:
         1.   Run a single iteration on LOTUS and review the standard output file to examine the memory usage.
         1.   You can then reserve a memory allocation when you submit your subsequent jobs.
-        1.   See help pages:
-
-            [https://help.jasmin.ac.uk/article/115-how-to-estimate-job-resources](https://help.jasmin.ac.uk/article/115-how-to-estimate-job-resources)
-
-            [https://help.jasmin.ac.uk/article/112-how-to-allocate-resources#memcontrol](https://help.jasmin.ac.uk/article/112-how-to-allocate-resources#memcontrol)
-
 
 This demonstrates best practice:
 1. Build up in stages before running your full workflow on LOTUS
