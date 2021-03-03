@@ -5,20 +5,22 @@
 # Usage:    extract-era-data.sh <YYYYMMDD>
 #
 
+# Get the date from the command line, and break into: YYYY, MM, DD 
 day=$1
 YYYY=$(echo $day | cut -c1-4)
 MM=$(echo $day | cut -c5-6)
 DD=$(echo $day | cut -c7-8)
 
-OUTPUT_DIR=/group_workspaces/jasmin2/workshop/users/$USER/ex05/outputs
+OUTPUT_DIR=/gws/nopw/j04/workshop/users/$USER/ex05/outputs
 mkdir -p $OUTPUT_DIR
 
 VAR_ID=TCC
-
 files=/badc/ecmwf-era-interim/data/gg/as/$YYYY/$MM/$DD/ggas*.nc
 
+# Activate the environment containing CDO
 module load jaspy
 
+# Loop through the available files and process them
 for INPUT_FILE in $files; do
 
     echo "[INFO] Subsetting: $INPUT_FILE"
