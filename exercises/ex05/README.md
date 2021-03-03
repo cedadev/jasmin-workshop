@@ -63,7 +63,7 @@ This exercise demonstrates how to:
  1. Create a wrapper script that loops through all the components that need to be processed.
  1. Submit each component as a LOTUS job using the `sbatch` command.
  1. Define the command-line arguments for the `sbatch` command.
- 1. Use other LSF commands, such as `squeue` (to monitor progress) and `scancel` (to cancel jobs).
+ 1. Use other SLURM commands, such as `squeue` (to monitor progress) and `scancel` (to cancel jobs).
 
 This is a basic workflow suitable for small tasks and setting up your processing. When the amount of processing increases then it makes good sense to move on to using the LOTUS batch cluster.
 
