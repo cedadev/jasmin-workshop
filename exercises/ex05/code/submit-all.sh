@@ -12,7 +12,7 @@ mkdir -p $OUTPUTS_DIR
 queue=short-serial
 
 
-for i in $(seq 1 30); do
+for i in $(seq 1 2); do
 
     # Set the date
     day=$(printf "201801%02d" $i)
