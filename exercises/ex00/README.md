@@ -131,6 +131,8 @@ In the above video, you can see the steps needed to load the key, i.e:
 * Click OK to save the settings. MobaXterm will now need to restart.
 * When you restart MobaXterm you will be prompted for the passphrase associated with your private key.
 
+> **_NOTE:_** It is best to copy and paste the passphrase from the credentials you were sent, or from a password manager if you are using your own account. To paste, first left click in the correct place (in the terminal window somewhere) then right-click to paste what's on the Windows clipboard. Note that the characters of your password will NOT be displayed as you type/paste them (this is normal!)
+
 Click "Start local terminal".
 
 You can then check that your key is correctly loaded with this command in the terminal window: 
@@ -159,6 +161,8 @@ $ ssh-add ~/.ssh/id_rsa_jasmin
 You can add the `-K` option here: this stores the passphrase in your KeyChain, so that it's available whenever you're logged in to your Mac. Obviously, **only** do this on a machine where your initial login after rebooting is protected by a strong password and/or fingerprint ID.
 
 You'll be prompted for your passphrase at this point.
+
+> **_NOTE:_** It is best to copy and paste the passphrase from the credentials you were sent, or from a password manager if you are using your own account. Note that the characters of your password will not be displayed as you type/paste them (this is normal!)
 
 > **_NOTE:_**  [Advanced users] You can also add that same line to your `~/.bashrc` so that this is automatically done for you in each new terminal window you open. Only when you reboot your machine will you be prompted for your passphrase.
 For full details see the `man` page for `ssh-add`.
@@ -192,6 +196,10 @@ Now, load your key, having stored it in your `~/.ssh` directory:
 $ ssh-add ~/.ssh/id_rsa_jasmin
 ```
 
+You'll be prompted for the passphrase at this point.
+
+> **_NOTE:_** It is best to copy and paste the passphrase from the credentials you were sent, or from a password manager if you are using your own account. Note that the characters of your password will not be displayed as you type/paste them (this is normal!)
+
 Check it's loaded
 ```
 $ ssh-add -l
@@ -203,22 +211,46 @@ You should see output like this:
 ```
 If not, you will need to try again before you will be able to log in to a remote host using the key.
 
-### Troubleshooting (all platforms)
+### Troubleshooting loading your key
 
-* If you see a message like the following, this means that you need to restrict the permissions on your key file so that only you (and no other users on your system) can read your key.
-```
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-Permissions 0644 for 'id_rsa_jasmin' are too open.
-It is required that your private key files are NOT accessible by others.
-This private key will be ignored.
-```
-You can do this with a command like this (you'll need to do this in a terminal window):
-```
-chmod 600 <path>/id_rsa_jasmin  
-```
-where `<path>` is wherever you saved your key (see above: this can vary by platform).
+1. Unprotected key
+
+   If you see a message like the following, this means that you need to restrict the permissions on your key file so that only you (and no other users on your system) can read your key.
+   ```
+   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+   @         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+   Permissions 0644 for 'id_rsa_jasmin' are too open.
+   It is required that your private key files are NOT accessible by others.
+   This private key will be ignored.
+   ```
+   You can do this with a command like this (you'll need to do this in a terminal window):
+   ```
+   chmod 600 <path>/id_rsa_jasmin  
+   ```
+   where `<path>` is wherever you saved your key (see above: this can vary by platform).
+
+2. Agent refused connection
+
+   Sometimes this message is displayed, but as long as your key is listed when you do `ssh-add -l` then the command has worked.
+
+3. Could not open a connection to your authentication agent
+
+   This means that the agent is not running, for some reason. If you can't out why, having checked the instructions above for your platform, you can start it manually with
+   ```
+   $ eval (ssh-agent -s)
+   agent pid 1234    # or some similar output
+   ```
+   You can then load your key as described above with the `ssh-add` command. Loaded this way, the key may or may not persist between sessions.
+   
+4. Not prompted for your passphrase when MobaXterm restarts (having specified the location of your key)
+   * In MobaXterm settings / SSH
+      * Check that you have ticked "Use internal SSH Agent 'MobAgent'"
+      * Check that you have UN-ticked "Use external pageant"
+      * (you should also have ticked "Forward SSH agents", but that's not relevant to this problem)
+   * Restart MobaXterm, retry
+   * Uninstall MobaXterm, download the latest version & re-install. Reboot your machine. Cross your fingers ;-)
+   * If it still doesn't work then start a session window and refer to item 3 above and load your key manually.
 
 ### Network Considerations
 
@@ -228,9 +260,10 @@ Please consult the [documentation here](https://help.jasmin.ac.uk/article/190-ch
 
 If it does, then you can use the "standard" login servers, `login[1,3,4].jasmin.ac.uk` and `nx-login[1,3].jasmin.ac.uk` (see below for what the `nx-` login servers are for).
 
-If it does not, then you can use the "contingency" login servers, currently `login2.jasmin.ac.uk` and `nx-login2.jasmin.ac.uk`. You may not be able to use the transfer servers, however, so this may affect *some* of what you can do in [exercise 3](../ex03), and it's something you might need to sort out with your local IT support if you plan to register to use JASMIN longer-term after the workshop.
+If it does not, then you can use the "contingency" login servers, currently `login2.jasmin.ac.uk` and `nx-login2.jasmin.ac.uk`. You may not be able to use the standard transfer servers, however, so in this case you should use the contingency transfer server `xfer3.jasmin.ac.uk` (but if you are using your own account, rather than a training account you will need to apply for this additional role if you don't have it already.).
+If you plan to become a JASMIN user for longer-term use, it's something you should sort out with your local IT support if you plan to use JASMIN longer-term after the workshop: ask them to "ensure that the IP address your machine is assigned (including when connected via VPN) has forward and reverse DNS lookup enabled."
 
-We'll cover how to actually connect to the login servers in [exercise 1](../ex01), but please bear this in mind for your choice of server to connect to. 
+We'll cover how to actually connect to the login servers in [exercise 1](../ex01), but please bear this in mind for your choice of which server to connect to. 
 
 ### Graphical desktop (Optional)
 
