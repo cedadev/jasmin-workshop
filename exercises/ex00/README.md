@@ -252,6 +252,11 @@ If not, you will need to try again before you will be able to log in to a remote
    * Uninstall MobaXterm, download the latest version & re-install. Reboot your machine. Cross your fingers ;-)
    * If it still doesn't work then start a session window and refer to item 3 above and load your key manually.
 
+
+This video covers some issues you might encounter when logging in, including network considerations mentioned below. **Please watch this before attempting to connect in [ex01](../ex01)**. 
+
+[VIDEO GOES HERE]
+
 ### Network Considerations
 
 JASMIN is an academic research infrastructure primarily designed to be accessible from other acadmic research networks. As such, and as part of a layered approach to security, it is preferred that you access JASMIN from your institutional network. This means that if you are connecting from home via your home broadband internet service provider, it is preferred that you first access your insitutional network and then connect from a host there, or that you use your instutional Virtual Private Network (VPN) to obtain an IP address which belongs to your institutional network before making your connection.
