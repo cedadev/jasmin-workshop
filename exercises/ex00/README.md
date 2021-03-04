@@ -255,7 +255,7 @@ If not, you will need to try again before you will be able to log in to a remote
 
 This video covers some issues you might encounter when logging in, including network considerations mentioned below. **Please watch this before attempting to connect in [ex01](../ex01)**. 
 
-[VIDEO GOES HERE]
+[![Ex00 Getting set up for the JASMIN Workshop - login issues](https://img.youtube.com/vi/3_teCxssQAU/mqdefault.jpg)](https://www.youtube.com/watch?v=3_teCxssQAU)
 
 ### Network Considerations
 
