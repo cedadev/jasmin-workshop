@@ -1,7 +1,6 @@
 ---
 title: Interactive computing on a sci server
 author: Fatima Chami
-Videos: 
 ---
 
 # Exercise 2: Interactive computing on a sci server
