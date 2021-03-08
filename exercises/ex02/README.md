@@ -32,7 +32,13 @@ After completing this exercise I will be able to:
  * SSH key & passphrase 
  * Terminal application or NX client
  * A valid `jasmin-login` grant associated with your JASMIN account 
- 
+
+### Videos
+You can follow this exercise by watching the videos below, or by following the text of this article, or a combination of both.
+|  |  |
+| --- | --- |
+| Task | [![](https://img.youtube.com/vi/_09pMUX6fLQ/mqdefault.jpg )](https://www.youtube.com/watch?v=_09pMUX6fLQ) |
+| Solutions & Discussion | coming soon |
 
 ### Your task
 
