@@ -1,14 +1,13 @@
 ---
 title: Interactive computing on a sci server
 author: Fatima Chami
-Videos: 
 ---
 
 # Exercise 2: Interactive computing on a sci server
 
 ### Scenario
 
-I need to do a random sampling of my dataset to estimate the distribution of sample mean. I need to use the random number generator function available in the numpy library in Python. I need to test this function. I also need to check if there is a potential multithreading with Numpy array arithmetic e.g. dot product.
+I need to do a random sampling of my dataset to estimate the distribution of sample mean. I need to use the random number generator function available in the Numpy library in Python. I need to test this function. I also need to check if there is a potential multithreading with Numpy array arithmetic e.g. dot product.
 
 ### Objectives 
 
@@ -26,6 +25,7 @@ After completing this exercise I will be able to:
  * Python example scripts are provided: 
  `/gws/pw/j05/workshop/exercises/ex02/code/random-number-gen.py`
  `/gws/pw/j05/workshop/exercises/ex02/code/dot-product-2arrays.py`
+ * help documentation at https://help.jasmin.ac.uk
 
 ### Local resources
 
@@ -44,7 +44,7 @@ This is the outline of what you need to do. The recommended way of doing each st
    * Choose a Sci server with the lowest load 
    * Login to the chosen sci server on each terminal                   
    > **_NOTE:_**  The purpose of having two SSH terminal sessions running on the same sci server is to facilitate compute and monitoring. One terminal is for executing commands on the sci while the second terminal is for monitoring user processes (or editing a script)
-1. Execute the first Python example script on the sci machine
+1. Execute the first Python example script on the Sci server
    * Copy the first Python example script `random-number-gen.py`(shown in the JASMIN resources section) to your current working directory
    * Find out the software available on JASMIN via the module environment by executing the command `module avail`
    * Enable a Python environemnt via the module `jaspy` by executing  the command `module add jaspy`
@@ -56,7 +56,7 @@ This is the outline of what you need to do. The recommended way of doing each st
    * How many processes do you have?
    * Sort all processes per CPU usage by executing `top` 
    * To exit the monitoring tool `top` press the keyboard letter `q` 
-   * Try another utility to list all your processes on the sci `ps -aux | grep <username>`
+   * Try another utility to list all your processes on the sci server `ps -aux | grep <username>`
 1. Make changes to the Python example and re-execute it
    * Open the Python script file in a text editor e.g. vim, emacs
    * Decrease the size of the random numbers `nran`from 1024 to 500
@@ -67,12 +67,13 @@ This is the outline of what you need to do. The recommended way of doing each st
 1. Test for a potential multithreading
    * Copy the second Python example script (shown in the JASMIN resources section) to your current working directory 
    * Execute the command `python dot-product-2arrays.py`
-   * On the monitoring terminal execute `top -H -u <username>`
+   * On the monitoring terminal execute the command  `top -H -u <username>` or `ps -T -p <pid>`
    * How many threads the process spawned?
-   * Set the environment variable `OMP_NUM_THREAD` to 1 by executing the command `export OMP_NUM_THREAD=1`
+   * Set the environment variable `OMP_NUM_THREADS` to 1 by executing the command `export OMP_NUM_THREADS=1`
    * Re-execute `python dot-product-2arrays.py`
-   * Did the setting `OMP_NUM_THREAD=1` disable multithreading?
-   * Edit the script in a text editor by uncommenting the line of code `#os.environ[“OMP_NUM_THREADS”] = “2"` and rerun the script
+   * Did the setting `OMP_NUM_THREADS=1` disable multithreading?
+   * Edit the script in a text editor and uncomment the line of code `#os.environ[“OMP_NUM_THREADS”] = “2"` and save the script 
+   * Rerun the Python script 
    * What can you conclude?
    * Logout from the sci machine to end your SSH session on JASMIN sci
 
@@ -80,45 +81,57 @@ This is the outline of what you need to do. The recommended way of doing each st
 
 All too easy? Here are some questions to test your knowledge an understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk)
 
-1. Is there a limit on the number of processes running on the sci server at any given time per a user?
+1. Is there a limit on the number of processes running on the sci server at any given time by a user?
+1. What tasks are not suitable to run on the sci servers?
 1. What software is available via the module environment?
-1. How to switch between different version of a software module e.g. `jaspy`?
-1. Is the `jasmin-sci` module different to `jaspy`?
-1. What tasks are not suitable to run on the sci machines?
-1. How to limit the number of threads?
+1. How do you switch between different version of a software modulefile?
 1. What text editors are available on JASMIN?
+1. How to control and limit the number of threads?
 1. Can I install software on JASMIN?
 
 ### Review / alternative approaches / best practice
 
-You will be able to run a Python script on the scientific analysis servers. You will be able to monitor the resources used by your script on the scientific analysis servers. You can scale up by using the high-memory scientific sci[3,6,8].jasmin.ac.uk server for a large set of random numbers
+You will be able to run and test a script on the scientific analysis servers. You will be able to monitor the resources used by your script. You can scale up by using the high-memory scientific sci[3,6,8].jasmin.ac.uk server for testing and then move your workflow to the batch cluster LOTUS.
 
+ What tasks I can not run on the Sci server?
 * Do not run processes with execution time over two hours
-* Do not use `/tmp` on the scientific servers and transfer servers. Using /tmp can cause the scientific analysis server to crash, resulting in loss of work. Set the environment variable TMPDIR to a temporary directory under a GWS area- `export TMPDIR=/GWS-path/<your_project>/<your_username>/tmp`
+* Do not run parallel applications e.g. MPI or OpenMP, high threaded codes on the Sci servers
+* Do not run data transfer processes on the sci servers. Please use `xfer[1,2].jasmin.ac.uk` (Except when moving data from `/work/scratch-pw` to a GWS because `/work/scratch-pw` is not mounted on the `xfer` servers)
+* Use the high memory scientific analysis servers `sci[3,6,8].jasmin.ac.uk` for testing high memory or multithreaded code 
+* Only test multi-threaded code on the high memory servers and limit the number of threads
+* It is necessary to consider moving a processing task to the batch system LOTUS when the resource demand is high, e.g. CPU, memory and processing time
+
+
+Manage your processes on the Sci server:
+* If a process hangs, do not simply close the terminal window. Please contact the helpdesk and alert the team so that the process can be shut down. Otherwise hung processes build up and contribute to machine overloading.
+* Many instances of an application e.g., Ipython, can impact the performance of the scientific servers. 
+* Monitor the CPU and memory resources of your processes 
+* You might use STOP and CONT to delay execution of a process until a less-busy time like this: `kill -STOP <pid>`, `kill  -CONT <pid>` or kill the process `Kill -TERM <pid>`
+* Do not “hog” IDL development licenses on the Sci servers. A limited number of these are available for development and compilation of IDL code which should then be run on LOTUS using IDL runtime licenses, of which there are many more
+
+Usage of the storage:
+* Do not use `/tmp` on the scientific servers. Using /tmp can cause the scientifiec analysis server to crash, resulting in loss of work. Set the environment variable TMPDIR to a temporary directory under a GWS area- `export TMPDIR=/GWS-path/<your_project>/<your_username>/tmp`
 * Do not generate huge numbers of files (>1000) in a single directory
-* Do not run data transfer processes on the scientific analysis servers. Please use `xfer[1,2].jasmin.ac.uk` (Except when moving data from `/work/scratch-pw` to a GWS because `/work/scratch-pw` is not mounted on the `xfer` servers)
+* The user home directory `/home/users/<username>` has a fixed quota of 100 GB
+* Manage your disk usage space regularly, e.g. delete unused files and archive files using the `tar` command 
 
-* Do not run parallel applications e.g. MPI or OpenMP, high threaded codes on the scientific analysis servers 
-* Use the high memory scientific analysis servers `sci[3,6,8].jasmin.ac.uk` for testing high memory and/or multithreaded code (sci3 (48 CPUs, 1000GB RAM), sci8 (24 CPUs, 384GB RAM))
-* Limit the number of threads when testing a multithreaded code on the scientific analysis servers
-* Many instances of an application e.g., Ipython or IDL  can impact the performance of the scientific servers. Please note that for IDL, we have a large pool of run-time licences and a much more limited pool of development licences.
-* It is necessary to consider moving a processing task to the batch system LOTUS when the resources demand is high.  
-
-
-https://help.jasmin.ac.uk/article/121-sci-servers 
-https://help.jasmin.ac.uk/article/176-storage   
 
 ### Cheat Sheet
 
 1. Login to a JASMIN scientific analysis server
    * Login to the chosen sci server from a JASMIN login server
    ```
-   $ ssh -A sci<number>.jasmin.ac.uk
+   $ ssh -A <username>@sci<number>.jasmin.ac.uk
    ```
-1. Execute the Python example script on the sci 
+   For example the user `train049` connects to sci4:
+   ```
+   $ ssh -A train049@sci4.jasmin.ac.uk
+   [train049@sci4 ~]$
+   ```
+1. Execute the Python example script on the Sci server 
    * Copy the Python example script (shown in the JASMIN resources section) to your current working directory 
    ```
-   $ cp /gws/pw/j05/workshop/exercises/ex02/src/random-number-gen.py .
+   $ cp /gws/pw/j05/workshop/exercises/ex02/code/random-number-gen.py .
    ```
    * Enable a Python environemnt via the module `jaspy` by executing  the command `module add jaspy`
    ```
@@ -130,49 +143,47 @@ https://help.jasmin.ac.uk/article/176-storage
    * Execute the Python script `python random-number-gen.py` 
    ```
    $ python random-number-gen.py
-   1024  ======>>> random numbers
-   I am sleeping for 40 seconds so you can check the resources usage   
+   Get ready to monitor PID 10108
+   1024 ======>>> random numbers
+   Process 17203 is in sleep mode for 10 sec check its resources usage in this state
+   Finished in 3.316218542982824 seconds  
    ```
-   * Check the process ID (pid), state, memory and CPU usage on the monitoring terminal
+   * Check the process ID `PID`, state `S`, memory `%MEM%`and CPU `%CPU`usage on the monitoring terminal from the interactive `top` command:
+   ```
+   $ top -u <username> 
+   ```
 
-   * How many random numbers did the `random-number-gen.py` generate?
-   ```
-   1024  ======>>> random numbers
-   ```
 1. Monitor your processes on the sci server
    * Execute the Linux command `top -u <username>` 
    ```
    $ top -u <username>
    ```
-   ![](images/Top-output-01.png)
-   ![](images/Top-output-04.png)
-   ![](images/Top-output-02.png)
-   * Which process is running? give the process ID
-   ```
-   $ ps -u <username>
+   ![](images/Top-output-nran1024-run-new.png)
+   ![](images/Top-output-nran1024-sleep.png)
 
-   ```
+   * Which process is running? give the process ID
+
+      The process ID  and its state are shown in the 1st column `PID` and  8th column `S`, respectively. Python process with PID 10108 is in Sleep state but still using 3.3 %MEM which is 1 GB of the physical/resident memory `RES` (6th column)
+
    * Sort all processes per CPU usage Execute `top` 
    ```
    $ top 
-    insert a table or an image ???
+       No screenshot to avoid displaying usernames of logged on users 
    ```
    * To exit the monitoring tool `top` press the keyboard letter `q` 
+
 1. Make changes to the Python example and re-execute it
    * Open the Python script file in a text editor e.g. vim, emacs
    ```
    $ vim random-number-gen.py
    ```
-   * Decrease the size of the random numbers from 1024 to 500
-   ```
-   # Number of random numbers to be generated 
-   nran = 1024
-   ```
-   * Save the file and exit the text editor 
+   * Decrease the size of the random numbers `nran`from 1024 to 500
+    ![](images/vim-screenshot-01.png)
+  
+   * Save the file and exit the text editor `vim`
    ```
    :wq
    ```
-1. Compare the compute resources to generate the set 1024 and 500 random number 
    * Execute `python random-number-gen.py`
    ```
    $ python random-number-gen.py
@@ -183,33 +194,113 @@ https://help.jasmin.ac.uk/article/176-storage
    ```
    $top -u <username>
    ```
-   ![](images/Top-output-03.png)
+    ![](images/Top-output-nran500-run.png)
+    ![](images/Top-output-nran500-sleep.png)
      * What can you conclude?   
-The process's memory usage was reduced by 70 %
-1. Logout from the sci server to end your SSH session on JASMIN 
-```
-$ logout
-Connection to sci<number>.jasmin.ac.uk closed.   
-```
+     The Python process used less CPU and memory to generate and store `nran=500` in memory compared to `nran=1024`
+
+1. Test for a potential multithreading
+   * Copy the second Python example script (shown in the JASMIN resources section) to your current working directory 
+   ```
+   $ cp /gws/pw/j05/workshop/exercises/ex02/code/dot-product-2arrays.py .
+   ```
+
+   * Execute the command `python dot-product-2arrays.py`
+   ```
+   $ module add jaspy
+   $ python dot-product-2arrays.py
+   Process 14545 started
+   Time with None threads: 15.869181 s
+   Finished in 15.869181300047785 seconds
+   ```
+      Note: the variable `echo $OMP_NUM_THREADS` is not set. Hence, the message above 'None threads'
+   * On the monitoring terminal execute the command  `top -H -u <username>` or `ps -T -p <pid>`
+   ![](images/Top-output-threads.png)
+   using the `ps -T -p <pid>` 
+   ![](images/ps-output-threads.png)
+   * How many threads the process spawned?
+   7 threads with the master process e.g. PID 16566 as shown in the example above. 
+
+   * Set the environment variable `OMP_NUM_THREADS` to 1 by executing the command `export OMP_NUM_THREADS=1`
+   ```
+   $ export OMP_NUM_THREADS=1  
+   $ echo $OMP_NUM_THREADS
+   1
+   ```
+
+   * Re-execute `python dot-product-2arrays.py`
+   ```
+   $ python dot-product-2arrays.py
+   Process 1838 started
+   Time with 1 threads: 14.571710 s
+   Finished in 14.571709612966515 seconds
+   ```
+   * Did the setting `OMP_NUM_THREADS=1` disable multithreading?
+   Yes, the setting of `OMP_NUM_THREADS=1` disabled multithreading. There is only a single process and no threads
+   ![](images/Top-output-threads-set-to-one.png)
+   * Edit the script in a text editor and uncomment the line of code `#os.environ[“OMP_NUM_THREADS”] = “2"` and save the script
+   ![](images/Uncomment-line-threads.png)
+    Note: This setting must be done before numpy import -see screenshot above.
+   * Rerun the Python script 
+   ```
+   $ python dot-product-2arrays.py
+   Process 10625 started
+   Time with 2 threads: 13.889903 s
+   Finished in 13.889903239090927 seconds
+   ```
+   ![](images/Top-output-uncoment2threads-inscript.png)
+   * What can you conclude?
+     There is one process PID 10625 and one threads with SPID 10871.
+     The setting of `os.environ["OMP_NUM_THREADS"] = "2"` from the Python script overrides the setting from the SHELL.
+
+   * Logout from the sci machine to end your SSH session on JASMIN sci
+
+    ```
+   $ logout
+   Connection to sci<number>.jasmin.ac.uk closed.   
+    ```
+
 ### Answers to questions
 
-> 1. Is there a limit on the number of processes running on the sci server at any given time per a user?
+> 1. Is there a limit on the number of processes running on the sci server at any given time by a user?
 
-There is no limit on the number of processes launched by a user on the scientific anaylsis servers. However, the user should limit the number of processes to a minimum 2 as the resource is shared by other users.
+There is no limit on the number of processes launched by a user on the scientific analysis servers. However, the user should limit the number of processes to a maximum of 2 as the sci server is shared by other users. Distribute the processing tasks across other Sci servers and consider moving the tasks to the batch cluster LOTUS.
 
-> 2. What software is available via module environment?
+> 2. What tasks are not suitable to run on the Sci servers?
 
-JASPY, jasmin_sci, Intel/GNU compiler, NetCDF library, IDL.
+ Long-running tasks and heavy processing, MPI parallel codes and multithreaded applications 
 
-> 3. What tasks are not suitable to run on the sci machines?
+> 3. What software is available via module environment?
 
-MPI parallel codes and multithreaded applications 
+JASPY, jasmin_sci, Intel/GNU compiler, NetCDF library, NAG libray and IDL(Restricted)
 
-> 4. What text editor or IDE are available on JASMIN?
+> 4. How do you switch between different version of a software module?
+Use 
 
-Emacs, vim, nedit, geany, ferret
+Here is an example of using the command "module switch" to enable a different version of Python:
 
-> 5. Can I install software on JASMIN?
+```
+$ module add jaspy
+$ python --version
+Python 3.7.6
 
-You can install software in the user home directory if the software licence allows it
+```
+Now, we'll switch to a different version of JASPY to enable Python 2.7 
+```
+$ module switch jaspy/3.7 jaspy/2.7
+$ python --version
+Python 2.7.15 
+```
 
+> 5. What text editor or IDE are available on JASMIN?
+
+Emacs, vim, nedit, geany and nano
+
+> 6. How to control and limit the number of threads? 
+
+Set the environment variable `OMP_NUM_THREADS` by adding the following line of code in your `.bashrc` file `export OMP_NUM_THREADS=1`
+
+
+> 7. Can I install software on JASMIN?                                
+   * You can install software under your home directory for your own use. 
+   * If you need to share a software environment with other JASMIN users and the software licence allows it then enquire on "small files" Group Workspace by contacting the JASMIN support helpdesk.
