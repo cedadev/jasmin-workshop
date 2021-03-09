@@ -37,7 +37,7 @@ After completing this exercise I will be able to:
 You can follow this exercise by watching the videos below, or by following the text of this article, or a combination of both.
 |  |  |
 | --- | --- |
-| Task | [![](https://img.youtube.com/vi/09pMUX6fLQ/mqdefault.jpg )](https://www.youtube.com/watch?v=09pMUX6fLQ) |
+| Task | [![](https://img.youtube.com/vi/_09pMUX6fLQ/mqdefault.jpg )](https://www.youtube.com/watch?v=_09pMUX6fLQ) |
 | Solutions & Discussion | [![](https://img.youtube.com/vi/PpkAQWDOj9g/mqdefault.jpg )](https://www.youtube.com/watch?v=PpkAQWDOj9g) |
 | Demonstration | [![](https://img.youtube.com/vi/kl1rrsF3l5A/mqdefault.jpg )](https://www.youtube.com/watch?v=kl1rrsF3l5A) |
 
