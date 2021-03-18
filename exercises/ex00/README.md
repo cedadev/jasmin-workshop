@@ -41,7 +41,7 @@ After competing this exercise I will be able to:
 
 ### Introduction
 
-The [Overview presentation](../overview) given at the start of the workshop will cover much of the what / why / where / how questions you may have, so this initial exercise is about setting up what you will need in order to take part, rather than learning about how you can use JASMIN.
+The [Overview presentation](https://www.youtube.com/watch?v=HQjRDtgW3Fg) given at the start of the workshop will cover much of the what / why / where / how questions you may have, so this initial exercise is about setting up what you will need in order to take part, rather than learning about how you can use JASMIN.
 
 The course does assume some basic knowledge listed below. There are plenty of good learning resources and tutorials in existence already, so rather than duplicate these, we have concentrated in the workshop on aspects specific to working on JASMIN.
 
