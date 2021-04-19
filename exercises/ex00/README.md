@@ -38,7 +38,6 @@ After competing this exercise I will be able to:
     * SSH Key pair
     * Passphrase for SSH Key
     * username for the training account
-    * password for the training account
 
 
 ### Introduction
@@ -87,6 +86,8 @@ The overall concept is as follows. All the applications we'll cover follow the s
    * For your training account, the *public* key `id_rsa_jasmin.pub` is already put into the right place at the JASMIN end for you.
 * The software which you use to connect to JASMIN needs to "present" your private key, but to do that, first you have to load it, which involves "unlocking" it with its passphrase. 
 > **_NOTE:_**  Private keys for accessing JASMIN must always be protected with a strong passphrase. **DO NOT** use an unprotected private key, and **DO NOT** share your key with anyone else. JASMIN has a strict **1 key, 1 user** policy.
+
+> **_NOTE:_**  The names of the key files (`id_rsa_xxxx` and `id_rsa_xxxx.pub`) are not significant, only their content is. So if the names clash with files you already have, feel free to rename them yourself (it makes sense to keep the `.pub` extension for the public key) but remember to use the new names in place of the ones supplied when you're working through these exercises. 
 
 You will also need to enable "agent forwarding", meaning that the same key can be used for onward connections to other machines as well as the first one. Different applications have different ways of applying this setting.
 * When you use your application to connect to a JASMIN server, under the hood there's a check that the 2 halves of your key match. If they don't, you'll be denied access.
@@ -252,7 +253,12 @@ If not, you will need to try again before you will be able to log in to a remote
       * (you should also have ticked "Forward SSH agents", but that's not relevant to this problem)
    * Restart MobaXterm, retry
    * Uninstall MobaXterm, download the latest version & re-install. Reboot your machine. Cross your fingers ;-)
-   * If it still doesn't work then start a session window and refer to item 3 above and load your key manually.
+   * If it still doesn't work then start a session window and refer to item 3 above and load your key manually as follows:
+
+```
+$ eval $(ssh-agent -s)
+$ ssh-add ~/.ssh/id_rsa_jasmin
+```
 
 
 This video covers some issues you might encounter when logging in, including network considerations mentioned below. **Please watch this before attempting to connect in [ex01](../ex01)**. 
