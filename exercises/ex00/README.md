@@ -251,6 +251,8 @@ If not, you will need to try again before you will be able to log in to a remote
       * Check that you have ticked "Use internal SSH Agent 'MobAgent'"
       * Check that you have UN-ticked "Use external pageant"
       * (you should also have ticked "Forward SSH agents", but that's not relevant to this problem)
+   * In MobaXterm settings / Terminal
+      * Check that you have "Terminal shell: BASH" selected, not one of the other options.
    * Restart MobaXterm, retry
    * Uninstall MobaXterm, download the latest version & re-install. Reboot your machine. Cross your fingers ;-)
    * If it still doesn't work then start a session window and refer to item 3 above and load your key manually as follows:
