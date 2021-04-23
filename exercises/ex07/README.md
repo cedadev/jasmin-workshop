@@ -69,28 +69,28 @@ This exercise demonstrates how to:
 Alternative approaches could include:
 
  1. Share your environment with others:
-   If you need to create your own environment it is important to be aware of which file system you are working on:
-     - "SOF" (e.g. `/gws/nopw/j0*`): does not perform well with small files at present.
-     - "SSD" (e.g. `$HOME` and `/gws/smf/j0*`): performs much better with small files.
+     If you need to create your own environment it is important to be aware of which file system you are working on:
+         - "SOF" (e.g. `/gws/nopw/j0*`): does not perform well with small files at present.
+         - "SSD" (e.g. `$HOME` and `/gws/smf/j0*`): performs much better with small files.
 
-   If you are building an environment for your use only then it makes sense to create it under your `$HOME` directory.
+     If you are building an environment for your use only then it makes sense to create it under your `$HOME` directory.
 
-   If you need to share an environment with other JASMIN users you can:
-     - Request a "small files" Group Workspace (GWS).
-     - Install the software environment within the "small files" GWS.
+     If you need to share an environment with other JASMIN users you can:
+         - Request a "small files" Group Workspace (GWS).
+         - Install the software environment within the "small files" GWS.
 
-   All users with access to that GWS will then be able to access the environment.
-   See: [https://help.jasmin.ac.uk/article/4732-share-software-envs](https://help.jasmin.ac.uk/article/4732-share-software-envs)
+     All users with access to that GWS will then be able to access the environment.
+     See: [https://help.jasmin.ac.uk/article/4732-share-software-envs](https://help.jasmin.ac.uk/article/4732-share-software-envs)
 
  2. Request that your software dependencies are added to the common Python 3 "jaspy" environment on JASMIN:
-   See more details at:
-     https://help.jasmin.ac.uk/article/4729-jaspy-envs#request-updates
+     See more details at:
+         https://help.jasmin.ac.uk/article/4729-jaspy-envs#request-updates
 
  3. Set up a virtual environment without "system site packages":
-   We called the "venv" module with this argument: `--system-site-packages`
-   That means that all the packages in the base jaspy Python 3 environment are available in the virtual environment.
+     We called the "venv" module with this argument: `--system-site-packages`
+     That means that all the packages in the base jaspy Python 3 environment are available in the virtual environment.
 
-   However, you might prefer to only keep the core Python 3 packages. If that is the case then simply remove the `--system-site-packages` flag.
+     However, you might prefer to only keep the core Python 3 packages. If that is the case then simply remove the `--system-site-packages` flag.
 
 ### Cheat Sheet
 
