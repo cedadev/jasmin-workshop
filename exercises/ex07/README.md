@@ -89,6 +89,7 @@ Alternative approaches could include:
          https://help.jasmin.ac.uk/article/4729-jaspy-envs#request-updates
 
  3. Set up a virtual environment without "system site packages":
+
      We called the "venv" module with this argument: `--system-site-packages`
      That means that all the packages in the base jaspy Python 3 environment are available in the virtual environment.
 
