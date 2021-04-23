@@ -69,6 +69,7 @@ This exercise demonstrates how to:
 Alternative approaches could include:
 
  1. Share your environment with others:
+
      If you need to create your own environment it is important to be aware of which file system you are working on:
          - "SOF" (e.g. `/gws/nopw/j0*`): does not perform well with small files at present.
          - "SSD" (e.g. `$HOME` and `/gws/smf/j0*`): performs much better with small files.
@@ -83,6 +84,7 @@ Alternative approaches could include:
      See: [https://help.jasmin.ac.uk/article/4732-share-software-envs](https://help.jasmin.ac.uk/article/4732-share-software-envs)
 
  2. Request that your software dependencies are added to the common Python 3 "jaspy" environment on JASMIN:
+
      See more details at:
          https://help.jasmin.ac.uk/article/4729-jaspy-envs#request-updates
 
