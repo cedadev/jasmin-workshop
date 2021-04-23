@@ -33,8 +33,8 @@ After completing this exercise I will be able to:
 You can follow this exercise by watching the videos below, or by following the text of this article, or a combination of both.
 |  |  |
 | --- | --- |
-| Task | [![](https://img.youtube.com/vi/--insert--id--/mqdefault.jpg )](https://www.youtube.com/watch?v=--insert--id--) |
-| Solutions & Discussion | [![](https://img.youtube.com/vi/--insert--id--/mqdefault.jpg )](https://www.youtube.com/watch?v=--insert--id--) |
+| Task | [![TO BE ADDED](https://img.youtube.com/vi/--insert--id--/mqdefault.jpg )](https://www.youtube.com/watch?v=--insert--id--) |
+| Solutions & Discussion | [![TO BE ADDED](https://img.youtube.com/vi/--insert--id--/mqdefault.jpg )](https://www.youtube.com/watch?v=--insert--id--) |
 
 ### Your task
 
