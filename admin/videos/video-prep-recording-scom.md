@@ -8,8 +8,8 @@
  - hide excess browser and adobe header/footer bars
  - set up mobaxterm in Compact Mode (by right-clicking on left sidebar and selecting.
  - print the relevant slides to a PDF (from the Google slides)
- - set up the PDF of:
-   - hide title bars
+ - set up of the PDF:
+   - NOTE: hide title bars
    - (intro) title page / JASMIN resources diagram (specific to the individual exercise)
    - (discussion) title page / links page
  - set up chrome with only one tab: the exercise README.md
@@ -30,7 +30,7 @@ In terms of JASMIN resources, you will... [JASMIN RESOURCES]
 
 This diagram shows which JASMIN services... [RESOURCE DIAGRAM WITH HIGHLIGHTED COMPONENTS]
 
-And in terms local resources, you will... [LOCAL RESOURCES]
+And in terms of local resources, you will need... [LOCAL RESOURCES]
 
 Here is the outline of the task... [DESCRIBE TASK]
 
@@ -38,8 +38,7 @@ When you have finished working through the task, there are some extra questions 
 
 So, what next?
   - try out the task for yourself
-  - watch the solutions and discussion video
-  - the video includes a walk-through of the task, discussions of alternative approaches and best practice guidance
+  - watch the solutions and discussion video - the video includes a walk-through of the task, discussions of alternative approaches and best practice guidance
   - it also gives answers to the self-test questions
 
 ### Script for videos: part 2
@@ -60,5 +59,3 @@ Now that we have completed the task, let's have a look at some of the alternativ
 Let's have a look at some of the questions that were asked earlier... [ANSWERS TO QUESTIONS]
 
 That brings us to the end of this video. If you need any further information, here are links to the JASMIN website and Help documentation. Please have a look in the Help documentation first to see if you can find what you are looking for. If you can't find it there, then by all means contact us at the JASMIN Helpdesk e-mail address given here.
-
-
