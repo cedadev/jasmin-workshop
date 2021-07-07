@@ -24,7 +24,7 @@ After completing this exercise I will be able to:
  * sci servers: `sci[1-6].jasmin.ac.uk`
  * LOTUS batch processing cluster
  * common software: CDO (Climate Data Operators) tool
- * GWS (read/write): `/gws/nopw/j04/workshop`
+ * GWS (read/write): `/gws/pw/j05/workshop`
  * CEDA Archive (read-only): requires a CEDA account
  * help documentation at https://help.jasmin.ac.uk
 
@@ -62,6 +62,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
  1. You have learnt about some basic commands to interact with SLURM scheduler (such as `sbatch` and `squeue`). This manages the submission and execution of jobs via the LOTUS queues. Which other commands might be useful when interacting with the scheduler? 
  2. Which queues are available on LOTUS? What is the difference between them? Why would you choose one over another?
  3. How can you instruct SLURM to allocate CPUs and memory to specific jobs when you run them? Can you change the allocations when the job is queuing? 
+ 4. How can you cancel all your jobs in the SLURM queue?
 
 ### Review / alternative approaches / best practice
 
@@ -133,7 +134,7 @@ This demonstrates best practice:
         1. Run the CDO tool to extract the "TCC" variable from the input file to the output file
     1. If you are stuck, you can use the script located at:
 
-        `/gws/nopw/j04/workshop/exercises/ex05/code/extract-era-data.sh`
+        `/gws/pw/j05/workshop/exercises/ex05/code/extract-era-data.sh`
 
         [ Source: [https://github.com/cedadev/jasmin-workshop/blob/master/exercises/ex05/code/extract-era-data.sh](https://github.com/cedadev/jasmin-workshop/blob/master/exercises/ex05/code/extract-era-data.sh) ]
 
@@ -143,7 +144,8 @@ This demonstrates best practice:
         1. Standard output file - please ensure this is unique to each job by including the "`%j`" variable in the file name.
         1. Standard error file - please ensure this is unique to each job by including the "`%j`" variable in the file name.
     1. Queue name:
-        1. We will use the main queue for quick serial jobs: "`short-serial`"
+        1. We will use the main queue for quick serial jobs: `short-serial`
+        1. NOTE: if working with a training account, you might need: `--account=workshop --partition=workshop` in your arguments.
     1. Job duration - to allocate a maximum run-time to the job, e.g.: "`00:05`" (5 mins)
     1. Estimated duration - to hint the actual run-time of the job, e.g.: "`00:01`" (1 min)
         1. Setting a low estimate will increase the likelihood of the job being scheduled to run quickly.
@@ -155,7 +157,7 @@ This demonstrates best practice:
 
     1. If you need some advice you can use the script at:
 
-        `/gws/nopw/j04/workshop/exercises/ex05/code/submit-all.sh`
+        `/gws/pw/j05/workshop/exercises/ex05/code/submit-all.sh`
 
         [ Source: [https://github.com/cedadev/jasmin-workshop/blob/master/exercises/ex05/code/submit-all.sh](https://github.com/cedadev/jasmin-workshop/blob/master/exercises/ex05/code/submit-all.sh) ]
 
@@ -191,3 +193,11 @@ There is a [LOTUS queues help page](https://help.jasmin.ac.uk/article/4881-lotus
 > 3. How can you instruct SLURM to allocate CPUs and memory to specific jobs when you run them? 
 
 Table 2 of this [help page](https://help.jasmin.ac.uk/article/4891-lsf-to-slurm-quick-reference) lists common command-line parameters that can be used to instruct SLURM how to allocate CPUs, memory and hosts to certain jobs.
+
+> 4. How can you cancel all your jobs in the SLURM queue?
+
+The following command will do it:
+
+`scancel -u $USER`
+
+
