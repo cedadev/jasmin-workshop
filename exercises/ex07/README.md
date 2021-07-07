@@ -1,5 +1,5 @@
 ---
-title: Exercise 07 - Build your own python 3 environment
+title: Exercise 07 - Building your own python 3 environment
 author: Ag Stephens
 ---
 

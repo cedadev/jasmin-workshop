@@ -19,7 +19,7 @@ Overview presentation
 | [ex04](./exercises/ex04) | Extracting a variable from a file in the CEDA Archive |
 | [ex05](./exercises/ex05) | Batch computing - running a script on LOTUS |
 | ex06 | coming soon: Choosing the right storage for your workflow |
-| ex07 | coming soon: Building your own Python3 environment |
+| [ex07](./exercises/ex07) | Building your own python 3 environment |
 | ex08 | coming soon: Compiling Fortran/C code on JASMIN |
 | ex09 | coming soon: Using Jupyter Notebooks on JASMIN |
 | ex10 | coming soon: Advanced data transfers |
