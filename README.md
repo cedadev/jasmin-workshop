@@ -21,7 +21,7 @@ Overview presentation
 | ex06 | coming soon: Choosing the right storage for your workflow |
 | [ex07](./exercises/ex07) | Building your own python 3 environment |
 | ex08 | coming soon: Compiling Fortran and C code on JASMIN |
-| ex09 | coming soon: Using Jupyter Notebooks on JASMIN |
+| [ex09](./exercises/ex09) | Using Jupyter Notebooks on JASMIN |
 | ex10 | coming soon: Advanced data transfers |
 | ex11 | coming soon: MPI on JASMIN |
 | ex12 | coming soon: using R on JASMIN |
@@ -32,8 +32,8 @@ The following tutorials are also available: these are not interactive like the e
 
 | Tutorial | Topic |
 | --- | --- |
-| t01 | coming soon: Re-useable, re-runnable workflows |
-| t02 | coming soon: Managing a multi-step workflow |
+| tut01 | coming soon: Re-useable, re-runnable workflows |
+| [tut02](./tutorials/tut02) | Managing a multi-step workflow |
 
 If you are using the materials individually (outside of an organised workshop event) then you will need to use your own JASMIN account and a group workspace which you already belong to, rather than the training accounts, and `workshop` group workspace, respectively. Instead of the `workshop` LOTUS queue, please use the `test` queue in this case.
 
