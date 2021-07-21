@@ -20,7 +20,7 @@ Overview presentation
 | [ex05](./exercises/ex05) | Batch computing - running a script on LOTUS |
 | ex06 | coming soon: Choosing the right storage for your workflow |
 | [ex07](./exercises/ex07) | Building your own python 3 environment |
-| ex08 | coming soon: Compiling Fortran/C code on JASMIN |
+| ex08 | coming soon: Compiling Fortran and C code on JASMIN |
 | ex09 | coming soon: Using Jupyter Notebooks on JASMIN |
 | ex10 | coming soon: Advanced data transfers |
 | ex11 | coming soon: MPI on JASMIN |
