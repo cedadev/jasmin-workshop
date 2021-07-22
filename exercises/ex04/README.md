@@ -24,7 +24,7 @@ After completing this exercise I will be able to:
  * login servers: `login[1-4].jasmin.ac.uk`
  * sci servers: `sci[1-6].jasmin.ac.uk`
  * common software: CDO (Climate Data Operators) tool
- * GWS (read/write): `/gws/nopw/j04/workshop`
+ * GWS (read/write): `/gws/pw/j05/workshop`
  * CEDA Archive (read-only): requires a CEDA account
  * help documentation at https://help.jasmin.ac.uk
 
@@ -102,8 +102,8 @@ Best practice considerations:
 4. Decide on the output file path:
 
   ```
-  $ OUTPUT_FILE=/gws/nopw/j04/workshop/users/$USER/ex04/output.nc
-  $ mkdir -p /gws/nopw/j04/workshop/users/$USER/ex04
+  $ OUTPUT_FILE=/gws/pw/j05/workshop/users/$USER/ex04/output.nc
+  $ mkdir -p /gws/pw/j05/workshop/users/$USER/ex04
   ```
 
 5. Activate the environment containing the CDO tool

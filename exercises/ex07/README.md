@@ -1,5 +1,5 @@
 ---
-title: Exercise 07 - Build your own python 3 environment
+title: Exercise 07 - Building your own python 3 environment
 author: Ag Stephens
 ---
 
@@ -30,6 +30,7 @@ After completing this exercise I will be able to:
 * SSH client (to login to JASMIN)
 
 ### Videos
+
 You can follow this exercise by watching the videos below, or by following the text of this article, or a combination of both.
 |  |  |
 | --- | --- |
@@ -44,12 +45,12 @@ This is the outline of what you need to do. The recommended way of doing each st
  1. SSH to a scientific analysis server
  1. Activate the Jaspy Python 3 environment with the `module` command
  1. Create a Python 3 virtual environment in your `$HOME` directory
- 1. Activate the virtual environment
+ 1. Activate your new virtual environment
  1. Pip install the `fixnc` package from the PyPI remote repository
  1. Test that the package can be imported in a python session
  1. Deactivate the virtual environment and test the import again
  1. Write a setup script (`~/setup-workshop-env.sh`) so that you can activate the virtual environment in a single line each time you log in
- 1. Now, whenever you login you can run `source ~/setup-workshop-env.sh` and your own Python 3 environment will be activated
+ 1. Now, whenever you login you can run `source ~/setup-workshop-env.sh` and your own Python 3 virtual environment will be activated
 
 ### Questions to test yourself
 
@@ -71,7 +72,7 @@ Alternative approaches could include:
  1. Share your environment with others:
 
      If you need to create your own environment it is important to be aware of which file system you are working on:
-         - "SOF" (e.g. `/gws/nopw/j0*`): does not perform well with small files at present.
+         - "SOF" (e.g. `/gws/nopw/j0*`, `/gws/pw/j0*`): does not perform well with small files at present.
          - "SSD" (e.g. `$HOME` and `/gws/smf/j0*`): performs much better with small files.
 
      If you are building an environment for your use only then it makes sense to create it under your `$HOME` directory.
@@ -88,7 +89,7 @@ Alternative approaches could include:
      See more details at:
          https://help.jasmin.ac.uk/article/4729-jaspy-envs#request-updates
 
- 3. Set up a virtual environment without "system site packages":
+ 3. Set up a virtual environment _without_ "system site packages":
 
      We called the "venv" module with this argument: `--system-site-packages`
      That means that all the packages in the base jaspy Python 3 environment are available in the virtual environment.

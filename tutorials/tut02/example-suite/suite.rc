@@ -15,11 +15,12 @@
         # This is applied before every task
         pre-script="""set -eu"""
         [[[job]]]
-            batch system = lsf
+            batch system = slurm
             execution time limit = PT5M
         [[[directives]]]
-            -q=short-serial
-            -n=1
+            --partition = workshop
+            --account = workshop
+            --time = 05:00
     [[initialise]]
         script = """echo 'do something'"""
     [[step1]]

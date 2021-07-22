@@ -1,41 +1,37 @@
 ---
-title: Exercise 09 - Using Jupyter Notebooks on JASMIN
+title: Tutorial 02 - Managing a multi-step workflow
 author: Ag Stephens
 ---
 
 
-# Exercise 09: Using Jupyter Notebooks on JASMIN
+# Tutorial 02: Managing a multi-step workflow
 
 ### Scenario
 
-I have been asked to give an introductory seminar on working climate model data. I want an interactive environment that is clear, accessible and is also available to seminar attendees. The JASMIN Notebook Service is a great option because:
- * it provides an interactive interface through a web browser
- * it includes a set of python libraries for data analysis
- * it can read directly from the CEDA Archive
- * 
+I want to analyse a set of historical temperature records from weather stations in the UK. I am interested in calculating annual maximum temperatures for a randomly selected set of 20 counties. These are available from the publicly available "MIDAS-Open" data set in the CEDA archive. There are multiple steps to my workflow so I want to use a tool that (1) can work with LOTUS and (2) can handle dependencies (i.e. only run subsequent tasks if previous tasks have successfully completed).
 
-Overview????
-- what is a jupyter notebook
-- brief intro
-- simple example
-- JASMIN environment constraints
-- (mention separate capability within ext tenancy?)
+I will read data from the MIDAS-Open dataset and aggregate all measurements (from all stations) into a time series of the annual maximum temperatures per county. Then plot a line graph to compare the annual maximum temperature from all counties and write it to a PNG file.
 
 ### Objectives
  
 After completing this exercise I will be able to:
 
- * create a python environment using the virtual environment package (`venv`)
- * activate/deactivate the virtual environment
- * install packages into the virtual environment 
+ * break down a multi-step workflow into independent tasks
+ * configure a basic Rose/Cylc job that includes a multi-step workflow
+ * run the workflow on the `cylc` server on JASMIN
+ * interact with the Cylc graphical user interface
 
 ### JASMIN resources
 
  * JASMIN account with SSH public key uploaded and `jasmin-login` privilege
  * login servers: `login[1-4].jasmin.ac.uk`
- * sci servers: `sci[1-6].jasmin.ac.uk`
+ * Cylc server: `cylc.jasmin.ac.uk`
+ * LOTUS batch processing cluster
+ * GWS (read/write): `/gws/pw/j05/workshop`
+ * `$HOME` directory
+ * CEDA Archive (read-only): requires a CEDA account
  * help documentation at https://help.jasmin.ac.uk
-
+ 
 ### Local resources
 
 * SSH client (to login to JASMIN)
