@@ -37,7 +37,7 @@ def plot_time_series():
         _df = pd.read_csv(fpath, index_col=0)
         dfs.append(_df)
 
-    df = pd.concat(dfs, axis=1, join_axes=[dfs[0].index])
+    df = pd.concat(dfs, axis=1).reindex()
     df.columns = county_labels
 
     title = 'Max Temp time series for 20 UK Counties'
