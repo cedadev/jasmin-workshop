@@ -21,7 +21,7 @@ An example temperature file for a single station and year (in the MIDAS-Open dat
 
 This workflow will generate a graph of a time series of maximum temperature data that looks something like:
 
-![Graph of maximum temperature time series](./images/max-temp-graph2.png)
+![Graph of maximum temperature time series](./images/max-temp-graph.png)
 
 ### Workflow context
 
@@ -47,7 +47,7 @@ The actual tasks are:
 
 It may help to sketch out the process in a simple diagram, as shown here...
 
-![Diagram of the workflow phases](./images/workflow-phases2.png)
+![Diagram of the workflow phases](./images/workflow-phases.png)
 
 ### Objectives
  
