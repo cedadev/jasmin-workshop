@@ -12,9 +12,46 @@ I want to analyse a set of historical temperature records from weather stations 
 
 I will read data from the MIDAS-Open dataset and aggregate all measurements (from all stations) into a time series of the annual maximum temperatures per county. Then plot a line graph to compare the annual maximum temperature from all counties and write it to a PNG file.
 
+An example temperature file for a single station and year (in the MIDAS-Open data set) can be found at:
+
+        /badc/ukmo-midas-open/data/uk-daily-temperature-obs/dataset-version-201901/
+          devon/01359_cheldon-barton/qc-version-1/
+          midas-open_uk-daily-temperature-obs_dv-
+          201901_devon_01359_cheldon-barton_qcv-1_1977.csv
+
+This workflow will generate a graph of a time series of maximum temperature data that looks something like:
+
+![Graph of maximum temperature time series](./images/max-temp-graph2.png)
+
+### Workflow context
+
+This tutorial follows a classic "diamond" structure as follows:
+
+![Diagram of diamond workflow structure](./images/diamond.png)
+
+The **(1)** initialisation tasks must be completed first. 
+
+The **(2)** individual batch tasks will then all run in parallel. 
+
+When they have all completed then the **(3)** finalisation task can be executed.
+
+The actual tasks are:
+
+  1. **Initialisation**: Clone the repository to get the extraction scripts; run the first script 
+     to generate a list of UK counties; write those to a text file.
+
+  2. **Batch**: For each county: calculate a 2000-2017 time series of the annual maximum 
+     temperature across all stations.
+
+  3. **Finalisation**: Read in all the time series files and plot them on a line graph to a PNG file.
+
+It may help to sketch out the process in a simple diagram, as shown here...
+
+![Diagram of the workflow phases](./images/workflow-phases2.png)
+
 ### Objectives
  
-After completing this exercise I will be able to:
+After completing this tutorial I will be able to:
 
  * break down a multi-step workflow into independent tasks
  * configure a basic Rose/Cylc job that includes a multi-step workflow
@@ -38,128 +75,283 @@ After completing this exercise I will be able to:
 
 ### Videos
 
-You can follow this exercise by watching the videos below, or by following the text of this article, or a combination of both.
+You can follow this tutorial by watching the videos below, or by following the text of this article, or a combination of both.
 |  |  |
 | --- | --- |
 | Task | [![TO BE ADDED](https://img.youtube.com/vi/--insert--id--/mqdefault.jpg )](https://www.youtube.com/watch?v=--insert--id--) |
 | Solutions & Discussion | [![TO BE ADDED](https://img.youtube.com/vi/--insert--id--/mqdefault.jpg )](https://www.youtube.com/watch?v=--insert--id--) |
 
-### Your task
+### The task
 
-This is the outline of what you need to do. The recommended way of doing each step is covered in the "Cheat Sheet" but you may wish to try solving it for yourself first.
+This is the outline of the overall task. The recommended way of doing each step is covered in the "Walkthrough" below.
 
- 1. Your starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
- 1. SSH to a scientific analysis server
- 1. Activate the Jaspy Python 3 environment with the `module` command
- 1. Create a Python 3 virtual environment in your `$HOME` directory
- 1. Activate your new virtual environment
- 1. Pip install the `fixnc` package from the PyPI remote repository
- 1. Test that the package can be imported in a python session
- 1. Deactivate the virtual environment and test the import again
- 1. Write a setup script (`~/setup-workshop-env.sh`) so that you can activate the virtual environment in a single line each time you log in
- 1. Now, whenever you login you can run `source ~/setup-workshop-env.sh` and your own Python 3 virtual environment will be activated
-
-### Questions to test yourself
-
-All too easy? Here are some questions to test your knowledge an understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk)
-
- 1. Which packages are available in the default `jaspy` environment on JASMIN? Are there any non-Python packages included? Can you find out their versions?
- 2. A different approach would be to use `miniconda` to install your own Python environment (independent of `jaspy`). Can you install miniconda in your `$HOME` directory and then create a new Python 3 environment inside it?
+ 1. The starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
+ 1. SSH to the Rose & Cylc server (with the `-X` flag to forward X-windows)
+ 1. In this example you are given the building blocks to construct a "suite file" for use with Rose & Cylc
+ 1. Wrap the scripts in a Rose suite by copying the example suite to a new directory called `my-suite` and modifying it
+ 1. Run the Rose suite
+ 1. If the suite partially runs and leaves log/working directories in place you can clean these up and run it again
+ 1. If you need to stop the suite then you can instruct Cylc to stop it
 
 ### Review / alternative approaches / best practice
 
-This exercise demonstrates how to:
- 1. Activate the default Jaspy Python environment on JASMIN.
- 1. Create a Python 3 "virtual environment".
- 1. Install additional packages into your virtual environment.
- 1. Create a setup script for activating your virtual environment when you log in.
+Alternative approaches and good practice might include:
+ * Manage the process yourself (without Rose and Cylc)?
+ * Set the `$PATH` environment variable in your `~/.bash_profile`
+ * Write your outputs somewhere else
+ * *Have any files been accidentally left on the system?* (e.g. in: `/tmp/` etc)
+ * Tidy up your run suite directory (i.e. logs and task directories)
+ * View the workflow graph of the suite
+ * Understand different modes of stopping a running suite
 
-Alternative approaches could include:
+### Walkthrough
 
- 1. Share your environment with others:
+1. The starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
 
-     If you need to create your own environment it is important to be aware of which file system you are working on:
-         - "SOF" (e.g. `/gws/nopw/j0*`, `/gws/pw/j0*`): does not perform well with small files at present.
-         - "SSD" (e.g. `$HOME` and `/gws/smf/j0*`): performs much better with small files.
+2. SSH to the Rose & Cylc server (with the `-X` flag to forward X-windows)
+   
+      ```
+      ssh -X cylc
+      ```
 
-     If you are building an environment for your use only then it makes sense to create it under your `$HOME` directory.
+3. In this example you are given the building blocks to construct a "suite file" for use with Rose & Cylc
 
-     If you need to share an environment with other JASMIN users you can:
-         - Request a "small files" Group Workspace (GWS).
-         - Install the software environment within the "small files" GWS.
+  * Script 1: `create-counties-file.py`
+    1. Context: Python 3
+    2. Inputs: None - script locates county directories in the CEDA Archive
+    3. Outputs:
+       * File: `./outputs/counties.txt`
 
-     All users with access to that GWS will then be able to access the environment.
-     See: [https://help.jasmin.ac.uk/article/4732-share-software-envs](https://help.jasmin.ac.uk/article/4732-share-software-envs)
+  * Script 2: `extract-annual-max-series.py`
+    1. Context: Python 3
+    2. Inputs: index - to select a county from the list (a number between 1 and 20)
+    3. Outputs:
+       * Files [20]: `./outputs/<county>.csv`
 
- 2. Request that your software dependencies are added to the common Python 3 "jaspy" environment on JASMIN:
+  * Script 3: `plot-county-temps.py`
+    1. Context: Python 3
+    2. Inputs: None - script locates input data in the `./outputs/` directory
+    3. Outputs:
+       * File: `./outputs/annual-max-temp-time-series.png`
 
-     See more details at:
-         https://help.jasmin.ac.uk/article/4729-jaspy-envs#request-updates
+  * The scripts are available at:
+    * On JASMIN: `/gws/pw/j05/workshop/tutorials/tut02/code/`
+    * On github: https://github.com/cedadev/jasmin-workshop/tree/master/tutorials/tut02/code
 
- 3. Set up a virtual environment _without_ "system site packages":
+4. Wrap the scripts in a Rose suite by copying the example suite to a new directory called
+   `my-suite` and modifying it.
 
-     We called the "venv" module with this argument: `--system-site-packages`
-     That means that all the packages in the base jaspy Python 3 environment are available in the virtual environment.
+  * The example suite is available at:
 
-     However, you might prefer to only keep the core Python 3 packages. If that is the case then simply remove the `--system-site-packages` flag.
+        /gws/pw/j05/workshop/tutorials/tut02/example-suite
 
-### Cheat Sheet
+  * Go to the directory where you have copied the suite.
 
-1. Your starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
+  * You can run the example suite to view how it works, with:
 
-1. SSH to a scientific analysis server
+    ```
+    # Add the location of the rose/cylc executables to $PATH
+    export PATH=/apps/jasmin/metomi/bin:$PATH
+    rose suite-run
+    ```
 
-        ssh sci5 # Could use sci[123456]
+  * All of the scripts operate on input/output data in the relative directory: `./outputs`. It
+    therefore makes sense to copy the Python scripts to the main suite "run directory" and 
+    ensure that each task runs from that directory. The suite run directory is specified by 
+    the Cylc environment variable: `$CYLC_SUITE_RUN_DIR`.
 
-1. Activate the Jaspy Python 3 environment with the `module` command
+  * Edit the `suite.rc` file as follows:
+    * In the `[[runtime]]` section of the suite file, modify each of the 4 processing steps as follows:
 
-        module load jaspy
+        * `[[initialise]]`
+          1. Clone the GitHub repository: https://github.com/cedadev/jasmin-workshop
+          2. Copy the files in the sub-directory `jasmin-workshop/tutorials/tut02/code/` to the 
+             suite run directory at: `$CYLC_SUITE_RUN_DIR`
 
-1. Create a Python 3 virtual environment in your `$HOME` directory
+        * `[[step1]]`
+          1. Activate the standard JASMIN Python 3 environment.
+          2. Change directory to the `$CYLC_SUITE_RUN_DIR`
+          3. Run the script
 
-        python -m venv ~/my-workshop-venv --system-site-packages
+        * `[[batch<counter>]]`
+          1. Activate the standard JASMIN Python 3 environment.
+          2. Change directory to the `$CYLC_SUITE_RUN_DIR`
+          3. Run the script for each value of the `counter`:
+             * The `counter` variable is accessible by the environment variable: `CYLC_TASK_PARAM_counter`
 
-1. Activate the virtual environment
+        * `[[final]]`
+          1. Activate the standard JASMIN Python 3 environment.
+          2. Change directory to the `$CYLC_SUITE_RUN_DIR`
+          3. Run the script
 
-        source ~/my-workshop-venv/bin/activate
+5. Run the Rose suite with the command:
 
-1. Pip install the `fixnc` package from the PyPI remote repository
+    ```
+    export PATH=/apps/jasmin/metomi/bin:$PATH
+    rose suite-run
+    ```
 
-        pip install fixnc
+  * **NOTE:** It will take a couple of minutes to start up and then a GUI should appear that 
+    shows the workflow in action.
 
-1. Test that the package can be imported in a python session
+6. If the suite partially runs and leaves log/working directories in place you can clean these up and run it again with:
 
-        python -c 'import fixnc; print(dir(fixnc))'
+    ```
+    rose suite-run --new
+    ```
 
-1. Deactivate the virtual environment and test the import again
+7. If you need to stop the suite then you can instruct Cylc to stop it with:
+   
+    ```
+    cylc stop '<SUITE>'
+    # Where <SUITE> is the name of the suite directory
+    ```
 
-        deactivate                 # Deactivates the virtual environment
-        python -c 'import fixnc'   # Now fails to import because cannot find "fixnc"
-        Traceback (most recent call last):
-          File "<string>", line 1, in <module>
-        ModuleNotFoundError: No module named 'fixnc'
+### What should the Cylc GUI look like?
 
-1. Write a setup script (`~/setup-workshop-env.sh`) so that you can activate the virtual environment in a single line each time you log in
+Here is a quick walkthrough of what you should see in the GUI if the job runs successfully. 
+Note that in this example the 4 tasks have been renamed to:
+ * `clone_repo`
+ * `get_counties`
+ * `process<county>`
+ * `plot`
 
-        echo "module load jaspy" > ~/setup-workshop-env.sh
-        echo "source ~/my-workshop-venv/bin/activate" >> ~/setup-workshop-env.sh
+The full example suite is available at:
 
-1. Now, whenever you login you can run `source ~/setup-workshop-env.sh` and your own Python 3 environment will be activated
+        /gws/pw/j05/workshop/tutorials/tut02/workshop-suite
 
-### Answers to questions
+And on github at:
 
-> 1. Which packages are available in the default `jaspy` environment on JASMIN? Are there any non-Python packages included? Can you find out their versions?
+  https://github.com/cedadev/jasmin-workshop/tree/master/tutorials/tut02/workshop-suite
 
-The "jaspy" environments are listed on our [jaspy Help page](https://help.jasmin.ac.uk/article/4729-jaspy-envs). You can follow links from there to find out about the different "jaspy" environments and the packages, and versions, they include.
+The Cylc GUI opens when you start running a suite (as long as you have used the `-X` flag when SSHing to the server).
 
-> 2. A different approach would be to use `miniconda` to install your own Python environment (independent of `jaspy`). Can you install miniconda in your `$HOME` directory and then create a new Python 3 environment inside it?
+![Cylc GUI Screenshot 1](./images/gui1.png)
 
-The general workflow for installing `miniconda` is as follows. You will create a `conda` environment by downloading and installing `miniconda` as your package management tool:
-  1. Download the [miniconda installer](https://docs.conda.io/en/latest/miniconda.html)
-  2. Install miniconda, e.g.: `bash Miniconda3-latest-Linux-x86_64.sh -b -p miniconda`
-  3. Create a `conda` environment using the `miniconda` installation, e.g.: `miniconda/bin/conda create -n mypy3 python=3`
+You can select either a list view (as above) or a graph view (below) of the workflow.
 
-See this [explanation of why you might use `miniconda`](https://docs.conda.io/projects/conda/en/latest/user-guide/install/download.html#anaconda-or-miniconda).
+![Cylc GUI Screenshot 2](./images/gui2.png)
 
-`miniconda` uses `conda` which is a very versatile and powerful tool for managing Python, and other, packages. See the [conda documentation](https://docs.conda.io) for more info.
+The graph view shows each of the tasks and the dependency graph that connects them.
+
+![Cylc GUI Screenshot 3](./images/gui3.png)
+
+Failed tasks are clearly indicated in red.
+
+![Cylc GUI Screenshot 4](./images/gui4.png)
+
+Right-click on a failed task in order to view more information.
+
+![Cylc GUI Screenshot 5](./images/gui5.png)
+
+Each of the log files can be viewed within the GUI.
+
+![Cylc GUI Screenshot 6](./images/gui6.png)
+
+### Details of alternative approaches and best practice
+
+> 1. Manage the process yourself (without Rose and Cylc)?
+
+  * Pros:
+    * You don't need to learn/configure Rose and Cylc
+  * Cons:
+    * You have to check the dependency tree yourself:
+      * You need to check whether all tasks have run in a given stage before progressing to the next stage.
+      * With Rose and Cylc you can configure complex rules for responding to failures and retrying tasks.
+
+> 2. Set the `$PATH` environment variable in your `~/.bash_profile`
+
+  * In order to find the Rose/Cylc variables we needed to change the `$PATH` as follows:
+  
+      ```
+      # Add the location of the rose/cylc executables to $PATH
+      export PATH=/apps/jasmin/metomi/bin:$PATH
+      ```
+
+  * You can put the following lines in your `~/.bash_profile` file so that this will happen
+    automatically when you login to the cylc server:
+
+      ```
+      if [[ $HOSTNAME = "cylc1.jasmin.ac.uk" ]]; then
+          # NOTE: "cylc" is an alias to the "cylc1" server
+          export PATH=/apps/jasmin/metomi/bin:$PATH
+      fi
+      ```
+
+> 3. Write your outputs somewhere else
+
+  * You might write outputs directly to a Group Workspace
+  * You might write outputs to the default working directory for a task:
+    * These are symbolically linked to the global `/work/scratch/$USER` area.
+    * See more details in the Rose documentation:
+      https://metomi.github.io/rose/doc/html/tutorial/cylc/runtime/introduction.html#where-do-all-the-files-go
+
+> 4. *Have any files been accidentally left on the system?* (e.g. in: `/tmp/` etc)
+
+  * Running a Rose suite will copy your suite to a "run suite directory" under:
+  
+        $HOME/cylc-run/<SUITE>/
+
+  * This directory includes various files, directories and symbolic links related to your job. 
+    Please check that you are not writing big files to that the directory and monitor the size 
+    of the outputs.
+
+> 5. Tidy up your run suite directory (i.e. logs and task directories)
+
+  * You can tell Rose to tidy up (clear out) any logs and task directories by using the command:
+  
+      ```
+      rose suite-clean
+      ```
+
+> 6. View the workflow graph of the suite
+
+  * View the workflow graph of the suite:
+    * To view the workflow graph of your suite without running it, use:
+  
+      ```
+      rose suite-run -i
+      cylc graph '<SUITE>'
+      # Where <SUITE> is the name of the suite directory
+      ```
+
+    * NOTE: the `-i` option means "install only" - so this will not run the suite.
+      ![Image of workflow graph](./images/gui7.png)
+
+> 7. Understand different modes of stopping a running suite
+
+  * Understand different modes of stopping a running suite:
+    * If you need to stop a suite that is running you can use:
+
+      ```
+      cylc stop '<SUITE>'
+      # Where <SUITE> is the name of the suite directory
+      ```
+
+    * The `cylc stop` command may not stop the suite immediately - because it will wait 
+      for submitted and running tasks to complete.
+
+    * To kill the submitted and running tasks before stopping the suite, use:
+
+      ```
+      cylc stop --kill '<SUITE>'
+      ```
+
+    * To stop the suite regardless of submitted and running tasks, use:
+
+      ```
+      cylc stop --now '<SUITE>'
+      ```
+
+### Review and further info
+
+This tutorial demonstrates how to:
+  * Use the Rose and Cylc workflow management tools.
+  * Construct a Rose suite involving a multi-step workflow.
+  * Configure a Rose suite to work with the LOTUS batch cluster on JASMIN.
+  * Run a Rose suite and monitor its progress using the Cylc GUI.
+
+Rose and Cylc are very versatile tools. We recommend that you study the documentation at:
+  * Rose: https://metomi.github.io/rose/doc/html/ 
+  * Cylc: https://cylc.github.io/doc/built-sphinx/ 
 
