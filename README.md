@@ -23,7 +23,7 @@ Overview presentation
 | ex08 | coming soon: Compiling Fortran and C code on JASMIN |
 | [ex09](./exercises/ex09) | Using Jupyter Notebooks on JASMIN |
 | ex10 | coming soon: Advanced data transfers |
-| ex11 | coming soon: MPI on JASMIN |
+| ex11 |(./exercises/ex11) | MPI on JASMIN |
 | ex12 | coming soon: using R on JASMIN |
 
 <br>
