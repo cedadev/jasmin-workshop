@@ -1,5 +1,5 @@
 ---
-title: MPI on JASMIN
+title: Exercise 11 - MPI on JASMIN
 author: Fatima Chami
 ---
 
