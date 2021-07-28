@@ -234,6 +234,8 @@ Learn more about our Notebook Service:
    annotate, then click the `+` button on the toolbar. Then change the cell format to "Markdown" in the 
    drop-down menu.
 
+   ![Toolbar](./images/select_cell_format.png)
+
    Once you have completed the content, press `Shift+Enter` to see the formatted version. If you need to edit a formatted cell, just double-click into it.
 
    Here is an example cell shown first in `markdown` format...
