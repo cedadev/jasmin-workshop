@@ -8,7 +8,7 @@ author: Ag Stephens
 
 ### Scenario
 
-I want to analyse a set of historical temperature records from weather stations in the UK. I am interested in calculating annual maximum temperatures for a randomly selected set of 20 counties. These are available from the publicly available "MIDAS-Open" data set in the CEDA archive. There are multiple steps to my workflow so I want to use a tool that (1) can work with LOTUS and (2) can handle dependencies (i.e. only run subsequent tasks if previous tasks have successfully completed).
+I want to analyse a set of historical temperature records from weather stations in the UK. I am interested in calculating annual maximum temperatures for a randomly selected set of 10 counties. These are available from the publicly available "MIDAS-Open" data set in the CEDA archive. There are multiple steps to my workflow so I want to use a tool that (1) can work with LOTUS and (2) can handle dependencies (i.e. only run subsequent tasks if previous tasks have successfully completed).
 
 I will read data from the MIDAS-Open dataset and aggregate all measurements (from all stations) into a time series of the annual maximum temperatures per county. Then plot a line graph to compare the annual maximum temperature from all counties and write it to a PNG file.
 
@@ -116,9 +116,9 @@ Alternative approaches and good practice might include:
 
   * Script 2: `extract-annual-max-series.py`
     1. Context: Python 3
-    2. Inputs: index - to select a county from the list (a number between 1 and 20)
+    2. Inputs: index - to select a county from the list (a number between 1 and 10)
     3. Outputs:
-       * Files [20]: `./outputs/<county>.csv`
+       * Files [10]: `./outputs/<county>.csv`
 
   * Script 3: `plot-county-temps.py`
     1. Context: Python 3
@@ -152,18 +152,31 @@ Alternative approaches and good practice might include:
     ensure that each task runs from that directory. The suite run directory is specified by 
     the Cylc environment variable: `$CYLC_SUITE_RUN_DIR`.
 
+    This variable is set for you by Cylc; a typical value would be 
+    `/home/users/$USER/cylc-run/my-suite`. Note that the current working directory for the 
+    individual steps is different for each step (for example 
+    `/home/users/$USER/cylc-run/my-suite/work/1/initialise` for the `initialise` step). For the 
+    workflow below, it is convenient for all steps to be run in the same directory, so the commands 
+    for each step will include changing directory to `$CYLC_SUITE_RUN_DIR` before running the 
+    relevant script.
+
+
   * Edit the `suite.rc` file as follows:
     * In the `[[runtime]]` section of the suite file, modify each of the 4 processing steps as follows:
 
         * `[[initialise]]`
-          1. Clone the GitHub repository: https://github.com/cedadev/jasmin-workshop
-          2. Copy the files in the sub-directory `jasmin-workshop/tutorials/tut02/code/` to the 
+          1. Delete any existing `jasmin-workshop` sub-directory (in case the suite has 
+             been run previously)
+          2. Clone the GitHub repository: https://github.com/cedadev/jasmin-workshop
+          3. Copy the files in the sub-directory `jasmin-workshop/tutorials/tut02/code/` to the 
              suite run directory at: `$CYLC_SUITE_RUN_DIR`
 
         * `[[step1]]`
-          1. Activate the standard JASMIN Python 3 environment.
-          2. Change directory to the `$CYLC_SUITE_RUN_DIR`
-          3. Run the script
+          1. Delete any existing `outputs` sub-directory (in case the suite has been run 
+             previously)
+          2. Activate the standard JASMIN Python 3 environment.
+          3. Change directory to the `$CYLC_SUITE_RUN_DIR`
+          4. Run the script
 
         * `[[batch<counter>]]`
           1. Activate the standard JASMIN Python 3 environment.
@@ -345,5 +358,4 @@ This tutorial demonstrates how to:
 
 Rose and Cylc are very versatile tools. We recommend that you study the documentation at:
   * Rose: https://metomi.github.io/rose/doc/html/ 
-  * Cylc: https://cylc.github.io/doc/built-sphinx/ 
-
+  * Cylc: https://cylc.github.io/doc/built-sphinx/

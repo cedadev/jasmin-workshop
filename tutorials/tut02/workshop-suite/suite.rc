@@ -1,7 +1,7 @@
 [cylc]
     UTC mode = True # Ignore DST
     [[parameters]]
-        county = 1..20
+        county = 1..10
 
 [scheduling]
     [[dependencies]]
@@ -16,12 +16,13 @@
         pre-script="""set -eu"""
         [[[job]]]
             batch system = slurm
-            execution time limit = PT5M
+            execution time limit = PT10M
         [[[directives]]]
             --partition = workshop
             --account = workshop
     [[clone_repo]]
-        script = """git clone https://github.com/cedadev/jasmin-workshop workshop-repo
+        script = """rm -fr workshop-repo
+git clone https://github.com/cedadev/jasmin-workshop workshop-repo
 cp workshop-repo/tutorials/tut02/code/* ${CYLC_SUITE_RUN_DIR}/
 rm -fr workshop-repo"""
     [[get_counties]]

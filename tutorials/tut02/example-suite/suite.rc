@@ -29,7 +29,8 @@ echo 'cd somewhere/'
 echo 'run something'"""
     [[batch<counter>]]
         script = """echo 'do something'
-echo 'run something with counter variable: ${CYLC_TASK_PARAM_counter}'"""
+echo 'run something with counter variable: ${CYLC_TASK_PARAM_counter}'
+expr 100 + ${CYLC_TASK_PARAM_counter}  # EXAMPLE: evaluate 100 + counter value"""
     [[finish]]
         script = """echo 'to sum up'
 echo 'Do final thing'"""
