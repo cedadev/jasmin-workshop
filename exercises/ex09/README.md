@@ -119,8 +119,9 @@ Learn more about our Notebook Service:
 
    https://catalogue.ceda.ac.uk/uuid/8aa70a91378d455ea63a2a1953858a7f
 
-   Following the "Download" link on the page reveals a browseable data path that reveals 
-   the 2-metre temperature data can be found under:
+   Following the "Download" link (when logged in with your CEDA account) on the page 
+   reveals a browseable data path that shows the 2-metre temperature data can be found 
+   under:
 
    https://data.ceda.ac.uk/badc/ecmwf-era51/data/oper/an_sfc/2005/01/01 
    (e.g. file: `ecmwf-era51_oper_an_sfc_200501010000.2t.nc`)
@@ -143,7 +144,7 @@ Learn more about our Notebook Service:
        ds = xr.open_mfdataset(file_pattern)
 
    Click `Alt+Enter` to execute the contents of the cell and create a new cell underneath.
-   From now on, remember that you need to 
+   From now on, remember that you need to click `Alt+Enter` to execute each cell.
    
 4. Review the content of the loaded `Dataset`
    
@@ -180,6 +181,10 @@ Learn more about our Notebook Service:
        daily_max.shape, daily_min.shape
    
 6. Plot the daily maximum and minimum
+
+   Typically, in a Notebook environment, you need this line before trying to view plots inline.
+
+       %matplotlib inline
 
    The `daily_max` and `daily_min` variables now both have a `plot()` method. You can plot each of them 
    individually.
