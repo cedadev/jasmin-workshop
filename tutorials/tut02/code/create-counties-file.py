@@ -23,7 +23,7 @@ import random
 
 # Global variables
 counties_dir = '/badc/ukmo-midas-open/data/uk-daily-temperature-obs/dataset-version-201901'
-LIMIT = 20
+LIMIT = 10
     
 OUTPUT_DIR = './outputs'
 if not os.path.isdir(OUTPUT_DIR):

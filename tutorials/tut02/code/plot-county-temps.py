@@ -40,7 +40,7 @@ def plot_time_series():
     df = pd.concat(dfs, axis=1).reindex()
     df.columns = county_labels
 
-    title = 'Max Temp time series for 20 UK Counties'
+    title = 'Max Temp time series for 10 UK Counties'
     x_label = 'Time (year)'
     y_label = 'Annual maximum temperature (°C)'
 
