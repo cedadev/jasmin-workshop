@@ -15,14 +15,13 @@ I will read data from the MIDAS-Open dataset and aggregate all measurements (fro
 An example temperature file for a single station and year (in the MIDAS-Open data set) can be found at:
 
         /badc/ukmo-midas-open/data/uk-daily-temperature-obs/dataset-version-201901/
-          devon/01359_cheldon-barton/qc-version-1/
-          midas-open_uk-daily-temperature-obs_dv-
-          201901_devon_01359_cheldon-barton_qcv-1_1977.csv
+        devon/01359_cheldon-barton/qc-version-1/
+        midas-open_uk-daily-temperature-obs_dv-
+        201901_devon_01359_cheldon-barton_qcv-1_1977.csv
 
 This workflow will generate a graph of a time series of maximum temperature data that looks something like:
 
-|![Graph of maximum temperature time series](./images/max-temp-graph.png)|
-|-|
+![Graph of maximum temperature time series](./images/max-temp-graph.png)
 
 ### Workflow context
 
@@ -73,14 +72,6 @@ After completing this tutorial I will be able to:
 ### Local resources
 
 * SSH client (to login to JASMIN)
-
-### Videos
-
-You can follow this tutorial by watching the videos below, or by following the text of this article, or a combination of both.
-|  |  |
-| --- | --- |
-| Task | [![TO BE ADDED](https://img.youtube.com/vi/--insert--id--/mqdefault.jpg )](https://www.youtube.com/watch?v=--insert--id--) |
-| Solutions & Discussion | [![TO BE ADDED](https://img.youtube.com/vi/--insert--id--/mqdefault.jpg )](https://www.youtube.com/watch?v=--insert--id--) |
 
 ### The task
 

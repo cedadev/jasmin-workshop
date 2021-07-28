@@ -3,7 +3,6 @@ title: Exercise 07 - Building your own python 3 environment
 author: Ag Stephens
 ---
 
-
 # Exercise 07: Build your own python 3 environment
 
 ### Scenario
@@ -28,14 +27,6 @@ After completing this exercise I will be able to:
 ### Local resources
 
 * SSH client (to login to JASMIN)
-
-### Videos
-
-You can follow this exercise by watching the videos below, or by following the text of this article, or a combination of both.
-|  |  |
-| --- | --- |
-| Task | [![TO BE ADDED](https://img.youtube.com/vi/--insert--id--/mqdefault.jpg )](https://www.youtube.com/watch?v=--insert--id--) |
-| Solutions & Discussion | [![TO BE ADDED](https://img.youtube.com/vi/--insert--id--/mqdefault.jpg )](https://www.youtube.com/watch?v=--insert--id--) |
 
 ### Your task
 
