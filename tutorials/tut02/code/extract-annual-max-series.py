@@ -35,7 +35,7 @@ OUTPUT_DIR = './outputs'
 def get_county(index):
     """
     Reads the 'counties.txt' file and returns the county at index `index`.
-    Index is counted from 1..20.
+    Index is counted from 1..10.
 
     :param index: index of county to extract [int]
     :return: county name 
