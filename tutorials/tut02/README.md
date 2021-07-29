@@ -287,7 +287,7 @@ Each of the log files can be viewed within the GUI.
 
   * You might write outputs directly to a Group Workspace
   * You might write outputs to the default working directory for a task:
-    * These are symbolically linked to the global `/work/scratch/$USER` area.
+    * These are symbolically linked to the JASMIN `/work/scratch-pw/$USER` area.
     * See more details in the Rose documentation:
       https://metomi.github.io/rose/doc/html/tutorial/cylc/runtime/introduction.html#where-do-all-the-files-go
 

@@ -77,12 +77,12 @@ This exercise demonstrates how to:
 Alternative approaches could include:
 
  1. Using other Notebooks services, for example:
-   * Google Colaboratory: https://colab.research.google.com/
-   * Binder: https://mybinder.org/
+    * Google Colaboratory: https://colab.research.google.com/
+    * Binder: https://mybinder.org/
 
  2. Sharing your code on github:
-   * You can view notebooks directly in GitHub
-   * Here is an example: https://github.com/cedadev/ceda-notebooks/blob/master/notebooks/data-notebooks/cmip6/cmip6-zarr-jasmin.ipynb
+    * You can view notebooks directly in GitHub
+    * Here is an example: https://github.com/cedadev/ceda-notebooks/blob/master/notebooks/data-notebooks/cmip6/cmip6-zarr-jasmin.ipynb
 
 Learn more about our Notebook Service:
  * Tutorial (in notebooks): https://github.com/cedadev/ceda-notebooks/blob/master/notebooks/training/intro/notebook-tour.ipynb
