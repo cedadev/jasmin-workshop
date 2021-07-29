@@ -81,10 +81,12 @@ This is the outline of what you need to do. The recommended way of doing each st
    * Submit the job to the scheduler SLURM
    * Monitor and inspect the job standard output/err files
    * Find out the resources used by the job
+   * Resubmit the same job to an AMD node after adding the SLURM directive to job script
+      `#SBATCH --constraint="amd"`
 1. CPU architecture targeted code to be aware
    * Login to the Intel Sci machine `sci8`
    * Load the Intel compiler module environment e.g. `module load intel/20.0.0`
-   * Compile the code for Intel CPU `ifort -Aavx  axpySerial.f90 -o axpySerial_intel_avx.exe`
+   * Compile the code for Intel CPU `ifort -xAVX  axpySerial.f90 -o axpySerial_intel_avx.exe`
    * Execute the binary `./axpySerial_intel_avx.exe`
    * Logout from `sci8` and then login to `sci3` or `sci6`
    * Execute the binary `./axpySerial_intel_avx.exe`
@@ -265,7 +267,9 @@ By completing this exercise you will be able to compile and test a serial Fortra
    * Resubmit the same job to an AMD node after adding the SLURM directive to job script
    ```
    #SBATCH --constraint="amd"
+   sbatch: error: Batch job submission failed: Requested node configuration is not available
    ```
+   The job submission will fail because there are no AMD nodes allocated to the workshop queue
 1. CPU architecture targeted code to be aware
    * Login to the Intel Sci machine `sci8`
    ```
