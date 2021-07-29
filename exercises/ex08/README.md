@@ -81,6 +81,8 @@ This is the outline of what you need to do. The recommended way of doing each st
    * Submit the job to the scheduler SLURM
    * Monitor and inspect the job standard output/err files
    * Find out the resources used by the job
+   * Resubmit the same job to an AMD node after adding the SLURM directive to job script
+      `#SBATCH --constraint="amd"`
 1. CPU architecture targeted code to be aware
    * Login to the Intel Sci machine `sci8`
    * Load the Intel compiler module environment e.g. `module load intel/20.0.0`
