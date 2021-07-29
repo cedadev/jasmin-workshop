@@ -267,6 +267,7 @@ By completing this exercise you will be able to compile and test a serial Fortra
    #SBATCH --constraint="amd"
    sbatch: error: Batch job submission failed: Requested node configuration is not available
    ```
+   The job submission will fail because there are no AMD nodes allocated to the workshop queue
 1. CPU architecture targeted code to be aware
    * Login to the Intel Sci machine `sci8`
    ```
