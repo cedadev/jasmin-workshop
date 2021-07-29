@@ -118,47 +118,121 @@ By completing this exercise you will be able to compile and test a parallel MPI 
 
 ### Cheat Sheet
 
+* scontrol show job jobid   check the Features=intel   Features=ivybridge128G if a specific Intel model is explicitely specified 1. Login to a JASMIN scientific analysis server 
+
 1. Login to a JASMIN scientific analysis server 
-   * Login to the chosen sci server from a JASMIN login server
+   * Login to the chosen sci server on each terminal
    ```
-   $ ssh -A <username>@sci<number>.jasmin.ac.uk
+   $ ssh -A train049@sci3.jasmin.ac.uk
+   [train049@sci3 ~]$ 
    ```
-   For example the user `train049` connects to sci4:
+   * Copy the Fortran source code from the exercise directory (shown in the JASMIN resources section) to your current working directory 
    ```
-   $ ssh -A train049@sci4.jasmin.ac.uk
-   [train049@sci4 ~]$ 
-   ```
+   cp /gws/pw/j05/workshop/exercises/ex11/code/axpyMPI.f90 .
+   ```           
+   > **_NOTE:_**  One terminal will be used for compiling and testing codes on LOTUS while the second terminal will be used for submitting and monitoring batch jobs. 
 1. Compile and test a Fortran code interactively on LOTUS 
-* tba
+   * On terminal 1, invoke a pseudo-interactive session on LOTUS using the SLURM command `srun` with two CPU cores allocation
    ```
+   $ srun --ntasks=2 --partition=workshop --account=workshop  --pty /bin/bash`
+   srun: job 64164115 queued and waiting for resources
+   srun: job 64164115 has been allocated resources
+   cpu-bind=MASK - host149, task  0  0 [11224]: mask 0x1 set
+   [train049@host149 ] $
+   ```
+   * What is the compute node allocated and what is its CPU model?
+   ```
+   @host149 ] $ scontrol show node host149 | grep Features
+    AvailableFeatures=ivybridge128G,lotus241,lotus2,intel
+   ActiveFeatures=ivybridge128G,lotus241,lotus2,intel
+   ```
+   or 
+   ```
+   @host149 ] $ cat /proc/cpuinfo
+   ...
+   model name	: Intel(R) Xeon(R) CPU E5-2650 v2 @ 2.60GHz
+   ...
+   ```
+   `CPU E5-2650 v2` corresponds to hostgroup `ivybridge128G` see the Table in this helppage   https://help.jasmin.ac.uk/article/4932-lotus-cluster-specification 
    
+   * On the LOTUS compute node, load the Intel compiler module `module load intel/20.0.0` and the OpenMPI library module: `module load eb/OpenMPI/intel/3.1.1` and check that the two modules are loaded.
    ```
-   For example the user `train049` connects to sci4:
-1. Prepare a job submission script the parallel MPI code
-* scontrol show job jobid   check the Features=intel   Features=ivybridge128G if a specific Intel model is explicitely specified 
+   @host149 ] $ module load intel/20.0.0
+   @host149 ] $ module load eb/OpenMPI/intel/3.1.1
+   @host149 ] $ module li
+   Currently Loaded Modulefiles:
+    1) intel/cce/20.0.0         2) intel/fce/20.0.0         3) intel/20.0.0             4) eb/OpenMPI/intel/3.1.1
+   ```
+   * Compile the Fortran code using the command 
+   ```
+   @host149 ] $ mpif90 axpyMPI.f90 -o axpyMPI.exe
+   ```
+   * Execute the binary using 1 core and then using two cores: 
+   ```
+   @host149 ] $ mpirun -np 2 axpyMPI.exe
+     1.07598934124890       0.000000000000000E+000
+   ```
+   * On terminal 2, check the job ID associated to this pseudo-interactive session on LOTUS and the number of cores allocated 
+   ```
+    @sci3 ~ ]$squeue -u trai049
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+          64164115  workshop     bash   train049 R      24:17      1 host149
+   @sci3 ~ ]$ scontrol show job 64164115 
+   ...
+   NumNodes=1 NumCPUs=2 NumTasks=2 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   ...
+   ```
+   * Exit the interactive session on LOTUS `exit`. The Job should be cleared from SLURM
+   ```
+    @host149 ] $ exit
+   ```
+1. Prepare a script to submit the parallel MPI code to SLURM
+   * On terminal 1, launch a text editor to prepare the job script e.g. `axpyMPI.sbatch` to submit the binary MPI compiled earlier.
+   * Specify the number of parallel MPI tasks
+   * Submit the job e.g. job1 to SLURM scheduler and note the job ID `sbatch axpyMPI.sbatch`
+   * On terminal 2, monitor the job state using SLURM command `squeue` 
+   * What is the name of the compute node the job run on? is it the same node type on which the code was compiled?
+   * Check the resources used by the job memory,CPU using 'scontrol show job jobID'
+   * Inspect the job output and error file 
+1. Estimate and refine an MPI job requirements
+   * Specify the memory required per core   
+   * Specify the node type    
+   * Define a distribution of cores across nodes e.g. job2 or on a single node e.g. job3 
+   * Submit the same job script file but pass the new memory and core distribution to the SLURM 'sbatch'
+   * What is the job wait time?
+   * What is the elapsed time for job2 and job3?
+
 
 ### Answers to questions
 
 > 1. Is there a limit on the number of parallel tasks an MPI job can have? 
 
-tba   
+The limit is 16 cores for the par-single queue and 256 cores for the par-multi queue. https://help.jasmin.ac.uk/article/4881-lotus-queues
 > 2. What is the MPI implementation supported on JASMIN?
 
-tba  
+The OpenMPI library is the only supported MPI library on LOTUS. OpenMPI v3.1.1 and v4.0.0 are provided which are fully MPI3 compliant: 
+```
+eb/OpenMPI/gcc/3.1.1
+eb/OpenMPI/gcc/4.0.0   
+eb/OpenMPI/intel/3.1.1 
+eb/OpenMPI/intel/4.1.0
+```
 > 3. Is it possible to run an MPI binary that was compiled on a different system?
 
-tba  
+Recompilation is recommended 
 > 4. What is the difference between an MPI code and a code that uses MPI IO only?
 
-tbc   
+The writing and reading of file is done in parallel. Hence, the storage system has to support parallel IO write operation. 
+
 > 5. How to find out about the MPI libray that the code was compiled against?
 
-tba 
+Use the Linux command `ldd <name-of-executable>`
 > 6. What type of storage is suitable for pararallel MPI IO?
 
-tba  
+MPI I/O features are fully supported *only* on the LOTUS /work/scratch-pw directory as this uses a Panasas fully parallel file system
+
 > 7. Can I run a Python script in parallel using MPI4py?
 
-tba 
+This needs rewriting/converting the Python serila code in parallel using the MPI4py library
 
 >
