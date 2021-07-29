@@ -89,7 +89,7 @@ This is the outline of what you need to do. The recommended way of doing each st
    * Logout from `sci8` and then login to `sci3` or `sci6`
    * Execute the binary `./axpySerial_intel_avx.exe`
    * Did the execution fail?
-1. How to use the NetCDF GNU library and link it to the Fortran code
+1. How to use the NetCDF C library and the NetCDF Fortran binding GNU 
    * Enable the JASPY environment `module load jaspy`
    * Compile and link the Fortran example `gfortran -I$CONDA_PREFIX/include simple_xy_wr.f90 -o simple_xy_wr.exe -L$CONDA_PREFIX/lib -lnetcdff -lnetcdf`   (note that the -I option in the first command is capital "eye" for "Include", whereas the -l in the second command is "ell" for "library")
    * Execute the binary `./simple_xy_wr.exe`
