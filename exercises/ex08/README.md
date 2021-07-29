@@ -315,21 +315,15 @@ By completing this exercise you will be able to compile and test a serial Fortra
 
 ### Answers to questions
 
-> 1. Is it possible to run a serial Fortran code that was compiled on a different system? 
-
-Recompiling a code to run on JASMIN is recommended 
-
-> 1. What are the SLURM partitions to use for serial Fortran code?
-
+1. Is it possible to run a serial Fortran code that was compiled on a different system?
+Recompiling a code to run on JASMIN is recommended
+1. What are the SLURM partitions to use for serial Fortran code?
 test, short-serial and long-serial 
+1. Why my Fortran code is running slow? 
+This could indicate that the job requires more resources than the allocated resources.
+1. Can I use GNU compiler available via `module avail gnu`?
 
-> 1. Why my Fortran code is running slow?
 
-This could indicate that the job requires more resources than the allocated resources. 
-
-> 1. Can I use GNU compiler available via `module av gcc`?
-
-tba 
 
 
 
