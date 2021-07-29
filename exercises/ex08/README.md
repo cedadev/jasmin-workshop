@@ -265,6 +265,7 @@ By completing this exercise you will be able to compile and test a serial Fortra
    * Resubmit the same job to an AMD node after adding the SLURM directive to job script
    ```
    #SBATCH --constraint="amd"
+   sbatch: error: Batch job submission failed: Requested node configuration is not available
    ```
 1. CPU architecture targeted code to be aware
    * Login to the Intel Sci machine `sci8`
