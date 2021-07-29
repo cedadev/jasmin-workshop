@@ -33,11 +33,11 @@ After completing this exercise you will:
  
  ### JASMIN resources
 
- * Scientific analysis servers: `sci[1-6].jasmin.ac.uk`
+ * Scientific analysis servers: `sci[1-6,8].jasmin.ac.uk`
  * Group workspace: `/gws/pw/j05/workshop`
  * LOTUS batch queues: 'workshop' (par-single or par-multi outside the event)
  * Fortran MPI source code is (available in the Github repository): 
- `/gws/pw/j05/workshop/exercises/ex11/src/axpyMPI.f90`
+ `/gws/pw/j05/workshop/exercises/ex11/code/axpyMPI.f90`
  * Help documentation at https://help.jasmin.ac.uk
 
 ### Local resources
@@ -46,12 +46,6 @@ After completing this exercise you will:
  * Terminal application or NX client
  * A valid `jasmin-login` grant associated with your JASMIN account 
 
-### Videos
-You can follow this exercise by watching the videos below, or by following the text of this article, or a combination of both.
-|  |  |
-| --- | --- |
-#| Task | [![](https://img.youtube.com/vi/_09pMUX6fLQ/mqdefault.jpg )](https://www.youtube.com/watch?v=_09pMUX6fLQ) |
-| Solutions & Discussion | coming soon |
 
 ### Your task
 
@@ -65,9 +59,9 @@ This is the outline of what you need to do. The recommended way of doing each st
    * Copy the Fortran source code from the exercise directory (shown in the JASMIN resources section) to your current working directory            
    > **_NOTE:_**  One terminal will be used for compiling and testing codes on LOTUS while the second terminal will be used for submitting and monitoring batch jobs. 
 1. Compile and test a Fortran code interactively on LOTUS 
-   * On terminal 1, invoke a pseudo-interactive session on LOTUS using the SLURM command`srun` with two CPU cores allocation: `srun --ntasks=2 --partition=workshop --account=workshop  --pty /bin/bash`
+   * On terminal 1, invoke a pseudo-interactive session on LOTUS using the SLURM command `srun` with two CPU cores allocation: `srun --ntasks=2 --partition=workshop --account=workshop  --pty /bin/bash`
    * What is the compute node allocated and what type of CPU model the node has?
-   * On the LOTUS compute node, load the Intel compiler module `module load intel/20.0.0`and the OpenMPI library module: `module load eb/OpenMPI/intel/3.1.1` and check that the two modules are loaded.
+   * On the LOTUS compute node, load the Intel compiler module `module load intel/20.0.0` and the OpenMPI library module: `module load eb/OpenMPI/intel/3.1.1` and check that the two modules are loaded.
    * Compile the Fortran code using the command `mpif90 axpyMPI.f90 -o axpyMPI.exe`
    * Execute the binary using 1 core and then using two cores: `mpirun -np 2 axpyMPI.exe`
    * What is the ouput?
