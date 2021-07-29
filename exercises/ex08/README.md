@@ -315,14 +315,6 @@ By completing this exercise you will be able to compile and test a serial Fortra
 
 ### Answers to questions
 
-> 1. Is there a limit on the number of parallel tasks an MPI job can have? 
-
-tba  
-
-> 1. Where to compile a Fortran/C code?
-
-tba
-
 1. Is it possible to run a serial Fortran code that was compiled on a different system? 
 
 Recompiling a code to run on JASMIN is recommended 
