@@ -68,7 +68,7 @@ This is the outline of what you need to do. The recommended way of doing each st
    * On terminal 2, check the job ID associated to this pseudo-interactive session on LOTUS 
    * Exit the interactive session on LOTUS `exit`. The Job should be cleared from SLURM
 1. Prepare a script to submit the parallel MPI code to SLURM
-   * On terminal 1, launch a text editor to prepare the job script e.g. `axpyMPI.sbatch` to submit the binary MPI compiled earlier.
+   * On terminal 1, launch a text editor to prepare the job script e.g. `jobscriptMPI.sbatch` to submit the binary MPI compiled earlier.
    * Specify the number of parallel MPI tasks
    * Submit the job e.g. job1 to SLURM scheduler and note the job ID `sbatch axpyMPI.sbatch`
    * On terminal 2, monitor the job state using SLURM command `squeue` 
@@ -187,7 +187,7 @@ By completing this exercise you will be able to compile and test a parallel MPI 
     @host149 ] $ exit
    ```
 1. Prepare a script to submit the parallel MPI code to SLURM
-   * On terminal 1, launch a text editor to prepare the job script e.g. `axpyMPI.sbatch` to submit the binary MPI compiled earlier.
+   * On terminal 1, launch a text editor to prepare the job script e.g. `jobscriptMPI.sbatch` to submit the binary MPI compiled earlier.
    * Specify the number of parallel MPI tasks
    * Submit the job e.g. job1 to SLURM scheduler and note the job ID `sbatch axpyMPI.sbatch`
    * On terminal 2, monitor the job state using SLURM command `squeue` 
