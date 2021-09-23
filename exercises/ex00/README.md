@@ -82,24 +82,22 @@ We'll cover all of these combinations, so please follow the instructions relevan
 The overall concept is as follows. All the applications we'll cover follow the same overall process:
 
 * You have an SSH key consisting of 2 parts: public and private.
-   * The *private* key (`id_rsa_jasmin`) stays with you on your local machine.
-   * For your training account, the *public* key `id_rsa_jasmin.pub` is already put into the right place at the JASMIN end for you.
+   * The *private* key (`id_rsa_jasmin_training`) stays with you on your local machine.
+   * For your training account, the *public* key `id_rsa_jasmin_training.pub` is already put into the right place at the JASMIN end for you.
 * The software which you use to connect to JASMIN needs to "present" your private key, but to do that, first you have to load it, which involves "unlocking" it with its passphrase. 
 > **_NOTE:_**  Private keys for accessing JASMIN must always be protected with a strong passphrase. **DO NOT** use an unprotected private key, and **DO NOT** share your key with anyone else. JASMIN has a strict **1 key, 1 user** policy.
 
-> **_NOTE:_**  The names of the key files (`id_rsa_xxxx` and `id_rsa_xxxx.pub`) are not significant, only their content is. So if the names clash with files you already have, feel free to rename them yourself (it makes sense to keep the `.pub` extension for the public key) but remember to use the new names in place of the ones supplied when you're working through these exercises. 
+> **_NOTE:_**  The names of the key files (`id_rsa_xxxx` and `id_rsa_xxxx.pub`) are not significant, only their content is. So if the names clash with files you already have, feel free to rename them yourself (it makes sense to keep the `.pub` extension for the public key) but remember to use the new names in place of the ones supplied when you're working through these exercises. If you are using your own full JASMIN account rather than one of the training accounts, your key will probably be named simply `id_rsa_jasmin`.
 
 You will also need to enable "agent forwarding", meaning that the same key can be used for onward connections to other machines as well as the first one. Different applications have different ways of applying this setting.
-* When you use your application to connect to a JASMIN server, under the hood there's a check that the 2 halves of your key match. If they don't, you'll be denied access.
-* Once you're connected, you can make onward connections to other machines inside JASMIN using the same key. But importantly, the private key does not need to be copied to JASMIN: it should stay **only** on your local machine. This helps to keep it secure.
+* When you use your application to connect to a JASMIN server, a check takes place to make sure that the 2 halves of your key match. If they don't, you'll be denied access.
+* Once you're connected, you can make onward connections to other machines inside JASMIN using the same key. But importantly, **the private key does not need to be copied to JASMIN**: it should stay **only** on your local machine. This helps to keep it secure.
 
 The details of how each software tool does this may look different, but they're all essentially doing the same thing. Setting up each application will involve (not necessarily in the same order):
 1. Installing the software, unless it's something built-in to your operating system
 2. Telling it where your private key is, on your local machine
-3. Loading that private key, using the passphrase, and enabling agent forwarding
+3. Loading that private key, using the passphrase, into your agent and enabling agent forwarding
 4. (in some cases) Setting up "connection profiles" to connect to particular remote machines of your choice
-
-In most cases, you are able to load your key into an "agent" or key manager, which means that your key remains loaded across any individual terminal sessions you open using that software. The alternative is that you need to load your key each time you open a new terminal session. Either should work, but the former can be more convenient as you only need to enter your passphrase when you first open the software, rather than for each connection.
 
 Once all that is done, you're (almost) ready to make a connection to a remote machine.
 
@@ -122,36 +120,110 @@ Our recommended choice for a terminal application on Windows is **MobaXterm**.
 #### Software installation
 * Download from [MobaXterm](https://mobaxterm.mobatek.net/).
 * Choose the "Home Edition" (free), then either the "Installer edition" or "Portable Edition" and follow the instructions.
+* Choose one of the following 2 options for loading your key:
+  * Specifying its location in Settings (this means that it will load automatically next time you start MobaXterm)
+  * Loading the key manually
 
-[![MobaXterm v20.6 setup on Windows, loading private key](https://img.youtube.com/vi/yG8yyTt2R-0/0.jpg)](https://www.youtube.com/watch?v=yG8yyTt2R-0)
-
-In the above video, you can see the steps needed to load the key, i.e:
-
-* Tick "Use internal SSH agent "MobAgent"
-* UN-tick "Use external Pageant"
-* Tick "Forward SSH agents" **important**
-* Click the "+" symbol to locate your private key file (i.e. wherever you put `id_rsa_jasmin`, above)
-* Click OK to save the settings. MobaXterm will now need to restart.
-* When you restart MobaXterm you will be prompted for the passphrase associated with your private key.
-
-> **_NOTE:_** It is best to copy and paste the passphrase from the credentials you were sent, or from a password manager if you are using your own account. To paste, first left click in the correct place (in the terminal window somewhere) then right-click to paste what's on the Windows clipboard. Note that the characters of your password will NOT be displayed as you type/paste them (this is normal!)
-
-Click "Start local terminal".
-
-You can then check that your key is correctly loaded with this command in the terminal window: 
-
-> **_NOTE:_**  In this exercise, all the workshop exercises and in JASMIN documentation, when we're showing commands and their output, the `$` at the start of a line simply represents the command prompt: **it is not a character which you need to type**. Lines without the `$` at the start represent output from a command.
+Either is fine, but we'll try both in this exercise. If one doesn't work, try the other.
 
 
-```
-$ ssh-add -l
-```
-If you see a message similar to the following, your key is correctly loaded:
-```
-2048 SHA256:0y7Oh7J+kN6hPotWCerXsZBlRBL205UMGlJVZ1I0A8c you@somewhere.ac.uk (RSA)
+* Option 1: Specifying the location in MobaXterm Settings
 
-```
-If not, you will need to try again before you will be able to log in to a remote host using the key.
+
+   [![MobaXterm v20.6 setup on Windows, loading private key](https://img.youtube.com/vi/yG8yyTt2R-0/0.jpg)](https://www.youtube.com/watch?v=yG8yyTt2R-0)
+
+   In the above video, you can see the steps needed to load the key, i.e:
+
+   * Tick "Use internal SSH agent "MobAgent"
+   * UN-tick "Use external Pageant"
+   * Tick "Forward SSH agents" **important**
+   * Click the "+" symbol to locate your private key file (i.e. wherever you put `id_rsa_jasmin_training`, above)
+   * Click OK to save the settings. MobaXterm will now need to restart.
+   * When you restart MobaXterm you will be prompted for the passphrase associated with your private key.
+
+   > **_NOTE:_** It is best to copy and paste the passphrase from the credentials you were sent, or from a password manager if you are using your own account. To paste, first left click in the correct place (in the terminal window somewhere) then right-click to paste what's on the Windows clipboard. Note that the characters of your password will NOT be displayed as you type/paste them (this is normal!)
+
+   Click "Start local terminal".
+
+   You can then check that your key is correctly loaded with this command in the terminal window: 
+
+   > **_NOTE:_**  In this exercise, all the workshop exercises and in JASMIN documentation, when we're showing commands and their output, the `$` at the start of a line simply represents the command prompt: **it is not a character which you need to type**. Lines without the `$` at the start represent output from a command.
+
+
+   ```
+   $ ssh-add -l
+   ```
+   If you see a message similar to the following, your key is correctly loaded:
+   ```
+   2048 SHA256:0y7Oh7J+kN6hPotWCerXsZBlRBL205UMGlJVZ1I0A8c you@somewhere.ac.uk (RSA)
+
+   ```
+   If not, you will need to try again before you will be able to log in to a remote host using the key.
+
+* Option 2: Loading the key manually in a terminal window
+
+   Start a new terminal window (click "Start local terminal")
+   Type the following command (remember, omit the `$` at the start which is just the prompt in our examples)
+   ```
+   $ ssh-add -l
+   ```
+   and press enter.
+   
+   You should see something like this:
+   ```
+   The agent has no identities.
+   ```
+   This is OK, it just means you haven’t loaded your key yet, but confirms that the agent is running and ready.
+
+   Next, load your key:
+   ```
+   $ ssh-add id_rsa_jasmin_training
+   ```
+   If you’re not already in the directory containing your key, you can either
+   specify the path to your key, e.g.
+   ```
+   ssh-add /drives/c/Users/username/Desttop/ssh/id_rsa_jasmin_training
+   ```
+   (Use the path to wherever you extracted the credentials that you were sent)
+   
+   > **_NOTE:_**  Although the Windows path to your key might be something like `c:\Users\<username>\Desktop\ssh`, inside a MobaXterm terminal, this is represented as `/drives/c/Users/<username>/Desttop/ssh/`. Also remember that the username in this case is your WINDOWS username ...nothing to do with JASMIN at this stage. And that paths in a MobaXterm terminal are CASE SENSITIVE.
+
+   Alternatively, you can change directory (`cd`) to that location, and run the command given earlier, i.e.
+   
+   Check where you are currently:
+   ```
+   $ pwd
+   /home/mobaxterm
+   ```
+
+   Change directory to where you stored your key:
+   
+   ```
+   $ cd /drives/c/Users/<username>/Desktop/ssh/
+   ```
+   (obviously, substitute in your own Windows username, and note that paths are case-sensitive)
+
+   Now try loading your key:
+   ```
+   ssh-add id_rsa_jasmin_training
+   ```
+   
+   Either way, you will now be prompted for your passphrase. Copy the contents of the passphrase file onto the Windows clipboard, ready to paste it in to the terminal window. Depending on your MobaXterm settings, right-click either pastes it immediately, or brings up a menu where you can select "Paste" as the action. 
+   
+   Note that it does not echo the passphrase to the terminal, so you won’t see the passphrase. If you're wondering where it is, you've probably pasted it multiple times already while trying! If so, so it will probably fail at this point with `Bad passphrase`. Try pasting it again with a single right-click followed by pressing enter.
+   
+   ```
+   $ ssh-add id_rsa_jasmin_training
+   Enter passphrase for id_rsa_jasmin_training:
+   Identity added: id_rsa_jasmin_training (id_rsa_jasmin_training)
+   ```
+   
+   You can confirm that it’s now loaded with the command you used earlier, i.e.
+   ```
+   ssh-add -l
+   2048 SHA256:LaUFdesZwMCWM7+Y+edn1smNDTUnQQz1+MFJl2h3Tbw id_rsa_jasmin_training (RSA)
+   ```
+   This means your key is now loaded.
 
 ### MacOS
 
@@ -159,11 +231,12 @@ Our recommended choice for a terminal application on MacOS is the `Terminal` app
 
 In a new terminal window:
 ```
-$ ssh-add ~/.ssh/id_rsa_jasmin
+$ ssh-add ~/.ssh/id_rsa_jasmin_training
 ```
 You can add the `-K` option here: this stores the passphrase in your KeyChain, so that it's available whenever you're logged in to your Mac. Obviously, **only** do this on a machine where your initial login after rebooting is protected by a strong password and/or fingerprint ID.
 
 You'll be prompted for your passphrase at this point.
+
 
 > **_NOTE:_** It is best to copy and paste the passphrase from the credentials you were sent, or from a password manager if you are using your own account. Note that the characters of your password will not be displayed as you type/paste them (this is normal!)
 
@@ -196,7 +269,7 @@ Agend pid XXX       (where XXX is some process ID)
 
 Now, load your key, having stored it in your `~/.ssh` directory:
 ```
-$ ssh-add ~/.ssh/id_rsa_jasmin
+$ ssh-add ~/.ssh/id_rsa_jasmin_training
 ```
 
 You'll be prompted for the passphrase at this point.
@@ -223,13 +296,13 @@ If not, you will need to try again before you will be able to log in to a remote
    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
    @         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-   Permissions 0644 for 'id_rsa_jasmin' are too open.
+   Permissions 0644 for 'id_rsa_jasmin_training' are too open.
    It is required that your private key files are NOT accessible by others.
    This private key will be ignored.
    ```
    You can do this with a command like this (you'll need to do this in a terminal window):
    ```
-   chmod 600 <path>/id_rsa_jasmin  
+   chmod 600 <path>/id_rsa_jasmin_training  
    ```
    where `<path>` is wherever you saved your key (see above: this can vary by platform).
 
@@ -237,11 +310,11 @@ If not, you will need to try again before you will be able to log in to a remote
 
    Sometimes this message is displayed, but as long as your key is listed when you do `ssh-add -l` then the command has worked.
 
-3. Could not open a connection to your authentication agent
+3. "Could not open a connection to your authentication agent" or "Error connecting to agent: No such file or directory"
 
    This means that the agent is not running, for some reason. If you can't out why, having checked the instructions above for your platform, you can start it manually with
    ```
-   $ eval (ssh-agent -s)
+   $ eval $(ssh-agent -s)
    agent pid 1234    # or some similar output
    ```
    You can then load your key as described above with the `ssh-add` command. Loaded this way, the key may or may not persist between sessions.
@@ -258,8 +331,7 @@ If not, you will need to try again before you will be able to log in to a remote
    * If it still doesn't work then start a session window and refer to item 3 above and load your key manually as follows:
 
 ```
-$ eval $(ssh-agent -s)
-$ ssh-add ~/.ssh/id_rsa_jasmin
+$ ssh-add ~/.ssh/id_rsa_jasmin_training
 ```
 
 
