@@ -128,6 +128,8 @@ Either is fine, but we'll try both in this exercise. If one doesn't work, try th
 
 
 * Option 1: Specifying the location in MobaXterm Settings
+
+
    [![MobaXterm v20.6 setup on Windows, loading private key](https://img.youtube.com/vi/yG8yyTt2R-0/0.jpg)](https://www.youtube.com/watch?v=yG8yyTt2R-0)
 
    In the above video, you can see the steps needed to load the key, i.e:
@@ -234,6 +236,7 @@ $ ssh-add ~/.ssh/id_rsa_jasmin_training
 You can add the `-K` option here: this stores the passphrase in your KeyChain, so that it's available whenever you're logged in to your Mac. Obviously, **only** do this on a machine where your initial login after rebooting is protected by a strong password and/or fingerprint ID.
 
 You'll be prompted for your passphrase at this point.
+
 
 > **_NOTE:_** It is best to copy and paste the passphrase from the credentials you were sent, or from a password manager if you are using your own account. Note that the characters of your password will not be displayed as you type/paste them (this is normal!)
 
