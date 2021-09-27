@@ -28,6 +28,13 @@ After completing this exercise I will be able to:
 
 * SSH client (to login to JASMIN)
 
+### Video
+
+You can follow this exercise by watching the demonstration video below, or by following the text of this article, or a combination of both.
+|  |  |
+| --- | --- |
+| Demonstration | [![](https://www.youtube.com/watch?v=UR2AbSml-Hc)](https://www.youtube.com/watch?v=UR2AbSml-Hc) |
+
 ### Your task
 
 This is the outline of what you need to do. The recommended way of doing each step is covered in the "Cheat Sheet" but you may wish to try solving it for yourself first.
