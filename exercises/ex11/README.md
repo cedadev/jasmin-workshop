@@ -7,9 +7,9 @@ author: Fatima Chami
 
 ### Scenario
 
-Parallel computing is the use of two or more processors to solve a large problem size. There are different forms of parallelism, Shared Memory parallelism (threading) e.g. OpenMP and Distributed Memory parallelism which uses the Message Passing Interface (MPI). This exercise will demonstrate how to compile and test a parallel MPI Fortran code on LOTUS. 
+Parallel computing is the use of two or more processors to solve a large problem size. There are different forms of parallelism, Shared Memory parallelism (threading) e.g. OpenMP and Distributed Memory parallelism which uses the Message Passing Interface (MPI). This exercise will demonstrate how to compile from source an MPI parallel code and test it on LOTUS. 
 
-The Fortran code generates two vectors X(n) and Y(n) of n=2**10 elements and then calculates a vector Z(n) as Z(i)= a * X(i) + Y(i). The code outputs the maximum value of the vector elements Z(i),  maxval(abs(Z))
+The Fortran example generates two vectors X(n) and Y(n) of n=2**10 elements and then calculates a vector Z(n) as Z(i)= a * X(i) + Y(i). The code outputs the maximum value of the vector elements Z(i),  maxval(abs(Z))
 
 A very important part of this workflow is that there are 2 separate steps:
 1. Compilation of code:
@@ -19,15 +19,14 @@ A very important part of this workflow is that there are 2 separate steps:
    * On the required number of LOTUS hosts
    * Run as batch job(s) 
 
-There are a limited number of licences available for Intel compiler so please adhere to this 2-step approach.
+There are a limited number of licences available for the Intel compiler so please adhere to this 2-step approach.
 
 
 ### Objectives 
 
 After completing this exercise you will:
- * **know** about the MPI implementation on JASMIN
- * **learn** about the Fortran/C compilers and how to use them 
- * **compile** an MPI parallel code on a LOTUS compute node interactively
+ * **know** about the MPI library available on JASMIN
+ * **learn how to compile** an MPI parallel code on a LOTUS compute node interactively
  * **become aware** of the special SLURM submission options to request resources for an MPI parallel job 
  
  
@@ -35,7 +34,7 @@ After completing this exercise you will:
 
  * Scientific analysis servers: `sci[1-6,8].jasmin.ac.uk`
  * Group workspace: `/gws/pw/j05/workshop`
- * LOTUS batch queues: 'workshop' (par-single or par-multi outside the event)
+ * LOTUS batch queues: `workshop` (`par-single` or `par-multi` outside the event)
  * Fortran MPI source code is (available in the Github repository): 
  `/gws/pw/j05/workshop/exercises/ex11/code/axpyMPI.f90`
  * Help documentation at https://help.jasmin.ac.uk
@@ -52,7 +51,7 @@ After completing this exercise you will:
 This is the outline of what you need to do. The recommended way of doing each step is covered in the "Cheat Sheet" but you may wish to try solving it for yourself first.
 
 1. Login to a JASMIN scientific analysis server 
-   * Launch two terminal sessions
+   * Launch two terminal sessions: terminal 1 will be used for compiling and testing codes on LOTUS while terminal 2 will be used for submitting and monitoring jobs 
    * Access a JASMIN login server on each terminal (see exercise 01)
    * Choose a Sci server with the lowest load 
    * Login to the chosen sci server on each terminal
@@ -62,30 +61,26 @@ This is the outline of what you need to do. The recommended way of doing each st
    * On terminal 1, invoke a pseudo-interactive session on LOTUS using the SLURM command `srun` with two CPU cores allocation: `srun --ntasks=2 --partition=workshop --account=workshop  --pty /bin/bash`
    * What is the compute node allocated and what type of CPU model the node has?
    * On the LOTUS compute node, load the Intel compiler module `module load intel/20.0.0` and the OpenMPI library module: `module load eb/OpenMPI/intel/3.1.1` and check that the two modules are loaded.
-   * Compile the Fortran code using the command `mpif90 axpyMPI.f90 -o axpyMPI.exe`
-   * Execute the binary using 1 core and then using two cores: `mpirun -np 2 axpyMPI.exe`
+   * Build the Fortran code executable using the command `mpif90 axpyMPI.f90 -o axpyMPI.exe`
+   * Execute the binary on a single CPU core and then on two cores: `mpirun -np 2 axpyMPI.exe`
    * What is the ouput?
    * On terminal 2, check the job ID associated to this pseudo-interactive session on LOTUS 
    * Exit the interactive session on LOTUS `exit`. The Job should be cleared from SLURM
 1. Prepare a script to submit the parallel MPI code to SLURM
    * On terminal 1, launch a text editor to prepare the job script e.g. `jobscriptMPI.sbatch` to submit the binary MPI compiled earlier.
    * Specify the number of parallel MPI tasks
-   * Submit the job e.g. job1 to SLURM scheduler and note the job ID `sbatch axpyMPI.sbatch`
-   * On terminal 2, monitor the job state using SLURM command `squeue` 
+   * Submit the job to SLURM scheduler and note the job ID `sbatch axpyMPI.sbatch`
+   * On terminal 2, monitor the job state using SLURM command `squeue`
    * What is the name of the compute node the job run on? is it the same node type on which the code was compiled?
-   * Check the resources used by the job memory,CPU using 'scontrol show job jobID'
+   * Check the resources used by the job memory,CPU using `scontrol show job jobID`
    * Inspect the job output and error file 
 1. Estimate and refine an MPI job requirements
-   * Specify the memory required per core   
-   * Specify the node type    
-   * Define a distribution of cores across nodes e.g. job2 or on a single node e.g. job3 
-   * Submit the same job script file but pass the new memory and core distribution to the SLURM 'sbatch'
+   * Specify the memory required per core using `--mem=XXX`  
+   * Specify the node type using `--constraint=`  
+   * Define a distribution of cores across nodes 
+   * Submit the same job script but pass the new memory and core distribution to SLURM `sbatch`
    * What is the job wait time?
-   * What is the elapsed time for job2 and job3?
-1. Writing to the scratch area    
-   *     
-   *     
-   *    
+   * What is the elapsed time per job?
 
 
 ### Questions to test yourself
@@ -95,7 +90,6 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 1. Is there a limit on the number of parallel tasks an MPI job can have? 
 1. What is the MPI implementation supported on JASMIN?
 1. Is it possible to run an MPI binary that was compiled on a different system?
-1. What is the difference between an MPI code and a code that uses MPI IO only?
 1. How to find out about the MPI libray that the code was compiled against?
 1. What type of storage is suitable for pararallel MPI IO?
 1. Can I run a Python script in parallel using MPI4py?
@@ -134,7 +128,7 @@ By completing this exercise you will be able to compile and test a parallel MPI 
 1. Compile and test a Fortran code interactively on LOTUS 
    * On terminal 1, invoke a pseudo-interactive session on LOTUS using the SLURM command `srun` with two CPU cores allocation
    ```
-   $ srun --ntasks=2 --partition=workshop --account=workshop  --pty /bin/bash`
+   $ srun --ntasks=2 --partition=workshop --account=workshop  --pty /bin/bash
    srun: job 64164115 queued and waiting for resources
    srun: job 64164115 has been allocated resources
    cpu-bind=MASK - host149, task  0  0 [11224]: mask 0x1 set
@@ -207,7 +201,7 @@ By completing this exercise you will be able to compile and test a parallel MPI 
 
 > 1. Is there a limit on the number of parallel tasks an MPI job can have? 
 
-The limit is 16 cores for the par-single queue and 256 cores for the par-multi queue. https://help.jasmin.ac.uk/article/4881-lotus-queues
+The limit is 16 cores for the `par-single` queue and 256 cores for the `par-multi` queue. https://help.jasmin.ac.uk/article/4881-lotus-queues
 > 2. What is the MPI implementation supported on JASMIN?
 
 The OpenMPI library is the only supported MPI library on LOTUS. OpenMPI v3.1.1 and v4.0.0 are provided which are fully MPI3 compliant: 
@@ -217,22 +211,26 @@ eb/OpenMPI/gcc/4.0.0
 eb/OpenMPI/intel/3.1.1 
 eb/OpenMPI/intel/4.1.0
 ```
-> 3. Is it possible to run an MPI binary that was compiled on a different system?
+> 3. Is it possible to run an MPI parallel code that was compiled on a different system?
 
-Recompilation is recommended 
+Recompilation on JASMIN is recommended 
+
+> 4. How to find out about the MPI libray that the code was compiled against?
+
+Use the Linux command `ldd <name-of-executable>`
+> 5. What type of storage is suitable for pararallel MPI IO?
+
+MPI I/O features are fully supported *only* on the LOTUS `/work/scratch-pw` directory as this uses a Panasas fully parallel file system
+
+> 6. Can I run a Python script in parallel using MPI4py?
+
+This needs rewriting/converting the Python serial code in parallel using the MPI4py library
+
+>
+
+
+<!--- Writing to the scratch area. this section is removed 
+1. What is the difference between an MPI code and a code that uses MPI IO only?
 > 4. What is the difference between an MPI code and a code that uses MPI IO only?
 
 The writing and reading of file is done in parallel. Hence, the storage system has to support parallel IO write operation. 
-
-> 5. How to find out about the MPI libray that the code was compiled against?
-
-Use the Linux command `ldd <name-of-executable>`
-> 6. What type of storage is suitable for pararallel MPI IO?
-
-MPI I/O features are fully supported *only* on the LOTUS /work/scratch-pw directory as this uses a Panasas fully parallel file system
-
-> 7. Can I run a Python script in parallel using MPI4py?
-
-This needs rewriting/converting the Python serila code in parallel using the MPI4py library
-
->
