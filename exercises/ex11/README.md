@@ -19,7 +19,7 @@ A very important part of this workflow is that there are 2 separate steps:
    * On the required number of LOTUS hosts
    * Run as batch job(s) 
 
-There are a limited number of licences available for compilers so please adhere to this 2-step approach.
+There are a limited number of licences available for Intel compiler so please adhere to this 2-step approach.
 
 
 ### Objectives 
