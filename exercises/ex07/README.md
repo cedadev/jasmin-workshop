@@ -33,7 +33,7 @@ After completing this exercise I will be able to:
 You can follow this exercise by watching the demonstration video below, or by following the text of this article, or a combination of both.
 |  |  |
 | --- | --- |
-| Demonstration | [(https://www.youtube.com/watch?v=UR2AbSml-Hc)](https://www.youtube.com/watch?v=UR2AbSml-Hc) |
+| Demonstration | [![](https://img.youtube.com/vi/UR2AbSml-Hc/mqdefault.jpg )](https://www.youtube.com/watch?v=UR2AbSml-Hc) |
 
 ### Your task
 
