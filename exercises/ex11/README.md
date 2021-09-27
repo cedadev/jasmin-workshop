@@ -73,15 +73,13 @@ This is the outline of what you need to do. The recommended way of doing each st
    * On terminal 2, monitor the job state using SLURM command `squeue`
    * What is the name of the compute node the job run on? is it the same node type on which the code was compiled?
    * Check the resources used by the job memory,CPU using `scontrol show job jobID`
-   * Inspect the job output and error file 
 1. Estimate and refine an MPI job requirements
-   * Specify the memory required per core using `--mem=XXX`  
+   * Specify the memory required per core using `--mem-per-cpu=XXX`  
    * Specify the node type using `--constraint=`  
    * Define a distribution of cores across nodes 
    * Submit the same job script but pass the new memory and core distribution to SLURM `sbatch`
    * What is the job wait time?
    * What is the elapsed time per job?
-
 
 ### Questions to test yourself
 
@@ -91,7 +89,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 1. What is the MPI implementation supported on JASMIN?
 1. Is it possible to run an MPI binary that was compiled on a different system?
 1. How to find out about the MPI libray that the code was compiled against?
-1. What type of storage is suitable for pararallel MPI IO?
+1. What type of storage is suitable for parallel MPI IO?
 1. Can I run a Python script in parallel using MPI4py?
 
 ### Review / alternative approaches / best practice
@@ -99,20 +97,17 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 By completing this exercise you will be able to compile and test a parallel MPI Fortran code interactively on LOTUS.  You will be able to use the special submission flags to submit an MPI job to SLURM. You will be able to use compilers via the module environment. MPI message passing interface is a library to facilitate data sharing and communication between CPU cores -often called ranks- as each rank accesses its own data space. 
 
 
-* LOTUS par-single and par-multi are dedicated queues for MPI and OpenMP parallel codes
+* `par-single` and `par-multi` are dedicated queues for MPI and OpenMP parallel codes
 * Use `mpirun` to execute MPI parallel codes and to ensure that the MPI communications runs over the private MPI network.
 * The OpenMPI library is the only supported MPI library on LOTUS. OpenMPI v3.1.1 and v4.0.0 are provided which are fully MPI3 compliant. 
-*  MPI I/O features are fully supported *only* on the LOTUS `/work/scratch-pw` directory as this uses a Panasas fully parallel file system
+*  MPI I/O features are fully supported *only* on `/work/scratch-pw` disk as this uses a Panasas fully parallel file system
 * Run the MPI code on two cores before scaling up to many cores
 * Keep your source code in your home directory which is backed up
 * There is a limited number of licences available for Intel compiler, so please do not submit many jobs to compile the same code. 
-* Run the MPI code on the same CPU model used to compile the MPI source code.
-
-
+* If the code is compiled for a specific CPU architecture, then the binary should be executed on the same CPU architecture
 
 ### Cheat Sheet
 
-* scontrol show job jobid   check the Features=intel   Features=ivybridge128G if a specific Intel model is explicitely specified 1. Login to a JASMIN scientific analysis server 
 
 1. Login to a JASMIN scientific analysis server 
    * Login to the chosen sci server on each terminal
@@ -122,7 +117,7 @@ By completing this exercise you will be able to compile and test a parallel MPI 
    ```
    * Copy the Fortran source code from the exercise directory (shown in the JASMIN resources section) to your current working directory 
    ```
-   cp /gws/pw/j05/workshop/exercises/ex11/code/axpyMPI.f90 .
+   $ cp /gws/pw/j05/workshop/exercises/ex11/code/axpyMPI.f90 .
    ```           
    > **_NOTE:_**  One terminal will be used for compiling and testing codes on LOTUS while the second terminal will be used for submitting and monitoring batch jobs. 
 1. Compile and test a Fortran code interactively on LOTUS 
@@ -135,6 +130,8 @@ By completing this exercise you will be able to compile and test a parallel MPI 
    [train049@host149 ] $
    ```
    * What is the compute node allocated and what is its CPU model?
+
+   From the command line prompt, the LOTUS compute node allocated is `host149`. The CPU model is Intel 'ivybridge' and the node has 128 GB memory. This info can be found from SLURM or from `/proc/cpuinfo` as shown below:
    ```
    @host149 ] $ scontrol show node host149 | grep Features
     AvailableFeatures=ivybridge128G,lotus241,lotus2,intel
@@ -147,9 +144,9 @@ By completing this exercise you will be able to compile and test a parallel MPI 
    model name	: Intel(R) Xeon(R) CPU E5-2650 v2 @ 2.60GHz
    ...
    ```
-   `CPU E5-2650 v2` corresponds to hostgroup `ivybridge128G` see the Table in this helppage   https://help.jasmin.ac.uk/article/4932-lotus-cluster-specification 
+   `CPU E5-2650 v2` corresponds to hostgroup `ivybridge128G` see the Table in this help page   https://help.jasmin.ac.uk/article/4932-lotus-cluster-specification 
    
-   * On the LOTUS compute node, load the Intel compiler module `module load intel/20.0.0` and the OpenMPI library module: `module load eb/OpenMPI/intel/3.1.1` and check that the two modules are loaded.
+   * On the LOTUS compute node, load the Intel compiler `module load intel/20.0.0` and the OpenMPI library module: `module load eb/OpenMPI/intel/3.1.1` and check that the two modules are loaded.
    ```
    @host149 ] $ module load intel/20.0.0
    @host149 ] $ module load eb/OpenMPI/intel/3.1.1
@@ -166,11 +163,14 @@ By completing this exercise you will be able to compile and test a parallel MPI 
    @host149 ] $ mpirun -np 2 axpyMPI.exe
      1.07598934124890       0.000000000000000E+000
    ```
-   * On terminal 2, check the job ID associated to this pseudo-interactive session on LOTUS and the number of cores allocated 
+   * On terminal 2, check the job ID associated with this pseudo-interactive session on LOTUS and the number of cores allocated 
    ```
-    @sci3 ~ ]$squeue -u trai049
-             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+    @sci3 ~ ]$ squeue -u trai049
+             JOBID PARTITION     NAME    USER   ST     TIME  NODES NODELIST(REASON)
           64164115  workshop     bash   train049 R      24:17      1 host149
+   ```
+   The number of nodes and CPUs allocated can also be found from this SLURM command:
+   ```
    @sci3 ~ ]$ scontrol show job 64164115 
    ...
    NumNodes=1 NumCPUs=2 NumTasks=2 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
@@ -179,22 +179,82 @@ By completing this exercise you will be able to compile and test a parallel MPI 
    * Exit the interactive session on LOTUS `exit`. The Job should be cleared from SLURM
    ```
     @host149 ] $ exit
+    [train049@sci3 ~]$ 
    ```
 1. Prepare a script to submit the parallel MPI code to SLURM
-   * On terminal 1, launch a text editor to prepare the job script e.g. `jobscriptMPI.sbatch` to submit the binary MPI compiled earlier.
+   * On terminal 1, launch a text editor to prepare a Bash script to submit the MPI executable generated earlier (use the template jobscript `jobscriptMPI.sbatch` shown below)
+   ```
+   #!/bin/bash
+
+   # SLURM directives:
+   #SBATCH --partition=workshop
+   #SBATCH --account=workshop
+   #SBATCH --job-name=axpyMPI
+   #SBATCH -o %j.out 
+   #SBATCH -e %j.err
+   #SBATCH --time=05:00
+   #SBATCH --mem=100
+   #SBATCH --ntasks=xxx
+   
+   # User specific environment 
+   module load intel/20.0.0
+   module load eb/OpenMPI/intel/3.1.1
+
+   # executable 
+   mpirun ./axpyMPI.exe
+
+   ```
    * Specify the number of parallel MPI tasks
-   * Submit the job e.g. job1 to SLURM scheduler and note the job ID `sbatch axpyMPI.sbatch`
-   * On terminal 2, monitor the job state using SLURM command `squeue` 
+   ```
+   #SBATCH --ntasks=4
+   ```
+   * Submit the job to SLURM scheduler and note the job ID `sbatch axpyMPI.sbatch`
+   ```
+   [train049@sci3 ~]$ sbatch axpyMPI.sbatch
+    Submitted batch job 4815542
+   ```
+   * On terminal 2, monitor the job state using SLURM command:
+   ```
+   [train049@sci2 ~]$ squeue -u train049
+     JOBID PARTITION     NAME     USER ST    TIME  NODES NODELIST(REASON)
+   4815542  workshop  axpyMPI train049 PD    0:00      1 (None)
+   ```
+   The job is pending `PD`. Once the job starts running the job state will change from `PD` to `R` and the elapsed runtime will show in the column `TIME` 
    * What is the name of the compute node the job run on? is it the same node type on which the code was compiled?
-   * Check the resources used by the job memory,CPU using 'scontrol show job jobID'
-   * Inspect the job output and error file 
-1. Estimate and refine an MPI job requirements
-   * Specify the memory required per core   
-   * Specify the node type    
-   * Define a distribution of cores across nodes e.g. job2 or on a single node e.g. job3 
-   * Submit the same job script file but pass the new memory and core distribution to the SLURM 'sbatch'
+   ```
+   [train049@sci2 ~]$ scontrol show job 4815542 
+   UserId=train049(7052227) GroupId=users(26030) MCS_label=N/A
+   Priority=998385 Nice=0 Account=workshop QOS=normal
+   JobState=COMPLETED Reason=None Dependency=(null)
+   ...
+   NodeList=host[195,267]
+   NumNodes=2 NumCPUs=4 NumTasks=4 CPUs/Task=1
+   ...
+   ```
+   For this run, host[195,267] are of node type Intel
+
+   * What is the total memory allocated for this job? 
+   From the output`scontrol show job 4815542` scroll down to the line where `mem` is specified:
+   ```
+   mem=200M,node=2
+   ```
+   The total memory allocated for the job is 200 MB. The specified memory `#SBATCH --mem=100` is the minimum memory required per node `MinMemoryNode=100M`.
+   To find out about the memory usage, use the SLURM command `sacct`:
+   ```
+    sacct -j 4815542  --format=jobid%20,reqmem,maxrss,nodelist,ncpu
+               JobID     ReqMem     MaxRSS        NodeList      NCPUS 
+    -------------------- ---------- ---------- --------------- ---------- 
+             4815542      100Mn              host[195,267]          4 
+       4815542.batch      100Mn       924K         host195          1 
+           4815542.0      100Mn      1016K         host267          1 
+   ```
+1. Explore MPI job requirements
+   * Specify the memory required per core using `--mem-per-cpu=XXX`
+   * Specify the node type using `--constraint="intel"`  
+   * Define a distribution of cores across nodes 
+   * Submit the same job script but pass the new memory and core distribution to SLURM `sbatch`
    * What is the job wait time?
-   * What is the elapsed time for job2 and job3?
+   * What is the elapsed time per job? 
 
 
 ### Answers to questions
@@ -226,11 +286,4 @@ MPI I/O features are fully supported *only* on the LOTUS `/work/scratch-pw` dire
 
 This needs rewriting/converting the Python serial code in parallel using the MPI4py library
 
->
 
-
-<!--- Writing to the scratch area. this section is removed 
-1. What is the difference between an MPI code and a code that uses MPI IO only?
-> 4. What is the difference between an MPI code and a code that uses MPI IO only?
-
-The writing and reading of file is done in parallel. Hence, the storage system has to support parallel IO write operation. 
