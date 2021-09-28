@@ -31,7 +31,7 @@ After completing this exercise you will:
 
  * Scientific analysis servers: `sci[1-6,8].jasmin.ac.uk`
  * Group workspace: `/gws/pw/j05/workshop`
- * LOTUS batch queues: 'workshop' (`short-serial` outside the event)
+ * LOTUS batch queues: `workshop` (`short-serial` outside the event)
  * Fortran source code is (available in the Github repository): 
  `/gws/pw/j05/workshop/exercises/ex08/code/axpySerial.f90`
  * Help documentation at https://help.jasmin.ac.uk
@@ -51,11 +51,11 @@ This is the outline of what you need to do. The recommended way of doing each st
 1. Login to a physical JASMIN scientific analysis server 
    * Launch two terminal sessions
    * Access a JASMIN login server on each terminal (see exercise 01)
-   * Choose one of physical Sci servers `sci[3,6,8]` with the lowest load 
+   * Choose one of physical sci servers `sci[3,6,8]` with the lowest load 
    * Login to the chosen sci server on each terminal
    * Copy the Fortran source code from the exercise directory (shown in the JASMIN resources section) to your current working directory            
    > **_NOTE:_**  One terminal will be used for compiling and testing codes on LOTUS while the second terminal will be used for submitting and monitoring batch jobs. 
-1. Use the Intel compiler to test a Fortran code on a physical Sci  `sci[3,6,8]` 
+1. Use the Intel compiler to test a Fortran code on a physical sci  `sci[3,6,8]` 
    * List all available Intel compilers `module avail intel/1 intel/2`
    * Load the Intel compiler module environment e.g. `module load intel/20.0.0`
    * Compile the Fortran source code `ifort axpySerial.f90 -o axpySerial_intel.exe`
@@ -93,7 +93,8 @@ This is the outline of what you need to do. The recommended way of doing each st
    * Did the execution fail?
 1. How to use the NetCDF C library and the NetCDF Fortran binding GNU 
    * Enable the JASPY environment `module load jaspy`
-   * Compile and link the Fortran example `gfortran -I$CONDA_PREFIX/include simple_xy_wr.f90 -o simple_xy_wr.exe -L$CONDA_PREFIX/lib -lnetcdff -lnetcdf`   (note that the -I option in the first command is capital "eye" for "Include", whereas the -l in the second command is "ell" for "library")
+   * Compile and link the Fortran example `gfortran -I$CONDA_PREFIX/include simple_xy_wr.f90 -o simple_xy_wr.exe -L$CONDA_PREFIX/lib -lnetcdff -lnetcdf`   (note that the -I option in the first command is capital "eye" for "Include", whereas the -l in the second command is "ell" for "library") 
+   > **_NOTE:_** The ordering of the linker flags is important. Since netcdff uses functions from netcdf, it has to be listed in this order. Otherwise, you will get an undefined symbol error
    * Execute the binary `./simple_xy_wr.exe`
 
 ### Questions to test yourself
@@ -109,10 +110,10 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 
 By completing this exercise you will be able to compile and test a serial Fortran code interactively on the sci machine and on LOTUS. You will be able to use compilers provided via the module environment.
 
-* LOTUS short-serial and long-serial are dedicated queues for single core serial jobs
+* LOTUS `short-serial` and `long-serial` are dedicated queues for single core serial jobs
 * Keep your source code in your home directory which is backed up
 * There is a limited number of licences available for Intel compiler, so please do not submit many jobs to compile the same code. 
-* Estimate the memory and runtime required for the job otherwise the default (1 hour and 8GB) apply
+* Estimate the memory and runtime required for the job otherwise the default (1 hour and 4GB) apply
 * Group many short jobs into a single longer job for efficient use of LOTUS/SLURM 
 
 ### Cheat Sheet
@@ -281,7 +282,7 @@ By completing this exercise you will be able to compile and test a serial Fortra
    ```
    * Compile the code for Intel CPU 
    ```
-   $ ifort -xAVX  axpySerial.f90 -o axpySerial_intel_avx.exe`
+   $ ifort -xAVX  axpySerial.f90 -o axpySerial_intel_avx.exe
    ```
    * Execute the binary `./axpySerial_intel_avx.exe`
    ```
@@ -320,12 +321,17 @@ By completing this exercise you will be able to compile and test a serial Fortra
 ### Answers to questions
 
 1. Is it possible to run a serial Fortran code that was compiled on a different system?
-Recompiling a code to run on JASMIN is recommended
+
+   Recompiling a code to run on JASMIN is recommended
 1. What are the SLURM partitions to use for serial Fortran code?
-test, short-serial and long-serial 
+
+   `test`, `short-serial` and `long-serial` 
 1. Why my Fortran code is running slow? 
+
 This could indicate that the job requires more resources than the allocated resources.
 1. Can I use GNU compiler available via `module avail gnu`?
+
+   The GNU compiler available via environment module is not maintained. 
 
 
 
