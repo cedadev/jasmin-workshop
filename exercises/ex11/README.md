@@ -74,7 +74,7 @@ This is the outline of what you need to do. The recommended way of doing each st
    * What is the name of the compute node the job run on? is it the same node type on which the code was compiled?
    * Check the resources used by the job memory,CPU using `scontrol show job <jobID>`
 1. Explore MPI job requirements -**Optional**-
-   * Specify the memory required per CPU using `--mem-per-cpu=<size[units]>` Default value is 4 GB ( which is defined `DefMemPer‐CPU`)
+   * Comment out `#SBATCH --mem=100` in the jobscript file.Specify the memory required per CPU using `--mem-per-cpu=<size[units]>` Default value is 4 GB ( which is defined `DefMemPer‐CPU`)
    * Define a distribution of tasks across nodes using `--ntasks-per-node=ntasks` and `--nodes=<minnodes[-maxnodes]>` 
    > **_NOTE:_**  the `--ntasks` option will take  precedence  and the `--ntasks-per-node` will be treated as a maximum count of tasks per node.
    * Submit the same job script but pass the new memory and core distribution arguments to SLURM `sbatch`
@@ -254,7 +254,19 @@ By completing this exercise you will be able to compile and test a parallel MPI 
    * Specify the memory required per core using `--mem-per-cpu=XXX`
    * Define a distribution of tasks across nodes using `--ntasks-per-node=XXX` and `--nodes=<minnodes[-maxnodes]>` 
    * Submit the same job script but pass the new memory and core distribution arguments to SLURM `sbatch`
+   ```
+   [train049@sci3 ~] sbatch --mem-per-cpu=50 --ntasks=4 jobscriptMPI.sbatch
+   Submitted batch job 4888612
+   ```
+   or
+   ```
+   [train049@sci3 ~] sbatch --mem-per-cpu=50 --ntasks-per-node=2 --nodes=2 jobscriptMPI.sbatch
+   Submitted batch job 4888695
+   ```
    * What is the job wait time?
+   ```
+   [train049@sci3 ~] sacct -j <jobID> --format=jobid,submit,start,node
+   ```
    * What is the elapsed time per job? 
    * Now add the node type specification `--constraint="intel"`
    * Rerun the job
