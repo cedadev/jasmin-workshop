@@ -110,10 +110,10 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 
 By completing this exercise you will be able to compile and test a serial Fortran code interactively on the sci machine and on LOTUS. You will be able to use compilers provided via the module environment.
 
-* LOTUS short-serial and long-serial are dedicated queues for single core serial jobs
+* LOTUS `short-serial` and `long-serial` are dedicated queues for single core serial jobs
 * Keep your source code in your home directory which is backed up
 * There is a limited number of licences available for Intel compiler, so please do not submit many jobs to compile the same code. 
-* Estimate the memory and runtime required for the job otherwise the default (1 hour and 8GB) apply
+* Estimate the memory and runtime required for the job otherwise the default (1 hour and 4GB) apply
 * Group many short jobs into a single longer job for efficient use of LOTUS/SLURM 
 
 ### Cheat Sheet
