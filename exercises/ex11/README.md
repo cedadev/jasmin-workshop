@@ -6,8 +6,8 @@ author: Fatima Chami
 # Exercise 11: MPI on JASMIN
 
 ### Scenario
-
-Parallel computing is the use of two or more processors to solve a large problem size. There are different forms of parallelism, Shared Memory parallelism (threading) e.g. OpenMP and Distributed Memory parallelism which uses the Message Passing Interface (MPI). This exercise will demonstrate how to compile from source an MPI parallel code and test it on LOTUS. 
+I am using the community code JULES for my research work. I need to add a new feature in the code. I need to edit the source code and then compile and build it on JASMIN. JULES is an MPI parallel code. This exercise will demonstrate how to compile from source an MPI parallel code and test it on LOTUS.
+Parallel computing is the use of two or more processors to solve a large problem size. There are different forms of parallelism, Shared Memory parallelism (threading) e.g. OpenMP and Distributed Memory parallelism which uses the Message Passing Interface (MPI). 
 
 The Fortran example generates two vectors X(n) and Y(n) of n=2**10 elements and then calculates a vector Z(n) as Z(i)= a * X(i) + Y(i). The code outputs the maximum value of the vector elements Z(i),  maxval(abs(Z))
 
@@ -70,16 +70,19 @@ This is the outline of what you need to do. The recommended way of doing each st
    * On terminal 1, launch a text editor to prepare the job script e.g. `jobscriptMPI.sbatch` to submit the binary MPI compiled earlier.
    * Specify the number of parallel MPI tasks
    * Submit the job to SLURM scheduler and note the job ID `sbatch axpyMPI.sbatch`
-   * On terminal 2, monitor the job state using SLURM command `squeue`
+   * On terminal 2, monitor the job state using SLURM command `squeue -u <username>`
    * What is the name of the compute node the job run on? is it the same node type on which the code was compiled?
-   * Check the resources used by the job memory,CPU using `scontrol show job jobID`
-1. Estimate and refine an MPI job requirements
-   * Specify the memory required per core using `--mem-per-cpu=XXX`  
-   * Specify the node type using `--constraint=`  
-   * Define a distribution of cores across nodes 
-   * Submit the same job script but pass the new memory and core distribution to SLURM `sbatch`
+   * Check the resources used by the job memory,CPU using `scontrol show job <jobID>`
+1. Explore MPI job requirements -**Optional**-
+   * Specify the memory required per CPU using `--mem-per-cpu=<size[units]>` Default value is 4 GB ( which is defined `DefMemPer‐CPU`)
+   * Define a distribution of tasks across nodes using `--ntasks-per-node=ntasks` and `--nodes=<minnodes[-maxnodes]>` 
+   > **_NOTE:_**  the `--ntasks` option will take  precedence  and the `--ntasks-per-node` will be treated as a maximum count of tasks per node.
+   * Submit the same job script but pass the new memory and core distribution arguments to SLURM `sbatch`
    * What is the job wait time?
-   * What is the elapsed time per job?
+   * What is the elapsed time per job? 
+   * Now add the node type specification `--constraint="intel"`
+   * Rerun the job
+
 
 ### Questions to test yourself
 
@@ -107,7 +110,6 @@ By completing this exercise you will be able to compile and test a parallel MPI 
 * If the code is compiled for a specific CPU architecture, then the binary should be executed on the same CPU architecture
 
 ### Cheat Sheet
-
 
 1. Login to a JASMIN scientific analysis server 
    * Login to the chosen sci server on each terminal
@@ -238,7 +240,7 @@ By completing this exercise you will be able to compile and test a parallel MPI 
    ```
    mem=200M,node=2
    ```
-   The total memory allocated for the job is 200 MB. The specified memory `#SBATCH --mem=100` is the minimum memory required per node `MinMemoryNode=100M`.
+   The total memory allocated for the job is 200 MB. The specified memory `#SBATCH --mem=100` is the minimum memory required per node in MB units `MinMemoryNode=100M`.
    To find out about the memory usage, use the SLURM command `sacct`:
    ```
     sacct -j 4815542  --format=jobid%20,reqmem,maxrss,nodelist,ncpu
@@ -248,13 +250,14 @@ By completing this exercise you will be able to compile and test a parallel MPI 
        4815542.batch      100Mn       924K         host195          1 
            4815542.0      100Mn      1016K         host267          1 
    ```
-1. Explore MPI job requirements
+1. Explore MPI job requirements -Optional-
    * Specify the memory required per core using `--mem-per-cpu=XXX`
-   * Specify the node type using `--constraint="intel"`  
-   * Define a distribution of cores across nodes 
-   * Submit the same job script but pass the new memory and core distribution to SLURM `sbatch`
+   * Define a distribution of tasks across nodes using `--ntasks-per-node=XXX` and `--nodes=<minnodes[-maxnodes]>` 
+   * Submit the same job script but pass the new memory and core distribution arguments to SLURM `sbatch`
    * What is the job wait time?
    * What is the elapsed time per job? 
+   * Now add the node type specification `--constraint="intel"`
+   * Rerun the job
 
 
 ### Answers to questions
