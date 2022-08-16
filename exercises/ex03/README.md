@@ -25,7 +25,7 @@ After completing this exercise I will be able to:
    * If you are using one of the training accounts this will have been set up for you
 * Transfer server: `xfer[12].jasmin.ac.uk` (`1` or `2`)
 * Home directory: `/home/users/train050` (replace with your username)
-* `workshop` group workspace at `/gws/pw/j05/workshop`
+* `workshop` group workspace at `/gws/pw/j07/workshop`
 
 ### Local resources
 
@@ -141,7 +141,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     ```
     Go to the workspace directory and make your own user directory there:
     ```
-    $ cd /gws/pw/j05/workshop
+    $ cd /gws/pw/j07/workshop
     $ ls
     users
     ```
@@ -166,12 +166,12 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
     Back on your local machine, recursively copy the directory using `scp`:  (replace `train050` with your username)
     ```
-    scp -r mydata train050@xfer1.jasmin.ac.uk:/gws/pw/j05/workshop/users/train050/
+    scp -r mydata train050@xfer1.jasmin.ac.uk:/gws/pw/j07/workshop/users/train050/
     ```
 
     In your other terminal window on (or log back in to) the transfer server, inspect your destination directory:
     ```
-    $ cd /gws/pw/j05/workshop/users/$USER
+    $ cd /gws/pw/j07/workshop/users/$USER
     $ find .
     ./mydata
     ./mydata/02
