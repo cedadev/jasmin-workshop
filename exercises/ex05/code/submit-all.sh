@@ -6,7 +6,7 @@
 #
 
 EXTRACTOR=$PWD/extract-era-data.sh
-OUTPUTS_DIR=/gws/pw/j05/workshop/users/$USER/ex05/lotus-outputs
+OUTPUTS_DIR=/gws/pw/j07/workshop/users/$USER/ex05/lotus-outputs
 
 CONTEXT=workshop
 

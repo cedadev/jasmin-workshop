@@ -33,10 +33,10 @@ After completing this exercise you will:
  ### JASMIN resources
 
  * Scientific analysis servers: `sci[1-6,8].jasmin.ac.uk`
- * Group workspace: `/gws/pw/j05/workshop`
+ * Group workspace: `/gws/pw/j07/workshop`
  * LOTUS batch queues: `workshop` (`par-single` or `par-multi` outside the event)
  * Fortran MPI source code is (available in the Github repository): 
- `/gws/pw/j05/workshop/exercises/ex11/code/axpyMPI.f90`
+ `/gws/pw/j07/workshop/exercises/ex11/code/axpyMPI.f90`
  * Help documentation at https://help.jasmin.ac.uk
 
 ### Local resources
@@ -119,7 +119,7 @@ By completing this exercise you will be able to compile and test a parallel MPI 
    ```
    * Copy the Fortran source code from the exercise directory (shown in the JASMIN resources section) to your current working directory 
    ```
-   $ cp /gws/pw/j05/workshop/exercises/ex11/code/axpyMPI.f90 .
+   $ cp /gws/pw/j07/workshop/exercises/ex11/code/axpyMPI.f90 .
    ```           
    > **_NOTE:_**  One terminal will be used for compiling and testing codes on LOTUS while the second terminal will be used for submitting and monitoring batch jobs. 
 1. Compile and test a Fortran code interactively on LOTUS 

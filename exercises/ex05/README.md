@@ -24,7 +24,7 @@ After completing this exercise I will be able to:
  * sci servers: `sci[1-6].jasmin.ac.uk`
  * LOTUS batch processing cluster
  * common software: CDO (Climate Data Operators) tool
- * GWS (read/write): `/gws/pw/j05/workshop`
+ * GWS (read/write): `/gws/pw/j07/workshop`
  * CEDA Archive (read-only): requires a CEDA account
  * help documentation at https://help.jasmin.ac.uk
 
@@ -134,7 +134,7 @@ This demonstrates best practice:
         1. Run the CDO tool to extract the "TCC" variable from the input file to the output file
     1. If you are stuck, you can use the script located at:
 
-        `/gws/pw/j05/workshop/exercises/ex05/code/extract-era-data.sh`
+        `/gws/pw/j07/workshop/exercises/ex05/code/extract-era-data.sh`
 
         [ Source: [https://github.com/cedadev/jasmin-workshop/blob/master/exercises/ex05/code/extract-era-data.sh](https://github.com/cedadev/jasmin-workshop/blob/master/exercises/ex05/code/extract-era-data.sh) ]
 
@@ -157,7 +157,7 @@ This demonstrates best practice:
 
     1. If you need some advice you can use the script at:
 
-        `/gws/pw/j05/workshop/exercises/ex05/code/submit-all.sh`
+        `/gws/pw/j07/workshop/exercises/ex05/code/submit-all.sh`
 
         [ Source: [https://github.com/cedadev/jasmin-workshop/blob/master/exercises/ex05/code/submit-all.sh](https://github.com/cedadev/jasmin-workshop/blob/master/exercises/ex05/code/submit-all.sh) ]
 

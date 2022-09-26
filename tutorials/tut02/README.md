@@ -64,7 +64,7 @@ After completing this tutorial I will be able to:
  * login servers: `login[1-4].jasmin.ac.uk`
  * Cylc server: `cylc.jasmin.ac.uk`
  * LOTUS batch processing cluster
- * GWS (read/write): `/gws/pw/j05/workshop`
+ * GWS (read/write): `/gws/pw/j07/workshop`
  * `$HOME` directory
  * CEDA Archive (read-only): requires a CEDA account
  * help documentation at https://help.jasmin.ac.uk
@@ -127,7 +127,7 @@ Alternative approaches and good practice might include:
        * File: `./outputs/annual-max-temp-time-series.png`
 
   * The scripts are available at:
-    * On JASMIN: `/gws/pw/j05/workshop/tutorials/tut02/code/`
+    * On JASMIN: `/gws/pw/j07/workshop/tutorials/tut02/code/`
     * On github: https://github.com/cedadev/jasmin-workshop/tree/master/tutorials/tut02/code
 
 4. Wrap the scripts in a Rose suite by copying the example suite to a new directory called
@@ -135,7 +135,7 @@ Alternative approaches and good practice might include:
 
   * The example suite is available at:
 
-        /gws/pw/j05/workshop/tutorials/tut02/example-suite
+        /gws/pw/j07/workshop/tutorials/tut02/example-suite
 
   * Go to the directory where you have copied the suite.
 
@@ -223,7 +223,7 @@ Note that in this example the 4 tasks have been renamed to:
 
 The full example suite is available at:
 
-        /gws/pw/j05/workshop/tutorials/tut02/workshop-suite
+        /gws/pw/j07/workshop/tutorials/tut02/workshop-suite
 
 And on github at:
 
