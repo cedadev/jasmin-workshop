@@ -21,10 +21,10 @@ After completing this exercise I will be able to:
  ### JASMIN resources
 
  * Scientific analysis servers: `sci[1-6].jasmin.ac.uk`
- * Group workspace: `/gws/pw/j05/workshop`
+ * Group workspace: `/gws/pw/j07/workshop`
  * Python example scripts are provided: 
- `/gws/pw/j05/workshop/exercises/ex02/code/random-number-gen.py`
- `/gws/pw/j05/workshop/exercises/ex02/code/dot-product-2arrays.py`
+ `/gws/pw/j07/workshop/exercises/ex02/code/random-number-gen.py`
+ `/gws/pw/j07/workshop/exercises/ex02/code/dot-product-2arrays.py`
  * help documentation at https://help.jasmin.ac.uk
 
 ### Local resources
@@ -138,7 +138,7 @@ Usage of the storage:
 1. Execute the Python example script on the Sci server 
    * Copy the Python example script (shown in the JASMIN resources section) to your current working directory 
    ```
-   $ cp /gws/pw/j05/workshop/exercises/ex02/code/random-number-gen.py .
+   $ cp /gws/pw/j07/workshop/exercises/ex02/code/random-number-gen.py .
    ```
    * Enable a Python environemnt via the module `jaspy` by executing  the command `module add jaspy`
    ```
@@ -209,7 +209,7 @@ Usage of the storage:
 1. Test for a potential multithreading
    * Copy the second Python example script (shown in the JASMIN resources section) to your current working directory 
    ```
-   $ cp /gws/pw/j05/workshop/exercises/ex02/code/dot-product-2arrays.py .
+   $ cp /gws/pw/j07/workshop/exercises/ex02/code/dot-product-2arrays.py .
    ```
 
    * Execute the command `python dot-product-2arrays.py`

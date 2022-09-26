@@ -30,10 +30,10 @@ After completing this exercise you will:
  ### JASMIN resources
 
  * Scientific analysis servers: `sci[1-6,8].jasmin.ac.uk`
- * Group workspace: `/gws/pw/j05/workshop`
+ * Group workspace: `/gws/pw/j07/workshop`
  * LOTUS batch queues: `workshop` (`short-serial` outside the event)
  * Fortran source code is (available in the Github repository): 
- `/gws/pw/j05/workshop/exercises/ex08/code/axpySerial.f90`
+ `/gws/pw/j07/workshop/exercises/ex08/code/axpySerial.f90`
  * Help documentation at https://help.jasmin.ac.uk
 
 ### Local resources
@@ -130,7 +130,7 @@ By completing this exercise you will be able to compile and test a serial Fortra
    ```
    * Copy the Fortran source code from the exercise directory 
    ```
-   sci3 ~]$ cp /gws/pw/j05/workshop/exercises/ex08/code/axpySerial.f90 .
+   sci3 ~]$ cp /gws/pw/j07/workshop/exercises/ex08/code/axpySerial.f90 .
    ```
  1. Use the Intel compiler on a physical Sci `sci[3,6,8]` 
     * List all available Intel compilers
@@ -232,7 +232,7 @@ By completing this exercise you will be able to compile and test a serial Fortra
 1. Prepare and submit a SLURM job script 
    * Copy the SLURM job submission script provided 
    ```
-   $ cp  /gws/pw/j05/workshop/exercises/ex08/code/jobscript.sbatch .
+   $ cp  /gws/pw/j07/workshop/exercises/ex08/code/jobscript.sbatch .
    ```
    * Specify the memory and the runtime using 
    ```
@@ -304,7 +304,7 @@ By completing this exercise you will be able to compile and test a serial Fortra
 1. How to use the NetCDF GNU library and link it to the Fortran code
    * Copy the Fortran NetCDF example and enable the JASPY environment
    ```
-   $ cp /gws/pw/j05/workshop/exercises/ex08/code/simple_xy_wr.f90 .
+   $ cp /gws/pw/j07/workshop/exercises/ex08/code/simple_xy_wr.f90 .
    $ module load jaspy
    ```
    * Compile and link the Fortran example 
