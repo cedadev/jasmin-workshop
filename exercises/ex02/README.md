@@ -72,7 +72,9 @@ This is the outline of what you need to do. The recommended way of doing each st
    * Monitor and note the memory and CPU usage 
    * Compare the CPU and memory resources used to generate 1024 and 500 random numbers. What can you conclude?
     > **_NOTE:_**  If you are not familiar with a text editor then please execute the following command to change the size of the random numbers
+    ```
     $  sed -i 's/nran = 1024/nran = 500/' random-number-gen.py
+    ```
 1. Test for a potential multithreading
    * Copy the second Python example script (shown in the JASMIN resources section) to your current working directory 
    * Execute the command `python dot-product-2arrays.py`
