@@ -81,7 +81,7 @@ This is the outline of what you need to do. The recommended way of doing each st
    * Execute the command `python dot-product-2arrays.py`
    * On the monitoring terminal execute the command  `top -H -u <username>` or `ps -T -p <pid>`
    * How many threads the process spawned?
-   * Set the environment variable `OMP_NUM_THREADS` to 1 by executing the command `export OMP_NUM_THREADS=1`
+   * Set the environment variable `OMP_NUM_THREADS` to one thread (or two if you wish) by executing the command `export OMP_NUM_THREADS=1` 
    * Re-execute `python dot-product-2arrays.py`
    * Did the setting `OMP_NUM_THREADS=1` disable multithreading?
    * Edit the script in a text editor and uncomment the line of code `#os.environ[“OMP_NUM_THREADS”] = “2"` and save the script 
