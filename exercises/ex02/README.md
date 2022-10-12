@@ -65,7 +65,7 @@ This is the outline of what you need to do. The recommended way of doing each st
    * To exit the monitoring tool `top` press the keyboard letter `q` 
    * Try another utility to list all your processes on the sci server `ps -aux | grep <username>`
 1. Make changes to the Python example and re-execute it
-   * Open the Python script file in a text editor e.g. vim, emacs
+   * Open the Python script file in a text editor e.g. vim, emacs -See note below-
    * Decrease the size of the random numbers `nran`from 1024 to 500
    * Save the file and exit the text editor
    * Execute `python random-number-gen.py`
