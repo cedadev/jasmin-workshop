@@ -65,7 +65,7 @@ This is the outline of what you need to do. The recommended way of doing each st
    * To exit the monitoring tool `top` press the keyboard letter `q` 
    * Try another utility to list all your processes on the sci server `ps -aux | grep <username>`
 1. Make changes to the Python example and re-execute it
-   * Open the Python script file in a text editor e.g. vim, emacs
+   * Open the Python script file in a text editor e.g. vim, emacs -See note below-
    * Decrease the size of the random numbers `nran`from 1024 to 500
    * Save the file and exit the text editor
    * Execute `python random-number-gen.py`
@@ -77,10 +77,11 @@ This is the outline of what you need to do. The recommended way of doing each st
     ```
 1. Test for a potential multithreading
    * Copy the second Python example script (shown in the JASMIN resources section) to your current working directory 
+   * Remove the default JASPY environment (jaspy/3.8/r20211105) then enable the JASPY version 3.7/20210320 for this task
    * Execute the command `python dot-product-2arrays.py`
    * On the monitoring terminal execute the command  `top -H -u <username>` or `ps -T -p <pid>`
    * How many threads the process spawned?
-   * Set the environment variable `OMP_NUM_THREADS` to 1 by executing the command `export OMP_NUM_THREADS=1`
+   * Set the environment variable `OMP_NUM_THREADS` to one thread (or two if you wish) by executing the command `export OMP_NUM_THREADS=1` 
    * Re-execute `python dot-product-2arrays.py`
    * Did the setting `OMP_NUM_THREADS=1` disable multithreading?
    * Edit the script in a text editor and uncomment the line of code `#os.environ[“OMP_NUM_THREADS”] = “2"` and save the script 
@@ -215,7 +216,11 @@ Usage of the storage:
    ```
    $ cp /gws/pw/j07/workshop/exercises/ex02/code/dot-product-2arrays.py .
    ```
-
+   * Remove the default JASPY environment (jaspy/3.8/r20211105) then enable the JASPY version 3.7/20210320 for this task
+   ```
+   $ module rm jaspy 
+   $ module add jaspy/3.7/r20210320
+   ```
    * Execute the command `python dot-product-2arrays.py`
    ```
    $ module add jaspy
