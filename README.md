@@ -8,7 +8,9 @@ You should also watch the following overview presentation which explains the pur
 
 Overview presentation 
 
-[![](https://img.youtube.com/vi/HQjRDtgW3Fg/mqdefault.jpg )](https://www.youtube.com/watch?v=HQjRDtgW3Fg) 
+| Video | Slides with speaker's notes |
+| --- | --- |
+[![](https://img.youtube.com/vi/HQjRDtgW3Fg/mqdefault.jpg )](https://www.youtube.com/watch?v=HQjRDtgW3Fg) | [![](https://img.youtube.com/vi/HQjRDtgW3Fg/mqdefault.jpg )](https://docs.google.com/presentation/d/1SykA6yB86HDxGi-Mph8KqfcJFDayQyAfQrg4kMJIQV8/edit?usp=sharing) |
 
 | Exercise | Topic |
 | --- | --- |
