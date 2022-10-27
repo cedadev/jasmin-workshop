@@ -235,7 +235,7 @@ In a new terminal window:
 ```
 $ ssh-add ~/.ssh/id_rsa_jasmin_training
 ```
-You can add the `-K` option here: this stores the passphrase in your KeyChain, so that it's available whenever you're logged in to your Mac. Obviously, **only** do this on a machine where your initial login after rebooting is protected by a strong password and/or fingerprint ID.
+Advanced tip: `ssh-add` on MacOS provides additional options `--apple-use-keychain` and `--apple-load-keychain` which you can use to load a single key, or all the keys stored in your Apple keychain, respectively, for whenever you're logged in to your Mac. These replace the now-deprecated `-K` option. Please consult the manual page for `ssh-add` for further details about these options (`man ssh-add`). Obviously, **only** do this on a machine where your initial login after rebooting is protected by a strong password and/or fingerprint ID.
 
 You'll be prompted for your passphrase at this point.
 
