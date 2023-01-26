@@ -156,3 +156,5 @@ See this [explanation of why you might use `miniconda`](https://docs.conda.io/pr
 
 `miniconda` uses `conda` which is a very versatile and powerful tool for managing Python, and other, packages. See the [conda documentation](https://docs.conda.io) for more info.
 
+See our [Help pages](https://help.jasmin.ac.uk/article/5074-conda-environments-and-python-virtual-environments) for a more detailed description of `virtualenv`, `conda` and the options available to you on JASMIN.
+
