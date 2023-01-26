@@ -77,7 +77,7 @@ This is the outline of what you need to do. The recommended way of doing each st
     ```
 1. Test for a potential multithreading
    * Copy the second Python example script (shown in the JASMIN resources section) to your current working directory 
-   * Remove the default JASPY environment (jaspy/3.8/r20211105) then enable the JASPY version 3.7/20210320 for this task
+   * Remove the default JASPY environment (jaspy/3.10/r20220721) then enable the JASPY version (jaspy/3.7/20210320) for this task
    * Execute the command `python dot-product-2arrays.py`
    * On the monitoring terminal execute the command  `top -H -u <username>` or `ps -T -p <pid>`
    * How many threads the process spawned?
@@ -220,6 +220,10 @@ Usage of the storage:
    ```
    $ module rm jaspy 
    $ module add jaspy/3.7/r20210320
+   ```
+   or switch module using the command
+   ```
+    module switch jaspy/3.10/r20220721 jaspy/3.7/20210320
    ```
    * Execute the command `python dot-product-2arrays.py`
    ```
