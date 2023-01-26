@@ -108,7 +108,7 @@ You will be able to run and test a script on the scientific analysis servers. Yo
  What tasks I can not run on the Sci server?
 * Do not run processes with execution time over two hours
 * Do not run parallel applications e.g. MPI or OpenMP, high threaded codes on the Sci servers
-* Do not run data transfer processes on the sci servers. Please use `xfer[1,2].jasmin.ac.uk` (Except when moving data from `/work/scratch-pw` to a GWS because `/work/scratch-pw` is not mounted on the `xfer` servers)
+* Do not run data transfer processes on the sci servers. Please use `xfer[1,2].jasmin.ac.uk` (Except when moving data from `/work/scratch-pw[2,3]` to a GWS because `/work/scratch-pw[2,3]` are not mounted on the `xfer` servers)
 * Use the high memory scientific analysis servers `sci[3,6,8].jasmin.ac.uk` for testing high memory or multithreaded code 
 * Only test multi-threaded code on the high memory servers and limit the number of threads
 * It is necessary to consider moving a processing task to the batch system LOTUS when the resource demand is high, e.g. CPU, memory and processing time
