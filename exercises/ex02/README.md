@@ -258,7 +258,10 @@ Usage of the storage:
    * Did the setting `OMP_NUM_THREADS=1` disable multithreading?
    Yes, the setting of `OMP_NUM_THREADS=1` disabled multithreading. There is only a single process and no threads
    ![](images/Top-output-threads-set-to-one.png)
-   * Edit the script in a text editor and uncomment the line of code `#os.environ[“OMP_NUM_THREADS”] = “2"` and save the script
+   * Edit the script in a text editor and uncomment the line of code `#os.environ[“OMP_NUM_THREADS”] = “2"` and save the script or use the command 'sed':
+   ```
+   sed -i 's/#os.environ/os.environ/'  dot-product-2arrays.py
+   ```
    ![](images/Uncomment-line-threads.png)
     Note: This setting must be done before numpy import -see screenshot above.
    * Rerun the Python script 
