@@ -46,7 +46,7 @@ The [Overview presentation](https://www.youtube.com/watch?v=HQjRDtgW3Fg) given a
 
 The course does assume some basic knowledge. Rather than duplicate these, we have concentrated on aspects specific to JASMIN.
 
-A great place to start is [linuxjourney.com](https://linuxjourney.com/lesson/the-shell)
+A great place to start is [linuxjourney](https://notes.siira.io)
 
 You may struggle to work on JASMIN without a basic knowledge of these topics:
 
