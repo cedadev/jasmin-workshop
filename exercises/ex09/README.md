@@ -255,17 +255,14 @@ Learn more about our Notebook Service:
 
 > 1. How can you add extra software packages to your Notebook?
 
-See this example notebook to create your own `virtual environment` to install
-extra packages into your `$HOME` directory for use in a notebook:
+This help article describes how to create your own `virtual environment` into 
+which you can install extra packages, and optionally how to make it into a kernel for future re-use:
 
-https://github.com/cedadev/ceda-notebooks/blob/master/notebooks/training/virtualenvs-on-jasmin.ipynb
+https://help.jasmin.ac.uk/article/5084-creating-a-virtual-environment-in-the-jasmin-notebooks-service
 
 > 2. How can you set up and use an entirely separate `conda` environment in your Notebook?
 
-See this example notebook to create new `conda` environments and make them visible
-to the JASMIN Notebook Service when you select a _kernel_:
-
-https://github.com/cedadev/ceda-notebooks/blob/master/notebooks/docs/add_conda_envs.ipynb
+The [same help article](https://help.jasmin.ac.uk/article/5084-creating-a-virtual-environment-in-the-jasmin-notebooks-service) also covers how to create a custom environment using `conda`:
 
 > 3. Can you figure out how to:
 >  * Delete a cell from a notebook
