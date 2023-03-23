@@ -223,14 +223,14 @@ Either is fine, but we'll try both in this exercise. If one doesn't work, try th
    
    Note that it does not echo the passphrase to the terminal, so you won’t see the passphrase. If you're wondering where it is, you've probably pasted it multiple times already while trying! If so, so it will probably fail at this point with `Bad passphrase`. Try pasting it again with a single right-click followed by pressing enter.
    
-   ```bash
+   ```
    $ ssh-add id_rsa_jasmin_training
    Enter passphrase for id_rsa_jasmin_training:
    Identity added: id_rsa_jasmin_training (id_rsa_jasmin_training)
    ```
    
    You can confirm that it’s now loaded with the command you used earlier, i.e.
-   ```bash
+   ```
    $ ssh-add -l
    2048 SHA256:LaUFdesZwMCWM7+Y+edn1smNDTUnQQz1+MFJl2h3Tbw id_rsa_jasmin_training (RSA)
    ```
@@ -241,7 +241,7 @@ Either is fine, but we'll try both in this exercise. If one doesn't work, try th
 Our recommended choice for a terminal application on MacOS is the `Terminal` app. Find this by searching in the "spotlight search" (magnifying glass, usually top-right in the Apple menu bar). If you're using it regularly, it may help to right-click its Dock icon and select "Options > Keep in Dock".
 
 In a new terminal window:
-```bash
+```
 $ ssh-add ~/.ssh/id_rsa_jasmin_training
 ```
 Advanced tip: `ssh-add` on MacOS provides additional options `--apple-use-keychain` and `--apple-load-keychain` which you can use to load a single key, or all the keys stored in your Apple keychain, respectively, for whenever you're logged in to your Mac. These replace the now-deprecated `-K` option. Please consult the manual page for `ssh-add` for further details about these options (`man ssh-add`). Obviously, **only** do this on a machine where your initial login after rebooting is protected by a strong password and/or fingerprint ID.
@@ -256,11 +256,11 @@ For full details see the `man` page for `ssh-add`.
 
 In the same terminal window, check that your key is now loaded:
 
-```bash
+```
 $ ssh-add -l
 ```
 You should see output like this:
-```bash
+```
 2048 SHA256:0y7Oh7J+kN6hPotWCerXsZBlRBL205UMGlJVZ1I0A8c you@somewhere.ac.uk (RSA)
 ```
 If not, you will need to try again before you will be able to log in to a remote host using the key.
@@ -272,13 +272,13 @@ The Linux platform has various terminal applications available depending on whic
 Start your terminal application (`Terminal` or `xterm`). If you're in a desktop environment, you may find this in a menu or by using the search.
 
 Then, initiate an agent to store your key:
-```bash
+```
 $ eval $(ssh-agent -s)
 Agend pid XXX       (where XXX is some process ID)
 ```
 
 Now, load your key, having stored it in your `~/.ssh` directory:
-```bash
+```
 $ ssh-add ~/.ssh/id_rsa_jasmin_training
 ```
 
@@ -287,11 +287,11 @@ You'll be prompted for the passphrase at this point.
 > **_NOTE:_** It is best to copy and paste the passphrase from the credentials you were sent, or from a password manager if you are using your own account. Note that the characters of your password will not be displayed as you type/paste them (this is normal!)
 
 Check it's loaded
-```bash
+```
 $ ssh-add -l
 ```
 You should see output like this:
-```bash
+```
 2048 SHA256:0y7Oh7J+kN6hPotWCerXsZBlRBL205UMGlJVZ1I0A8c you@somewhere.ac.uk (RSA)
 ```
 If not, you will need to try again before you will be able to log in to a remote host using the key.
@@ -322,7 +322,7 @@ If not, you will need to try again before you will be able to log in to a remote
 3. "Could not open a connection to your authentication agent" or "Error connecting to agent: No such file or directory"
 
    This means that the agent is not running, for some reason. If you can't out why, having checked the instructions above for your platform, you can start it manually with
-   ```bash
+   ```
    $ eval $(ssh-agent -s)
    agent pid 1234    # or some similar output
    ```
@@ -339,7 +339,7 @@ If not, you will need to try again before you will be able to log in to a remote
    * Uninstall MobaXterm, download the latest version & re-install. Reboot your machine. Cross your fingers ;-)
    * If it still doesn't work then start a session window and refer to item 3 above and load your key manually as follows:
 
-```bash
+```
 $ ssh-add ~/.ssh/id_rsa_jasmin_training
 ```
 
