@@ -132,13 +132,12 @@ Either is fine, but we'll try both in this exercise. If one doesn't work, try th
 * Option 1: Specifying the location in MobaXterm Settings
 
 
-   [![MobaXterm v20.6 setup on Windows, loading private key](https://img.youtube.com/vi/yG8yyTt2R-0/0.jpg)](https://www.youtube.com/watch?v=yG8yyTt2R-0)
+   [![MobaXterm v20.6 setup on Windows, loading private key](https://img.youtube.com/vi/2p4hlGH_5A4/0.jpg)](https://www.youtube.com/watch?v=2p4hlGH_5A4)
 
    In the above video, you can see the steps needed to load the key, i.e:
 
    * Tick "Use internal SSH agent "MobAgent"
    * UN-tick "Use external Pageant"
-   * Tick "Forward SSH agents" **important**
    * Click the "+" symbol to locate your private key file (i.e. wherever you put `id_rsa_jasmin_training`, above)
    * Click OK to save the settings. MobaXterm will now need to restart.
    * When you restart MobaXterm you will be prompted for the passphrase associated with your private key.
@@ -155,14 +154,24 @@ Either is fine, but we'll try both in this exercise. If one doesn't work, try th
    ```
    $ ssh-add -l
    ```
-   If you see a message similar to the following, your key is correctly loaded:
+   Assuming you entered the correct passphrase for your key, you should see a message similar to the following, showing that your key is correctly loaded:
    ```
    2048 SHA256:0y7Oh7J+kN6hPotWCerXsZBlRBL205UMGlJVZ1I0A8c you@somewhere.ac.uk (RSA)
 
    ```
    If not, you will need to try again before you will be able to log in to a remote host using the key.
 
+   Don't worry if the final part of the output is not an email address, it's just a comment field at the end of your key. The important part is the bit at the start, which looks like a key signature. If it hasn't loaded correctly, you'll see something like this (in which case, restart MobaXterm and enter the correct passphrase this time, when prompted).
+
+   ```
+   The agent has no identities.
+   ```
+
+   (in which case, restart MobaXterm and enter the correct passphrase this time, when prompted).
+
 * Option 2: Loading the key manually in a terminal window
+
+   (This is slightly more tricky, as you have to type the location of the key, instead of windows helping you navigate to it).
 
    Start a new terminal window (click "Start local terminal")
    Type the following command (remember, omit the `$` at the start which is just the prompt in our examples)
@@ -184,7 +193,7 @@ Either is fine, but we'll try both in this exercise. If one doesn't work, try th
    If you’re not already in the directory containing your key, you can either
    specify the path to your key, e.g.
    ```
-   ssh-add /drives/c/Users/username/Desttop/ssh/id_rsa_jasmin_training
+   $ ssh-add /drives/c/Users/username/Desttop/ssh/id_rsa_jasmin_training
    ```
    (Use the path to wherever you extracted the credentials that you were sent)
    
@@ -207,22 +216,22 @@ Either is fine, but we'll try both in this exercise. If one doesn't work, try th
 
    Now try loading your key:
    ```
-   ssh-add id_rsa_jasmin_training
+   $ ssh-add id_rsa_jasmin_training
    ```
    
    Either way, you will now be prompted for your passphrase. Copy the contents of the passphrase file onto the Windows clipboard, ready to paste it in to the terminal window. Depending on your MobaXterm settings, right-click either pastes it immediately, or brings up a menu where you can select "Paste" as the action. 
    
    Note that it does not echo the passphrase to the terminal, so you won’t see the passphrase. If you're wondering where it is, you've probably pasted it multiple times already while trying! If so, so it will probably fail at this point with `Bad passphrase`. Try pasting it again with a single right-click followed by pressing enter.
    
-   ```
+   ```bash
    $ ssh-add id_rsa_jasmin_training
    Enter passphrase for id_rsa_jasmin_training:
    Identity added: id_rsa_jasmin_training (id_rsa_jasmin_training)
    ```
    
    You can confirm that it’s now loaded with the command you used earlier, i.e.
-   ```
-   ssh-add -l
+   ```bash
+   $ ssh-add -l
    2048 SHA256:LaUFdesZwMCWM7+Y+edn1smNDTUnQQz1+MFJl2h3Tbw id_rsa_jasmin_training (RSA)
    ```
    This means your key is now loaded.
@@ -232,7 +241,7 @@ Either is fine, but we'll try both in this exercise. If one doesn't work, try th
 Our recommended choice for a terminal application on MacOS is the `Terminal` app. Find this by searching in the "spotlight search" (magnifying glass, usually top-right in the Apple menu bar). If you're using it regularly, it may help to right-click its Dock icon and select "Options > Keep in Dock".
 
 In a new terminal window:
-```
+```bash
 $ ssh-add ~/.ssh/id_rsa_jasmin_training
 ```
 Advanced tip: `ssh-add` on MacOS provides additional options `--apple-use-keychain` and `--apple-load-keychain` which you can use to load a single key, or all the keys stored in your Apple keychain, respectively, for whenever you're logged in to your Mac. These replace the now-deprecated `-K` option. Please consult the manual page for `ssh-add` for further details about these options (`man ssh-add`). Obviously, **only** do this on a machine where your initial login after rebooting is protected by a strong password and/or fingerprint ID.
@@ -247,13 +256,12 @@ For full details see the `man` page for `ssh-add`.
 
 In the same terminal window, check that your key is now loaded:
 
-```
+```bash
 $ ssh-add -l
 ```
 You should see output like this:
-```
+```bash
 2048 SHA256:0y7Oh7J+kN6hPotWCerXsZBlRBL205UMGlJVZ1I0A8c you@somewhere.ac.uk (RSA)
-
 ```
 If not, you will need to try again before you will be able to log in to a remote host using the key.
 
@@ -264,13 +272,13 @@ The Linux platform has various terminal applications available depending on whic
 Start your terminal application (`Terminal` or `xterm`). If you're in a desktop environment, you may find this in a menu or by using the search.
 
 Then, initiate an agent to store your key:
-```
+```bash
 $ eval $(ssh-agent -s)
 Agend pid XXX       (where XXX is some process ID)
 ```
 
 Now, load your key, having stored it in your `~/.ssh` directory:
-```
+```bash
 $ ssh-add ~/.ssh/id_rsa_jasmin_training
 ```
 
@@ -279,13 +287,12 @@ You'll be prompted for the passphrase at this point.
 > **_NOTE:_** It is best to copy and paste the passphrase from the credentials you were sent, or from a password manager if you are using your own account. Note that the characters of your password will not be displayed as you type/paste them (this is normal!)
 
 Check it's loaded
-```
+```bash
 $ ssh-add -l
 ```
 You should see output like this:
-```
+```bash
 2048 SHA256:0y7Oh7J+kN6hPotWCerXsZBlRBL205UMGlJVZ1I0A8c you@somewhere.ac.uk (RSA)
-
 ```
 If not, you will need to try again before you will be able to log in to a remote host using the key.
 
@@ -315,7 +322,7 @@ If not, you will need to try again before you will be able to log in to a remote
 3. "Could not open a connection to your authentication agent" or "Error connecting to agent: No such file or directory"
 
    This means that the agent is not running, for some reason. If you can't out why, having checked the instructions above for your platform, you can start it manually with
-   ```
+   ```bash
    $ eval $(ssh-agent -s)
    agent pid 1234    # or some similar output
    ```
@@ -332,7 +339,7 @@ If not, you will need to try again before you will be able to log in to a remote
    * Uninstall MobaXterm, download the latest version & re-install. Reboot your machine. Cross your fingers ;-)
    * If it still doesn't work then start a session window and refer to item 3 above and load your key manually as follows:
 
-```
+```bash
 $ ssh-add ~/.ssh/id_rsa_jasmin_training
 ```
 
