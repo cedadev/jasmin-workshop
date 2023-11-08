@@ -150,7 +150,7 @@ Usage of the storage:
    $ module add jaspy
    $ module list
    Currently Loaded Modulefiles:
-     1) jaspy/3.7/r20200606
+     1) jaspy/3.10/r20220721
    ```
    * Execute the Python script `python random-number-gen.py` 
    ```
@@ -216,7 +216,7 @@ Usage of the storage:
    ```
    $ cp /gws/pw/j07/workshop/exercises/ex02/code/dot-product-2arrays.py .
    ```
-   * Remove the default JASPY environment (jaspy/3.8/r20211105) then enable the JASPY version 3.7/20210320 for this task
+   * Remove the default JASPY environment (jaspy/3.10/r20220721)then enable the JASPY version jaspy/3.7/20210320 for this task
    ```
    $ module rm jaspy 
    $ module add jaspy/3.7/r20210320
