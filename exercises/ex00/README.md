@@ -386,6 +386,7 @@ The instructions for downloading and installing the software vary by platform, b
 * Follow the instructions to install it on your machine
 * Open the application
 * Follow one of the videos below to set it up so that it can use your private key. You will see that they're all fairly similar.
+* Windows users may need to create a reformatted version of their private key to use in their connection profile. If you get `Authentication failed` error when you try to connect, please see the first step in the "Troubleshooting" section on the help page below.
 
 For a full description of the steps involved, see also our [help documentation](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx) for this service.
 
