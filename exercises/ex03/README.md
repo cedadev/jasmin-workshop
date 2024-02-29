@@ -75,11 +75,9 @@ We have looked at some basic methods suitable for small datasets or where speed 
 * Some third-party tools exist which provide graphical interfaces for transfers using `sftp`, e.g. [FileZilla](https://filezilla-project.org/), [CyberDuck](https://cyberduck.io/). These are applications which you can install on your own machine, to talk to JASMIN via the protocols it supports.
 * Some editors (e.g. [VS Code](https://code.visualstudio.com/)) have extensions which enable you to setup SSH connections to edit & save files remotely. This can be useful for editing files on JASMIN, but from the convenience of your own local desktop environment.
 * NONE of the SSH-based transfer methods we have looked at perform well for large volumes of data or over long distances. Define "large" or "long"?
-* see [ex10](../ex10) for advice about:
-    * More efficient data transfers for large data / longer distances
-    * Automated transfers
-    * Transfers within JASMIN
-
+* further reading:
+  * [improving your transfer rates](https://help.jasmin.ac.uk/docs/data-transfer/data-transfer-overview/#improving-your-transfer-rates)
+  * [data transfer tools](https://help.jasmin.ac.uk/docs/data-transfer/data-transfer-tools/) with information on further choices of tools available on JASMIN and their pros/cons.
 
 ### Questions to test yourself
 
