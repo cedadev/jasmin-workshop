@@ -10,7 +10,8 @@ Overview presentation
 
 | Video | Slides with speaker's notes |
 | --- | --- |
-[![](https://img.youtube.com/vi/HQjRDtgW3Fg/mqdefault.jpg )](https://www.youtube.com/watch?v=HQjRDtgW3Fg) | [![](https://img.youtube.com/vi/HQjRDtgW3Fg/mqdefault.jpg )](https://docs.google.com/presentation/d/1OucWRi8oJ1kFcRNB7-IV0o2tW-B3ctLk39wjR-YPCP4/edit?usp=sharing) |
+[![](https://img.youtube.com/vi/HQjRDtgW3Fg/mqdefault.jpg )](https://www.youtube.com/watch?v=HQjRDtgW3Fg) | [![](https://img.youtube.com/vi/HQjRDtgW3Fg/mqdefault.jpg )](https://docs.google.com/presentation/d/1OucWRi8oJ1kFcRNB7-IV0o2tW-B3ctLk39wjR-YPCP4/edit?usp=sharing)
+(video not updated since 2021) | (slides updated March 2024) |
 
 | Exercise | Topic |
 | --- | --- |
