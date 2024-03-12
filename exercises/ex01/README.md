@@ -25,8 +25,8 @@ At the end of this exercise I will be able to:
 
 ### JASMIN resources
  * JASMIN account with SSH public key uploaded and `jasmin-login` privilege
- * login servers: `login[1234].jasmin.ac.uk`
- * nx-login servers: `nx-login[123].jasmin.ac.uk`
+ * login server: `login2.jasmin.ac.uk`
+ * nx-login servers: `nx-login[234].jasmin.ac.uk` (nx-login2, 3, or 4)
  * help documentation at https://help.jasmin.ac.uk
 
 ### Local resources
@@ -111,7 +111,7 @@ If you are using your *own* account (outside of one of our organised training ev
     * Initiate an SSH connection to a login server
 
       ```
-      $ ssh -A train050@login1.jasmin.ac.uk
+      $ ssh -A train050@login2.jasmin.ac.uk
       ```
       > **_NOTE:_**  Your username on JASMIN (`train050` in this example, but yours may be different) may not be the same as your username on your local machine (`fredbloggs`). In the `ssh` command, you must specify the username associated with your JASMIN account.
 
@@ -208,7 +208,7 @@ These provide a contingency option for users whose home network can't be configu
 
 > 2. How often is your home directory backed up? How would you go about restoring files if you accidentally deleted something from your home directory?
 
-See [this article](https://help.jasmin.ac.uk/article/176-storage) about how you can restore data accidentally deleted from your home directory for up to a week. It also mentions the tape backups which run on a 3-4 week cycle.
+See [this article](https://help.jasmin.ac.uk/article/176-storage) about how you can restore data accidentally deleted from your home directory for up to a week.
 
 > 3. What shell is used by default on JASMIN? How can you tell? How would you customise your shell environment (e.g. aliases, environment variables)?
 

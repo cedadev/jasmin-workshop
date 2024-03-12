@@ -23,7 +23,7 @@ After completing this exercise I will be able to:
 
 * Account with valid `jasmin-login` privilege
    * If you are using one of the training accounts this will have been set up for you
-* Transfer server: `xfer[12].jasmin.ac.uk` (`1` or `2`)
+* Transfer server: `xfer3.jasmin.ac.uk`
 * Home directory: `/home/users/train050` (replace with your username)
 * `workshop` group workspace at `/gws/pw/j07/workshop`
 
@@ -98,7 +98,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 1. Make a small text file on your local machine containing a bash script which you could run on JASMIN.
     ```
     $ echo "This is a readme file" > README.txt
-    $ scp README.txt train050@xfer1.jasmin.ac.uk:~/
+    $ scp README.txt train050@xfer3.jasmin.ac.uk:~/
     ```
 
     The `echo` command makes the text file for us. Use some other small file if you have one handy, or create one
@@ -108,7 +108,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     Log into the xfer server itself, to see the file that you copied in place in the destination directory:
 
     ```
-    $ ssh -A train050@xfer1.jasmin.ac.uk
+    $ ssh -A train050@xfer3.jasmin.ac.uk
     $ pwd
     $ ls -l README.txt
     
@@ -135,7 +135,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     SSH key is loaded: see [exercise 01](../ex01) ).
     
     ```
-    $ ssh -A train050@xfer1.jasmin.ac.uk
+    $ ssh -A train050@xfer3.jasmin.ac.uk
     ```
     Go to the workspace directory and make your own user directory there:
     ```
@@ -164,7 +164,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
     Back on your local machine, recursively copy the directory using `scp`:  (replace `train050` with your username)
     ```
-    scp -r mydata train050@xfer1.jasmin.ac.uk:/gws/pw/j07/workshop/users/train050/
+    scp -r mydata train050@xfer3.jasmin.ac.uk:/gws/pw/j07/workshop/users/train050/
     ```
 
     In your other terminal window on (or log back in to) the transfer server, inspect your destination directory:
@@ -362,5 +362,5 @@ This can be arranged, however:
 
 For the interested reader, see [ESnet](https://fasterdata.es.net/)'s resources about faster data transfers including some reasons why [scp should be avoided over WAN](https://fasterdata.es.net/data-transfer-tools/say-no-to-scp/): to do with a buffer of limited size built in to the software stack that they're built on.
 
-Tools like BBCP, GridFTP and Globus Online can help with more efficient use of available bandwidth and give much better performance for moving large volumes of data. See our documentation on [Data Transfer Tools](https://help.jasmin.ac.uk/article/3809-data-transfer-tools).
+Tools like BBCP, GridFTP and Globus Online can help with more efficient use of available bandwidth and give much better performance for moving large volumes of data. See our documentation on [Data Transfer Tools](https://help.jasmin.ac.uk/article/3809-data-transfer-tools), in particular [Globus Transfers with JASMIN](https://help.jasmin.ac.uk/docs/data-transfer/globus-transfers-with-jasmin)
 For short-distance transfers (by "distance" here we mean a network round-trip-time of <20ms), `scp` and other SSH-based tools can still be a good choice, for convenience and ease of use if nothing else.
