@@ -9,7 +9,7 @@ author: Fatima Chami
 
 I need to do a random sampling of my dataset to estimate the distribution of sample mean. I need to use the random number generator function available in the Numpy library in Python. I need to test this function. I also need to check if there is a potential multithreading with Numpy array arithmetic e.g. dot product.
 
-### Objectives 
+### Objectives
 
 After completing this exercise I will be able to:
 * **execute** a computing task on the sci machine from a command line
@@ -20,7 +20,7 @@ After completing this exercise I will be able to:
  
  ### JASMIN resources
 
- * Scientific analysis servers: `sci[1-6].jasmin.ac.uk`
+ * Scientific analysis servers: `sci[1-8].jasmin.ac.uk`
  * Group workspace: `/gws/pw/j07/workshop`
  * Python example scripts are provided: 
  `/gws/pw/j07/workshop/exercises/ex02/code/random-number-gen.py`
@@ -45,11 +45,12 @@ You can follow this exercise by watching the videos below, or by following the t
 
 This is the outline of what you need to do. The recommended way of doing each step is covered in the "Cheat Sheet" but you may wish to try solving it for yourself first.
 
-1. Login to a JASMIN scientific analysis server 
+1. Your starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
+1. Login to a JASMIN scientific analysis server from the login server
    * Launch two terminal sessions
    * Access a JASMIN login server on each terminal (see exercise 01)
-   * Choose a Sci server with the lowest load 
-   * Login to the chosen sci server on each terminal                   
+   * Choose a Sci server with the lowest load
+   * Login to the chosen sci server on each terminal
    > **_NOTE:_**  The purpose of having two SSH terminal sessions running on the same sci server is to facilitate compute and monitoring. One terminal is for executing commands on the sci while the second terminal is for monitoring user processes (or editing a script)
 1. Execute the first Python example script on the Sci server
    * Copy the first Python example script `random-number-gen.py`(shown in the JASMIN resources section) to your current working directory
@@ -108,13 +109,12 @@ You will be able to run and test a script on the scientific analysis servers. Yo
  What tasks I can not run on the Sci server?
 * Do not run processes with execution time over two hours
 * Do not run parallel applications e.g. MPI or OpenMP, high threaded codes on the Sci servers
-* Do not run data transfer processes on the sci servers. Please use `xfer[1,2].jasmin.ac.uk` (Except when moving data from `/work/scratch-pw[2,3]` to a GWS because `/work/scratch-pw[2,3]` are not mounted on the `xfer` servers)
+* Do not run data transfer processes on the sci servers. Please use a transfer server e.g. `xfer3.jasmin.ac.uk` (Except when moving data from `/work/scratch-pw[2,3]` to a GWS because `/work/scratch-pw[2,3]` are not mounted on the `xfer` servers)
 * Use the high memory scientific analysis servers `sci[3,6,8].jasmin.ac.uk` for testing high memory or multithreaded code 
 * Only test multi-threaded code on the high memory servers and limit the number of threads
 * It is necessary to consider moving a processing task to the batch system LOTUS when the resource demand is high, e.g. CPU, memory and processing time
 
-
-Manage your processes on the Sci server:
+Manage your processes on the Sci server
 * If a process hangs, do not simply close the terminal window. Please contact the helpdesk and alert the team so that the process can be shut down. Otherwise hung processes build up and contribute to machine overloading.
 * Many instances of an application e.g., Ipython, can impact the performance of the scientific servers. 
 * Monitor the CPU and memory resources of your processes 
@@ -189,10 +189,31 @@ Usage of the storage:
    ```
    $ vim random-number-gen.py
    ```
-   * Decrease the size of the random numbers `nran`from 1024 to 500
-    ![](images/vim-screenshot-01.png)
+   * Decrease the size of the random numbers `nran` from `1024` to `500`
+
+   ```python
+   # Import Python libraries numpy, time and os
+   import numpy as np
+   import time
+   import os
+
+   # Get the Process Identifier  of the current process
+   PID=os.getpid()
+   print("Process ID %s (PID) started" %(os.getpid()))
+   print("Get ready to monitor PID", PID)
+   # Wait for tsleep  
+   tsleep= 5
+   time.sleep(tsleep)
+
+   # Number of random numbers to be generated 
+   nran = 500 # <- CHANGED
+
+   # Generate a random number from the normal distribution
+   t1 = time.perf_counter()
+   result = [np.random.bytes(nran*nran) for x in range(nran)]
+   ```
   
-   * Save the file and exit the text editor `vim`
+   * Save the file and exit the text editor `vim`. Press "Esc" then
    ```
    :wq
    ```

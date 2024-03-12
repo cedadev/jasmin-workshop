@@ -301,6 +301,7 @@ If not, you will need to try again before you will be able to log in to a remote
 1. Unprotected key
 
    If you see a message like the following, this means that you need to restrict the permissions on your key file so that only you (and no other users on your system) can read your key.
+
    ```
    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
    @         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
@@ -308,6 +309,7 @@ If not, you will need to try again before you will be able to log in to a remote
    Permissions 0644 for 'id_rsa_jasmin_training' are too open.
    It is required that your private key files are NOT accessible by others.
    This private key will be ignored.
+
    ```
    You can do this with a command like this (you'll need to do this in a terminal window):
    ```
@@ -315,17 +317,21 @@ If not, you will need to try again before you will be able to log in to a remote
    ```
    where `<path>` is wherever you saved your key (see above: this can vary by platform).
 
+   Alternatively, making another copy of the private key file (and deleting the original) can help. You can still re-extract the original from the training account credentials you were sent.
+
 2. Agent refused connection
 
    Sometimes this message is displayed, but as long as your key is listed when you do `ssh-add -l` then the command has worked.
 
 3. "Could not open a connection to your authentication agent" or "Error connecting to agent: No such file or directory"
 
-   This means that the agent is not running, for some reason. If you can't out why, having checked the instructions above for your platform, you can start it manually with
+   This means that the agent is not running, for some reason. If you can't work out why, having checked the instructions above for your platform, you can start it manually with
+
    ```
    $ eval $(ssh-agent -s)
    agent pid 1234    # or some similar output
    ```
+   
    You can then load your key as described above with the `ssh-add` command. Loaded this way, the key may or may not persist between sessions.
    
 4. Not prompted for your passphrase when MobaXterm restarts (having specified the location of your key)

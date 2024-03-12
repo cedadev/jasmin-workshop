@@ -20,8 +20,8 @@ After completing this exercise I will be able to:
 ### JASMIN resources
 
  * JASMIN account with SSH public key uploaded and `jasmin-login` privilege
- * login servers: `login[1-4].jasmin.ac.uk`
- * sci servers: `sci[1-6].jasmin.ac.uk`
+ * login servers: `login2.jasmin.ac.uk`
+ * sci servers: `sci[1-8].jasmin.ac.uk`
  * LOTUS batch processing cluster
  * common software: CDO (Climate Data Operators) tool
  * GWS (read/write): `/gws/pw/j07/workshop`
@@ -79,12 +79,12 @@ Alternative approaches could include:
         1. You only need to store the output file for temporary use (such as intermediate files in your workflow).
         1. You want to write outputs to scratch before moving them to a GWS.
     2. The Help page ([https://help.jasmin.ac.uk/article/176-storage#diskmount](https://help.jasmin.ac.uk/article/176-storage#diskmount)) tells us that there are two types of scratch space:
-        1.   `/work/scratch-pw` – supports parallel writes
-        1.   `/work/scratch-nopw` – does NOT support parallel writes
+        1.   `/work/scratch-pw2` – supports parallel writes
+        1.   `/work/scratch-nopw2` – does NOT support parallel writes
     3.   Since we do not need parallel write capability, we can use the "`nopw`" version.
-    4.   You need to set up a directory under "`/work/scratch-nopw"` as your username:
+    4.   You need to set up a directory under "`/work/scratch-nopw2"` as your username:
 
-        MYSCRATCH=/work/scratch-nopw/$USER
+        MYSCRATCH=/work/scratch-nopw2/$USER
         mkdir -p $MYSCRATCH
   
     5.   Then you would write output files/directories under your scratch space, e.g.:
@@ -123,7 +123,7 @@ This demonstrates best practice:
 
 1. SSH to a scientific analysis server
 
-        ssh sci5 # Could use sci[123456]
+        ssh sci5 # Could use any of sci[1-8]
 
 1. Write an "`extract-era-data.sh`" wrapper script that calls the CDO extraction command, that:
     1. Takes a date string ("`YYYYMMDD`") as a command-line argument
@@ -199,5 +199,3 @@ Table 2 of this [help page](https://help.jasmin.ac.uk/article/4891-lsf-to-slurm-
 The following command will do it:
 
 `scancel -u $USER`
-
-
