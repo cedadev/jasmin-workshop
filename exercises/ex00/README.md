@@ -196,7 +196,11 @@ Here's a video showing what the connection test looks like on Windows, but it's 
 
 If:
 - you have successfully logged in to the login server
-- you have your key available for an onward connection as above, then you're all set, and you're ready for the rest of the exercises in the workshop.
+- you have your key available for an onward connection as above
+
+...then you're all set, and you're ready for the rest of the exercises in the workshop.
+
+If not, check through the FAQ below, and make sure you've done everything as per the instructions and videos, then if you're still having trouble, please ask for help.
 
 ## FAQ
 
