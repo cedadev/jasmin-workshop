@@ -178,25 +178,25 @@ You should see your key fingerprint, i.e. something like this:
 2048 SHA256:e1rIzWgm0BAF396xNAYc8TdjjSs8IuMyr+iwSryHeb4 fred.bloggs@ncas.ac.uk (RSA)
 ```
 
-   - Now try a connection to `login2.jasmin.ac.uk`, replacing `USERNAME` with the name of your training account:
+Now try a connection to `login2.jasmin.ac.uk`, replacing `USERNAME` with the name of your training account:
    
-   > **_NOTE:_**  Don't forget the `-A` option for "agent forwarding". This makes your key available to any onward connections you need to make, after connecting to the login node.
+> **_NOTE:_**  Don't forget the `-A` option for "agent forwarding". This makes your key available to any onward connections you need to make, after connecting to the login node.
 
-   ```bash
-   ssh -A USERNAME@login2.jasmin.ac.uk
-   ```
+```bash
+ssh -A USERNAME@login2.jasmin.ac.uk
+```
 
-   Once you have connected, try `ssh-add -l` again as above, to check that your key is available for an onward connection.
+Once you have connected, try `ssh-add -l` again as above, to check that your key is available for an onward connection.
 
-   Here's a video showing what the connection test looks like on Windows, but it's the same commands on Mac & Linux:
+Here's a video showing what the connection test looks like on Windows, but it's the same commands on Mac & Linux:
 
-   [![connection test with windows & mobaxterm](https://img.youtube.com/vi/XmwOMbigyf0/0.jpg)](https://youtu.be/XmwOMbigyf0)
+[![connection test with windows & mobaxterm](https://img.youtube.com/vi/XmwOMbigyf0/0.jpg)](https://youtu.be/XmwOMbigyf0)
 
-   ### Success?
-   
-   If:
-   - you have successfully logged in to the login server
-   - you have your key available for an onward connection as above, then you're all set, and you're ready for the rest of the exercises in the workshop.
+### Success?
+
+If:
+- you have successfully logged in to the login server
+- you have your key available for an onward connection as above, then you're all set, and you're ready for the rest of the exercises in the workshop.
 
 ## FAQ
 
