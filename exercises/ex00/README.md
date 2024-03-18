@@ -14,7 +14,7 @@ Please also see the set of [FAQs](#faq).
 
 ## Instructions
 
-These instructions are in 3 parts
+These instructions are in 3 parts:
 
 1. Common instructions to obtain your training account credentials
 1. Specific instructions (for the computer you have in front of you) to set up your environment
@@ -48,8 +48,8 @@ The same overall process applies to each method, i.e:
 
    ```mermaid
    flowchart TD
-      id1(Store credential files locally) 
-      --> id2(Unlock and load private key into local SSH client software)
+      id1(Store your key locally) 
+      --> id2(Load private key into SSH client software)
       --> id3(Use SSH client to connect to remote host)
    ```
 
