@@ -164,7 +164,7 @@ If you don't see this, go back and check the steps above carefully before asking
 
 </details>
 
-## Test your connection
+## 3. Test your connection
 
 First, check that your key is loaded:
 
