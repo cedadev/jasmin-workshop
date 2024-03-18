@@ -172,6 +172,12 @@ First, check that your key is loaded:
 ssh-add -l
 ```
 
+You should see your key fingerprint, i.e. something like this:
+
+```
+2048 SHA256:e1rIzWgm0BAF396xNAYc8TdjjSs8IuMyr+iwSryHeb4 fred.bloggs@ncas.ac.uk (RSA)
+```
+
    - Now try a connection to `login2.jasmin.ac.uk`, replacing `USERNAME` with the name of your training account:
    
    > **_NOTE:_**  Don't forget the `-A` option for "agent forwarding". This makes your key available to any onward connections you need to make, after connecting to the login node.
