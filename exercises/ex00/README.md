@@ -8,7 +8,7 @@ This exercise is for participants of JASMIN Workshop training events.
 
 It helps you set up your computer with the software and training account credentials needed to undertake the exercises in the workshop.
 
-For the [reasons explained below](#own-vs-training-account), we provide workshop participants with a temporary training account for the duration of the workshop event (see also [training account expiry](#training-account-expiry)). Please use this rather than your own JASMIN account, if you have one.
+For the [reasons explained below](#faq), we provide workshop participants with a temporary training account for the duration of the workshop event. Even if you have your own JASMIN account, please use the training account for the workshop event.
 
 Please also see the set of [FAQs](#faq).
 
@@ -172,19 +172,35 @@ First, check that your key is loaded:
 ssh-add -l
 ```
 
-   - Now try a connection to `login2.jasmin.ac.uk`, replacing `USERNAME` with the name of your training account:
+You should see your key fingerprint, i.e. something like this:
+
+```
+2048 SHA256:e1rIzWgm0BAF396xNAYc8TdjjSs8IuMyr+iwSryHeb4 fred.bloggs@ncas.ac.uk (RSA)
+```
+
+Now try a connection to `login2.jasmin.ac.uk`, replacing `USERNAME` with the name of your training account:
    
-   > **_NOTE:_**  Don't forget the `-A` option for "agent forwarding". This makes your key available to any onward connections you need to make, after connecting to the login node.
+> **_NOTE:_**  Don't forget the `-A` option for "agent forwarding". This makes your key available to any onward connections you need to make, after connecting to the login node.
 
-   ```bash
-   ssh -A USERNAME@login2.jasmin.ac.uk
-   ```
+```bash
+ssh -A USERNAME@login2.jasmin.ac.uk
+```
 
-   Once you have connected, try `ssh-add -l` again as above, to check that your key is available for an onward connection.
+Once you have connected, try `ssh-add -l` again as above, to check that your key is available for an onward connection.
 
-   Here's a video showing what the connection test looks like on Windows, but it's the same commands on Mac & Linux:
+Here's a video showing what the connection test looks like on Windows, but it's the same commands on Mac & Linux:
 
-   [![connection test with windows & mobaxterm](https://img.youtube.com/vi/XmwOMbigyf0/0.jpg)](https://youtu.be/XmwOMbigyf0)
+[![connection test with windows & mobaxterm](https://img.youtube.com/vi/XmwOMbigyf0/0.jpg)](https://youtu.be/XmwOMbigyf0)
+
+### Success?
+
+If:
+- you have successfully logged in to the login server
+- you have your key available for an onward connection as above
+
+...then you're all set, and you're ready for the rest of the exercises in the workshop.
+
+If not, check through the FAQ below, and make sure you've done everything as per the instructions and videos, then if you're still having trouble, please ask for help.
 
 ## FAQ
 
@@ -196,7 +212,7 @@ ssh-add -l
 
    For the JASMIN workshop training events, we prefer that you use the supplied training accounts. 
 
-   This is because we have pre-configured each training accounts with access roles for all the resources you need for the training workshop, including:
+   This is because we have pre-configured each training account with access roles for all the resources you need for the training workshop, including:
     - the `workshop` group workspace
     - the `workshop` LOTUS queue (for responsive wait times during workshops)
     - a corresponding CEDA Archive account with access to certain datasets used in the exercises
@@ -256,7 +272,7 @@ ssh-add -l
 
   This isn't necessarily a problem.
 
-  If the output of `ssh-add -l` is something like the examples above, showing your key fingerprint, then you should still be good to go.
+  If the output of `ssh-add -l` is something like the examples above in the Windows or Mac/Linux instructions, showing your key fingerprint, then you should still be good to go.
 </details>
 
 <details>
