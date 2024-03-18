@@ -17,11 +17,10 @@ After completing this exercise I will be able to:
 * Copy a directory tree of data files recursively from my local machine to the `workshop` group workspace.
 * Understand permissions and ownership needed for group access.
 * Be aware of the limitations of some transfers methods.
-* Pull in data from an external data source using a transfer server
 
 ### JASMIN resources
 
-* Account with valid `jasmin-login` privilege
+* Account with valid `jasmin-login` access role
    * If you are using one of the training accounts this will have been set up for you
 * Transfer server: `xfer3.jasmin.ac.uk`
 * Home directory: `/home/users/train050` (replace with your username)
@@ -36,22 +35,21 @@ After completing this exercise I will be able to:
 *  Directory on your local machine: `/Users/fredbloggs/` (choose your own)
 
 ### Videos
+
 You can follow this exercise by watching the videos below, or by following the text of this article, or a combination of both.
 |  |  |
 | --- | --- |
 | Task | [![](https://img.youtube.com/vi/7Tv9uSH5_CE/mqdefault.jpg )](https://www.youtube.com/watch?v=7Tv9uSH5_CE) |
 | Solutions & Discussion | [![](https://img.youtube.com/vi/i5R6Qy6gTg8/mqdefault.jpg )](https://www.youtube.com/watch?v=i5R6Qy6gTg8) |
 
-
 ### Instructions
 
-1. Make a simple text file or script on your local machine
+1. Make a simple text file on your local machine
 1. Copy it to your home directory on a jasmin transfer server
 1. Make a directory on your local machine and create a few simple files in it (representing some data that you want to share). This is the **source** directory.
 1. Make a **destination** directory for yourself within the `workshop` group workspace
 1. Copy the the source directory and its contents to the destination directory using the transfer server
 1. Check that the ownership and permissions on your directory within the group workspace allow reading, and, if you choose, writing, by other members.
-1. Using command line tools, download a test file from http://speedtest.tele2.net/100MB.zip to your destination directory in the `workshop` group workspace, then delete it.
 
 ### Review
 
@@ -60,9 +58,8 @@ This exercise demonstrates how to use a transfer server to:
 * Copy small files such as source code/scripts to your home directory
 * Copy data to a group workspace
 * Check permissions on the data to make sure it’s visible by collaborators
-* Download some data from an external data source
 
-We have looked at some basic methods suitable for small datasets or where speed is not critical. For larger data transfers or over longer distances (international/intercontinental), it is recommended to consider other available options which could be more efficient, depending on source & destination. See [exercise 10](../ex10) or consult the [documentation here](https://help.jasmin.ac.uk/article/219-data-transfer-overview)
+We have looked at some basic methods suitable for small datasets or where speed is not critical. For larger data transfers or over longer distances (international/intercontinental), it is recommended to consider other available options which could be more efficient, depending on source & destination. Consult the [documentation here](https://help.jasmin.ac.uk/article/219-data-transfer-overview).
 
 
 ### Alternative approaches and best practice
@@ -95,54 +92,63 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
 # Cheatsheet
 
-1. Make a small text file on your local machine containing a bash script which you could run on JASMIN.
+1. Make a small text file on your local machine.
+
     ```
-    $ echo "This is a readme file" > README.txt
-    $ scp README.txt train050@xfer3.jasmin.ac.uk:~/
+    echo "This is a readme file" > README.txt
+    scp README.txt train050@xfer3.jasmin.ac.uk:~/
     ```
 
     The `echo` command makes the text file for us. Use some other small file if you have one handy, or create one
     in your favorite text editor on your local machine.
-    We then copy it using the `scp` command, specifying our home directory `~/` as the path.
+    Copy it using the `scp` command, specifying our home directory `~/` as the path.
 
     Log into the xfer server itself, to see the file that you copied in place in the destination directory:
 
     ```
-    $ ssh -A train050@xfer3.jasmin.ac.uk
-    $ pwd
-    $ ls -l README.txt
-    
+    ssh -A train050@xfer3.jasmin.ac.uk
+    pwd
+    ls -l README.txt
     ```
 
 1. Make a small tree of directories on your **local** machine and create 2 files somewhere in those directories.
+
     ```
-    $ mkdir -p mydata/01 mydata/02
-    $ echo "This is a test file" > mydata/01/file01.txt
-    $ echo "This is also a test file" > mydata/02/file02.txt
+    mkdir -p mydata/01 mydata/02
+    echo "This is a test file" > mydata/01/file01.txt
+    echo "This is also a test file" > mydata/02/file02.txt
     ```
+
     Check what you have created:
+
     ```
-    $ find mydata
+    find mydata
+    # output:
     mydata
     mydata/02
     mydata/02/file02.txt
     mydata/01
     mydata/01/file01.txt
     ```
+
     Make yourself a directory in the `workshop` group workspace:
     First log in to the transfer server: (substitute `train050` for your own JASMIN username).
     You may find it useful to open another terminal window for this (don't forget to check first whether your
     SSH key is loaded: see [exercise 01](../ex01) ).
     
     ```
-    $ ssh -A train050@xfer3.jasmin.ac.uk
+    ssh -A train050@xfer3.jasmin.ac.uk
     ```
+
     Go to the workspace directory and make your own user directory there:
+
     ```
-    $ cd /gws/pw/j07/workshop
-    $ ls
+    cd /gws/pw/j07/workshop
+    ls
+    # output:
     users
     ```
+
     We have set out the GWS so that it has a directory called `users` where you can make your own sub-directories
     for working through these exercises.
     This helps keep things orgnanised. Make a directory for yourself, named as per your account
@@ -156,29 +162,37 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     do not expect these data to persist.
     
     ```
-    $ echo $USER             # check what is held in this environment variable
-    $ mkdir users/$USER      # make a directory for yourself underneath the "users" directory
-    $ ls -ld users/$USER      # check what you have created: note the ownerhsip & permissions
+    echo $USER             # check what is held in this environment variable
+    mkdir users/$USER      # make a directory for yourself underneath the "users" directory
+    ls -ld users/$USER      # check what you have created: note the ownerhsip & permissions
+    # output:
     drwxr-sr-x 2 train050 gws_workshop 4096 Jan 26 11:26 users/train050
     ```
 
     Back on your local machine, recursively copy the directory using `scp`:  (replace `train050` with your username)
+
     ```
     scp -r mydata train050@xfer3.jasmin.ac.uk:/gws/pw/j07/workshop/users/train050/
     ```
 
     In your other terminal window on (or log back in to) the transfer server, inspect your destination directory:
+
     ```
-    $ cd /gws/pw/j07/workshop/users/$USER
-    $ find .
+    cd /gws/pw/j07/workshop/users/$USER
+    find .
+    # output:
     ./mydata
     ./mydata/02
     ./mydata/02/file02.txt
     ./mydata/01
     ./mydata/01/file01.txt
     ```
+
     The `find` command just shows the structure. To examine the permissions, use `ls -l`, or `ls -lR` to show the child directories too:
-    ```$ ls -lR mydata
+
+    ```
+    ls -lR mydata
+    # output:
     mydata:
     total 0
     drwxr-xr-x 1 train050 gws_workshop 0 Dec  4 11:59 01
@@ -200,8 +214,9 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     Try the following command, which will restrict the group and world permissions on everything in the `mydata` directory and below:
 
     ```
-    $ chmod -R go-rX mydata         # note capital X
-    $ ls -lR mydata
+    chmod -R go-rX mydata         # note capital X
+    ls -lR mydata
+    # output:
     mydata:
     total 128
     drwx------ 2 train050 gws_workshop 4096 Feb 23 10:51 01
@@ -214,7 +229,6 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     mydata/02:
     total 48
     -rw------- 1 train050 gws_workshop 25 Feb 23 10:51 file02.txt
-
     ```
 
     The directories `01` and `02` are signified by the extra `d` at the start, but all the files and directories have 3 sets of permissions: *User*, *Group* and *wOrld* (u, g, o). We are also told about which user and what group they belong to.
@@ -232,8 +246,9 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     If we want to open up directory `01` so that members of the same group `gws_workshop` can read it, but non-members still can't, we could set the group read permission. For directories, we need to add the `x` or execute permission as well: the capital `X` in the command means that it will work out the right change to make for files and directories:
 
     ```
-    $ chmod -R g+rX mydata/01
-    $ ls -lR mydata
+    chmod -R g+rX mydata/01
+    ls -lR mydata
+    # output:
     mydata:
     total 0
     drwxr-x--- 1 train050 gws_workshop 0 Dec  4 11:59 01
@@ -253,14 +268,16 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     Note that the group ownership of a file or directory in a group workspace might be different from any files you've created in your home directory. Check the permissions on the README.txt file you wrote there earlier:
 
     ```
-    $ ls -l ~/README.txt 
+    ls -l ~/README.txt 
+    # output:
     -rw-r--r-- 1 train050 users 22 Feb 23 10:48 /home/users/train050/README.txt
     ```
 
     By default, files you create in your home directory belong to group `users` (which is the default group for all users with `jasmin-login` privilege). You can check what groups you belong to with the `groups` command:
 
     ```
-    $ groups
+    groups
+    # output:
     users open gws_workshop
     ```
 
@@ -269,51 +286,8 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     You can do this with the `chgrp` command, and it can be used recursively on a directory to change all the items in a directory tree (...but you have to have the right permissions to be able to modify them!)
 
     ```
-    $ chgrp -R gws_workshop mydata
+    chgrp -R gws_workshop mydata
     ```
-
-
-
-
-1. Using command line tools or a script you have written, download a test file from http://speedtest.tele2.net/100MB.zip, then delete it.
-
-    We can use either `curl` or `wget` to fetch a remote data file via HTTP from within JASMIN. These utilities are installed on the transfer servers.
-
-    The speed test site http://speedtest.tele2.net/ provides a number of different files which can be used to test download performance, but also to test the functionality of any tools to check they're working properly.
-
-    ```
-    $ wget http://speedtest.tele2.net/100MB.zip
-    ```
-    Followed by this to delete the file:
-    ```
-    $ rm 100MB.zip
-    ```
-    We're deleting the file straight after downloading it, so an alternative is to specifying the output file as the null device, which means it's not actually written to storage:
-    ```
-    $ wget -O/dev/null http://speedtest.tele2.net/100MB.zip
-    $ wget -O/dev/null http://speedtest.tele2.net/100MB.zip
-    --2020-12-04 12:38:16--  http://speedtest.tele2.net/100MB.zip
-    Resolving speedtest.tele2.net (speedtest.tele2.net)... 90.130.70.73, 2a00:800:1010::1
-    Connecting to speedtest.tele2.net (speedtest.tele2.net)|90.130.70.73|:80... connected.
-    HTTP request sent, awaiting response... 200 OK
-    Length: 104857600 (100M) [application/zip]
-    Saving to: ‘/dev/null’
-
-    100%[==============================================================================>] 104,857,600  179MB/s   in 0.6s   
-
-    2020-12-04 12:38:16 (179 MB/s) - ‘/dev/null’ saved [104857600/104857600]
-    ```
-    Here, we've got a result of 179MB/s which is pretty good. All sorts of factors can contribute to slow transfer performance but this apprach can be helpful in eliminating this particular machine as the bottleneck. Quite often the reason is a slow server at the other end, or complex directory structures full of small files which slow things down. For more discussion of transfer performance, see [ex10](ex10_advanced_data_transfer.md).
-
-    The equivalent using `curl` would be:
-    ```
-    $ curl -o /dev/null http://speedtest.tele2.net/100MB.zip
-    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                    Dload  Upload   Total   Spent    Left  Speed
-    100  100M  100  100M    0     0   195M      0 --:--:-- --:--:-- --:--:--  196M
-    ```
-
-    Both `wget` and `curl` are very useful, feature-rich transfer tools and can do a lot more than shown here: read the relevant `man` pages for more information. You can also build your own transfer tools using packages such as `requests` in Python (see [ex10](ex10_advanced_data_transfer.md))
 
 ### Answers to questions
 
@@ -322,27 +296,36 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
    * readable by any user of JASMIN?
 
 You can first check the existing permissions on a file with:
+
 ```
-$ ls -l myfile.txt
+ls -l myfile.txt
+# output:
 -rw-r--r-- 1 train050 gws_workshop 0 Jan 22 17:01 myfile.txt
 ```
 
 The group "read" permission is already set: this is the second "r", whereas the user permissions are currently set to `rw`, i.e. read and write.
 
 You can add group write permission by a command such as:
+
 ```
-$ chmod g+rw myfile.txt
+chmod g+rw myfile.txt
 ```
+
 or numerically with
+
 ```
-$ chmod 664 myfile.txt
+chmod 664 myfile.txt
 ```
+
 Check again:
+
 ```
-$ ls -l myfile.txt
+ls -l myfile.txt
+# output:
 -rw-rw--r-- 1 train050 gws_workshop 0 Jan 22 17:01 myfile.txt
 ```
-Now we can see that the second set of permissions also has the `w` permission for write. You'd need to do similar for directories, but remember that for directories you also need to set the `x` (execute) permission. 
+
+Now we can see that the second set of permissions also has the `w` permission for write. You'd need to do similar for directories, but remember that for directories you also need to set the `x` (execute) permission.
 
 By default, the top-level directory of the GWS is set so that new child directories inherit the fact that they're owned by the same group: `gws_workshop` as opposed to `users`, which would otherwise be the default (a file which you create in your home directory would normally belong to group `users`). But you still might need to set the **permissions** on the file to control what can be done with the file by other members of the same group.
 
