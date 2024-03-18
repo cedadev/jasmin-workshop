@@ -61,9 +61,9 @@ Each of the methods involves using a piece of software which provides a "termina
 
    <summary id="windows">Windows instructions</summary>
 
-   - Move the files from the Downloads folder
+   - Move the 2 `id_rsa_jasmin_training*` key files from the Downloads folder. The `username` and `passphrase` files can stay where they are.
      - create an empty folder called `ssh` to put these files in: perhaps on your Desktop, but it's up to you.
-     - use File Explorer to drag & drop the 4 files from the Downloads folder to the folder you just made.
+     - use File Explorer to drag & drop the 2 key files from the Downloads folder to the folder you just made.
      - don't try to open either of the `id_rsa_jasmin_training*` files: they're not meant to be readable.
      - try opening the `username` and `passphrase` files in a text editor (e.g. `Notebook`): you'll need them shortly.
 
