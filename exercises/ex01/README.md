@@ -84,9 +84,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 
 ### Cheat Sheet
 
-> **_NOTE:_**  Please make sure you have read all the information in [exercise 0](../ex00), in particular the recommendation to use a precomfigured training account, and the reasons why.
-
-If you are using your **own** account, outside of one of our organised training events, you will need to have completed these steps yourself: [start here](https://help.jasmin.ac.uk/article/185-generate-ssh-key-pair), but not all the steps can be done temporarily for a workshop event.
+> **_NOTE:_**  Please make sure you have read all the information in [exercise 0](../ex00), in particular the recommendation to use a preconfigured training account, and the reasons why. If you are using your **own** account, outside of one of our organised training events, you will need to have completed these steps yourself: [start here](https://help.jasmin.ac.uk/article/185-generate-ssh-key-pair), but not all the steps can be done temporarily for a workshop event.
 
 1. Connect to a `login` server using a terminal client
 
