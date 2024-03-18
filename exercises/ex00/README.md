@@ -186,6 +186,12 @@ ssh-add -l
 
    [![connection test with windows & mobaxterm](https://img.youtube.com/vi/XmwOMbigyf0/0.jpg)](https://youtu.be/XmwOMbigyf0)
 
+   ### Success?
+   
+   If:
+   - you have successfully logged in to the login server
+   - you have your key available for an onward connection as above, then you're all set, and you're ready for the rest of the exercises in the workshop.
+
 ## FAQ
 
 (Click the arrow to expand each FAQ)
@@ -256,7 +262,7 @@ ssh-add -l
 
   This isn't necessarily a problem.
 
-  If the output of `ssh-add -l` is something like the examples above, showing your key fingerprint, then you should still be good to go.
+  If the output of `ssh-add -l` is something like the examples above in the Windows or Mac/Linux instructions, showing your key fingerprint, then you should still be good to go.
 </details>
 
 <details>
