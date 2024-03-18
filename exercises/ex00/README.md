@@ -8,7 +8,7 @@ This exercise is for participants of JASMIN Workshop training events.
 
 It helps you set up your computer with the software and training account credentials needed to undertake the exercises in the workshop.
 
-For the [reasons explained below](#user-content-own-vs-training-account), we provide workshop participants with a temporary training account for the duration of the workshop event. Even if you have your own JASMIN account, please use the training account for the workshop event.
+For the [reasons explained below](#faq), we provide workshop participants with a temporary training account for the duration of the workshop event. Even if you have your own JASMIN account, please use the training account for the workshop event.
 
 Please also see the set of [FAQs](#faq).
 
