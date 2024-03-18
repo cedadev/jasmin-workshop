@@ -11,6 +11,14 @@ author: Matt Pritchard
 
 I want to connect to JASMIN from my own computer to do some work.
 
+```mermaid
+flowchart TD
+   id1(My computer)
+   -- terminal client -->id2(login server)
+   -- terminal client -->id3(sci server)
+   -->id4(do some work)
+```
+
 ### Objectives
 
 At the end of this exercise I will be able to:
@@ -69,9 +77,8 @@ In the text below, you can see the steps needed to do this task, i.e:
 
 All too easy? Here are some questions to test your knowledge and understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk).
 
-1. What is different about server `login2.jasmin.ac.uk` compared to its sibling login servers?
-2. How often is your home directory backed up? How would you go about restoring files if you accidentally deleted something from your home directory?
-3. What shell is used by default on JASMIN? How can you tell? How would you customise your shell environment (e.g. aliases, environment variables)?
+1. How often is your home directory backed up? How would you go about restoring files if you accidentally deleted something from your home directory?
+2. What shell is used by default on JASMIN? How can you tell? How would you customise your shell environment (e.g. aliases, environment variables)?
 
 ### Review / alternative approaches / best practice
 
@@ -176,6 +183,27 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 
    So it's NOT essential for making a basic connection to JASMIN.
 
+   Here's how it compares to our original scenario:
+
+
+   ```mermaid
+   flowchart TD
+      id1(My computer)
+      -- terminal client -->id2(login server)
+      -- terminal client -->id3(sci server)
+      -->id4(do some work)
+
+      id4-. view terminal output .->id1
+
+      id5(My Computer)
+      -- special client -->id6(nx-login server)
+      -- terminal client + X11-forwarding -->id7(sci server)
+      -->id8(work using graphics)
+      
+      id8-. view graphics .->id5
+   ```
+
+
    The service is [fully documented here](https://help.jasmin.ac.uk/docs/interactive-computing/graphical-linux-desktop-access-using-nx/), including troubleshooting tips, so we recommend you follow those to get set up.
 
    Once you have estabished a connection to an `nx-login` server, return here to complete the rest of this exercise.
@@ -192,15 +220,11 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 
   ### Answers to questions
 
-> 1. What is different about server `login2.jasmin.ac.uk` compared to its sibling login servers?
-
-It provides a contingency option for users whose home network can't be configured to provide a forward and reverse DNS lookup. Details in the ["Check network details"](https://help.jasmin.ac.uk/article/190-check-network-details) help doc. If you're not sure what that means, please speak to your local IT support desk.
-
-> 2. How often is your home directory backed up? How would you go about restoring files if you accidentally deleted something from your home directory?
+> 1. How often is your home directory backed up? How would you go about restoring files if you accidentally deleted something from your home directory?
 
 See [this article](https://help.jasmin.ac.uk/article/176-storage) about how you can restore data accidentally deleted from your home directory for up to a week.
 
-> 3. What shell is used by default on JASMIN? How can you tell? How would you customise your shell environment (e.g. aliases, environment variables)?
+> 2. What shell is used by default on JASMIN? How can you tell? How would you customise your shell environment (e.g. aliases, environment variables)?
 
 You can check what shell is being used by checking the value of the `$SHELL` environment variable wherever you are logged in on JASMIN:
 ```
