@@ -79,7 +79,7 @@ Click the arrow next to each section to expand the instructions:
        - Run the installer, then follow the instructions.
 
    - Open Mobaxterm, and follow the steps in this video to load your private key and check it's loaded in a terminal session.
-     - [mobaxterm setup (video)](#)
+     - [![mobaxterm setup (video)](https://img.youtube.com/vi/qm8PcD24Xsc/0.jpg)](https://youtu.be/qm8PcD24Xsc)
 
 </details>
 
