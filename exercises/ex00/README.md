@@ -8,7 +8,7 @@ This exercise is for participants of JASMIN Workshop training events.
 
 It helps you set up your computer with the software and training account credentials needed to undertake the exercises in the workshop.
 
-For the [reasons explained below](#own-vs-training-account), we provide workshop participants with a temporary training account for the duration of the workshop event (see also [training account expiry](#training-account-expiry)).
+For the [reasons explained below](#own-vs-training-account), we provide workshop participants with a temporary training account for the duration of the workshop event (see also [training account expiry](#training-account-expiry)). Please use this rather than your own JASMIN account, if you have one.
 
 Please also see the set of [FAQs](#faq).
 
@@ -22,9 +22,9 @@ These instructions are in 3 parts
 
 Let's get started...
 
-(Click the arrow symbols to expand the sets of instructions in each case)
-
 ## 1. Common instructions: extracting credentials
+
+(Click the arrow to expand the set of instructions)
 
 <details>
    <summary id="extracting">Extracting the credentials sent to your registered email</summary>
@@ -55,7 +55,7 @@ The same overall process applies to each method, i.e:
 
 Each of the methods involves using a piece of software which provides a "terminal" environment on your computer. For Windows, you may need to download and install this if you don't have the one we recommend, but for Mac and Linux you should be able to use tools already available on your local machine. This software will include an "SSH Agent" which stores your private key, once you've unlocked it with the passphrase, then makes it available for making a conneciton to a remote computer (like a JASMIN login node).
 
-Click the arrow next to each section to expand the instructions:
+(Click the arrow to expand the relevant set of instructions)
 
 <details>
 
@@ -63,23 +63,104 @@ Click the arrow next to each section to expand the instructions:
 
    - Move the files from the Downloads folder
      - create an empty folder called `ssh` to put these files in: perhaps on your Desktop, but it's up to you.
-     - Use File Explorer to drag & drop the 4 files from the Downloads folder to the folder you just made.
-     - Don't try to open either of the `id_rsa_jasmin_training*` files: they're not meant to be readable.
-     - Try opening the `username` and `passphrase` files in a text editor (e.g. `Notebook`): you'll need them shortly.
+     - use File Explorer to drag & drop the 4 files from the Downloads folder to the folder you just made.
+     - don't try to open either of the `id_rsa_jasmin_training*` files: they're not meant to be readable.
+     - try opening the `username` and `passphrase` files in a text editor (e.g. `Notebook`): you'll need them shortly.
 
    - Download and install "MobaXterm"
    
-     This is an emulator of the terminal environment that Mac and Linux users have, and provides the tools you need to connect. There are other options, but we'd recommend this one if you want us to help you with any problems.
+     This is an emulator of the terminal environment (Mac and Linux have this environment built-in), and provides the tools you need to connect. There are other options, but we'd recommend this one if you want us to help you with any problems.
 
      - Go to https://mobaxterm.mobatek.net/
-       - Go to [Download](https://mobaxterm.mobatek.net/download.html)
-       - Choose the "Home edition", then "Download now"
+       - go to [Download](https://mobaxterm.mobatek.net/download.html)
+       - choose the "Home edition", then "Download now"
        - Choose the **installer edition**
-       - Right-click the downloaded zip file and choose "extract all"
-       - Run the installer, then follow the instructions.
+       - right-click the downloaded zip file and choose "extract all"
+       - run the installer, then follow the instructions.
 
    - Open Mobaxterm, and follow the steps in this video to load your private key and check it's loaded in a terminal session.
      - [![mobaxterm setup (video)](https://img.youtube.com/vi/qm8PcD24Xsc/0.jpg)](https://youtu.be/qm8PcD24Xsc)
+
+</details>
+
+<details>
+  <summary>Mac or Linux</summary>
+
+  In the Mac or Linux environments, it's best to put your SSH-related files in a standard place. This is a directory called `.ssh` in your home directory (the `.` means it's hidden).
+
+
+  - open the `Terminal` utility (use the search in the top menu bar to find this if you haven't used it before)
+  - this should open a command-line terminal, starting in your home directory. The shorthand for your home directory is `~/`
+
+  Check if you have a directory `~/.ssh` already:
+
+  ```
+  ls ~/.ssh
+  ```
+
+  If this exists already, the `ls` command will list its contents (it could be empty, that's fine).
+
+  If you see `No such file or directory`, make this directory with the command:
+
+  ```
+  mkdir -p ~/.ssh
+  ```
+  and set permissions on it so that it's only read/writable by you:
+  ```
+  chmod 700 ~/.ssh
+  ```
+
+  Now, move the files from your download location (where your browser puts downloaded files) to the directory you just created:
+
+  ```
+  mv ~/Downloads/id_rsa_training_jasmin* ~/.ssh/
+  ```
+
+  Set the permissions on these files to be only read/writable by you:
+
+  ```
+  chmod 600 ~/.ssh/id_rsa_training_jasmin*
+  ```
+
+  Now, check whether you have an SSH-agent running:
+
+  ```
+  ssh-add -l
+  ```
+
+  If you see
+  ```
+  The agent has no identities.
+  ```
+
+  that's fine: it's running, but just doesn't have any keys loaded yet. Skip the step below.
+
+  If you see `Could not open a connection to your authentication agent` or `Error connecting to agent` this means you haven't got one running, so you need to start one with the following command:
+
+  ```
+  eval $(ssh-agent -s)
+  ```
+
+  You're now able to load your private key, as follows:
+
+  ssh-add ~/.ssh/id_rsa_jasmin_training
+
+  Note that it's the private key file (without the `.pub`) extension, that we're loading here.
+
+  You will be prompted for your passphrase: don't try and type it in, copy and paste it from the `passphrase` file which you should have open in a text editor. You can usually paste by CTRL-V or by right-clicking and choosing "paste", but this may vary depending on your system.
+
+  Be careful not to copy any whitespace either side of the passphrase.
+  
+  Note that the terminal does not echo back any characters or placeholders for a passphrase. So don't paste it again just because it's not displaying!
+
+  Now, heck with the `ssh-add -l` command as before, and the key fingerprint should be displayed, e.g.
+
+```
+ssh-add -l
+2048 SHA256:e1rIzWgm0BAF396xNAYc8TdjjSs8IuMyr+iwSryHeb4 fred.bloggs@ncas.ac.uk (RSA)
+```
+
+If you don't see this, go back and check the steps above carefully before asking for help.
 
 </details>
 
@@ -107,6 +188,8 @@ ssh-add -l
 
 ## FAQ
 
+(Click the arrow to expand each FAQ)
+
 <details>
 
    <summary id="own-vs-training-account">Can I use my own JASMIN account?</summary>
@@ -128,10 +211,10 @@ ssh-add -l
 
    <summary>I haven't received my account credentials</summary>
 
-   - Make sure you are checking in the email account which you gave to the course organisers: the training account will be set up with this email address.
-   - Make sure you have searched for "shared the folder" in your email application. Sometimes emails from OneDrive get hidden.
-   - Make sure you have checked your spam/junk folders
-   - Ask your course organiser for help if you still can't find it: it should be possible to get it re-sent.
+   - make sure you are checking in the email account which you gave to the course organisers: the training account will be set up with this email address.
+   - make sure you have searched for "shared the folder" in your email application. Sometimes emails from OneDrive get hidden.
+   - make sure you have checked your spam/junk folders
+   - ask your course organiser for help if you still can't find it: it should be possible to get it re-sent.
 
 </details>
 
