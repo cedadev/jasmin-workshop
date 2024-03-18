@@ -196,7 +196,7 @@ ssh-add -l
 
    For the JASMIN workshop training events, we prefer that you use the supplied training accounts. 
 
-   This is because we have pre-configured each training accounts with access roles for all the resources you need for the training workshop, including:
+   This is because we have pre-configured each training account with access roles for all the resources you need for the training workshop, including:
     - the `workshop` group workspace
     - the `workshop` LOTUS queue (for responsive wait times during workshops)
     - a corresponding CEDA Archive account with access to certain datasets used in the exercises
