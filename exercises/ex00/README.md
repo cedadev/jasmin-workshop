@@ -101,10 +101,9 @@ ssh-add -l
 
    Once you have connected, try `ssh-add -l` again as above, to check that your key is available for an onward connection.
 
-   Here's what the connection test looks like on Windows, but it's the same commands on Mac & Linux:
+   Here's a video showing what the connection test looks like on Windows, but it's the same commands on Mac & Linux:
 
-   - [connection test with windows & mobaxterm](#)
-
+   [![connection test with windows & mobaxterm](https://img.youtube.com/vi/XmwOMbigyf0/0.jpg)](https://youtu.be/XmwOMbigyf0)
 
 ## FAQ
 
@@ -112,7 +111,16 @@ ssh-add -l
 
    <summary id="own-vs-training-account">Can I use my own JASMIN account?</summary>
 
-   Here's the answer
+   For the JASMIN workshop training events, we prefer that you use the supplied training accounts. 
+
+   This is because we have pre-configured each training accounts with access roles for all the resources you need for the training workshop, including:
+    - the `workshop` group workspace
+    - the `workshop` LOTUS queue (for responsive wait times during workshops)
+    - a corresponding CEDA Archive account with access to certain datasets used in the exercises
+    - access to the transfer server `xfer3`
+    - access to high-performance data transfer services
+
+    We cannot configure all these resources on a temporary basis, so ask you to use the training account during events. You are welcome to transfer over any data created during a workshop, to your own account (but beware there is a time limit for this, before training accounts are wiped: ask your course organiser for details).
 
 </details>
 
@@ -120,15 +128,10 @@ ssh-add -l
 
    <summary>I haven't received my account credentials</summary>
 
-   Here's the answer
-
-</details>
-
-<details>
-
-   <summary>Another question</summary>
-
-   Here's the answer
+   - Make sure you are checking in the email account which you gave to the course organisers: the training account will be set up with this email address.
+   - Make sure you have searched for "shared the folder" in your email application. Sometimes emails from OneDrive get hidden.
+   - Make sure you have checked your spam/junk folders
+   - Ask your course organiser for help if you still can't find it: it should be possible to get it re-sent.
 
 </details>
 
@@ -136,6 +139,70 @@ ssh-add -l
 
    <summary>I can't open the `*.pub` file when I double-click it (on Windows)</summary>
 
-   Here's the answer
+   That's OK. It's not a file that you need to open. The `.pub` file extension is sometimes recognised by Windows as a Microsoft Publisher file, but this one isn't: it's your public key (part of your public/private key pair).
+
+</details>
+
+<details>
+
+   <summary>Message about "unprotected key"</summary>
+
+   If you see a message like the following, this means that you need to restrict the permissions on your key file so that only you (and no other users on your system) can read your key.
+
+   ```
+   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+   @         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+   Permissions 0644 for 'id_rsa_jasmin_training' are too open.
+   It is required that your private key files are NOT accessible by others.
+   This private key will be ignored.
+
+   ```
+   You can do this with a command like this (you'll need to do this in a terminal window):
+   ```
+   chmod 600 <path>/id_rsa_jasmin_training  
+   ```
+   where `<path>` is wherever you saved your key (see above: this can vary by platform).
+
+   Alternatively (particularly for Windows users), making another copy of the private key file (and deleting the original) can help. You can still go back to the original from the OneDrive email if you need it.
+
+</details>
+
+<details>
+  <summary>Message "Agent refused connection"</summary>
+
+  This isn't necessarily a problem.
+
+  If the output of `ssh-add -l` is something like the examples above, showing your key fingerprint, then you should still be good to go.
+</details>
+
+<details>
+  <summary>Message "Could not open a connection to your authentication agent" or "Error connecting to agent: No such file or directory"
+  </summary>
+
+  This means that you don't have an SSH-agent running, so there isn't an agent to load your key into.
+
+  For windows/mobaxterm, review the setup video to make sure you've got the key loaded correctly.
+
+
+  For Mac/Linux, you may need to run the following command to start the agent:
+
+```
+eval $(ssh-agent -s)
+```
+
+You should see output similar to this:
+
+```
+agent pid 1234
+```
+
+Then try loading your key again with the ssh-add command:
+
+```
+ssh-add <path to your key>
+```
+
+and enter the passphrase when prompted.
 
 </details>
