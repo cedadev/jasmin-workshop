@@ -183,8 +183,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 
    So it's NOT essential for making a basic connection to JASMIN.
 
-   Here's how it compares to our original scenario:
-
+   Here's how this scenario (right) compares to our original scenario (left):
 
    ```mermaid
    flowchart TD
