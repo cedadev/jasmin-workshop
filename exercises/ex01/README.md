@@ -32,7 +32,7 @@ At the end of this exercise I will be able to:
  * (optionally) **Run** a command which produces graphical output
 
 ### JASMIN resources
- * JASMIN account with SSH public key uploaded and `jasmin-login` privilege
+ * JASMIN account with SSH public key uploaded and `jasmin-login` access role
  * login server: `login2.jasmin.ac.uk`
  * help documentation at https://help.jasmin.ac.uk
 
@@ -204,7 +204,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
    ```
 
 
-   The service is [fully documented here](https://help.jasmin.ac.uk/docs/interactive-computing/graphical-linux-desktop-access-using-nx/), including troubleshooting tips, so we recommend you follow those to get set up.
+   The service is [fully documented here](https://help.jasmin.ac.uk/docs/interactive-computing/graphical-linux-desktop-access-using-nx/), including installation and troubleshooting tips, so we recommend you follow those to get set up.
 
    Once you have estabished a connection to an `nx-login` server, return here to complete the rest of this exercise.
 
