@@ -110,7 +110,7 @@ Each of the methods involves using a piece of software which provides a "termina
   chmod 700 ~/.ssh
   ```
 
-  Now, move the files from your download location (where your browser puts downloaded files) to the directory you just created:
+  Now, move the 2 key files `id_rsa_training_jasmin*` from your download location (where your browser puts downloaded files) to the directory you just created. The `username` and `passphrase` files can stay where they are.
 
   ```
   mv ~/Downloads/id_rsa_training_jasmin* ~/.ssh/
@@ -147,7 +147,7 @@ Each of the methods involves using a piece of software which provides a "termina
 
   Note that it's the private key file (without the `.pub`) extension, that we're loading here.
 
-  You will be prompted for your passphrase: don't try and type it in, copy and paste it from the `passphrase` file which you should have open in a text editor. You can usually paste by CTRL-V or by right-clicking and choosing "paste", but this may vary depending on your system.
+  You will be prompted for your passphrase: don't try and type it in, copy and paste it from the `passphrase` file which you should have open in a text editor. Similarly, your `username` will be in the corresponding file, where you downlaoded it. You can usually paste by CTRL-V or by right-clicking and choosing "paste", but this may vary depending on your system.
 
   Be careful not to copy any whitespace either side of the passphrase.
   
