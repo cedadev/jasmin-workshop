@@ -44,7 +44,7 @@ Let's get started...
 
 ## 2. Specific instructions: setting up your environment
 
-The same overall process applies to each method, i.e:
+Below, you will find instructions specific to Windows, Mac and Linux. However the same overall process applies to each, i.e:
 
    ```mermaid
    flowchart TD
