@@ -44,7 +44,7 @@ You can follow this exercise by watching the videos below, or by following the t
 
 ### Instructions
 
-1. Make a simple text file or script on your local machine
+1. Make a simple text file on your local machine
 1. Copy it to your home directory on a jasmin transfer server
 1. Make a directory on your local machine and create a few simple files in it (representing some data that you want to share). This is the **source** directory.
 1. Make a **destination** directory for yourself within the `workshop` group workspace
@@ -92,7 +92,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
 # Cheatsheet
 
-1. Make a small text file on your local machine containing a bash script which you could run on JASMIN.
+1. Make a small text file on your local machine.
 
     ```
     echo "This is a readme file" > README.txt
@@ -101,7 +101,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
     The `echo` command makes the text file for us. Use some other small file if you have one handy, or create one
     in your favorite text editor on your local machine.
-    We then copy it using the `scp` command, specifying our home directory `~/` as the path.
+    Copy it using the `scp` command, specifying our home directory `~/` as the path.
 
     Log into the xfer server itself, to see the file that you copied in place in the destination directory:
 
@@ -123,6 +123,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
     ```
     find mydata
+    # output:
     mydata
     mydata/02
     mydata/02/file02.txt
@@ -144,6 +145,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     ```
     cd /gws/pw/j07/workshop
     ls
+    # output:
     users
     ```
 
@@ -163,6 +165,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     echo $USER             # check what is held in this environment variable
     mkdir users/$USER      # make a directory for yourself underneath the "users" directory
     ls -ld users/$USER      # check what you have created: note the ownerhsip & permissions
+    # output:
     drwxr-sr-x 2 train050 gws_workshop 4096 Jan 26 11:26 users/train050
     ```
 
@@ -177,6 +180,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     ```
     cd /gws/pw/j07/workshop/users/$USER
     find .
+    # output:
     ./mydata
     ./mydata/02
     ./mydata/02/file02.txt
@@ -188,6 +192,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
     ```
     ls -lR mydata
+    # output:
     mydata:
     total 0
     drwxr-xr-x 1 train050 gws_workshop 0 Dec  4 11:59 01
@@ -211,6 +216,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     ```
     chmod -R go-rX mydata         # note capital X
     ls -lR mydata
+    # output:
     mydata:
     total 128
     drwx------ 2 train050 gws_workshop 4096 Feb 23 10:51 01
@@ -242,6 +248,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     ```
     chmod -R g+rX mydata/01
     ls -lR mydata
+    # output:
     mydata:
     total 0
     drwxr-x--- 1 train050 gws_workshop 0 Dec  4 11:59 01
@@ -262,6 +269,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
     ```
     ls -l ~/README.txt 
+    # output:
     -rw-r--r-- 1 train050 users 22 Feb 23 10:48 /home/users/train050/README.txt
     ```
 
@@ -269,6 +277,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
     ```
     groups
+    # output:
     users open gws_workshop
     ```
 
@@ -290,6 +299,7 @@ You can first check the existing permissions on a file with:
 
 ```
 ls -l myfile.txt
+# output:
 -rw-r--r-- 1 train050 gws_workshop 0 Jan 22 17:01 myfile.txt
 ```
 
@@ -311,6 +321,7 @@ Check again:
 
 ```
 ls -l myfile.txt
+# output:
 -rw-rw--r-- 1 train050 gws_workshop 0 Jan 22 17:01 myfile.txt
 ```
 
