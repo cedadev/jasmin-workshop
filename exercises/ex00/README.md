@@ -84,7 +84,7 @@ Each of the methods involves using a piece of software which provides a "termina
 </details>
 
 <details>
-  <summary>Mac or Linux</summary>
+  <summary>Mac or Linux instructions</summary>
 
   In the Mac or Linux environments, it's best to put your SSH-related files in a standard place. This is a directory called `.ssh` in your home directory (the `.` means it's hidden).
 
