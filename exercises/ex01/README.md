@@ -165,7 +165,13 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 1. Make an onward connection to a `sci` server
      * Login to the `sci` server
 
-        It can be useful to repeat the `ssh-add -l` command to check that your SSH key is still available (now on the login server) before making your onward connection. You should get a similar result to that above. If not, go back and check that you enabled "forward authentication" in the NX connection profile settings for this login server.
+        ```
+        ssh -A USERNAME@sci1.jasmin.ac.uk
+        ```
+
+        But remember to a) replace with your own username and b) choose which of the sci machines to connect to
+
+        If you get "permission denied", it can be useful to repeat the `ssh-add -l` command to check that your SSH key is still available (now on the login server) before making your onward connection. You should get a similar result to that above. If not, go back and check that you enabled "forward authentication" in the NX connection profile settings for this login server.
 
      * Run a simple command
 
