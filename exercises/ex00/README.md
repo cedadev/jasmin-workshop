@@ -153,7 +153,7 @@ Each of the methods involves using a piece of software which provides a "termina
   
   Note that the terminal does not echo back any characters or placeholders for a passphrase. So don't paste it again just because it's not displaying!
 
-  Now, heck with the `ssh-add -l` command as before, and the key fingerprint should be displayed, e.g.
+  Now, check with the `ssh-add -l` command as before, and the key fingerprint should be displayed, e.g.
 
 ```
 ssh-add -l
