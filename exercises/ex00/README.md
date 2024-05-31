@@ -17,8 +17,8 @@ Please also see the set of [FAQs](#faq).
 These instructions are in 3 parts:
 
 1. Common instructions to obtain your training account credentials
-1. Specific instructions (for the computer you have in front of you) to set up your environment
-1. Testing your connection
+2. Specific instructions (for the computer you have in front of you) to set up your environment
+3. Testing your connection
 
 Let's get started...
 
@@ -53,7 +53,7 @@ Below, you will find instructions specific to Windows, Mac and Linux. However th
       --> id3(Use SSH client to connect to remote host)
    ```
 
-Each of the methods involves using a piece of software which provides a "terminal" environment on your computer. For Windows, you may need to download and install this if you don't have the one we recommend, but for Mac and Linux you should be able to use tools already available on your local machine. This software will include an "SSH Agent" which stores your private key, once you've unlocked it with the passphrase, then makes it available for making a conneciton to a remote computer (like a JASMIN login node).
+Each of the methods involves using a piece of software which provides a "terminal" environment on your computer. For Windows, you may need to download and install this if you don't have the one we recommend, but for Mac and Linux you should be able to use tools already available on your local machine. This software will include an "SSH Agent" which stores your private key, once you've unlocked it with the passphrase, then makes it available for making a connection to a remote computer (like a JASMIN login node).
 
 (Click the arrow to expand the relevant set of instructions)
 
@@ -143,11 +143,13 @@ Each of the methods involves using a piece of software which provides a "termina
 
   You're now able to load your private key, as follows:
 
+  ```
   ssh-add ~/.ssh/id_rsa_jasmin_training
+  ```
 
   Note that it's the private key file (without the `.pub`) extension, that we're loading here.
 
-  You will be prompted for your passphrase: don't try and type it in, copy and paste it from the `passphrase` file which you should have open in a text editor. Similarly, your `username` will be in the corresponding file, where you downlaoded it. You can usually paste by CTRL-V or by right-clicking and choosing "paste", but this may vary depending on your system.
+  You will be prompted for your passphrase: don't try and type it in, copy and paste it from the `passphrase` file which you should have open in a text editor. Similarly, your `username` will be in the corresponding file, where you downloaded it. You can usually paste by <kbd>CTRL</kbd>+<kbd>V</kbd> or by right-clicking and choosing "paste", but this may vary depending on your system.
 
   Be careful not to copy any whitespace either side of the passphrase.
   
@@ -155,12 +157,12 @@ Each of the methods involves using a piece of software which provides a "termina
 
   Now, check with the `ssh-add -l` command as before, and the key fingerprint should be displayed, e.g.
 
-```
-ssh-add -l
-2048 SHA256:e1rIzWgm0BAF396xNAYc8TdjjSs8IuMyr+iwSryHeb4 fred.bloggs@ncas.ac.uk (RSA)
-```
+   ```
+   ssh-add -l
+   2048 SHA256:e1rIzWgm0BAF396xNAYc8TdjjSs8IuMyr+iwSryHeb4 fred.bloggs@ncas.ac.uk (RSA)
+   ```
 
-If you don't see this, go back and check the steps above carefully before asking for help.
+   If you don't see this, go back and check the steps above carefully before asking for help.
 
 </details>
 
@@ -190,7 +192,7 @@ Once you have connected, try `ssh-add -l` again as above, to check that your key
 
 Here's a video showing what the connection test looks like on Windows, but it's the same commands on Mac & Linux:
 
-[![connection test with windows & mobaxterm](https://img.youtube.com/vi/XmwOMbigyf0/0.jpg)](https://youtu.be/XmwOMbigyf0)
+[![connection test with Windows & Mobaxterm](https://img.youtube.com/vi/XmwOMbigyf0/0.jpg)](https://youtu.be/XmwOMbigyf0)
 
 ### Success?
 
@@ -219,7 +221,7 @@ If not, check through the FAQ below, and make sure you've done everything as per
     - access to the transfer server `xfer3`
     - access to high-performance data transfer services
 
-    We cannot configure all these resources on a temporary basis, so ask you to use the training account during events. You are welcome to transfer over any data created during a workshop, to your own account (but beware there is a time limit for this, before training accounts are wiped: ask your course organiser for details).
+   We cannot configure all these resources on a temporary basis, so ask you to use the training account during events. You are welcome to transfer over any data created during a workshop, to your own account (but beware there is a time limit for this, before training accounts are wiped: ask your course organiser for details).
 
 </details>
 
@@ -281,27 +283,27 @@ If not, check through the FAQ below, and make sure you've done everything as per
 
   This means that you don't have an SSH-agent running, so there isn't an agent to load your key into.
 
-  For windows/mobaxterm, review the setup video to make sure you've got the key loaded correctly.
+  For Windows/Mobaxterm, review the setup video to make sure you've got the key loaded correctly.
 
 
   For Mac/Linux, you may need to run the following command to start the agent:
 
-```
-eval $(ssh-agent -s)
-```
+   ```
+   eval $(ssh-agent -s)
+   ```
 
-You should see output similar to this:
+   You should see output similar to this:
 
-```
-agent pid 1234
-```
+   ```
+   agent pid 1234
+   ```
 
-Then try loading your key again with the ssh-add command:
+   Then try loading your key again with the ssh-add command:
 
-```
-ssh-add <path to your key>
-```
+   ```
+   ssh-add <path to your key>
+   ```
 
-and enter the passphrase when prompted.
+   and enter the passphrase when prompted.
 
 </details>
