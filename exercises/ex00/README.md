@@ -4,6 +4,7 @@ author: Matt Pritchard
 ---
 
 ## Introduction
+
 This exercise is for participants of JASMIN Workshop training events.
 
 It helps you set up your computer with the software and training account credentials needed to undertake the exercises in the workshop.
@@ -30,7 +31,7 @@ Let's get started...
    <summary id="extracting">Extracting the credentials sent to your registered email</summary>
 
    - Locate the email sent by the JASMIN team using OneDrive. It should have "shared the folder" in the subject line.
-      - If you can't find the email, search for "shared the folder" in your emails, but also check your spam/junk folders before asking for help. 
+      - If you can't find the email, search for "shared the folder" in your emails, but also check your spam/junk folders before asking for help.
    - Follow the "Open" link in the email from the JASMIN Team.
    - It may ask you to comfirm the email address and enter a verification code: follow the instructions.
    - You should eventually reach an online view of the folder containing the 4 credential file(s)
@@ -53,13 +54,69 @@ Below, you will find instructions specific to Windows, Mac and Linux. However th
       --> id3(Use SSH client to connect to remote host)
    ```
 
-Each of the methods involves using a piece of software which provides a "terminal" environment on your computer. For Windows, you may need to download and install this if you don't have the one we recommend, but for Mac and Linux you should be able to use tools already available on your local machine. This software will include an "SSH Agent" which stores your private key, once you've unlocked it with the passphrase, then makes it available for making a connection to a remote computer (like a JASMIN login node).
+Each of the methods involves using a piece of software which provides a "terminal" environment on your computer.
 
-(Click the arrow to expand the relevant set of instructions)
+- For Mac and Linux, you should be able to use tools already available on your local machine.
+- For Windows, you should have the "OpenSSH Client" already available as an "optional feature". If not, you may need to either install this or alternative software to provide the environment you need to connect using SSH.
+
+This software usually includes an "SSH Agent" which stores your private key, once you've unlocked it with the passphrase, then makes it available for making a connection to a remote computer (like a JASMIN login node).
+
+Click the arrows to expand the relevant sets of instructions.
+
+Copy any commands carefully: some are case-sensitive.
 
 <details>
 
-   <summary id="windows">Windows instructions</summary>
+   <summary id="windows">Windows instructions: option 1</summary>
+
+   If you use this option, other services will be easier to use later on. But look at option 2 if you think that looks easier for now.
+
+   - Check that the right tools are installed
+     - Open a PowerShell window using "run as administrator"
+     - Run this command to check whether you have "OpenSSH Client" optional feature installed.
+       ```powershell
+       Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH.Client*'
+       ```
+       If it's installed, continue. If not, either ask for help, or choose option 2.
+
+   - Check that the directory `.ssh` exists within your User directory:
+     ```powershell
+     ls "$env:UserProfile\.ssh"
+     ```
+     If it exists, you'll get a list of the files currently there. If not, create it with:
+     ```powershell
+     md "$env:UserProfile\.ssh"
+     ```
+     then move the file `id_rsa_jasmin_training` key file from the Downloads folder to this directory.
+     ```powershell
+     mv "$env:UserProfile\Downloads\id_rsa_jasmin_training" "$env:UserProfile\.ssh\"
+     ```
+   - Try opening the `username` and `passphrase` files in a text editor (e.g. `Notebook`): you'll need them shortly.
+   - Check that the `ssh-agent` service is running
+     ```powershell
+     Get-Service ssh-agent
+     ```
+     If it's not, start it:
+     ```powershell
+     Set-Service ssh-agent -StartupType Manual
+     Start-Service ssh-agent
+     ```
+   - Load your key into the agent
+     ```powershell
+     ssh-add "$env:UserProfile\.ssh\id_rsa_jasmin_training"
+     ```
+     You'll be asked for the passphrase: copy and paste this (right-click in the PowerShell window, the text will not be displayed), then press return.
+   - Check that you have your key loaded.
+     ```powershell
+     ssh-add -l
+     ```
+     You should see your key in the list of identities.
+
+</details>
+
+<details>
+
+   <summary id="windows">Windows instructions: option 2</summary>
 
    - Move the 2 `id_rsa_jasmin_training*` key files from the Downloads folder. The `username` and `passphrase` files can stay where they are.
      - create an empty folder called `ssh` to put these files in: perhaps on your Desktop, but it's up to you.
@@ -67,7 +124,7 @@ Each of the methods involves using a piece of software which provides a "termina
      - don't try to open either of the `id_rsa_jasmin_training*` files: they're not meant to be readable.
      - try opening the `username` and `passphrase` files in a text editor (e.g. `Notebook`): you'll need them shortly.
 
-   - Download and install "MobaXterm"
+   - Option 2: Download and install "MobaXterm"
    
      This is an emulator of the terminal environment (Mac and Linux have this environment built-in), and provides the tools you need to connect. There are other options, but we'd recommend this one if you want us to help you with any problems.
 
@@ -180,12 +237,12 @@ You should see your key fingerprint, i.e. something like this:
 2048 SHA256:e1rIzWgm0BAF396xNAYc8TdjjSs8IuMyr+iwSryHeb4 fred.bloggs@ncas.ac.uk (RSA)
 ```
 
-Now try a connection to `login2.jasmin.ac.uk`, replacing `USERNAME` with the name of your training account:
+Now try a connection to `login-01.jasmin.ac.uk`, replacing `USERNAME` with the name of your training account:
    
 > **_NOTE:_**  Don't forget the `-A` option for "agent forwarding". This makes your key available to any onward connections you need to make, after connecting to the login node.
 
 ```bash
-ssh -A USERNAME@login2.jasmin.ac.uk
+ssh -A USERNAME@login-01.jasmin.ac.uk
 ```
 
 Once you have connected, try `ssh-add -l` again as above, to check that your key is available for an onward connection.
@@ -218,8 +275,6 @@ If not, check through the FAQ below, and make sure you've done everything as per
     - the `workshop` group workspace
     - the `workshop` LOTUS queue (for responsive wait times during workshops)
     - a corresponding CEDA Archive account with access to certain datasets used in the exercises
-    - access to the transfer server `xfer3`
-    - access to high-performance data transfer services
 
    We cannot configure all these resources on a temporary basis, so ask you to use the training account during events. You are welcome to transfer over any data created during a workshop, to your own account (but beware there is a time limit for this, before training accounts are wiped: ask your course organiser for details).
 

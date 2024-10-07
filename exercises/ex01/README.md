@@ -33,7 +33,7 @@ At the end of this exercise I will be able to:
 
 ### JASMIN resources
  * JASMIN account with SSH public key uploaded and `jasmin-login` access role
- * login server: `login2.jasmin.ac.uk`
+ * login server: `login-01.jasmin.ac.uk`
  * help documentation at https://help.jasmin.ac.uk
 
 ### Local resources
@@ -58,15 +58,15 @@ In the text below, you can see the steps needed to do this task, i.e:
 1. Connect to a `login` server using a terminal client
    * Load your ssh key locally
    * Initiate an SSH connection to a login server
-   * Note the list of available `sci` servers 
+   * Note the list of available `sci` servers
    * Check what directory you are in
    * Check usage of your home directory
    * Check that your SSH key is available to make an onward connection
 1. Make an onward connection to a `sci` server
    * Login to the `sci` server
    * Run a simple command
-1. (Optional) Connect to an nx-login server using the Nomachine Enterprise Client
-   * Make a connection profile for one of the `nx-login` servers
+1. (Optional) Connect to an NX server using the Nomachine Enterprise Client
+   * Make a connection profile for one of the `nx` servers
    * Connect to that server
    * Check that your SSH key is available to make an onward connection
    * Bring up the list of available `sci` servers
@@ -87,7 +87,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 * You must not edit your `~/.ssh/authorized_keys` file on JASMIN. This is populated automatically with the (one) key you upload to your JASMIN account profile, so will be over-written if you edit it.
 * The login servers perform one simple function so should not be used for any processing, only as a "hop" to other systems within JASMIN.
 * Check for a less-busy `sci` machine before connecting. Setting up an alias to one particular machine can be counter-productive.
-* Don't use the `nx-login` servers for a regular terminal session: only use them via the NX client for a graphical desktop. This preserves resources and performance for those users who need it.
+* Don't use the `nx` servers for a regular terminal session: only use them via the NX client for a graphical desktop. This preserves resources and performance for those users who need it.
 
 ### Cheat Sheet
 
@@ -95,7 +95,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 
 1. Connect to a `login` server using a terminal client
 
-   * For the workshop, use server `login2.jasmin.ac.uk` but the full list is in the [help doc](https://help.jasmin.ac.uk/article/191-login-servers).
+   * For the workshop, use server `login-01.jasmin.ac.uk` but the full list is in the [help doc](https://help.jasmin.ac.uk/article/191-login-servers).
 
     * If you have set up your own machine as suggested in [exercise 0: Getting set up for the JASMIN workshop](../ex00), your SSH private key should already be loaded.
 
@@ -116,7 +116,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
     * Initiate an SSH connection to a login server
 
       ```
-      ssh -A train050@login2.jasmin.ac.uk
+      ssh -A train050@login-01.jasmin.ac.uk
       ```
       > **_NOTE:_**  Your username on JASMIN (`train050` in this example, but yours may be different) may not be the same as your username on your local machine (`fredbloggs`). In the `ssh` command, you must specify the username associated with your JASMIN account.
 
@@ -126,9 +126,9 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 
       Once you have successfully logged in, you should see the "message of the day" (MOTD), which includes a list of the available `sci` servers and lists the number of users and the available memory on each. This is useful in selecting one which is not too busy:
 
-      ![](https://d33v4339jhl8k0.cloudfront.net/docs/assets/564b4bd3c697910ae05f445c/images/5fc92e11de1bfa158fb55239/file-dKz1hO4aLb.png)
+      ![](motd-r9.png)
 
-      Here we can see that sci1 has 34 users logged in, with 12.3G of free memory and 36% CPU usage. Compare that to the other machines listed and choose one which suits the needs of what you plan to do. Note that some are physical servers and have more memory to start with (see [sci servers documentation](https://help.jasmin.ac.uk/article/121-sci-servers))
+      Here we can see that `sci-vm-01` has 25 active user sessions, with 8G of free memory and a 15-minute average load of 1.007. Compare that to the other machines listed and choose one which suits the needs of what you plan to do. Note that some (not shown here, named `sci-ph-*`) are physical servers and have more memory to start with (see [sci servers documentation](https://help.jasmin.ac.uk/article/121-sci-servers))
 
     * Check what directory you are in
       ```
@@ -166,7 +166,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
      * Login to the `sci` server
 
         ```
-        ssh -A USERNAME@sci1.jasmin.ac.uk
+        ssh -A USERNAME@sci-vm-01.jasmin.ac.uk
         ```
 
         But remember to a) replace with your own username and b) choose which of the sci machines to connect to
@@ -178,7 +178,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
         We are now able to run a simple command on the sci server (you should see that the prompt has changed, but this command returns the name of the host so should confirms that you are now on the `sci` server)
         ```
         hostname
-        sci1.jasmin.ac.uk
+        sci-vm-01.jasmin.ac.uk
         ```
 
 3. (Optional) Connect to an NX login server using the graphical NX client
@@ -208,20 +208,19 @@ All too easy? Here are some questions to test your knowledge and understanding. 
       id8-. view graphics .->id5
    ```
 
-
    The service is [fully documented here](https://help.jasmin.ac.uk/docs/interactive-computing/graphical-linux-desktop-access-using-nx/), including installation and troubleshooting tips, so we recommend you follow those to get set up.
 
-   Once you have estabished a connection to an `nx-login` server, return here to complete the rest of this exercise.
+   Once you have estabished a connection to an `nx` server, return here to complete the rest of this exercise.
 
    Your onward connection to the sci machine needs to "enable X11 forwarding" using the `-X` option as well as the `-A` relating to the key:
 
    ```
-   ssh -AX train050@sci1.jasmin.ac.uk
+   ssh -AX train050@sci-vm-01.jasmin.ac.uk
    ```
 
-   Once logged in to the sci machine, you can run a simple graphical command like `xeyes` or `xclock` and observe the output on the desktop. You can kill these applications with `CTRL-c`.
+   Once logged in to the sci machine, you can run a simple graphical command like `xterm` (a terminal window running directly on that `sci` server. Close it with `exit`. A more fully-featured terminal is also available with the command `xfce4-terminal`.
 
-   > **_NOTE:_**  As [described here](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx), the `nx-login` servers include a Firefox web browser which can be used for using some web-based tools which may only be available within JASMIN. Please do not use them for general web browsing, and please use Firefox on the `nx-login` machines rather than the `sci` machines, to preserve resources for processing on the `sci` machines. The same article also discusses why using the NX client significantly improves performance for graphical applications run on JASMIN, if you're viewing the output somewhere remote to JASMIN.
+   > **_NOTE:_**  As [described here](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx), the `nx` servers include a Firefox web browser which can be used for using some web-based tools which may only be available within JASMIN. Please do not use them for general web browsing, and please use Firefox on the `nx` machines rather than the `sci` machines, to preserve resources for processing on the `sci` machines. The same article also discusses why using the NX client significantly improves performance for graphical applications run on JASMIN, if you're viewing the output somewhere remote to JASMIN.
 
   ### Answers to questions
 
