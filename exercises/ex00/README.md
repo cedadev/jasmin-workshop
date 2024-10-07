@@ -247,10 +247,6 @@ ssh -A USERNAME@login-01.jasmin.ac.uk
 
 Once you have connected, try `ssh-add -l` again as above, to check that your key is available for an onward connection.
 
-Here's a video showing what the connection test looks like on Windows, but it's the same commands on Mac & Linux:
-
-[![connection test with Windows & Mobaxterm](https://img.youtube.com/vi/XmwOMbigyf0/0.jpg)](https://youtu.be/XmwOMbigyf0)
-
 ### Success?
 
 If:
