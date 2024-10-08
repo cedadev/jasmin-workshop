@@ -61,7 +61,7 @@ After completing this tutorial I will be able to:
 ### JASMIN resources
 
  * JASMIN account with SSH public key uploaded and `jasmin-login` privilege
- * login servers: `login[1-4].jasmin.ac.uk`
+ * login servers: `login-0[1-4].jasmin.ac.uk`
  * Cylc server: `cylc.jasmin.ac.uk`
  * LOTUS batch processing cluster
  * GWS (read/write): `/gws/pw/j07/workshop`
