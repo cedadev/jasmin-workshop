@@ -380,7 +380,7 @@ Cheat-sheet: Test for a potential multithreading
 
    * Logout from the sci machine to end your SSH session on JASMIN sci
 
-    ```
+   ```
    $ logout
    Connection to sci-vm-<number>.jasmin.ac.uk closed.
-    ```
+   ```
