@@ -109,7 +109,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 
       Once you have successfully logged in, you should see the "message of the day" (MOTD), which includes a list of the available `sci` servers and lists the number of users and the available memory on each. This is useful in selecting one which is not too busy:
 
-      ![](motd-r9.png)
+      ![](images/motd-r9.png)
 
       Here we can see that `sci-vm-01` has 25 active user sessions, with 8G of free memory and a 15-minute average load of 1.007. Compare that to the other machines listed and choose one which suits the needs of what you plan to do. Note that some (not shown here, named `sci-ph-*`) are physical servers and have more memory to start with (see [sci servers documentation](https://help.jasmin.ac.uk/article/121-sci-servers))
 
