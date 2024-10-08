@@ -178,3 +178,47 @@ echo $SHELL
 /bin/bash
 ```
 The `bash` shell is used on JASMIN. Please refer to [official documentation](https://www.gnu.org/software/bash/) to learn about its capabilities and how to customise your own environment.
+
+### Further learning (optional)
+
+#### Graphical linux desktop access using NoMachine NX
+
+An alternative way of connecting to JASMIN provides a virtual desktop within JASMIN, useful if:
+
+- you plan to use graphics-heavy applications, or
+- you need to access any web-based services available only within JASMIN
+
+But it's NOT needed if you're just making a basic connection to JASMIN.
+
+Here's how this scenario (right) compares to our original scenario (left):
+
+```mermaid
+flowchart TD
+   id1(My computer)
+   -- terminal client -->id2(login server)
+   -- terminal client -->id3(sci server)
+   -->id4(do some work)
+
+   id4-. view terminal output .->id1
+
+   id5(My Computer)
+   -- special client -->id6(nx-login server)
+   -- terminal client + X11-forwarding -->id7(sci server)
+   -->id8(work using graphics)
+   
+   id8-. view graphics .->id5
+```
+
+The service is [fully documented here](https://help.jasmin.ac.uk/docs/interactive-computing/graphical-linux-desktop-access-using-nx/), including installation and troubleshooting tips, so we recommend you follow those to get set up.
+
+Once you have estabished a connection to an `nx-login` server, return here to complete the rest of this exercise.
+
+Your onward connection to the sci machine needs to "enable X11 forwarding" using the `-X` option as well as the `-A` relating to the key:
+
+```
+ssh -AX train050@sci1.jasmin.ac.uk
+```
+
+Once logged in to the sci machine, you can run a simple graphical command like `xeyes` or `xclock` and observe the output on the desktop. You can kill these applications with `CTRL-c`.
+
+> **_NOTE:_**  As [described here](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx), the `nx-login` servers include a Firefox web browser which can be used for using some web-based tools which may only be available within JASMIN. Please do not use them for general web browsing, and please use Firefox on the `nx-login` machines rather than the `sci` machines, to preserve resources for processing on the `sci` machines. The same article also discusses why using the NX client significantly improves performance for graphical applications run on JASMIN, if you're viewing the output somewhere remote to JASMIN.
