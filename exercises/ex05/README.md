@@ -3,75 +3,68 @@ title: Exercise 05 - Batch computing - running a script on LOTUS
 author: Ag Stephens
 ---
 
-
-# Exercise 05: Batch computing - running a script on LOTUS 
+# Exercise 05: Batch computing - running a script on LOTUS
 
 ### Scenario
 
 Having established (in exercise 4) that I can extract the total cloud cover (`TCC`) variable from a single ERA-Interim file I now wish to extract that data from an entire month. I will write some simple scripts to batch up separate processes that run CDO to extract the `TCC` variable from a series of ERA-Interim files. Each run of the script will loop through 4 x 6-hourly files for one day. I will run it 30 times, once for each day in September 2018. Each run will be submitted to the LOTUS cluster.
 
 ### Objectives
- 
+
 After completing this exercise I will be able to:
 
-* **write** scripts to batch up tasks
-* **submit** scripts to the LOTUS cluster 
+- **write** scripts to batch up tasks
+- **submit** scripts to the LOTUS cluster
 
 ### JASMIN resources
 
- * JASMIN account with SSH public key uploaded and `jasmin-login` privilege
- * login servers: `login2.jasmin.ac.uk`
- * sci servers: `sci[1-8].jasmin.ac.uk`
- * LOTUS batch processing cluster
- * common software: CDO (Climate Data Operators) tool
- * GWS (read/write): `/gws/pw/j07/workshop`
- * CEDA Archive (read-only): requires a CEDA account
- * help documentation at https://help.jasmin.ac.uk
+- JASMIN account with SSH public key uploaded and `jasmin-login` privilege
+- login servers: `login-0[1-4].jasmin.ac.uk`
+- sci servers: `sci-vm-[1-6].jasmin.ac.uk`
+- LOTUS batch processing cluster
+- common software: CDO (Climate Data Operators) tool
+- GWS (read/write): `/gws/pw/j07/workshop`
+- CEDA Archive (read-only): requires a CEDA account
+- help documentation at https://help.jasmin.ac.uk
 
 ### Local resources
 
-* SSH client (to login to JASMIN)
-
-### Videos
-You can follow this exercise by watching the videos below, or by following the text of this article, or a combination of both.
-|  |  |
-| --- | --- |
-| Task | [![](https://img.youtube.com/vi/JIT412ApT54/mqdefault.jpg )](https://www.youtube.com/watch?v=JIT412ApT54) |
-| Solutions & Discussion | [![](https://img.youtube.com/vi/LydSh0mdHoE/mqdefault.jpg )](https://www.youtube.com/watch?v=LydSh0mdHoE) |
+- SSH client (to login to JASMIN)
 
 ### Your task
 
 This is the outline of what you need to do. The recommended way of doing each step is covered in the "Cheat Sheet" but you may wish to try solving it for yourself first.
 
- 1. Your starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
- 1. SSH to a scientific analysis server
- 1. Write an "`extract-era-data.sh`" wrapper script that calls the CDO extraction command
- 1. Write a script, called "`submit-all.sh`", to loop over dates from **01**/09/2018 to **02**/09/2018 and submit the "`extract-era-data.sh`" script to LOTUS for each day
- 1. Run the "`submit-all.sh`" script
- 1. Examine which jobs are in the queue
- 1. Examine the standard output and standard error files
- 1. Modify "`submit-all.sh`" so that it will run for all 30 days in September 2018
- 1. Re-run the "`submit-all.sh`" script
- 1. Examine which jobs are in the queue
- 1. Kill one of the jobs - just to see how it is done
+1. Your starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
+1. SSH to a scientific analysis server
+1. Write an "`extract-era-data.sh`" wrapper script that calls the CDO extraction command
+1. Write a script, called "`submit-all.sh`", to loop over dates from **01**/09/2018 to **02**/09/2018 and submit the "`extract-era-data.sh`" script to LOTUS for each day
+1. Run the "`submit-all.sh`" script
+1. Examine which jobs are in the queue
+1. Examine the standard output and standard error files
+1. Modify "`submit-all.sh`" so that it will run for all 30 days in September 2018
+1. Re-run the "`submit-all.sh`" script
+1. Examine which jobs are in the queue
+1. Kill one of the jobs - just to see how it is done
 
 ### Questions to test yourself
 
 All too easy? Here are some questions to test your knowledge an understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk)
 
- 1. You have learnt about some basic commands to interact with SLURM scheduler (such as `sbatch` and `squeue`). This manages the submission and execution of jobs via the LOTUS queues. Which other commands might be useful when interacting with the scheduler? 
- 2. Which queues are available on LOTUS? What is the difference between them? Why would you choose one over another?
- 3. How can you instruct SLURM to allocate CPUs and memory to specific jobs when you run them? Can you change the allocations when the job is queuing? 
- 4. How can you cancel all your jobs in the SLURM queue?
+1. You have learnt about some basic commands to interact with SLURM scheduler (such as `sbatch` and `squeue`). This manages the submission and execution of jobs via the LOTUS queues. Which other commands might be useful when interacting with the scheduler? 
+2. Which queues are available on LOTUS? What is the difference between them? Why would you choose one over another?
+3. How can you instruct SLURM to allocate CPUs and memory to specific jobs when you run them? Can you change the allocations when the job is queuing? 
+4. How can you cancel all your jobs in the SLURM queue?
 
 ### Review / alternative approaches / best practice
 
 This exercise demonstrates how to:
- 1. Create a script that takes an argument to process a single component (day) of an overall task. 
- 1. Create a wrapper script that loops through all the components that need to be processed.
- 1. Submit each component as a LOTUS job using the `sbatch` command.
- 1. Define the command-line arguments for the `sbatch` command.
- 1. Use other SLURM commands, such as `squeue` (to monitor progress) and `scancel` (to cancel jobs).
+
+1. Create a script that takes an argument to process a single component (day) of an overall task.
+1. Create a wrapper script that loops through all the components that need to be processed.
+1. Submit each component as a LOTUS job using the `sbatch` command.
+1. Define the command-line arguments for the `sbatch` command.
+1. Use other SLURM commands, such as `squeue` (to monitor progress) and `scancel` (to cancel jobs).
 
 Alternative approaches could include:
 1. Write the output to a `scratch` directory
@@ -79,9 +72,9 @@ Alternative approaches could include:
         1. You only need to store the output file for temporary use (such as intermediate files in your workflow).
         1. You want to write outputs to scratch before moving them to a GWS.
     2. The Help page ([https://help.jasmin.ac.uk/article/176-storage#diskmount](https://help.jasmin.ac.uk/article/176-storage#diskmount)) tells us that there are two types of scratch space:
-        1.   `/work/scratch-pw2` – supports parallel writes
-        1.   `/work/scratch-nopw2` – does NOT support parallel writes
-    3.   Since we do not need parallel write capability, we can use the "`nopw`" version.
+        1. `/work/scratch-pw2` – supports parallel writes (large, parallel file system scratch)
+        1. `/work/scratch-nopw2` – does NOT support parallel writes (smaller SSD-based scratch)
+    3.   Since we do not need parallel write capability, we can use the `nopw` version.
     4.   You need to set up a directory under "`/work/scratch-nopw2"` as your username:
 
         MYSCRATCH=/work/scratch-nopw2/$USER
@@ -199,3 +192,7 @@ Table 2 of this [help page](https://help.jasmin.ac.uk/article/4891-lsf-to-slurm-
 The following command will do it:
 
 `scancel -u $USER`
+
+---
+
+Finally, please tidy up any directories and files you created for yourself in the scratch area: these should all be removed.
