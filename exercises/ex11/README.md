@@ -32,7 +32,7 @@ After completing this exercise you will:
  
  ### JASMIN resources
 
- * Scientific analysis servers: `sci[1-6,8].jasmin.ac.uk`
+ * Scientific analysis servers: `sci-vm-0[1-6].jasmin.ac.uk`, `sci-ph-0[1-2].jasmin.ac.uk`
  * Group workspace: `/gws/pw/j07/workshop`
  * LOTUS batch queues: `workshop` (`par-single` or `par-multi` outside the event)
  * Fortran MPI source code is (available in the Github repository): 
@@ -114,8 +114,8 @@ By completing this exercise you will be able to compile and test a parallel MPI 
 1. Login to a JASMIN scientific analysis server 
    * Login to the chosen sci server on each terminal
    ```
-   $ ssh -A train049@sci3.jasmin.ac.uk
-   [train049@sci3 ~]$ 
+   $ ssh -A train049@sci-ph-01.jasmin.ac.uk
+   [train049@sci-ph-01 ~]$ 
    ```
    * Copy the Fortran source code from the exercise directory (shown in the JASMIN resources section) to your current working directory 
    ```
@@ -167,13 +167,13 @@ By completing this exercise you will be able to compile and test a parallel MPI 
    ```
    * On terminal 2, check the job ID associated with this pseudo-interactive session on LOTUS and the number of cores allocated 
    ```
-    @sci3 ~ ]$ squeue -u trai049
+    @sci-ph-01 ~ ]$ squeue -u trai049
              JOBID PARTITION     NAME    USER   ST     TIME  NODES NODELIST(REASON)
           64164115  workshop     bash   train049 R      24:17      1 host149
    ```
    The number of nodes and CPUs allocated can also be found from this SLURM command:
    ```
-   @sci3 ~ ]$ scontrol show job 64164115 
+   @sci-ph-01 ~ ]$ scontrol show job 64164115 
    ...
    NumNodes=1 NumCPUs=2 NumTasks=2 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
    ...
@@ -181,7 +181,7 @@ By completing this exercise you will be able to compile and test a parallel MPI 
    * Exit the interactive session on LOTUS `exit`. The Job should be cleared from SLURM
    ```
     @host149 ] $ exit
-    [train049@sci3 ~]$ 
+    [train049@sci-ph-01 ~]$ 
    ```
 1. Prepare a script to submit the parallel MPI code to SLURM
    * On terminal 1, launch a text editor to prepare a Bash script to submit the MPI executable generated earlier (use the template jobscript `jobscriptMPI.sbatch` shown below)
@@ -212,7 +212,7 @@ By completing this exercise you will be able to compile and test a parallel MPI 
    ```
    * Submit the job to SLURM scheduler and note the job ID `sbatch axpyMPI.sbatch`
    ```
-   [train049@sci3 ~]$ sbatch axpyMPI.sbatch
+   [train049@sci-ph-01 ~]$ sbatch axpyMPI.sbatch
     Submitted batch job 4815542
    ```
    * On terminal 2, monitor the job state using SLURM command:
