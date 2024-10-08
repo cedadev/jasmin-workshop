@@ -48,7 +48,6 @@ This is the outline of what you need to do. The recommended way of doing each st
 All too easy? Here are some questions to test your knowledge an understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk)
 
  1. Which packages are available in the default `jaspy` environment on JASMIN? Are there any non-Python packages included? Can you find out their versions?
- 2. A different approach would be to use `miniconda` to install your own Python environment (independent of `jaspy`). Can you install miniconda in your `$HOME` directory and then create a new Python 3 environment inside it?
 
 ### Review / alternative approaches / best practice
 
@@ -137,16 +136,3 @@ Alternative approaches could include:
 > 1. Which packages are available in the default `jaspy` environment on JASMIN? Are there any non-Python packages included? Can you find out their versions?
 
 The "jaspy" environments are listed on our [jaspy Help page](https://help.jasmin.ac.uk/docs/software-on-jasmin/jaspy-envs/). You can follow links from there to find out about the different "jaspy" environments and the packages, and versions, they include.
-
-> 2. A different approach would be to use `miniconda` to install your own Python environment (independent of `jaspy`). Can you install miniconda in your `$HOME` directory and then create a new Python 3 environment inside it?
-
-The general workflow for installing `miniconda` is as follows. You will create a `conda` environment by downloading and installing `miniconda` as your package management tool:
-  1. Download the [miniconda installer](https://docs.conda.io/en/latest/miniconda.html)
-  2. Install miniconda, e.g.: `bash Miniconda3-latest-Linux-x86_64.sh -b -p miniconda`
-  3. Create a `conda` environment using the `miniconda` installation, e.g.: `miniconda/bin/conda create -n mypy3 python=3`
-
-See this [explanation of why you might use `miniconda`](https://docs.conda.io/projects/conda/en/latest/user-guide/install/download.html#anaconda-or-miniconda).
-
-`miniconda` uses `conda` which is a very versatile and powerful tool for managing Python, and other, packages. See the [conda documentation](https://docs.conda.io) for more info.
-
-See our [Help pages](https://help.jasmin.ac.uk/docs/software-on-jasmin/conda-environments-and-python-virtual-environments/) for a more detailed description of `virtualenv`, `conda` and the options available to you on JASMIN.
