@@ -82,7 +82,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
 ### Review / alternative approaches / best practice
 
-You will be able to run and test a script on the scientific analysis servers. You will be able to monitor the resources used by your script. You can scale up by using the high-memory scientific sci-ph-0[1,2].jasmin.ac.uk server for testing and then move your workflow to the batch cluster LOTUS.
+You will be able to run and test a script on the scientific analysis servers. You will be able to monitor the resources used by your script. You can scale up by using the high-memory scientific `sci-ph-0[1,2].jasmin.ac.uk` server for testing and then move your workflow to the batch cluster LOTUS.
 
 What tasks I can not run on the Sci server?
 
