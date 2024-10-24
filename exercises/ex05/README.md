@@ -117,7 +117,7 @@ This demonstrates best practice:
 
 1. SSH to a scientific analysis server
 
-        ssh sci5 # Could use any of sci[1-8]
+        ssh sci-vm-01.jasmin.ac.uk # Could use any of sci[1-6]
 
 1. Write an "`extract-era-data.sh`" wrapper script that calls the CDO extraction command, that:
     1. Takes a date string ("`YYYYMMDD`") as a command-line argument
