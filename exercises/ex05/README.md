@@ -175,10 +175,10 @@ This demonstrates best practice:
 
 1. Job arrays are groups of jobs with the same executable and resource requirements, but different input files. Job arrays can be submitted, controlled, and monitored as a single unit or as individual jobs or groups of jobs. Each job submitted from a job array shares the same job ID as the job array and is uniquely referenced using an array index. This approach is useful for ‘high throughput’ tasks, for example where you want to run your simulation with different driving data or run the same processing task on multiple data files.
 
-2. Copy the two Bash scripts  `extract-day.sh` and `extract-alldays-array.sh` to your home directory or to a GWS
+2. Copy the two Bash scripts  `extract-day.sh` and `extract-days-array.sh` to your home directory or to a GWS
 3. Submit the job array:
    ```
-       sbatch extract-era-tcc-job-array.sh 
+       sbatch extract-days-array.sh 
         Submitted batch job 50254437
         squeue -u train049
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
