@@ -46,6 +46,7 @@ This is the outline of what you need to do. The recommended way of doing each st
 1. Re-run the "`submit-all.sh`" script
 1. Examine which jobs are in the queue
 1. Kill one of the jobs - just to see how it is done
+2. Job array submission
 
 ### Questions to test yourself
 
@@ -116,7 +117,7 @@ This demonstrates best practice:
 
 1. SSH to a scientific analysis server
 
-        ssh sci5 # Could use any of sci[1-8]
+        ssh sci-vm-01.jasmin.ac.uk # Could use any of sci[1-6]
 
 1. Write an "`extract-era-data.sh`" wrapper script that calls the CDO extraction command, that:
     1. Takes a date string ("`YYYYMMDD`") as a command-line argument
@@ -171,6 +172,20 @@ This demonstrates best practice:
     1. Use the "`scancel`" command:
 
             scancel <job_id>
+
+1. Job arrays are groups of jobs with the same executable and resource requirements, but different input files. Job arrays can be submitted, controlled, and monitored as a single unit or as individual jobs or groups of jobs. Each job submitted from a job array shares the same job ID as the job array and is uniquely referenced using an array index. This approach is useful for ‘high throughput’ tasks, for example where you want to run your simulation with different driving data or run the same processing task on multiple data files.
+
+2. Copy the two Bash scripts  `extract-day.sh` and `extract-days-array.sh` to your home directory or to a GWS
+3. Submit the job array:
+   ```
+       sbatch extract-days-array.sh 
+        Submitted batch job 50254437
+        squeue -u train049
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+   50254437_[1-30]  workshop ex05_tes train049 PD       0:00      1 (None)
+   ```
+
+
            
 
 ### Answers to questions

@@ -37,7 +37,7 @@ This is the outline of what you need to do. The recommended way of doing each st
 
  1. Your starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
  1. SSH to a scientific analysis server
- 1. Identify the path to the required data file
+ 1. Identify the path to the required data file e.g. `https://data.ceda.ac.uk/badc/ecmwf-era-interim/data/monthly-means/gg/as`
  1. Decide on the output file path
  1. Activate the environment containing the CDO tool
  1. Run the CDO tool to subset the file and extract the `TCC` variable

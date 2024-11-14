@@ -82,14 +82,14 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
 ### Review / alternative approaches / best practice
 
-You will be able to run and test a script on the scientific analysis servers. You will be able to monitor the resources used by your script. You can scale up by using the high-memory scientific sci[3,6,8].jasmin.ac.uk server for testing and then move your workflow to the batch cluster LOTUS.
+You will be able to run and test a script on the scientific analysis servers. You will be able to monitor the resources used by your script. You can scale up by using the high-memory scientific `sci-ph-0[1,2].jasmin.ac.uk` server for testing and then move your workflow to the batch cluster LOTUS.
 
 What tasks I can not run on the Sci server?
 
 - Do not run processes with execution time over two hours
 - Do not run parallel applications e.g. MPI or OpenMP, high threaded codes on the Sci servers
 - Do not run data transfer processes on the sci servers. Please use a transfer server e.g. `xfer-vm-01.jasmin.ac.uk` (Except when moving data from `/work/scratch-pw[2,3]` to a GWS because `/work/scratch-pw[2,3]` are not mounted on the `xfer` servers)
-- Use the high memory scientific analysis servers `sci-ph-0[12].jasmin.ac.uk` for testing high memory or multithreaded code
+- Use the high memory scientific analysis servers `sci-ph-0[1,2].jasmin.ac.uk` for testing high memory or multithreaded code
 - Only test multi-threaded code on the high memory servers and limit the number of threads
 - It is necessary to consider moving a processing task to the batch system LOTUS when the resource demand is high, e.g. CPU, memory and processing time
 
