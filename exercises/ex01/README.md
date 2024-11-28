@@ -216,7 +216,7 @@ Once you have estabished a connection to an `nx-login` server, return here to co
 Your onward connection to the sci machine needs to "enable X11 forwarding" using the `-X` option as well as the `-A` relating to the key:
 
 ```
-ssh -AX train050@sci1.jasmin.ac.uk
+ssh -AX train050@sci-vm-01.jasmin.ac.uk
 ```
 
 Once logged in to the sci machine, you can run a simple graphical command like `xeyes` or `xclock` and observe the output on the desktop. You can kill these applications with `CTRL-c`.

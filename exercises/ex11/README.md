@@ -217,14 +217,14 @@ By completing this exercise you will be able to compile and test a parallel MPI 
    ```
    * On terminal 2, monitor the job state using SLURM command:
    ```
-   [train049@sci2 ~]$ squeue -u train049
+   [train049@sci-ph-02 ~]$ squeue -u train049
      JOBID PARTITION     NAME     USER ST    TIME  NODES NODELIST(REASON)
    4815542  workshop  axpyMPI train049 PD    0:00      1 (None)
    ```
    The job is pending `PD`. Once the job starts running the job state will change from `PD` to `R` and the elapsed runtime will show in the column `TIME` 
    * What is the name of the compute node the job run on? is it the same node type on which the code was compiled?
    ```
-   [train049@sci2 ~]$ scontrol show job 4815542 
+   [train049@sci-ph-02 ~]$ scontrol show job 4815542 
    UserId=train049(7052227) GroupId=users(26030) MCS_label=N/A
    Priority=998385 Nice=0 Account=workshop QOS=normal
    JobState=COMPLETED Reason=None Dependency=(null)
