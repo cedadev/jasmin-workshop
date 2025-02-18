@@ -37,8 +37,8 @@ Let's get started...
    - You should eventually reach an online view of the folder containing the 4 credential file(s)
       - `username`
       - `passphrase`
-      - `id_rsa_jasmin_training`
-      - `id_rsa_jasmin_training.pub`
+      - `id_edcsa_jasmin_training`
+      - `id_edcsa_jasmin_training.pub`
    - Save each of these locally: hover over each item, a 3-dot menu should appear with a "Download" option. Use that to download the file to your default downloads location. We can move the files from there later.
    - It's easiest to download each file separately, otherwise they'll get put into a zip file from where you'll have to extract them individually.
 </details>
@@ -87,9 +87,9 @@ Copy any commands carefully: some are case-sensitive.
      ```powershell
      md "$env:UserProfile\.ssh"
      ```
-     then move the file `id_rsa_jasmin_training` key file from the Downloads folder to this directory.
+     then move the file `id_ecdsa_jasmin_training` key file from the Downloads folder to this directory.
      ```powershell
-     mv "$env:UserProfile\Downloads\id_rsa_jasmin_training" "$env:UserProfile\.ssh\"
+     mv "$env:UserProfile\Downloads\id_ecdsa_jasmin_training" "$env:UserProfile\.ssh\"
      ```
    - Try opening the `username` and `passphrase` files in a text editor (e.g. `Notebook`): you'll need them shortly.
    - Check that the `ssh-agent` service is running
@@ -103,7 +103,7 @@ Copy any commands carefully: some are case-sensitive.
      ```
    - Load your key into the agent
      ```powershell
-     ssh-add "$env:UserProfile\.ssh\id_rsa_jasmin_training"
+     ssh-add "$env:UserProfile\.ssh\id_ecdsa_jasmin_training"
      ```
      You'll be asked for the passphrase: copy and paste this (right-click in the PowerShell window, the text will not be displayed), then press return.
    - Check that you have your key loaded.
@@ -118,10 +118,10 @@ Copy any commands carefully: some are case-sensitive.
 
    <summary id="windows">Windows instructions: option 2</summary>
 
-   - Move the 2 `id_rsa_jasmin_training*` key files from the Downloads folder. The `username` and `passphrase` files can stay where they are.
+   - Move the 2 `id_ecdsa_jasmin_training*` key files from the Downloads folder. The `username` and `passphrase` files can stay where they are.
      - create an empty folder called `ssh` to put these files in: perhaps on your Desktop, but it's up to you.
      - use File Explorer to drag & drop the 2 key files from the Downloads folder to the folder you just made.
-     - don't try to open either of the `id_rsa_jasmin_training*` files: they're not meant to be readable.
+     - don't try to open either of the `id_ecdsa_jasmin_training*` files: they're not meant to be readable.
      - try opening the `username` and `passphrase` files in a text editor (e.g. `Notebook`): you'll need them shortly.
 
    - Option 2: Download and install "MobaXterm"
@@ -167,16 +167,16 @@ Copy any commands carefully: some are case-sensitive.
   chmod 700 ~/.ssh
   ```
 
-  Now, move the 2 key files `id_rsa_training_jasmin*` from your download location (where your browser puts downloaded files) to the directory you just created. The `username` and `passphrase` files can stay where they are.
+  Now, move the 2 key files `id_ecdsa_jasmin_training*` from your download location (where your browser puts downloaded files) to the directory you just created. The `username` and `passphrase` files can stay where they are.
 
   ```
-  mv ~/Downloads/id_rsa_training_jasmin* ~/.ssh/
+  mv ~/Downloads/id_ecdsa_jasmin_training* ~/.ssh/
   ```
 
   Set the permissions on these files to be only read/writable by you:
 
   ```
-  chmod 600 ~/.ssh/id_rsa_training_jasmin*
+  chmod 600 ~/.ssh/id_ecdsa_jasmin_training*
   ```
 
   Now, check whether you have an SSH-agent running:
@@ -201,7 +201,7 @@ Copy any commands carefully: some are case-sensitive.
   You're now able to load your private key, as follows:
 
   ```
-  ssh-add ~/.ssh/id_rsa_jasmin_training
+  ssh-add ~/.ssh/id_ecdsa_jasmin_training
   ```
 
   Note that it's the private key file (without the `.pub`) extension, that we're loading here.
@@ -216,7 +216,7 @@ Copy any commands carefully: some are case-sensitive.
 
    ```
    ssh-add -l
-   2048 SHA256:e1rIzWgm0BAF396xNAYc8TdjjSs8IuMyr+iwSryHeb4 fred.bloggs@ncas.ac.uk (RSA)
+   521 SHA256:ZeddNKK5U3am1vyCaUCq4CgMRpvoyv+cJiviqz3zvfw ~/.ssh/id_ecdsa_jasmin_training (ECDSA)
    ```
 
    If you don't see this, go back and check the steps above carefully before asking for help.
@@ -234,7 +234,7 @@ ssh-add -l
 You should see your key fingerprint, i.e. something like this:
 
 ```
-2048 SHA256:e1rIzWgm0BAF396xNAYc8TdjjSs8IuMyr+iwSryHeb4 fred.bloggs@ncas.ac.uk (RSA)
+521 SHA256:ZeddNKK5U3am1vyCaUCq4CgMRpvoyv+cJiviqz3zvfw ~/.ssh/id_ecdsa_jasmin_training (ECDSA)
 ```
 
 Now try a connection to `login-01.jasmin.ac.uk`, replacing `USERNAME` with the name of your training account:
@@ -265,7 +265,7 @@ If not, check through the FAQ below, and make sure you've done everything as per
 
    <summary id="own-vs-training-account">Can I use my own JASMIN account?</summary>
 
-   For the JASMIN workshop training events, we prefer that you use the supplied training accounts. 
+   For the JASMIN workshop training events, we prefer that you use the supplied training accounts.
 
    This is because we have pre-configured each training account with access roles for all the resources you need for the training workshop, including:
     - the `workshop` group workspace
@@ -300,24 +300,22 @@ If not, check through the FAQ below, and make sure you've done everything as per
    <summary>Message about "unprotected key"</summary>
 
    If you see a message like the following, this means that you need to restrict the permissions on your key file so that only you (and no other users on your system) can read your key.
+   This is usually solved by a) moving the file to the standard location (this matters, particularly on Windows) and b) changing its permissions.
 
    ```
    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
    @         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-   Permissions 0644 for 'id_rsa_jasmin_training' are too open.
+   Permissions 0644 for 'id_ecdsa_jasmin_training' are too open.
    It is required that your private key files are NOT accessible by others.
    This private key will be ignored.
 
    ```
-   You can do this with a command like this (you'll need to do this in a terminal window):
-   ```
-   chmod 600 <path>/id_rsa_jasmin_training  
-   ```
-   where `<path>` is wherever you saved your key (see above: this can vary by platform).
 
-   Alternatively (particularly for Windows users), making another copy of the private key file (and deleting the original) can help. You can still go back to the original from the OneDrive email if you need it.
+   Please see [these instructions on the JASMIN help site](https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/#unprotected-private-key-file) about solving this problem.
+   
 
+   
 </details>
 
 <details>
@@ -356,5 +354,7 @@ If not, check through the FAQ below, and make sure you've done everything as per
    ```
 
    and enter the passphrase when prompted.
+
+   For more detailed instructions, see also the [JASMIN Help page on this topic](https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/).
 
 </details>
