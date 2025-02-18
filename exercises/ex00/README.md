@@ -312,8 +312,8 @@ If not, check through the FAQ below, and make sure you've done everything as per
 
    ```
 
-   Please see these instructions about solving this problem, for the pla
-   https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/#unprotected-private-key-file
+   Please see [these instructions on the JASMIN help site](https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/#unprotected-private-key-file) about solving this problem.
+   
 
    
 </details>
