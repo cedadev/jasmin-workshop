@@ -85,23 +85,23 @@ All too easy? Here are some questions to test your knowledge and understanding. 
     * If you have set up your own machine as suggested in [exercise 0: Getting set up for the JASMIN workshop](../ex00), your SSH private key should already be loaded.
 
     * Check that your key is loaded with `ssh-add -l`. You should see a key fingerprint, similar to this (with either an email address or path after the random text, but won't be exactly the same!)
-      ```
-      ssh-add -l
+      ```console
+      $ ssh-add -l
       2048 SHA256:e1rIzWgm0BAF396xNAYc8TdjjSs8IuMyr+iwSryHeb4 fred.bloggs@ncas.ac.uk (RSA)
       ```
       Note that the path, if included, is the path where the key was loaded from on your **local** machine.
 
       If it **has not** worked, you may see something like this:
-      ```
-      ssh-add -l
+      ```console
+      $ ssh-add -l
       The agent has no identities.
       ```
       In this case, you will need to work out what is wrong before you will be able to connect. Please see the advice in exercise 0 before proceeding.
 
     * Initiate an SSH connection to a login server
 
-      ```
-      ssh -A train050@login-01.jasmin.ac.uk
+      ```console
+      $ ssh -A train050@login-01.jasmin.ac.uk
       ```
       <table>
         <thead>
@@ -131,13 +131,13 @@ All too easy? Here are some questions to test your knowledge and understanding. 
       Here we can see that `sci-vm-01` has 25 active user sessions, with 8G of free memory and a 15-minute average load of 1.007. Compare that to the other machines listed and choose one which suits the needs of what you plan to do. Note that some (not shown here, named `sci-ph-*`) are physical servers and have more memory to start with (see [sci servers documentation](https://help.jasmin.ac.uk/article/121-sci-servers))
 
     * Check what directory you are in
-      ```
-      pwd
+      ```console
+      $ pwd
       /home/users/train050
       ```
     * Check usage of your home directory
-      ```
-      pdu -sh 
+      ```console
+      $ pdu -sh 
       16G
       ```
       This shows 16G (gigabytes) being used, against your quota of 100G.
@@ -146,8 +146,8 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 
       As before, we can use the `ssh-add` command to check that our key is loaded. Remember that path it mentions relates to where it was loaded from on your local system. On the login server:
 
-      ```
-      ssh-add -l
+      ```console
+      $ ssh-add -l
       2048 SHA256:iqX3NkPCpschVdqPxVde/ujap2cM0mYaAYYedzBGPaI /home/fredbloggs/.ssh/id_rsa_jasmin (RSA)
       ```
 
@@ -165,8 +165,8 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 1. Make an onward connection to a `sci` server
      * Login to the `sci` server
 
-        ```
-        ssh -A USERNAME@sci-vm-01.jasmin.ac.uk
+        ```console
+        $ ssh -A USERNAME@sci-vm-01.jasmin.ac.uk
         ```
 
         But remember to a) replace with your own username and b) choose which of the sci machines to connect to
@@ -176,22 +176,22 @@ All too easy? Here are some questions to test your knowledge and understanding. 
      * Run a simple command
 
         We are now able to run a simple command on the sci server (you should see that the prompt has changed, but this command returns the name of the host so should confirms that you are now on the `sci` server)
-        ```
-        hostname
+        ```console
+        $ hostname
         sci-vm-01.jasmin.ac.uk
         ```
 
   ### Answers to questions
 
-> 1. How often is your home directory backed up? How would you go about restoring files if you accidentally deleted something from your home directory?
+#### 1. How often is your home directory backed up? How would you go about restoring files if you accidentally deleted something from your home directory?
 
 See [this article](https://help.jasmin.ac.uk/article/176-storage) about how you can restore data accidentally deleted from your home directory for up to a week.
 
-> 2. What shell is used by default on JASMIN? How can you tell? How would you customise your shell environment (e.g. aliases, environment variables)?
+#### 2. What shell is used by default on JASMIN? How can you tell? How would you customise your shell environment (e.g. aliases, environment variables)?
 
 You can check what shell is being used by checking the value of the `$SHELL` environment variable wherever you are logged in on JASMIN:
-```
-echo $SHELL
+```console
+$ echo $SHELL
 /bin/bash
 ```
 The `bash` shell is used on JASMIN. Please refer to [official documentation](https://www.gnu.org/software/bash/) to learn about its capabilities and how to customise your own environment.
@@ -232,8 +232,8 @@ Once you have estabished a connection to an `nx-login` server, return here to co
 
 Your onward connection to the sci machine needs to "enable X11 forwarding" using the `-X` option as well as the `-A` relating to the key:
 
-```
-ssh -AX train050@sci-vm-01.jasmin.ac.uk
+```console
+> ssh -AX train050@sci-vm-01.jasmin.ac.uk
 ```
 
 Once logged in to the sci machine, you can run a simple graphical command like `xeyes` or `xclock` and observe the output on the desktop. You can kill these applications with `CTRL-c`.
