@@ -9,9 +9,10 @@ This exercise is for participants of JASMIN Workshop training events.
 
 It helps you set up your computer with the software and training account credentials needed to undertake the exercises in the workshop.
 
-For the [reasons explained below](#faq), we provide workshop participants with a temporary training account for the duration of the workshop event. Even if you have your own JASMIN account, please use the training account for the workshop event.
+> [!NOTE]
+> For the [reasons explained below](#own-vs-training-account), we provide workshop participants with a temporary training account for the duration of the workshop event. Even if you have your own JASMIN account, please use the training account for the workshop event.
 
-Please also see the set of [FAQs](#faq).
+Please also see the set of [FAQs](#faq) at the end of this page.
 
 ## Instructions
 
@@ -63,7 +64,16 @@ This software usually includes an "SSH Agent" which stores your private key, onc
 
 Click the arrows to expand the relevant sets of instructions.
 
-Copy any commands carefully: some are case-sensitive.
+> [!NOTE]
+> Copy any commands carefully: some are case-sensitive.
+
+<!--
+
+Replace these sections below with link to instructions here?
+
+https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
+
+-->
 
 <details>
 
@@ -79,7 +89,7 @@ Copy any commands carefully: some are case-sensitive.
        ```
        If it's installed, continue. If not, either ask for help, or choose option 2.
 
-   - Check that the directory `.ssh` exists within your User directory:
+   - Check that the directory `.ssh` exists within your user directory:
      ```powershell
      ls "$env:UserProfile\.ssh"
      ```
@@ -91,7 +101,7 @@ Copy any commands carefully: some are case-sensitive.
      ```powershell
      mv "$env:UserProfile\Downloads\id_ecdsa_jasmin_training" "$env:UserProfile\.ssh\"
      ```
-   - Try opening the `username` and `passphrase` files in a text editor (e.g. `Notebook`): you'll need them shortly.
+   - Try opening the `username` and `passphrase` files in a text editor (e.g. Notepad): you'll need them shortly.
    - Check that the `ssh-agent` service is running
      ```powershell
      Get-Service ssh-agent
@@ -122,7 +132,7 @@ Copy any commands carefully: some are case-sensitive.
      - create an empty folder called `ssh` to put these files in: perhaps on your Desktop, but it's up to you.
      - use File Explorer to drag & drop the 2 key files from the Downloads folder to the folder you just made.
      - don't try to open either of the `id_ecdsa_jasmin_training*` files: they're not meant to be readable.
-     - try opening the `username` and `passphrase` files in a text editor (e.g. `Notebook`): you'll need them shortly.
+     - try opening the `username` and `passphrase` files in a text editor (e.g. Notepad): you'll need them shortly.
 
    - Option 2: Download and install "MobaXterm"
    
@@ -239,7 +249,8 @@ You should see your key fingerprint, i.e. something like this:
 
 Now try a connection to `login-01.jasmin.ac.uk`, replacing `USERNAME` with the name of your training account:
    
-> **_NOTE:_**  Don't forget the `-A` option for "agent forwarding". This makes your key available to any onward connections you need to make, after connecting to the login node.
+> [!IMPORTANT]
+> Don't forget the `-A` option for "agent forwarding". This makes your key available to any onward connections you need to make, after connecting to the login node.
 
 ```bash
 ssh -A USERNAME@login-01.jasmin.ac.uk
@@ -289,7 +300,7 @@ If not, check through the FAQ below, and make sure you've done everything as per
 
 <details>
 
-   <summary>I can't open the `*.pub` file when I double-click it (on Windows)</summary>
+   <summary>I can't open the <code>*.pub</code> file when I double-click it (on Windows)</summary>
 
    That's OK. It's not a file that you need to open. The `.pub` file extension is sometimes recognised by Windows as a Microsoft Publisher file, but this one isn't: it's your public key (part of your public/private key pair).
 
