@@ -103,11 +103,24 @@ All too easy? Here are some questions to test your knowledge and understanding. 
       ```
       ssh -A train050@login-01.jasmin.ac.uk
       ```
-      > [!NOTE]
-      > Your username on JASMIN (`train050` in this example, but yours may be different) may not be the same as your username on your local machine (`fredbloggs`). In the `ssh` command, you must specify the username associated with your JASMIN account.
+      <table>
+        <thead>
+          <tr>
+            <td align="left">
+              ℹ️ Note
+            </td>
+          </tr>
+        </thead>
 
-      > [!NOTE]
-      > The -A option is needed for "agent forwarding", which enables your key to be made available for an onward connection to a subsequent server: we need this for our connection to a `sci` machine.
+        <tbody>
+          <tr>
+            <td>
+              Your username on JASMIN (<code>train050</code> in this example, but yours may be different) may not be the same as your username on your local machine (<code>fredbloggs</code>). In the <code>ssh</code> command, you must specify the username associated with your JASMIN account.
+              The <code>-A</code> option is needed for "agent forwarding", which enables your key to be made available for an onward connection to a subsequent server: we need this for our connection to a <code>sci</code> machine.
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
     * Note the list of available `sci` servers
 
