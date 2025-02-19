@@ -40,7 +40,8 @@ After completing this exercise I will be able to:
 - JASMIN Notebook Service: https://notebooks.jasmin.ac.uk
 - Help documentation at: https://help.jasmin.ac.uk/article/4851-jasmin-notebook-service
 
-> **_NOTE:_**  If you are using one of our training accounts rather than your own JASMIN account, you will need to use the ["Forgotten password"](https://accounts.jasmin.ac.uk/account/password_reset/) function of the JASMIN Accounts Portal to set a password on your training account. The training accounts do not have a password set on them, by default. Any confirmation emails will be sent to the address which you provided to the event organiser for use with your training account.
+> [!NOTE]
+> If you are using one of our training accounts rather than your own JASMIN account, you will need to use the ["Forgotten password"](https://accounts.jasmin.ac.uk/account/password_reset/) function of the JASMIN Accounts Portal to set a password on your training account. The training accounts do not have a password set on them, by default. Any confirmation emails will be sent to the address which you provided to the event organiser for use with your training account.
 
 ### Local resources
 

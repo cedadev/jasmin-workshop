@@ -3,7 +3,8 @@ title: Exercise NN Template
 author: Matt Pritchard
 ---
 
-> **_NOTE:_**  The markdown content of this template should be copied to a new file named `README.md` within each `exNN` directory.
+> [!NOTE]
+> The markdown content of this template should be copied to a new file named `README.md` within each `exNN` directory.
 
 # Exercise NN: Template
 
@@ -69,7 +70,8 @@ output would show here
 Hopefully the examples above show how basic MarkDown formatting works.
 Looking at the MarkDown source for this file shows how to format a [link](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf), while following the link itself takes you to a MarkDown Syntax CheatSheet.
 
-> **_NOTE:_**  You can make important notes stand out like this. They will appear as a block with a highlight at the side.
+> [!NOTE]
+> You can make important notes stand out like this. They will appear as a block with a highlight at the side.
 
 
 

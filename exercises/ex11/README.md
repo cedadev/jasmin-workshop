@@ -56,7 +56,8 @@ This is the outline of what you need to do. The recommended way of doing each st
    * Choose a Sci server with the lowest load 
    * Login to the chosen sci server on each terminal
    * Copy the Fortran source code from the exercise directory (shown in the JASMIN resources section) to your current working directory            
-   > **_NOTE:_**  One terminal will be used for compiling and testing codes on LOTUS while the second terminal will be used for submitting and monitoring batch jobs. 
+   > [!NOTE]
+   > One terminal will be used for compiling and testing codes on LOTUS while the second terminal will be used for submitting and monitoring batch jobs. 
 1. Compile and test a Fortran code interactively on LOTUS 
    * On terminal 1, invoke a pseudo-interactive session on LOTUS using the SLURM command `srun` with two CPU cores allocation: `srun --ntasks=2 --partition=workshop --account=workshop  --pty /bin/bash`
    * What is the compute node allocated and what type of CPU model the node has?
@@ -76,7 +77,8 @@ This is the outline of what you need to do. The recommended way of doing each st
 1. Explore MPI job requirements -**Optional**-
    * Specify the memory required per CPU using `--mem-per-cpu=<size[units]>` Default value is 4 GB ( which is defined `DefMemPer‐CPU`)
    * Define a distribution of tasks across nodes using `--ntasks-per-node=ntasks` and `--nodes=<minnodes[-maxnodes]>` 
-   > **_NOTE:_**  the `--ntasks` option will take  precedence  and the `--ntasks-per-node` will be treated as a maximum count of tasks per node.
+   > [!NOTE]
+   > The `--ntasks` option will take  precedence  and the `--ntasks-per-node` will be treated as a maximum count of tasks per node.
    * Submit the same job script but pass the new memory and core distribution arguments to SLURM `sbatch`
    * What is the job wait time?
    * What is the elapsed time per job? 
@@ -121,7 +123,8 @@ By completing this exercise you will be able to compile and test a parallel MPI 
    ```
    $ cp /gws/pw/j07/workshop/exercises/ex11/code/axpyMPI.f90 .
    ```           
-   > **_NOTE:_**  One terminal will be used for compiling and testing codes on LOTUS while the second terminal will be used for submitting and monitoring batch jobs. 
+   > [!NOTE]
+   > One terminal will be used for compiling and testing codes on LOTUS while the second terminal will be used for submitting and monitoring batch jobs. 
 1. Compile and test a Fortran code interactively on LOTUS 
    * On terminal 1, invoke a pseudo-interactive session on LOTUS using the SLURM command `srun` with two CPU cores allocation
    ```

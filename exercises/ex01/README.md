@@ -5,7 +5,8 @@ author: Matt Pritchard
 
 # Exercise 1: Connecting to JASMIN
 
-> **_NOTE:_**  This exercise assumes that you have already completed [exercise 0: Getting set up for the JASMIN workshop](../ex00), about setting up your local machine with everything you need to connect to JASMIN.
+> [!NOTE]
+> This exercise assumes that you have already completed [exercise 0: Getting set up for the JASMIN workshop](../ex00), about setting up your local machine with everything you need to connect to JASMIN.
 
 ### Scenario
 
@@ -74,7 +75,8 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 
 ### Cheat Sheet
 
-> **_NOTE:_**  Please make sure you have read all the information in [exercise 0](../ex00), in particular the recommendation to use a preconfigured training account, and the reasons why. If you are using your **own** account, outside of one of our organised training events, you will need to have completed these steps yourself: [start here](https://help.jasmin.ac.uk/article/185-generate-ssh-key-pair), but not all the steps can be done temporarily for a workshop event.
+> [!NOTE]
+> Please make sure you have read all the information in [exercise 0](../ex00), in particular the recommendation to use a preconfigured training account, and the reasons why. If you are using your **own** account, outside of one of our organised training events, you will need to have completed these steps yourself: [start here](https://help.jasmin.ac.uk/article/185-generate-ssh-key-pair), but not all the steps can be done temporarily for a workshop event.
 
 1. Connect to a `login` server using a terminal client
 
@@ -101,9 +103,11 @@ All too easy? Here are some questions to test your knowledge and understanding. 
       ```
       ssh -A train050@login-01.jasmin.ac.uk
       ```
-      > **_NOTE:_**  Your username on JASMIN (`train050` in this example, but yours may be different) may not be the same as your username on your local machine (`fredbloggs`). In the `ssh` command, you must specify the username associated with your JASMIN account.
+      > [!NOTE]
+      > Your username on JASMIN (`train050` in this example, but yours may be different) may not be the same as your username on your local machine (`fredbloggs`). In the `ssh` command, you must specify the username associated with your JASMIN account.
 
-      > **_NOTE:_**  The -A option is needed for "agent forwarding", which enables your key to be made available for an onward connection to a subsequent server: we need this for our connection to a `sci` machine.
+      > [!NOTE]
+      > The -A option is needed for "agent forwarding", which enables your key to be made available for an onward connection to a subsequent server: we need this for our connection to a `sci` machine.
 
     * Note the list of available `sci` servers
 
@@ -221,4 +225,5 @@ ssh -AX train050@sci-vm-01.jasmin.ac.uk
 
 Once logged in to the sci machine, you can run a simple graphical command like `xeyes` or `xclock` and observe the output on the desktop. You can kill these applications with `CTRL-c`.
 
-> **_NOTE:_**  As [described here](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx), the `nx-login` servers include a Firefox web browser which can be used for using some web-based tools which may only be available within JASMIN. Please do not use them for general web browsing, and please use Firefox on the `nx-login` machines rather than the `sci` machines, to preserve resources for processing on the `sci` machines. The same article also discusses why using the NX client significantly improves performance for graphical applications run on JASMIN, if you're viewing the output somewhere remote to JASMIN.
+> [!NOTE]
+> As [described here](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx), the `nx-login` servers include a Firefox web browser which can be used for using some web-based tools which may only be available within JASMIN. Please do not use them for general web browsing, and please use Firefox on the `nx-login` machines rather than the `sci` machines, to preserve resources for processing on the `sci` machines. The same article also discusses why using the NX client significantly improves performance for graphical applications run on JASMIN, if you're viewing the output somewhere remote to JASMIN.

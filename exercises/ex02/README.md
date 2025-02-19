@@ -43,7 +43,8 @@ This is the outline of what you need to do. The recommended way of doing each st
    - Access a JASMIN login server on each terminal (see exercise 01)
    - Choose a sci server with low load
    - Login to the chosen sci server in both terminal sessions
-   > **_NOTE:_**  The purpose of having two SSH terminal sessions running on the same sci server is to facilitate compute and monitoring. One terminal is for executing commands on the sci while the second terminal is for monitoring user processes (or editing a script)
+   > [!NOTE]
+   > The purpose of having two SSH terminal sessions running on the same sci server is to facilitate compute and monitoring. One terminal is for executing commands on the sci while the second terminal is for monitoring user processes (or editing a script)
 1. Execute the first Python example script on the sci server
    - Copy the first Python example script `random-number-gen.py`(shown in the JASMIN resources section) to your current working directory
    - Find out the software available on JASMIN via the module environment by executing the command `module avail`
@@ -64,7 +65,8 @@ This is the outline of what you need to do. The recommended way of doing each st
    - Execute `python random-number-gen.py`
    - Monitor and note the memory and CPU usage
    - Compare the CPU and memory resources used to generate 1024 and 500 random numbers. What can you conclude?
-    > **_NOTE:_**  If you are not familiar with using either `vim` or `emacs` editors, just run the following command which does the necessary change for you: (changing the quantity of random numbers)
+    > [!NOTE]
+    > If you are not familiar with using either `vim` or `emacs` editors, just run the following command which does the necessary change for you: (changing the quantity of random numbers)
     ```
     sed -i 's/nran = 1024/nran = 500/' random-number-gen.py
     ```

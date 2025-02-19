@@ -75,7 +75,8 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
    * written by any other member of the workspace?
    * readable by any user of JASMIN?
 
-    > **_NOTE:_**  NEVER set permissions so that a file or directory is readable and writable by everyone (777). This is not safe.
+    > [!NOTE]
+    > NEVER set permissions so that a file or directory is readable and writable by everyone (777). This is not safe.
 
 1. How could you share data on JASMIN with users outside of JASMIN?
 
@@ -145,9 +146,11 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     This helps keep things orgnanised. Make a directory for yourself, named as per your account
     username:
     
-    > **_NOTE:_** Below, we use the `$USER` environment variable which contains your JASMIN username.
+    > [!NOTE]
+    > Below, we use the `$USER` environment variable which contains your JASMIN username.
     
-    > **_NOTE:_** We will clear out these directories, and the home directories of the training accounts, after each workshop event. 
+    > [!NOTE]
+    > We will clear out these directories, and the home directories of the training accounts, after each workshop event. 
     Normally you will have ~48hrs after the end of the workshop event to collect any data or code which you may want to keep.
     If you are working through these exercises outside of an organised event, please clean up after yourself and 
     do not expect these data to persist.
