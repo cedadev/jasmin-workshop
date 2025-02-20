@@ -32,7 +32,7 @@ After completing this exercise you will:
  
  ### JASMIN resources
 
- * Scientific analysis servers: `sci[1-6,8].jasmin.ac.uk`
+ * Scientific analysis servers: `sci-vm-0[1-6].jasmin.ac.uk`, `sci-ph-0[1-2].jasmin.ac.uk`
  * Group workspace: `/gws/pw/j07/workshop`
  * LOTUS batch queues: `workshop` (`par-single` or `par-multi` outside the event)
  * Fortran MPI source code is (available in the Github repository): 
@@ -56,7 +56,8 @@ This is the outline of what you need to do. The recommended way of doing each st
    * Choose a Sci server with the lowest load 
    * Login to the chosen sci server on each terminal
    * Copy the Fortran source code from the exercise directory (shown in the JASMIN resources section) to your current working directory            
-   > **_NOTE:_**  One terminal will be used for compiling and testing codes on LOTUS while the second terminal will be used for submitting and monitoring batch jobs. 
+   > [!NOTE]
+   > One terminal will be used for compiling and testing codes on LOTUS while the second terminal will be used for submitting and monitoring batch jobs. 
 1. Compile and test a Fortran code interactively on LOTUS 
    * On terminal 1, invoke a pseudo-interactive session on LOTUS using the SLURM command `srun` with two CPU cores allocation: `srun --ntasks=2 --partition=workshop --account=workshop  --pty /bin/bash`
    * What is the compute node allocated and what type of CPU model the node has?
@@ -76,7 +77,8 @@ This is the outline of what you need to do. The recommended way of doing each st
 1. Explore MPI job requirements -**Optional**-
    * Specify the memory required per CPU using `--mem-per-cpu=<size[units]>` Default value is 4 GB ( which is defined `DefMemPer‐CPU`)
    * Define a distribution of tasks across nodes using `--ntasks-per-node=ntasks` and `--nodes=<minnodes[-maxnodes]>` 
-   > **_NOTE:_**  the `--ntasks` option will take  precedence  and the `--ntasks-per-node` will be treated as a maximum count of tasks per node.
+   > [!NOTE]
+   > The `--ntasks` option will take  precedence  and the `--ntasks-per-node` will be treated as a maximum count of tasks per node.
    * Submit the same job script but pass the new memory and core distribution arguments to SLURM `sbatch`
    * What is the job wait time?
    * What is the elapsed time per job? 
@@ -114,14 +116,15 @@ By completing this exercise you will be able to compile and test a parallel MPI 
 1. Login to a JASMIN scientific analysis server 
    * Login to the chosen sci server on each terminal
    ```
-   $ ssh -A train049@sci3.jasmin.ac.uk
-   [train049@sci3 ~]$ 
+   $ ssh -A train049@sci-ph-01.jasmin.ac.uk
+   [train049@sci-ph-01 ~]$ 
    ```
    * Copy the Fortran source code from the exercise directory (shown in the JASMIN resources section) to your current working directory 
    ```
    $ cp /gws/pw/j07/workshop/exercises/ex11/code/axpyMPI.f90 .
    ```           
-   > **_NOTE:_**  One terminal will be used for compiling and testing codes on LOTUS while the second terminal will be used for submitting and monitoring batch jobs. 
+   > [!NOTE]
+   > One terminal will be used for compiling and testing codes on LOTUS while the second terminal will be used for submitting and monitoring batch jobs. 
 1. Compile and test a Fortran code interactively on LOTUS 
    * On terminal 1, invoke a pseudo-interactive session on LOTUS using the SLURM command `srun` with two CPU cores allocation
    ```
@@ -167,13 +170,13 @@ By completing this exercise you will be able to compile and test a parallel MPI 
    ```
    * On terminal 2, check the job ID associated with this pseudo-interactive session on LOTUS and the number of cores allocated 
    ```
-    @sci3 ~ ]$ squeue -u trai049
+    @sci-ph-01 ~ ]$ squeue -u trai049
              JOBID PARTITION     NAME    USER   ST     TIME  NODES NODELIST(REASON)
           64164115  workshop     bash   train049 R      24:17      1 host149
    ```
    The number of nodes and CPUs allocated can also be found from this SLURM command:
    ```
-   @sci3 ~ ]$ scontrol show job 64164115 
+   @sci-ph-01 ~ ]$ scontrol show job 64164115 
    ...
    NumNodes=1 NumCPUs=2 NumTasks=2 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
    ...
@@ -181,7 +184,7 @@ By completing this exercise you will be able to compile and test a parallel MPI 
    * Exit the interactive session on LOTUS `exit`. The Job should be cleared from SLURM
    ```
     @host149 ] $ exit
-    [train049@sci3 ~]$ 
+    [train049@sci-ph-01 ~]$ 
    ```
 1. Prepare a script to submit the parallel MPI code to SLURM
    * On terminal 1, launch a text editor to prepare a Bash script to submit the MPI executable generated earlier (use the template jobscript `jobscriptMPI.sbatch` shown below)
@@ -212,19 +215,19 @@ By completing this exercise you will be able to compile and test a parallel MPI 
    ```
    * Submit the job to SLURM scheduler and note the job ID `sbatch axpyMPI.sbatch`
    ```
-   [train049@sci3 ~]$ sbatch axpyMPI.sbatch
+   [train049@sci-ph-01 ~]$ sbatch axpyMPI.sbatch
     Submitted batch job 4815542
    ```
    * On terminal 2, monitor the job state using SLURM command:
    ```
-   [train049@sci2 ~]$ squeue -u train049
+   [train049@sci-ph-02 ~]$ squeue -u train049
      JOBID PARTITION     NAME     USER ST    TIME  NODES NODELIST(REASON)
    4815542  workshop  axpyMPI train049 PD    0:00      1 (None)
    ```
    The job is pending `PD`. Once the job starts running the job state will change from `PD` to `R` and the elapsed runtime will show in the column `TIME` 
    * What is the name of the compute node the job run on? is it the same node type on which the code was compiled?
    ```
-   [train049@sci2 ~]$ scontrol show job 4815542 
+   [train049@sci-ph-02 ~]$ scontrol show job 4815542 
    UserId=train049(7052227) GroupId=users(26030) MCS_label=N/A
    Priority=998385 Nice=0 Account=workshop QOS=normal
    JobState=COMPLETED Reason=None Dependency=(null)

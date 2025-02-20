@@ -4,13 +4,15 @@ author: Matt Pritchard
 ---
 
 ## Introduction
+
 This exercise is for participants of JASMIN Workshop training events.
 
 It helps you set up your computer with the software and training account credentials needed to undertake the exercises in the workshop.
 
-For the [reasons explained below](#faq), we provide workshop participants with a temporary training account for the duration of the workshop event. Even if you have your own JASMIN account, please use the training account for the workshop event.
+> [!NOTE]
+> For the [reasons explained below](#own-vs-training-account), we provide workshop participants with a temporary training account for the duration of the workshop event. Even if you have your own JASMIN account, please use the training account for the workshop event.
 
-Please also see the set of [FAQs](#faq).
+Please also see the set of [FAQs](#faq) at the end of this page.
 
 ## Instructions
 
@@ -30,14 +32,14 @@ Let's get started...
    <summary id="extracting">Extracting the credentials sent to your registered email</summary>
 
    - Locate the email sent by the JASMIN team using OneDrive. It should have "shared the folder" in the subject line.
-      - If you can't find the email, search for "shared the folder" in your emails, but also check your spam/junk folders before asking for help. 
+      - If you can't find the email, search for "shared the folder" in your emails, but also check your spam/junk folders before asking for help.
    - Follow the "Open" link in the email from the JASMIN Team.
    - It may ask you to comfirm the email address and enter a verification code: follow the instructions.
    - You should eventually reach an online view of the folder containing the 4 credential file(s)
       - `username`
       - `passphrase`
-      - `id_rsa_jasmin_training`
-      - `id_rsa_jasmin_training.pub`
+      - `id_edcsa_jasmin_training`
+      - `id_edcsa_jasmin_training.pub`
    - Save each of these locally: hover over each item, a 3-dot menu should appear with a "Download" option. Use that to download the file to your default downloads location. We can move the files from there later.
    - It's easiest to download each file separately, otherwise they'll get put into a zip file from where you'll have to extract them individually.
 </details>
@@ -53,21 +55,86 @@ Below, you will find instructions specific to Windows, Mac and Linux. However th
       --> id3(Use SSH client to connect to remote host)
    ```
 
-Each of the methods involves using a piece of software which provides a "terminal" environment on your computer. For Windows, you may need to download and install this if you don't have the one we recommend, but for Mac and Linux you should be able to use tools already available on your local machine. This software will include an "SSH Agent" which stores your private key, once you've unlocked it with the passphrase, then makes it available for making a connection to a remote computer (like a JASMIN login node).
+Each of the methods involves using a piece of software which provides a "terminal" environment on your computer.
 
-(Click the arrow to expand the relevant set of instructions)
+- For Mac and Linux, you should be able to use tools already available on your local machine.
+- For Windows, you should have the "OpenSSH Client" already available as an "optional feature". If not, you may need to either install this or alternative software to provide the environment you need to connect using SSH.
+
+This software usually includes an "SSH Agent" which stores your private key, once you've unlocked it with the passphrase, then makes it available for making a connection to a remote computer (like a JASMIN login node).
+
+Click the arrows to expand the relevant sets of instructions.
+
+> [!NOTE]
+> Copy any commands carefully: some are case-sensitive.
+
+<!--
+
+Replace these sections below with link to instructions here?
+
+https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
+
+-->
 
 <details>
 
-   <summary id="windows">Windows instructions</summary>
+   <summary id="windows">Windows instructions: option 1</summary>
 
-   - Move the 2 `id_rsa_jasmin_training*` key files from the Downloads folder. The `username` and `passphrase` files can stay where they are.
+   If you use this option, other services will be easier to use later on. But look at option 2 if you think that looks easier for now.
+
+   - Check that the right tools are installed
+     - Open a PowerShell window using "run as administrator"
+     - Run this command to check whether you have "OpenSSH Client" optional feature installed.
+       ```powershell
+       Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH.Client*'
+       ```
+       If it's installed, continue. If not, either ask for help, or choose option 2.
+
+   - Check that the directory `.ssh` exists within your user directory:
+     ```powershell
+     ls "$env:UserProfile\.ssh"
+     ```
+     If it exists, you'll get a list of the files currently there. If not, create it with:
+     ```powershell
+     md "$env:UserProfile\.ssh"
+     ```
+     then move the file `id_ecdsa_jasmin_training` key file from the Downloads folder to this directory.
+     ```powershell
+     mv "$env:UserProfile\Downloads\id_ecdsa_jasmin_training" "$env:UserProfile\.ssh\"
+     ```
+   - Try opening the `username` and `passphrase` files in a text editor (e.g. Notepad): you'll need them shortly.
+   - Check that the `ssh-agent` service is running
+     ```powershell
+     Get-Service ssh-agent
+     ```
+     If it's not, start it:
+     ```powershell
+     Set-Service ssh-agent -StartupType Manual
+     Start-Service ssh-agent
+     ```
+   - Load your key into the agent
+     ```powershell
+     ssh-add "$env:UserProfile\.ssh\id_ecdsa_jasmin_training"
+     ```
+     You'll be asked for the passphrase: copy and paste this (right-click in the PowerShell window, the text will not be displayed), then press return.
+   - Check that you have your key loaded.
+     ```powershell
+     ssh-add -l
+     ```
+     You should see your key in the list of identities.
+
+</details>
+
+<details>
+
+   <summary id="windows">Windows instructions: option 2</summary>
+
+   - Move the 2 `id_ecdsa_jasmin_training*` key files from the Downloads folder. The `username` and `passphrase` files can stay where they are.
      - create an empty folder called `ssh` to put these files in: perhaps on your Desktop, but it's up to you.
      - use File Explorer to drag & drop the 2 key files from the Downloads folder to the folder you just made.
-     - don't try to open either of the `id_rsa_jasmin_training*` files: they're not meant to be readable.
-     - try opening the `username` and `passphrase` files in a text editor (e.g. `Notebook`): you'll need them shortly.
+     - don't try to open either of the `id_ecdsa_jasmin_training*` files: they're not meant to be readable.
+     - try opening the `username` and `passphrase` files in a text editor (e.g. Notepad): you'll need them shortly.
 
-   - Download and install "MobaXterm"
+   - Option 2: Download and install "MobaXterm"
    
      This is an emulator of the terminal environment (Mac and Linux have this environment built-in), and provides the tools you need to connect. There are other options, but we'd recommend this one if you want us to help you with any problems.
 
@@ -110,16 +177,16 @@ Each of the methods involves using a piece of software which provides a "termina
   chmod 700 ~/.ssh
   ```
 
-  Now, move the 2 key files `id_rsa_training_jasmin*` from your download location (where your browser puts downloaded files) to the directory you just created. The `username` and `passphrase` files can stay where they are.
+  Now, move the 2 key files `id_ecdsa_jasmin_training*` from your download location (where your browser puts downloaded files) to the directory you just created. The `username` and `passphrase` files can stay where they are.
 
   ```
-  mv ~/Downloads/id_rsa_training_jasmin* ~/.ssh/
+  mv ~/Downloads/id_ecdsa_jasmin_training* ~/.ssh/
   ```
 
   Set the permissions on these files to be only read/writable by you:
 
   ```
-  chmod 600 ~/.ssh/id_rsa_training_jasmin*
+  chmod 600 ~/.ssh/id_ecdsa_jasmin_training*
   ```
 
   Now, check whether you have an SSH-agent running:
@@ -144,7 +211,7 @@ Each of the methods involves using a piece of software which provides a "termina
   You're now able to load your private key, as follows:
 
   ```
-  ssh-add ~/.ssh/id_rsa_jasmin_training
+  ssh-add ~/.ssh/id_ecdsa_jasmin_training
   ```
 
   Note that it's the private key file (without the `.pub`) extension, that we're loading here.
@@ -159,7 +226,7 @@ Each of the methods involves using a piece of software which provides a "termina
 
    ```
    ssh-add -l
-   2048 SHA256:e1rIzWgm0BAF396xNAYc8TdjjSs8IuMyr+iwSryHeb4 fred.bloggs@ncas.ac.uk (RSA)
+   521 SHA256:ZeddNKK5U3am1vyCaUCq4CgMRpvoyv+cJiviqz3zvfw ~/.ssh/id_ecdsa_jasmin_training (ECDSA)
    ```
 
    If you don't see this, go back and check the steps above carefully before asking for help.
@@ -177,22 +244,19 @@ ssh-add -l
 You should see your key fingerprint, i.e. something like this:
 
 ```
-2048 SHA256:e1rIzWgm0BAF396xNAYc8TdjjSs8IuMyr+iwSryHeb4 fred.bloggs@ncas.ac.uk (RSA)
+521 SHA256:ZeddNKK5U3am1vyCaUCq4CgMRpvoyv+cJiviqz3zvfw ~/.ssh/id_ecdsa_jasmin_training (ECDSA)
 ```
 
-Now try a connection to `login2.jasmin.ac.uk`, replacing `USERNAME` with the name of your training account:
+Now try a connection to `login-01.jasmin.ac.uk`, replacing `USERNAME` with the name of your training account:
    
-> **_NOTE:_**  Don't forget the `-A` option for "agent forwarding". This makes your key available to any onward connections you need to make, after connecting to the login node.
+> [!IMPORTANT]
+> Don't forget the `-A` option for "agent forwarding". This makes your key available to any onward connections you need to make, after connecting to the login node.
 
 ```bash
-ssh -A USERNAME@login2.jasmin.ac.uk
+ssh -A USERNAME@login-01.jasmin.ac.uk
 ```
 
 Once you have connected, try `ssh-add -l` again as above, to check that your key is available for an onward connection.
-
-Here's a video showing what the connection test looks like on Windows, but it's the same commands on Mac & Linux:
-
-[![connection test with Windows & Mobaxterm](https://img.youtube.com/vi/XmwOMbigyf0/0.jpg)](https://youtu.be/XmwOMbigyf0)
 
 ### Success?
 
@@ -210,16 +274,18 @@ If not, check through the FAQ below, and make sure you've done everything as per
 
 <details>
 
-   <summary id="own-vs-training-account">Can I use my own JASMIN account?</summary>
+   <summary id="own-vs-training-account">
 
-   For the JASMIN workshop training events, we prefer that you use the supplied training accounts. 
+   #### Can I use my own JASMIN account?
+
+   </summary>
+
+   For the JASMIN workshop training events, we prefer that you use the supplied training accounts.
 
    This is because we have pre-configured each training account with access roles for all the resources you need for the training workshop, including:
     - the `workshop` group workspace
     - the `workshop` LOTUS queue (for responsive wait times during workshops)
     - a corresponding CEDA Archive account with access to certain datasets used in the exercises
-    - access to the transfer server `xfer3`
-    - access to high-performance data transfer services
 
    We cannot configure all these resources on a temporary basis, so ask you to use the training account during events. You are welcome to transfer over any data created during a workshop, to your own account (but beware there is a time limit for this, before training accounts are wiped: ask your course organiser for details).
 
@@ -227,7 +293,11 @@ If not, check through the FAQ below, and make sure you've done everything as per
 
 <details>
 
-   <summary>I haven't received my account credentials</summary>
+   <summary>
+   
+   #### I haven't received my account credentials
+   
+   </summary>
 
    - make sure you are checking in the email account which you gave to the course organisers: the training account will be set up with this email address.
    - make sure you have searched for "shared the folder" in your email application. Sometimes emails from OneDrive get hidden.
@@ -238,7 +308,11 @@ If not, check through the FAQ below, and make sure you've done everything as per
 
 <details>
 
-   <summary>I can't open the `*.pub` file when I double-click it (on Windows)</summary>
+   <summary>
+   
+   #### I can't open the <code>*.pub</code> file when I double-click it (on Windows)
+   
+   </summary>
 
    That's OK. It's not a file that you need to open. The `.pub` file extension is sometimes recognised by Windows as a Microsoft Publisher file, but this one isn't: it's your public key (part of your public/private key pair).
 
@@ -246,31 +320,37 @@ If not, check through the FAQ below, and make sure you've done everything as per
 
 <details>
 
-   <summary>Message about "unprotected key"</summary>
+   <summary>
+   
+   #### Message about "unprotected key"
+   
+   </summary>
 
    If you see a message like the following, this means that you need to restrict the permissions on your key file so that only you (and no other users on your system) can read your key.
+   This is usually solved by a) moving the file to the standard location (this matters, particularly on Windows) and b) changing its permissions.
 
    ```
    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
    @         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-   Permissions 0644 for 'id_rsa_jasmin_training' are too open.
+   Permissions 0644 for 'id_ecdsa_jasmin_training' are too open.
    It is required that your private key files are NOT accessible by others.
    This private key will be ignored.
 
    ```
-   You can do this with a command like this (you'll need to do this in a terminal window):
-   ```
-   chmod 600 <path>/id_rsa_jasmin_training  
-   ```
-   where `<path>` is wherever you saved your key (see above: this can vary by platform).
 
-   Alternatively (particularly for Windows users), making another copy of the private key file (and deleting the original) can help. You can still go back to the original from the OneDrive email if you need it.
+   Please see [these instructions on the JASMIN help site](https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/#unprotected-private-key-file) about solving this problem.
+   
 
+   
 </details>
 
 <details>
-  <summary>Message "Agent refused connection"</summary>
+  <summary>
+  
+  #### Message "Agent refused connection"
+  
+  </summary>
 
   This isn't necessarily a problem.
 
@@ -278,7 +358,10 @@ If not, check through the FAQ below, and make sure you've done everything as per
 </details>
 
 <details>
-  <summary>Message "Could not open a connection to your authentication agent" or "Error connecting to agent: No such file or directory"
+  <summary>
+  
+  #### Message "Could not open a connection to your authentication agent" or "Error connecting to agent: No such file or directory"
+  
   </summary>
 
   This means that you don't have an SSH-agent running, so there isn't an agent to load your key into.
@@ -305,5 +388,7 @@ If not, check through the FAQ below, and make sure you've done everything as per
    ```
 
    and enter the passphrase when prompted.
+
+   For more detailed instructions, see also the [JASMIN Help page on this topic](https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/).
 
 </details>

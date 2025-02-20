@@ -9,86 +9,94 @@ author: Ag Stephens
 
 I want to demonstrate how data in the CEDA Archive can be read, processed and
 visualised using the an interactive Jupyter Notebook. The JASMIN Notebook Service:
-* provides an interactive programming interface through a web browser
-* includes a set of python libraries for data analysis
-* can read directly from the CEDA Archive
-* can include formatted documentation and visualisations within a Notebook 
+
+- provides an interactive programming interface through a web browser
+- includes a set of python libraries for data analysis
+- can read directly from the CEDA Archive
+- can include formatted documentation and visualisations within a Notebook
 
 Specifically, I want to:
-* read some hourly temperature data from the ECMWF ERA5 dataset on a global grid
-* calculate the daily maximum and minimum over the time axis (all hours)
-* plot the global maps of the daily maximum and minimum variables
-* write the outputs to netCDF files on JASMIN
-* add some inline annotations
+
+- read some hourly temperature data from the ECMWF ERA5 dataset on a global grid
+- calculate the daily maximum and minimum over the time axis (all hours)
+- plot the global maps of the daily maximum and minimum variables
+- write the outputs to netCDF files on JASMIN
+- add some inline annotations
 
 ### Objectives
- 
+
 After completing this exercise I will be able to:
 
- * login to the JASMIN Notebook Service
- * create a Jupyter Notebook
- * import modules and run Python code interactively using a notebook
- * create visualisations in a notebook
- * write outputs to the JASMIN file system
- * add inline annotations to a notebook
+- login to the JASMIN Notebook Service
+- create a Jupyter Notebook
+- import modules and run Python code interactively using a notebook
+- create visualisations in a notebook
+- write outputs to the JASMIN file system
+- add inline annotations to a notebook
 
 ### JASMIN resources
 
- * JASMIN account with `jasmin-login` privilege
- * JASMIN Notebook Service: https://notebooks.jasmin.ac.uk
- * Help documentation at: https://help.jasmin.ac.uk/article/4851-jasmin-notebook-service
+- JASMIN account with `jasmin-login` privilege
+- JASMIN Notebook Service: https://notebooks.jasmin.ac.uk
+- Help documentation at: https://help.jasmin.ac.uk/article/4851-jasmin-notebook-service
 
-> **_NOTE:_**  If you are using one of our training accounts rather than your own JASMIN account, you will need to use the ["Forgotten password"](https://accounts.jasmin.ac.uk/account/password_reset/) function of the JASMIN Accounts Portal to set a password on your training account. The training accounts do not have a password set on them, by default. Any confirmation emails will be sent to the address which you provided to the event organiser for use with your training account.
+> [!NOTE]
+> If you are using one of our training accounts rather than your own JASMIN account, you will need to use the ["Forgotten password"](https://accounts.jasmin.ac.uk/account/password_reset/) function of the JASMIN Accounts Portal to set a password on your training account. The training accounts do not have a password set on them, by default. Any confirmation emails will be sent to the address which you provided to the event organiser for use with your training account.
 
 ### Local resources
 
-* Web browser (such as `Firefox`, `Chrome`, `Safari`)
+- Web browser (such as `Firefox`, `Chrome`, `Safari`)
 
 ### Your task
 
 This is the outline of what you need to do. The recommended way of doing each step is covered in the "Cheat Sheet" but you may wish to try solving it for yourself first.
 
- 1. Login to the JASMIN Notebook Service in your browser
- 2. Create a new Notebook
- 3. Import the `xarray` module and load some surface temperature data from 01/01/2005
- 4. Review the content of the loaded `Dataset`
- 5. Calculate the max and min over all timesteps in the dataset
- 6. Plot the daily maximum and minimum
- 7. Write the outputs to your JASMIN `$HOME` directory
- 8. Add inline documentation
+1. Login to the JASMIN Notebook Service in your browser
+2. Create a new Notebook
+3. Import the `xarray` module and load some surface temperature data from 01/01/2005
+4. Review the content of the loaded `Dataset`
+5. Calculate the max and min over all timesteps in the dataset
+6. Plot the daily maximum and minimum
+7. Write the outputs to your JASMIN `$HOME` directory
+8. Add inline documentation
 
 ### Questions to test yourself
 
 All too easy? Here are some questions to test your knowledge an understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk)
 
- 1. How can you add extra software packages to your Notebook?
- 2. How can you set up and use an entirely separate `conda` environment in your Notebook?
- 3. Can you figure out how to:
-    * Delete a cell from a notebook
-    * Execute a cell with different outcomes
+1. How can you add extra software packages to your Notebook?
+
+2. Can you figure out how to:
+
+    - Delete a cell from a notebook
+    - Execute a cell with different outcomes
 
 ### Review / alternative approaches / best practice
 
 This exercise demonstrates how to:
- 1. Get started with the JASMIN Notebook Service
- 2. Import and use software packages in your notebooks
- 3. Read and write from/to the JASMIN file system
- 4. View the outputs inline
- 5. Add annotations inline
+
+1. Get started with the JASMIN Notebook Service
+2. Import and use software packages in your notebooks
+3. Read and write from/to the JASMIN file system
+4. View the outputs inline
+5. Add annotations inline
 
 Alternative approaches could include:
 
- 1. Using other Notebooks services, for example:
-    * Google Colaboratory: https://colab.research.google.com/
-    * Binder: https://mybinder.org/
+1. Using other Notebooks services, for example:
 
- 2. Sharing your code on github:
-    * You can view notebooks directly in GitHub
-    * Here is an example: https://github.com/cedadev/ceda-notebooks/blob/master/notebooks/data-notebooks/cmip6/cmip6-zarr-jasmin.ipynb
+    - Google Colaboratory: https://colab.research.google.com/
+    - Binder: https://mybinder.org/
+
+2. Sharing your code on github:
+
+    - You can view notebooks directly in GitHub
+    - Here is an example: https://github.com/cedadev/ceda-notebooks/blob/master/notebooks/data-notebooks/cmip6/cmip6-zarr-jasmin.ipynb
 
 Learn more about our Notebook Service:
- * Tutorial (in notebooks): https://github.com/cedadev/ceda-notebooks/blob/master/notebooks/training/intro/notebook-tour.ipynb
- * Help pages: https://help.jasmin.ac.uk/article/4851-jasmin-notebook-service
+
+  - Tutorial (in notebooks): https://github.com/cedadev/ceda-notebooks/blob/master/notebooks/training/intro/notebook-tour.ipynb
+  - Help pages: https://help.jasmin.ac.uk/article/4851-jasmin-notebook-service
 
 ### Cheat Sheet
 
@@ -230,15 +238,15 @@ Learn more about our Notebook Service:
    One of the most powerful features of Jupyter Notebooks is that you can _explain your working_.
    That is, you can include documentation cells along with the code and the results.
 
-   For each cell, you can select either "Code", "Markdown" or "Raw" in the toolbar at the top of the 
-   notebook. If you select "Markdown", then the cell is no longer interpreted as Python code. Instead, 
-   it is interpreted as a mark-up language called `markdown`. This allows sophisticated formatting of 
+   For each cell, you can select either "Code", "Markdown" or "Raw" in the toolbar at the top of the
+   notebook. If you select "Markdown", then the cell is no longer interpreted as Python code. Instead,
+   it is interpreted as a mark-up language called `markdown`. This allows sophisticated formatting of
    text, images, code blocks etc., as described here:
 
    https://guides.github.com/features/mastering-markdown/
 
-   In order to add Markdown cells to an existing notebook, click on the cell above the one you wish to 
-   annotate, then click the `+` button on the toolbar. Then change the cell format to "Markdown" in the 
+   In order to add Markdown cells to an existing notebook, click on the cell above the one you wish to
+   annotate, then click the `+` button on the toolbar. Then change the cell format to "Markdown" in the
    drop-down menu.
 
    ![Toolbar](./images/select_cell_format.png)
@@ -262,11 +270,7 @@ which you can install extra packages, and optionally how to make it into a kerne
 
 https://help.jasmin.ac.uk/article/5084-creating-a-virtual-environment-in-the-jasmin-notebooks-service
 
-> 2. How can you set up and use an entirely separate `conda` environment in your Notebook?
-
-The [same help article](https://help.jasmin.ac.uk/article/5084-creating-a-virtual-environment-in-the-jasmin-notebooks-service) also covers how to create a custom environment using `conda`:
-
-> 3. Can you figure out how to:
+> 2. Can you figure out how to:
 >  * Delete a cell from a notebook
 
 To delete a cell, select the cell by clicking to the left of it (i.e. by `[2]` in the image below)

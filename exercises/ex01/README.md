@@ -5,7 +5,8 @@ author: Matt Pritchard
 
 # Exercise 1: Connecting to JASMIN
 
-> **_NOTE:_**  This exercise assumes that you have already completed [exercise 0: Getting set up for the JASMIN workshop](../ex00), about setting up your local machine with everything you need to connect to JASMIN.
+> [!NOTE]
+> This exercise assumes that you have already completed [exercise 0: Getting set up for the JASMIN workshop](../ex00), about setting up your local machine with everything you need to connect to JASMIN.
 
 ### Scenario
 
@@ -23,31 +24,22 @@ flowchart TD
 
 At the end of this exercise I will be able to:
 
- * **Connect** to a JASMIN login server using:
-   * a simple terminal client
-   * (optional) a graphical desktop client
- * **Locate** my home directory
- * **Make an onward connection** to a sci server
- * **Run** a simple command
- * (optionally) **Run** a command which produces graphical output
+- **Connect** to a JASMIN login server using a simple terminal client
+- **Locate** my home directory
+- **Make an onward connection** to a sci server
+- **Run** a simple command
 
 ### JASMIN resources
- * JASMIN account with SSH public key uploaded and `jasmin-login` access role
- * login server: `login2.jasmin.ac.uk`
- * help documentation at https://help.jasmin.ac.uk
+
+- JASMIN account with SSH public key uploaded and `jasmin-login` access role
+- login server: `login-01.jasmin.ac.uk`
+- help documentation at https://help.jasmin.ac.uk
 
 ### Local resources
- * Local machine set up as per [exercise 0](../ex00), including:
-    * SSH client application
-    * JASMIN credentials
 
-### Videos
-
-You can follow this exercise by watching the videos below, or by following the text of this article, or a combination of both.
-|  |  |
-| --- | --- |
-| Task | [![](https://img.youtube.com/vi/yixQF_CqUFg/mqdefault.jpg )](https://www.youtube.com/watch?v=yixQF_CqUFg) |
-| Solutions & Discussion | [![](https://img.youtube.com/vi/5aFUzvU2YYI/mqdefault.jpg )](https://www.youtube.com/watch?v=5aFUzvU2YYI) |
+- Local machine set up as per [exercise 0](../ex00), including:
+  - SSH client application
+  - JASMIN credentials
 
 ### Your task
 
@@ -56,22 +48,15 @@ This is the outline of what you need to do. The recommended way of doing each st
 In the text below, you can see the steps needed to do this task, i.e:
 
 1. Connect to a `login` server using a terminal client
-   * Load your ssh key locally
-   * Initiate an SSH connection to a login server
-   * Note the list of available `sci` servers 
-   * Check what directory you are in
-   * Check usage of your home directory
-   * Check that your SSH key is available to make an onward connection
+   - (Your key should already be loaded, as per ex00)
+   - Initiate an SSH connection to a login server
+   - Note the list of available `sci` servers
+   - Check what directory you are in
+   - Check usage of your home directory
+   - Check that your SSH key is available to make an onward connection
 1. Make an onward connection to a `sci` server
-   * Login to the `sci` server
-   * Run a simple command
-1. (Optional) Connect to an nx-login server using the Nomachine Enterprise Client
-   * Make a connection profile for one of the `nx-login` servers
-   * Connect to that server
-   * Check that your SSH key is available to make an onward connection
-   * Bring up the list of available `sci` servers
-   * Connect to one of them
-   * Run a command which produces graphical output
+   - Login to the `sci` server
+   - Run a simple command
 
 ### Questions to test yourself
 
@@ -82,62 +67,77 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 
 ### Review / alternative approaches / best practice
 
-* Your SSH key must be protected with a strong passphrase.
-* You must not share your SSH key with any other user.
-* You must not edit your `~/.ssh/authorized_keys` file on JASMIN. This is populated automatically with the (one) key you upload to your JASMIN account profile, so will be over-written if you edit it.
-* The login servers perform one simple function so should not be used for any processing, only as a "hop" to other systems within JASMIN.
-* Check for a less-busy `sci` machine before connecting. Setting up an alias to one particular machine can be counter-productive.
-* Don't use the `nx-login` servers for a regular terminal session: only use them via the NX client for a graphical desktop. This preserves resources and performance for those users who need it.
+- Your SSH key must be protected with a strong passphrase.
+- You must not share your SSH key with any other user.
+- You must not edit your `~/.ssh/authorized_keys` file on JASMIN. This is populated automatically with the (one) key you upload to your JASMIN account profile, so will be over-written if you edit it.
+- The login servers perform one simple function so should not be used for any processing, only as a "hop" to other systems within JASMIN.
+- Check for a less-busy `sci` machine before connecting. Setting up an alias to one particular machine can be counter-productive.
 
 ### Cheat Sheet
 
-> **_NOTE:_**  Please make sure you have read all the information in [exercise 0](../ex00), in particular the recommendation to use a preconfigured training account, and the reasons why. If you are using your **own** account, outside of one of our organised training events, you will need to have completed these steps yourself: [start here](https://help.jasmin.ac.uk/article/185-generate-ssh-key-pair), but not all the steps can be done temporarily for a workshop event.
+> [!NOTE]
+> Please make sure you have read all the information in [exercise 0](../ex00), in particular the recommendation to use a preconfigured training account, and the reasons why. If you are using your **own** account, outside of one of our organised training events, you will need to have completed these steps yourself: [start here](https://help.jasmin.ac.uk/article/185-generate-ssh-key-pair), but not all the steps can be done temporarily for a workshop event.
 
 1. Connect to a `login` server using a terminal client
 
-   * For the workshop, use server `login2.jasmin.ac.uk` but the full list is in the [help doc](https://help.jasmin.ac.uk/article/191-login-servers).
+   * For the workshop, use server `login-01.jasmin.ac.uk` but the full list is in the [help doc](https://help.jasmin.ac.uk/article/191-login-servers).
 
     * If you have set up your own machine as suggested in [exercise 0: Getting set up for the JASMIN workshop](../ex00), your SSH private key should already be loaded.
 
     * Check that your key is loaded with `ssh-add -l`. You should see a key fingerprint, similar to this (with either an email address or path after the random text, but won't be exactly the same!)
-      ```
-      ssh-add -l
+      ```console
+      $ ssh-add -l
       2048 SHA256:e1rIzWgm0BAF396xNAYc8TdjjSs8IuMyr+iwSryHeb4 fred.bloggs@ncas.ac.uk (RSA)
       ```
       Note that the path, if included, is the path where the key was loaded from on your **local** machine.
 
       If it **has not** worked, you may see something like this:
-      ```
-      ssh-add -l
+      ```console
+      $ ssh-add -l
       The agent has no identities.
       ```
       In this case, you will need to work out what is wrong before you will be able to connect. Please see the advice in exercise 0 before proceeding.
 
     * Initiate an SSH connection to a login server
 
+      ```console
+      $ ssh -A train050@login-01.jasmin.ac.uk
       ```
-      ssh -A train050@login2.jasmin.ac.uk
-      ```
-      > **_NOTE:_**  Your username on JASMIN (`train050` in this example, but yours may be different) may not be the same as your username on your local machine (`fredbloggs`). In the `ssh` command, you must specify the username associated with your JASMIN account.
+      <table>
+        <thead>
+          <tr>
+            <td align="left">
+              ℹ️ Note
+            </td>
+          </tr>
+        </thead>
 
-      > **_NOTE:_**  The -A option is needed for "agent forwarding", which enables your key to be made available for an onward connection to a subsequent server: we need this for our connection to a `sci` machine.
+        <tbody>
+          <tr>
+            <td>
+              Your username on JASMIN (<code>train050</code> in this example, but yours may be different) may not be the same as your username on your local machine (<code>fredbloggs</code>). In the <code>ssh</code> command, you must specify the username associated with your JASMIN account.
+              The <code>-A</code> option is needed for "agent forwarding", which enables your key to be made available for an onward connection to a subsequent server: we need this for our connection to a <code>sci</code> machine.
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
     * Note the list of available `sci` servers
 
       Once you have successfully logged in, you should see the "message of the day" (MOTD), which includes a list of the available `sci` servers and lists the number of users and the available memory on each. This is useful in selecting one which is not too busy:
 
-      ![](https://d33v4339jhl8k0.cloudfront.net/docs/assets/564b4bd3c697910ae05f445c/images/5fc92e11de1bfa158fb55239/file-dKz1hO4aLb.png)
+      ![](images/motd-r9.png)
 
-      Here we can see that sci1 has 34 users logged in, with 12.3G of free memory and 36% CPU usage. Compare that to the other machines listed and choose one which suits the needs of what you plan to do. Note that some are physical servers and have more memory to start with (see [sci servers documentation](https://help.jasmin.ac.uk/article/121-sci-servers))
+      Here we can see that `sci-vm-01` has 25 active user sessions, with 8G of free memory and a 15-minute average load of 1.007. Compare that to the other machines listed and choose one which suits the needs of what you plan to do. Note that some (not shown here, named `sci-ph-*`) are physical servers and have more memory to start with (see [sci servers documentation](https://help.jasmin.ac.uk/article/121-sci-servers))
 
     * Check what directory you are in
-      ```
-      pwd
+      ```console
+      $ pwd
       /home/users/train050
       ```
     * Check usage of your home directory
-      ```
-      pdu -sh 
+      ```console
+      $ pdu -sh 
       16G
       ```
       This shows 16G (gigabytes) being used, against your quota of 100G.
@@ -146,8 +146,8 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 
       As before, we can use the `ssh-add` command to check that our key is loaded. Remember that path it mentions relates to where it was loaded from on your local system. On the login server:
 
-      ```
-      ssh-add -l
+      ```console
+      $ ssh-add -l
       2048 SHA256:iqX3NkPCpschVdqPxVde/ujap2cM0mYaAYYedzBGPaI /home/fredbloggs/.ssh/id_rsa_jasmin (RSA)
       ```
 
@@ -165,8 +165,8 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 1. Make an onward connection to a `sci` server
      * Login to the `sci` server
 
-        ```
-        ssh -A USERNAME@sci1.jasmin.ac.uk
+        ```console
+        $ ssh -A USERNAME@sci-vm-01.jasmin.ac.uk
         ```
 
         But remember to a) replace with your own username and b) choose which of the sci machines to connect to
@@ -176,64 +176,67 @@ All too easy? Here are some questions to test your knowledge and understanding. 
      * Run a simple command
 
         We are now able to run a simple command on the sci server (you should see that the prompt has changed, but this command returns the name of the host so should confirms that you are now on the `sci` server)
+        ```console
+        $ hostname
+        sci-vm-01.jasmin.ac.uk
         ```
-        hostname
-        sci1.jasmin.ac.uk
-        ```
-
-3. (Optional) Connect to an NX login server using the graphical NX client
-
-   This alternative way of connecting to JASMIN provides a virtual desktop within JASMIN, useful if:
-   - you plan to use graphics-heavy applications, or
-   - you need to access any web-based services available only within JASMIN
-
-   So it's NOT essential for making a basic connection to JASMIN.
-
-   Here's how this scenario (right) compares to our original scenario (left):
-
-   ```mermaid
-   flowchart TD
-      id1(My computer)
-      -- terminal client -->id2(login server)
-      -- terminal client -->id3(sci server)
-      -->id4(do some work)
-
-      id4-. view terminal output .->id1
-
-      id5(My Computer)
-      -- special client -->id6(nx-login server)
-      -- terminal client + X11-forwarding -->id7(sci server)
-      -->id8(work using graphics)
-      
-      id8-. view graphics .->id5
-   ```
-
-
-   The service is [fully documented here](https://help.jasmin.ac.uk/docs/interactive-computing/graphical-linux-desktop-access-using-nx/), including installation and troubleshooting tips, so we recommend you follow those to get set up.
-
-   Once you have estabished a connection to an `nx-login` server, return here to complete the rest of this exercise.
-
-   Your onward connection to the sci machine needs to "enable X11 forwarding" using the `-X` option as well as the `-A` relating to the key:
-
-   ```
-   ssh -AX train050@sci1.jasmin.ac.uk
-   ```
-
-   Once logged in to the sci machine, you can run a simple graphical command like `xeyes` or `xclock` and observe the output on the desktop. You can kill these applications with `CTRL-c`.
-
-   > **_NOTE:_**  As [described here](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx), the `nx-login` servers include a Firefox web browser which can be used for using some web-based tools which may only be available within JASMIN. Please do not use them for general web browsing, and please use Firefox on the `nx-login` machines rather than the `sci` machines, to preserve resources for processing on the `sci` machines. The same article also discusses why using the NX client significantly improves performance for graphical applications run on JASMIN, if you're viewing the output somewhere remote to JASMIN.
 
   ### Answers to questions
 
-> 1. How often is your home directory backed up? How would you go about restoring files if you accidentally deleted something from your home directory?
+#### 1. How often is your home directory backed up? How would you go about restoring files if you accidentally deleted something from your home directory?
 
 See [this article](https://help.jasmin.ac.uk/article/176-storage) about how you can restore data accidentally deleted from your home directory for up to a week.
 
-> 2. What shell is used by default on JASMIN? How can you tell? How would you customise your shell environment (e.g. aliases, environment variables)?
+#### 2. What shell is used by default on JASMIN? How can you tell? How would you customise your shell environment (e.g. aliases, environment variables)?
 
 You can check what shell is being used by checking the value of the `$SHELL` environment variable wherever you are logged in on JASMIN:
-```
-echo $SHELL
+```console
+$ echo $SHELL
 /bin/bash
 ```
 The `bash` shell is used on JASMIN. Please refer to [official documentation](https://www.gnu.org/software/bash/) to learn about its capabilities and how to customise your own environment.
+
+### Further learning (optional)
+
+#### Graphical linux desktop access using NoMachine NX
+
+An alternative way of connecting to JASMIN provides a virtual desktop within JASMIN, useful if:
+
+- you plan to use graphics-heavy applications, or
+- you need to access any web-based services available only within JASMIN
+
+But it's NOT needed if you're just making a basic connection to JASMIN.
+
+Here's how this scenario (right) compares to our original scenario (left):
+
+```mermaid
+flowchart TD
+   id1(My computer)
+   -- terminal client -->id2(login server)
+   -- terminal client -->id3(sci server)
+   -->id4(do some work)
+
+   id4-. view terminal output .->id1
+
+   id5(My Computer)
+   -- special client -->id6(nx-login server)
+   -- terminal client + X11-forwarding -->id7(sci server)
+   -->id8(work using graphics)
+   
+   id8-. view graphics .->id5
+```
+
+The service is [fully documented here](https://help.jasmin.ac.uk/docs/interactive-computing/graphical-linux-desktop-access-using-nx/), including installation and troubleshooting tips, so we recommend you follow those to get set up.
+
+Once you have estabished a connection to an `nx-login` server, return here to complete the rest of this exercise.
+
+Your onward connection to the sci machine needs to "enable X11 forwarding" using the `-X` option as well as the `-A` relating to the key:
+
+```console
+> ssh -AX train050@sci-vm-01.jasmin.ac.uk
+```
+
+Once logged in to the sci machine, you can run a simple graphical command like `xeyes` or `xclock` and observe the output on the desktop. You can kill these applications with `CTRL-c`.
+
+> [!NOTE]
+> As [described here](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx), the `nx-login` servers include a Firefox web browser which can be used for using some web-based tools which may only be available within JASMIN. Please do not use them for general web browsing, and please use Firefox on the `nx-login` machines rather than the `sci` machines, to preserve resources for processing on the `sci` machines. The same article also discusses why using the NX client significantly improves performance for graphical applications run on JASMIN, if you're viewing the output somewhere remote to JASMIN.

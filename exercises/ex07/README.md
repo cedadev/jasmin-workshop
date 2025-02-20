@@ -10,30 +10,23 @@ author: Ag Stephens
 I need to use a Python 3 environment for my analysis work. I have seen that CEDA has Python 3 available in its `Jaspy` environment but I need a specific package called `fixnc` (fix netCDF files).
 
 ### Objectives
- 
+
 After completing this exercise I will be able to:
 
- * create a python environment using the virtual environment package (`venv`)
- * activate/deactivate the virtual environment
- * install packages into the virtual environment 
+- create a python environment using the virtual environment package (`venv`)
+- activate/deactivate the virtual environment
+- install packages into the virtual environment
 
 ### JASMIN resources
 
- * JASMIN account with SSH public key uploaded and `jasmin-login` privilege
- * login servers: `login[1-4].jasmin.ac.uk`
- * sci servers: `sci[1-6].jasmin.ac.uk`
- * help documentation at https://help.jasmin.ac.uk
+- JASMIN account with SSH public key uploaded and `jasmin-login` privilege
+- login servers: `login-0[1-4].jasmin.ac.uk`
+- sci servers: `sci-vm-0[1-6].jasmin.ac.uk`
+- help documentation at https://help.jasmin.ac.uk
 
 ### Local resources
 
-* SSH client (to login to JASMIN)
-
-### Video
-
-You can follow this exercise by watching the demonstration video below, or by following the text of this article, or a combination of both.
-|  |  |
-| --- | --- |
-| Demonstration | [![](https://img.youtube.com/vi/UR2AbSml-Hc/mqdefault.jpg )](https://www.youtube.com/watch?v=UR2AbSml-Hc) |
+- SSH client (to login to JASMIN)
 
 ### Your task
 
@@ -55,7 +48,6 @@ This is the outline of what you need to do. The recommended way of doing each st
 All too easy? Here are some questions to test your knowledge an understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk)
 
  1. Which packages are available in the default `jaspy` environment on JASMIN? Are there any non-Python packages included? Can you find out their versions?
- 2. A different approach would be to use `miniconda` to install your own Python environment (independent of `jaspy`). Can you install miniconda in your `$HOME` directory and then create a new Python 3 environment inside it?
 
 ### Review / alternative approaches / best practice
 
@@ -78,8 +70,8 @@ Alternative approaches could include:
 
      If you need to share an environment with other JASMIN users you can:
      
-       * Request a "small files" Group Workspace (GWS).
-       * Install the software environment within the "small files" GWS.
+       - Request a "small files" Group Workspace (GWS).
+       - Install the software environment within the "small files" GWS.
 
      All users with access to that GWS will then be able to access the environment.
      See: [https://help.jasmin.ac.uk/article/4732-share-software-envs](https://help.jasmin.ac.uk/article/4732-share-software-envs)
@@ -102,7 +94,7 @@ Alternative approaches could include:
 
 1. SSH to a scientific analysis server
 
-        ssh sci5 # Could use sci[123456]
+        ssh sci-vm-01 # Could use any of sci-vm-0[1-6]
 
 1. Activate the Jaspy Python 3 environment with the `module` command
 
@@ -143,18 +135,4 @@ Alternative approaches could include:
 
 > 1. Which packages are available in the default `jaspy` environment on JASMIN? Are there any non-Python packages included? Can you find out their versions?
 
-The "jaspy" environments are listed on our [jaspy Help page](https://help.jasmin.ac.uk/article/4729-jaspy-envs). You can follow links from there to find out about the different "jaspy" environments and the packages, and versions, they include.
-
-> 2. A different approach would be to use `miniconda` to install your own Python environment (independent of `jaspy`). Can you install miniconda in your `$HOME` directory and then create a new Python 3 environment inside it?
-
-The general workflow for installing `miniconda` is as follows. You will create a `conda` environment by downloading and installing `miniconda` as your package management tool:
-  1. Download the [miniconda installer](https://docs.conda.io/en/latest/miniconda.html)
-  2. Install miniconda, e.g.: `bash Miniconda3-latest-Linux-x86_64.sh -b -p miniconda`
-  3. Create a `conda` environment using the `miniconda` installation, e.g.: `miniconda/bin/conda create -n mypy3 python=3`
-
-See this [explanation of why you might use `miniconda`](https://docs.conda.io/projects/conda/en/latest/user-guide/install/download.html#anaconda-or-miniconda).
-
-`miniconda` uses `conda` which is a very versatile and powerful tool for managing Python, and other, packages. See the [conda documentation](https://docs.conda.io) for more info.
-
-See our [Help pages](https://help.jasmin.ac.uk/article/5074-conda-environments-and-python-virtual-environments) for a more detailed description of `virtualenv`, `conda` and the options available to you on JASMIN.
-
+The "jaspy" environments are listed on our [jaspy Help page](https://help.jasmin.ac.uk/docs/software-on-jasmin/jaspy-envs/). You can follow links from there to find out about the different "jaspy" environments and the packages, and versions, they include.

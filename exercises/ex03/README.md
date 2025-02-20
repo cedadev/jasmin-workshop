@@ -22,7 +22,7 @@ After completing this exercise I will be able to:
 
 * Account with valid `jasmin-login` access role
    * If you are using one of the training accounts this will have been set up for you
-* Transfer server: `xfer3.jasmin.ac.uk`
+* Transfer server: `xfer-vm-01.jasmin.ac.uk`
 * Home directory: `/home/users/train050` (replace with your username)
 * `workshop` group workspace at `/gws/pw/j07/workshop`
 
@@ -33,14 +33,6 @@ After completing this exercise I will be able to:
     * SSH key and JASMIN credentials
     * suitable network connection
 *  Directory on your local machine: `/Users/fredbloggs/` (choose your own)
-
-### Videos
-
-You can follow this exercise by watching the videos below, or by following the text of this article, or a combination of both.
-|  |  |
-| --- | --- |
-| Task | [![](https://img.youtube.com/vi/7Tv9uSH5_CE/mqdefault.jpg )](https://www.youtube.com/watch?v=7Tv9uSH5_CE) |
-| Solutions & Discussion | [![](https://img.youtube.com/vi/i5R6Qy6gTg8/mqdefault.jpg )](https://www.youtube.com/watch?v=i5R6Qy6gTg8) |
 
 ### Instructions
 
@@ -60,7 +52,6 @@ This exercise demonstrates how to use a transfer server to:
 * Check permissions on the data to make sure it’s visible by collaborators
 
 We have looked at some basic methods suitable for small datasets or where speed is not critical. For larger data transfers or over longer distances (international/intercontinental), it is recommended to consider other available options which could be more efficient, depending on source & destination. Consult the [documentation here](https://help.jasmin.ac.uk/article/219-data-transfer-overview).
-
 
 ### Alternative approaches and best practice
 
@@ -84,11 +75,12 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
    * written by any other member of the workspace?
    * readable by any user of JASMIN?
 
-    > **_NOTE:_**  NEVER set permissions so that a file or directory is readable and writable by everyone (777). This is not safe.
+> [!CAUTION]
+> NEVER set permissions so that a file or directory is readable and writable by everyone (777). This is not safe.
 
-1. How could you share data on JASMIN with users outside of JASMIN?
+2. How could you share data on JASMIN with users outside of JASMIN?
 
-1. **Why** are transfer methods based on SSH not very efficient over long distances?
+3. **Why** are transfer methods based on SSH not very efficient over long distances?
 
 # Cheatsheet
 
@@ -96,7 +88,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
     ```
     echo "This is a readme file" > README.txt
-    scp README.txt train050@xfer3.jasmin.ac.uk:~/
+    scp README.txt train050@xfer-vm-01.jasmin.ac.uk:~/
     ```
 
     The `echo` command makes the text file for us. Use some other small file if you have one handy, or create one
@@ -106,12 +98,12 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     Log into the xfer server itself, to see the file that you copied in place in the destination directory:
 
     ```
-    ssh -A train050@xfer3.jasmin.ac.uk
+    ssh -A train050@xfer-vm-01.jasmin.ac.uk
     pwd
     ls -l README.txt
     ```
 
-1. Make a small tree of directories on your **local** machine and create 2 files somewhere in those directories.
+2. Make a small tree of directories on your **local** machine and create 2 files somewhere in those directories.
 
     ```
     mkdir -p mydata/01 mydata/02
@@ -137,7 +129,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     SSH key is loaded: see [exercise 01](../ex01) ).
     
     ```
-    ssh -A train050@xfer3.jasmin.ac.uk
+    ssh -A train050@xfer-vm-01.jasmin.ac.uk
     ```
 
     Go to the workspace directory and make your own user directory there:
@@ -154,13 +146,24 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     This helps keep things orgnanised. Make a directory for yourself, named as per your account
     username:
     
-    > **_NOTE:_** Below, we use the `$USER` environment variable which contains your JASMIN username.
-    
-    > **_NOTE:_** We will clear out these directories, and the home directories of the training accounts, after each workshop event. 
-    Normally you will have ~48hrs after the end of the workshop event to collect any data or code which you may want to keep.
-    If you are working through these exercises outside of an organised event, please clean up after yourself and 
-    do not expect these data to persist.
-    
+    <table>
+      <thead>
+        <tr>
+          <td align="left">
+            :information_source: Note
+          </td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>
+            Below, we use the <code>$USER</code> environment variable which contains your JASMIN username. We will clear out these directories, and the home directories of the training accounts, after each workshop event. Normally you will have ~48hrs after the end of the workshop event to collect any data or code which you may want to keep. If you are working through these exercises outside of an organised event, please clean up after yourself and do not expect these data to persist.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
     ```
     echo $USER             # check what is held in this environment variable
     mkdir users/$USER      # make a directory for yourself underneath the "users" directory
@@ -172,7 +175,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     Back on your local machine, recursively copy the directory using `scp`:  (replace `train050` with your username)
 
     ```
-    scp -r mydata train050@xfer3.jasmin.ac.uk:/gws/pw/j07/workshop/users/train050/
+    scp -r mydata train050@xfer-vm-01.jasmin.ac.uk:/gws/pw/j07/workshop/users/train050/
     ```
 
     In your other terminal window on (or log back in to) the transfer server, inspect your destination directory:
