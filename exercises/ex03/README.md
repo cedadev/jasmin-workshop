@@ -75,12 +75,12 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
    * written by any other member of the workspace?
    * readable by any user of JASMIN?
 
-    > [!NOTE]
-    > NEVER set permissions so that a file or directory is readable and writable by everyone (777). This is not safe.
+> [!CAUTION]
+> NEVER set permissions so that a file or directory is readable and writable by everyone (777). This is not safe.
 
-1. How could you share data on JASMIN with users outside of JASMIN?
+2. How could you share data on JASMIN with users outside of JASMIN?
 
-1. **Why** are transfer methods based on SSH not very efficient over long distances?
+3. **Why** are transfer methods based on SSH not very efficient over long distances?
 
 # Cheatsheet
 
@@ -103,7 +103,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     ls -l README.txt
     ```
 
-1. Make a small tree of directories on your **local** machine and create 2 files somewhere in those directories.
+2. Make a small tree of directories on your **local** machine and create 2 files somewhere in those directories.
 
     ```
     mkdir -p mydata/01 mydata/02
@@ -146,15 +146,24 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     This helps keep things orgnanised. Make a directory for yourself, named as per your account
     username:
     
-    > [!NOTE]
-    > Below, we use the `$USER` environment variable which contains your JASMIN username.
-    
-    > [!NOTE]
-    > We will clear out these directories, and the home directories of the training accounts, after each workshop event. 
-    Normally you will have ~48hrs after the end of the workshop event to collect any data or code which you may want to keep.
-    If you are working through these exercises outside of an organised event, please clean up after yourself and 
-    do not expect these data to persist.
-    
+    <table>
+      <thead>
+        <tr>
+          <td align="left">
+            :information_source: Note
+          </td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>
+            Below, we use the <code>$USER</code> environment variable which contains your JASMIN username. We will clear out these directories, and the home directories of the training accounts, after each workshop event. Normally you will have ~48hrs after the end of the workshop event to collect any data or code which you may want to keep. If you are working through these exercises outside of an organised event, please clean up after yourself and do not expect these data to persist.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
     ```
     echo $USER             # check what is held in this environment variable
     mkdir users/$USER      # make a directory for yourself underneath the "users" directory

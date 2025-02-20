@@ -38,49 +38,50 @@ After completing this exercise I will be able to:
 This is the outline of what you need to do. The recommended way of doing each step is covered in the "Cheat Sheet" but you may wish to try solving it for yourself first.
 
 1. Your starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
-1. Login to a JASMIN scientific analysis server from the login server
+2. Login to a JASMIN scientific analysis server from the login server
    - Launch two terminal sessions
    - Access a JASMIN login server on each terminal (see exercise 01)
    - Choose a sci server with low load
    - Login to the chosen sci server in both terminal sessions
-   > [!NOTE]
-   > The purpose of having two SSH terminal sessions running on the same sci server is to facilitate compute and monitoring. One terminal is for executing commands on the sci while the second terminal is for monitoring user processes (or editing a script)
-1. Execute the first Python example script on the sci server
+> [!NOTE]
+> The purpose of having two SSH terminal sessions running on the same sci server is to facilitate compute and monitoring. One terminal is for executing commands on the sci while the second terminal is for monitoring user processes (or editing a script)
+3. Execute the first Python example script on the sci server
    - Copy the first Python example script `random-number-gen.py`(shown in the JASMIN resources section) to your current working directory
    - Find out the software available on JASMIN via the module environment by executing the command `module avail`
    - Enable a Python environemnt using the `jaspy` module by executing the command `module add jaspy`
    - Execute the command `python random-number-gen.py`
    - Check the process ID (pid), state, memory and CPU usage on the monitoring terminal
    - What is the CPU and memory used by the process during Run and Sleep state?
-1. Monitor your processes on the sci machine
+4. Monitor your processes on the sci machine
    - Execute the Linux command `top -u <username>`
    - How many processes do you have?
    - Sort all processes per CPU usage by executing `top`
    - To exit the monitoring tool `top` press the keyboard letter `q`
    - Try another utility to list all your processes on the sci server `ps -aux | grep <username>`
-1. Make changes to the Python example and re-execute it
+5. Make changes to the Python example and re-execute it
    - Open the Python script file in a text editor e.g. vim, emacs -See note below-
    - Decrease the size of the random numbers `nran`from 1024 to 500
    - Save the file and exit the text editor
    - Execute `python random-number-gen.py`
    - Monitor and note the memory and CPU usage
    - Compare the CPU and memory resources used to generate 1024 and 500 random numbers. What can you conclude?
-    > [!NOTE]
-    > If you are not familiar with using either `vim` or `emacs` editors, just run the following command which does the necessary change for you: (changing the quantity of random numbers)
-    ```
-    sed -i 's/nran = 1024/nran = 500/' random-number-gen.py
-    ```
+
+> [!NOTE]
+> If you are not familiar with using either `vim` or `emacs` editors, just run the following command which does the necessary change for you: (changing the quantity of random numbers)
+> ```
+> sed -i 's/nran = 1024/nran = 500/' random-number-gen.py
+> ```
 
 ### Questions to test yourself
 
 All too easy? Here are some questions to test your knowledge an understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk)
 
 1. Is there a limit on the number of processes running on the sci server at any given time by a user?
-1. What tasks are not suitable to run on the sci servers?
-1. What software is available via the module environment?
-1. How do you switch between different version of a software module?
-1. What text editors are available on JASMIN?
-1. Can I install software on JASMIN?
+2. What tasks are not suitable to run on the sci servers?
+3. What software is available via the module environment?
+4. How do you switch between different version of a software module?
+5. What text editors are available on JASMIN?
+6. Can I install software on JASMIN?
 
 ### Review / alternative approaches / best practice
 
@@ -320,7 +321,7 @@ Cheat-sheet: Test for a potential multithreading
    ```
    $ cp /gws/pw/j07/workshop/exercises/ex02/code/dot-product-2arrays.py .
    ```
-   * Remove the default JASPY environment (jaspy/3.11/v20240815)then enable the JASPY version jaspy/3.10/v20230718 for this task
+   * Remove the default JASPY environment (jaspy/3.11/v20240815) then enable the JASPY version jaspy/3.10/v20230718 for this task
    ```
    $ module rm jaspy 
    $ module add jaspy/3.10/v20230718
@@ -337,7 +338,10 @@ Cheat-sheet: Test for a potential multithreading
    Time with None threads: 15.869181 s
    Finished in 15.869181300047785 seconds
    ```
-      Note: the variable `echo $OMP_NUM_THREADS` is not set. Hence, the message above 'None threads'
+
+> [!NOTE]
+> The variable `echo $OMP_NUM_THREADS` is not set. Hence, the message above 'None threads'
+
    * On the monitoring terminal execute the command  `top -H -u <username>` or `ps -T -p <pid>`
    ![](images/Top-output-threads.png)
    using the `ps -T -p <pid>` 
