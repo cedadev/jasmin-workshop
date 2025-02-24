@@ -20,7 +20,7 @@ After completing this exercise I will be able to:
 
 ### JASMIN resources
 
-- Scientific analysis servers: `sci-vm-0[1-6].jasmin.ac.uk`, `sci-ph-0[12].jasmin.ac.uk`
+- Scientific analysis servers: `sci-vm-0[1-5].jasmin.ac.uk`, 
 - Group workspace: `/gws/pw/j07/workshop`
 - Example Python scripts are provided:
   - `/gws/pw/j07/workshop/exercises/ex02/code/random-number-gen.py`
@@ -58,19 +58,17 @@ This is the outline of what you need to do. The recommended way of doing each st
    - Sort all processes per CPU usage by executing `top`
    - To exit the monitoring tool `top` press the keyboard letter `q`
    - Try another utility to list all your processes on the sci server `ps -aux | grep <username>`
-5. Make changes to the Python example and re-execute it
-   - Open the Python script file in a text editor e.g. vim, emacs -See note below-
-   - Decrease the size of the random numbers `nran`from 1024 to 500
-   - Save the file and exit the text editor
+5. Make changes to the Python example and re-execute it  
+   - Lower the size of the random numbers `nran`from 1024 to 500. Use the following command line:\
+     `sed -i 's/nran = 1024/nran = 500/' random-number-gen.py`
    - Execute `python random-number-gen.py`
    - Monitor and note the memory and CPU usage
    - Compare the CPU and memory resources used to generate 1024 and 500 random numbers. What can you conclude?
 
 > [!NOTE]
-> If you are not familiar with using either `vim` or `emacs` editors, just run the following command which does the necessary change for you: (changing the quantity of random numbers)
-> ```
-> sed -i 's/nran = 1024/nran = 500/' random-number-gen.py
-> ```
+> If you are familiar with one of the text editors `vim`, `nano` or `emacs`, then open the file `random-number-gen.py` and edit the variable `nran` and assign 500 instead of 1024.
+> Then save the file and exit the text editor
+  
 
 ### Questions to test yourself
 
@@ -200,7 +198,7 @@ Usage of the storage:
    ```bash
    $ vim random-number-gen.py
    ```
-   - Decrease the size of the random numbers `nran` from `1024` to `500`
+   - Lower the size of the random numbers `nran` from `1024` to `500`
 
    ```python
    # Import Python libraries numpy, time and os
@@ -303,7 +301,7 @@ This additional section shows how multithreading can occur, which can result in 
 Your task: Test for a potential multithreading
 
 - Copy the second Python example script (shown in the JASMIN resources section) to your current working directory 
-- Remove the default JASPY environment (jaspy/3.10/r20220721) then enable the JASPY version (jaspy/3.7/20210320) for this task
+- Remove the default JASPY environment ( jaspy/3.11/v20240815 ) then enable the JASPY version (jaspy/3.10/v20230718) for this task
 - Execute the command `python dot-product-2arrays.py`
 - On the monitoring terminal execute the command  `top -H -u <username>` or `ps -T -p <pid>`
 - How many threads the process spawned?
