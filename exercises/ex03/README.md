@@ -28,7 +28,7 @@ After completing this exercise I will be able to:
 
 ### Local resources
 
-*  Local machine set up as per [exercise 0](..ex00), with:
+*  Local machine set up as per [exercise 0](../ex00), with:
     * SSH client application (use a command-line client for this exercise: you won't need the graphical desktop)
     * SSH key and JASMIN credentials
     * suitable network connection
@@ -62,10 +62,10 @@ We have looked at some basic methods suitable for small datasets or where speed 
 * Please **don't** install DropBox or other file-sharing software on JASMIN.
 * Some third-party tools exist which provide graphical interfaces for transfers using `sftp`, e.g. [FileZilla](https://filezilla-project.org/), [CyberDuck](https://cyberduck.io/). These are applications which you can install on your own machine, to talk to JASMIN via the protocols it supports.
 * Some editors (e.g. [VS Code](https://code.visualstudio.com/)) have extensions which enable you to setup SSH connections to edit & save files remotely. This can be useful for editing files on JASMIN, but from the convenience of your own local desktop environment.
-* NONE of the SSH-based transfer methods we have looked at perform well for large volumes of data or over long distances. Define "large" or "long"?
-* further reading:
-  * [improving your transfer rates](https://help.jasmin.ac.uk/docs/data-transfer/data-transfer-overview/#improving-your-transfer-rates)
-  * [data transfer tools](https://help.jasmin.ac.uk/docs/data-transfer/data-transfer-tools/) with information on further choices of tools available on JASMIN and their pros/cons.
+* NONE of the SSH-based transfer methods we have looked at perform well for large volumes of data (TBs) or over long distances (international/intercontinental).
+* Further reading:
+  * [Improving your transfer rates](https://help.jasmin.ac.uk/docs/data-transfer/data-transfer-overview/#improving-your-transfer-rates)
+  * [Data transfer tools](https://help.jasmin.ac.uk/docs/data-transfer/data-transfer-tools/) with information on further choices of tools available on JASMIN and their pros/cons.
 
 ### Questions to test yourself
 
@@ -113,9 +113,8 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
     Check what you have created:
 
-    ```
-    find mydata
-    # output:
+    ```console
+    $ find mydata
     mydata
     mydata/02
     mydata/02/file02.txt
@@ -134,11 +133,12 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
     Go to the workspace directory and make your own user directory there:
 
-    ```
-    cd /gws/pw/j07/workshop
-    ls
-    # output:
+    ```console
+    $ cd /gws/pw/j07/workshop
+    $ ls
+    ...
     users
+    ...
     ```
 
     We have set out the GWS so that it has a directory called `users` where you can make your own sub-directories
@@ -164,11 +164,11 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
       </tbody>
     </table>
 
-    ```
-    echo $USER             # check what is held in this environment variable
-    mkdir users/$USER      # make a directory for yourself underneath the "users" directory
-    ls -ld users/$USER      # check what you have created: note the ownerhsip & permissions
-    # output:
+    ```console
+    $ echo $USER             # check what is held in this environment variable
+    train050
+    $ mkdir users/$USER      # make a directory for yourself underneath the "users" directory
+    $ ls -ld users/$USER      # check what you have created: note the ownership & permissions
     drwxr-sr-x 2 train050 gws_workshop 4096 Jan 26 11:26 users/train050
     ```
 
@@ -180,10 +180,9 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
     In your other terminal window on (or log back in to) the transfer server, inspect your destination directory:
 
-    ```
-    cd /gws/pw/j07/workshop/users/$USER
-    find .
-    # output:
+    ```console
+    $ cd /gws/pw/j07/workshop/users/$USER
+    $ find .
     ./mydata
     ./mydata/02
     ./mydata/02/file02.txt
@@ -193,9 +192,8 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
     The `find` command just shows the structure. To examine the permissions, use `ls -l`, or `ls -lR` to show the child directories too:
 
-    ```
-    ls -lR mydata
-    # output:
+    ```console
+    $ ls -lR mydata
     mydata:
     total 0
     drwxr-xr-x 1 train050 gws_workshop 0 Dec  4 11:59 01
@@ -216,10 +214,9 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
     Try the following command, which will restrict the group and world permissions on everything in the `mydata` directory and below:
 
-    ```
-    chmod -R go-rX mydata         # note capital X
-    ls -lR mydata
-    # output:
+    ```console
+    $ chmod -R go-rX mydata         # note capital X
+    $ ls -lR mydata
     mydata:
     total 128
     drwx------ 2 train050 gws_workshop 4096 Feb 23 10:51 01
@@ -248,10 +245,9 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
     If we want to open up directory `01` so that members of the same group `gws_workshop` can read it, but non-members still can't, we could set the group read permission. For directories, we need to add the `x` or execute permission as well: the capital `X` in the command means that it will work out the right change to make for files and directories:
 
-    ```
-    chmod -R g+rX mydata/01
-    ls -lR mydata
-    # output:
+    ```console
+    $ chmod -R g+rX mydata/01
+    $ ls -lR mydata
     mydata:
     total 0
     drwxr-x--- 1 train050 gws_workshop 0 Dec  4 11:59 01
@@ -270,17 +266,15 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
     Note that the group ownership of a file or directory in a group workspace might be different from any files you've created in your home directory. Check the permissions on the README.txt file you wrote there earlier:
 
-    ```
-    ls -l ~/README.txt 
-    # output:
+    ```console
+    $ ls -l ~/README.txt
     -rw-r--r-- 1 train050 users 22 Feb 23 10:48 /home/users/train050/README.txt
     ```
 
     By default, files you create in your home directory belong to group `users` (which is the default group for all users with `jasmin-login` privilege). You can check what groups you belong to with the `groups` command:
 
-    ```
-    groups
-    # output:
+    ```console
+    $ groups
     users open gws_workshop
     ```
 
@@ -295,14 +289,13 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 ### Answers to questions
 
 > 1. How would you set the permissions on a file/directory so that it can be
-   * written by any other member of the workspace?
-   * readable by any user of JASMIN?
+>    * written by any other member of the workspace?
+>    * readable by any user of JASMIN?
 
 You can first check the existing permissions on a file with:
 
-```
-ls -l myfile.txt
-# output:
+```console
+$ ls -l myfile.txt
 -rw-r--r-- 1 train050 gws_workshop 0 Jan 22 17:01 myfile.txt
 ```
 
@@ -322,9 +315,8 @@ chmod 664 myfile.txt
 
 Check again:
 
-```
-ls -l myfile.txt
-# output:
+```console
+$ ls -l myfile.txt
 -rw-rw--r-- 1 train050 gws_workshop 0 Jan 22 17:01 myfile.txt
 ```
 
@@ -334,7 +326,7 @@ By default, the top-level directory of the GWS is set so that new child director
 
 Talk to your Group Workspace manager about how they would like users to organise their data and keep things tidy: it's their responsibility to set policies like this for the group.
 
-> 1. How could you share data on JASMIN with users outside of JASMIN?
+> 2. How could you share data on JASMIN with users outside of JASMIN?
 
 Using the logic above, you could set the permissions on the file/directory so that they're "world-readable" ...but can the outside "world" see the file? Not by default. File systems on JASMIN aren't visible outside of JASMIN, and can't be mounted remotely.
 
@@ -342,11 +334,12 @@ This can be arranged, however:
 
 * Ask your Group Workspace manager to consider requesting that the GWS is set up with a `public` area which is [shared via HTTP](https://help.jasmin.ac.uk/article/202-share-gws-data-via-http). This means that the data below that `public` directory is openly available to anyone on the internet with a HTTP client such as a browser or a tool like `wget` or `curl`. That can be a good way of disseminating results and small amounts of data to external collaborators who are not users of JASMIN. But this should be used with care, and must not be used for hosting a project web site: that's not what that service is for.
 
-* Using Object Storage could provide more flexible sharing options: use of this is something your GWS manager would need to discuss with the JASMIN team.
+* Using [Object Storage](https://help.jasmin.ac.uk/docs/short-term-project-storage/using-the-jasmin-object-store/) could provide more flexible sharing options: use of this is something your GWS manager would need to discuss with the JASMIN team.
 
-> 1. Why are transfer methods based on SSH not very efficient?
+> 3. **Why** are transfer methods based on SSH not very efficient?
 
-For the interested reader, see [ESnet](https://fasterdata.es.net/)'s resources about faster data transfers including some reasons why [scp should be avoided over WAN](https://fasterdata.es.net/data-transfer-tools/say-no-to-scp/): to do with a buffer of limited size built in to the software stack that they're built on.
+For the interested reader, see [ESnet](https://fasterdata.es.net/)'s resources about faster data transfers including some reasons why [`scp` should be avoided over WAN](https://fasterdata.es.net/data-transfer-tools/say-no-to-scp/): to do with a buffer of limited size built in to the software stack that they're built on.
 
-Tools like BBCP, GridFTP and Globus Online can help with more efficient use of available bandwidth and give much better performance for moving large volumes of data. See our documentation on [Data Transfer Tools](https://help.jasmin.ac.uk/article/3809-data-transfer-tools), in particular [Globus Transfers with JASMIN](https://help.jasmin.ac.uk/docs/data-transfer/globus-transfers-with-jasmin)
+Tools like BBCP, GridFTP and Globus Online can help with more efficient use of available bandwidth and give much better performance for moving large volumes of data. See our documentation on [Data Transfer Tools](https://help.jasmin.ac.uk/article/3809-data-transfer-tools), in particular [Globus Transfers with JASMIN](https://help.jasmin.ac.uk/docs/data-transfer/globus-transfers-with-jasmin).
+
 For short-distance transfers (by "distance" here we mean a network round-trip-time of <20ms), `scp` and other SSH-based tools can still be a good choice, for convenience and ease of use if nothing else.
