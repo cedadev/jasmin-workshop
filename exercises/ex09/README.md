@@ -8,10 +8,12 @@ author: Ag Stephens
 ### Scenario
 
 I want to demonstrate how data in the CEDA Archive can be read, processed and
-visualised using the an interactive Jupyter Notebook. The JASMIN Notebook Service:
+visualised using an interactive Jupyter Notebook.
+
+The JASMIN Notebook Service:
 
 - provides an interactive programming interface through a web browser
-- includes a set of python libraries for data analysis
+- includes a set of Python libraries for data analysis
 - can read directly from the CEDA Archive
 - can include formatted documentation and visualisations within a Notebook
 
@@ -36,16 +38,16 @@ After completing this exercise I will be able to:
 
 ### JASMIN resources
 
-- JASMIN account with `jasmin-login` privilege
-- JASMIN Notebook Service: https://notebooks.jasmin.ac.uk
-- Help documentation at: https://help.jasmin.ac.uk/article/4851-jasmin-notebook-service
+- A JASMIN account with `jasmin-login` privilege (already set up for training accounts)
+- The [JASMIN Notebook Service](https://notebooks.jasmin.ac.uk)
+- [Help documentation for the Notebook Service](https://help.jasmin.ac.uk/docs/interactive-computing/jasmin-notebooks-service/)
 
 > [!NOTE]
 > If you are using one of our training accounts rather than your own JASMIN account, you will need to use the ["Forgotten password"](https://accounts.jasmin.ac.uk/account/password_reset/) function of the JASMIN Accounts Portal to set a password on your training account. The training accounts do not have a password set on them, by default. Any confirmation emails will be sent to the address which you provided to the event organiser for use with your training account.
 
 ### Local resources
 
-- Web browser (such as `Firefox`, `Chrome`, `Safari`)
+- Web browser (such as Firefox, Chrome, Safari)
 
 ### Your task
 
@@ -62,7 +64,7 @@ This is the outline of what you need to do. The recommended way of doing each st
 
 ### Questions to test yourself
 
-All too easy? Here are some questions to test your knowledge an understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk)
+All too easy? Here are some questions to test your knowledge an understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk).
 
 1. How can you add extra software packages to your Notebook?
 
@@ -85,22 +87,22 @@ Alternative approaches could include:
 
 1. Using other Notebooks services, for example:
 
-    - Google Colaboratory: https://colab.research.google.com/
-    - Binder: https://mybinder.org/
+    - [Google Colaboratory](https://colab.research.google.com/)
+    - [Binder](https://mybinder.org/)
 
-2. Sharing your code on github:
+2. Sharing your code on GitHub:
 
-    - You can view notebooks directly in GitHub
-    - Here is an example: https://github.com/cedadev/ceda-notebooks/blob/master/notebooks/data-notebooks/cmip6/cmip6-zarr-jasmin.ipynb
+    - You can view notebooks directly in GitHub.
+    - [Here](https://github.com/cedadev/ceda-notebooks/blob/master/notebooks/data-notebooks/cmip6/cmip6-zarr-jasmin.ipynb) is an example from our CEDA Notebooks repository demonstrating CEDA data and tools.
 
 Learn more about our Notebook Service:
 
-  - Tutorial (in notebooks): https://github.com/cedadev/ceda-notebooks/blob/master/notebooks/training/intro/notebook-tour.ipynb
-  - Help pages: https://help.jasmin.ac.uk/article/4851-jasmin-notebook-service
+  - [Tutorial (in notebooks)](https://github.com/cedadev/ceda-notebooks/blob/master/notebooks/training/intro/notebook-tour.ipynb)
+  - [Help pages about the Notebook Service](https://github.com/cedadev/ceda-notebooks/blob/master/notebooks/training/intro/notebook-tour.ipynb)
 
 ### Cheat Sheet
 
-1. Login to the JASMIN Notebook Service in your browser
+1. Log into the JASMIN Notebook Service in your browser
 
    Visit: https://notebooks.jasmin.ac.uk/
 
@@ -122,19 +124,18 @@ Learn more about our Notebook Service:
 3. Import the `xarray` module and load some surface temperature data from 01/01/2005
 
    This task involves two parts: (1) Finding the relevant ECMWF ERA5 file paths and (2) 
-   Reading a file path pattern into an xarray Dataset object.
+   Reading a file path pattern into an `xarray` Dataset object.
 
    Part (1) can be done in various ways. For the sake of simplicity, we have already 
-   searched the CEDA catalogue and found this dataset record:
+   searched the CEDA catalogue and found [this dataset record](https://catalogue.ceda.ac.uk/uuid/8aa70a91378d455ea63a2a1953858a7f).
 
-   https://catalogue.ceda.ac.uk/uuid/8aa70a91378d455ea63a2a1953858a7f
-
-   Following the "Download" link (when logged in with your CEDA account) on the page 
+   On that catalogue page, following the "Download" link (when logged in with your CEDA account) or the "Explore" link (when logged out)
    reveals a browseable data path that shows the 2-metre temperature data can be found 
    under:
 
-   https://data.ceda.ac.uk/badc/ecmwf-era51/data/oper/an_sfc/2005/01/01 
-   (e.g. file: `ecmwf-era51_oper_an_sfc_200501010000.2t.nc`)
+   https://data.ceda.ac.uk/badc/ecmwf-era51/data/oper/an_sfc/2005/01/01
+
+   (Example file: `ecmwf-era51_oper_an_sfc_200501010000.2t.nc`)
 
    On the file system, this translates to this pattern:
 
@@ -144,17 +145,21 @@ Learn more about our Notebook Service:
 
    Click in the first cell of the notebook, and type:
 
-       import xarray as xr
+    ```python
+    import xarray as xr
+    ```
 
-   Click `Alt+Enter` to execute the contents of the cell and create a new cell underneath.
+   Press <kbd>Alt</kbd>+<kbd>Enter</kbd> to execute the contents of the cell and create a new cell underneath. On Mac the shortcut is <kbd>Option (⌥)</kbd>+<kbd>Enter</kbd>.
 
    In the second cell, define the file pattern and open the netCDF files as an `xarray Dataset` with:
 
-       file_pattern = "/badc/ecmwf-era51/data/oper/an_sfc/2005/01/01/ecmwf-era51_oper_an_sfc_20050101*.2t.nc"
-       ds = xr.open_mfdataset(file_pattern)
+    ```python
+    file_pattern = "/badc/ecmwf-era51/data/oper/an_sfc/2005/01/01/ecmwf-era51_oper_an_sfc_20050101*.2t.nc"
+    ds = xr.open_mfdataset(file_pattern)
+    ```
 
-   Click `Alt+Enter` to execute the contents of the cell and create a new cell underneath.
-   From now on, remember that you need to click `Alt+Enter` to execute each cell.
+   Press <kbd>Alt</kbd>+<kbd>Enter</kbd> to execute the contents of the cell and create a new cell underneath.
+   From now on, remember that you need to press <kbd>Alt</kbd>+<kbd>Enter</kbd> to execute each cell.
    
 4. Review the content of the loaded `Dataset`
    
@@ -182,37 +187,47 @@ Learn more about our Notebook Service:
    in order to specify calculating the max and min only over the time axis. Calculate two new 
    variables:
 
-       daily_max = ds.t2m.max(axis=0)
-       daily_min = ds.t2m.min(axis=0)
+    ```python
+    daily_max = ds.t2m.max(axis=0)
+    daily_min = ds.t2m.min(axis=0)
+    ```
 
    Check the `shape` attribute of the `daily_max` and `daily_min` variables to ensure they are 2D 
    (i.e. time has been removed).
 
-       daily_max.shape, daily_min.shape
+    ```python
+    daily_max.shape, daily_min.shape
+    ```
    
 6. Plot the daily maximum and minimum
 
-   Typically, in a Notebook environment, you need this line before trying to view plots inline.
+   Typically, in a Notebook environment, you need this line before trying to view plots inline. But you don't need to do this in the JASMIN Notebooks Service.
 
        %matplotlib inline
 
    The `daily_max` and `daily_min` variables now both have a `plot()` method. You can plot each of them 
    individually.
 
-       daily_max.plot()
+    ```python
+    daily_max.plot()
+    ```
 
    ...and...
 
-       daily_min.plot()
+    ```python
+    daily_min.plot()
+    ```
 
    You can even plot a map of the difference between them with:
 
-       diff = daily_max - daily_min
-       diff.plot()
+    ```python
+    diff = daily_max - daily_min
+    diff.plot()
+    ```
 
-   This should look like:
+    This should look like:
 
-   ![Map of temp difference](./images/diff_map.png)
+    ![Map of temp difference](./images/diff_map.png)
    
 7. Write the outputs to your JASMIN `$HOME` directory
 
@@ -221,17 +236,21 @@ Learn more about our Notebook Service:
 
    Create an `outputs` directory in your `$HOME` directory
 
-       import os
-       output_dir = f"{os.environ['HOME']}/outputs"
+    ```python
+    import os
+    output_dir = f"{os.environ['HOME']}/outputs"
 
-       if not os.path.isdir(output_dir):
-           os.makedirs(output_dir)
+    if not os.path.isdir(output_dir):
+        os.makedirs(output_dir)
+    ```
 
    Write the `daily_max` and `daily_min` variables to NetCDF files, using the `to_netcdf()` method on 
    each variable. The method requires the output file path as the argument.
 
-       daily_max.to_netcdf(f"{output_dir}/max_t2m.nc")
-       daily_min.to_netcdf(f"{output_dir}/min_t2m.nc")
+    ```python
+    daily_max.to_netcdf(f"{output_dir}/max_t2m.nc")
+    daily_min.to_netcdf(f"{output_dir}/min_t2m.nc")
+    ```
    
 8. Add inline documentation
 
@@ -241,9 +260,9 @@ Learn more about our Notebook Service:
    For each cell, you can select either "Code", "Markdown" or "Raw" in the toolbar at the top of the
    notebook. If you select "Markdown", then the cell is no longer interpreted as Python code. Instead,
    it is interpreted as a mark-up language called `markdown`. This allows sophisticated formatting of
-   text, images, code blocks etc., as described here:
-
-   https://guides.github.com/features/mastering-markdown/
+   text, images, code blocks, etc.
+   
+   GitHub has a [documentation page](https://guides.github.com/features/mastering-markdown/) describing some of the main features you can use with Markdown.
 
    In order to add Markdown cells to an existing notebook, click on the cell above the one you wish to
    annotate, then click the `+` button on the toolbar. Then change the cell format to "Markdown" in the
@@ -251,7 +270,7 @@ Learn more about our Notebook Service:
 
    ![Toolbar](./images/select_cell_format.png)
 
-   Once you have completed the content, press `Shift+Enter` to see the formatted version. If you need to edit a formatted cell, just double-click into it.
+   Once you have completed the content, press <kbd>Shift</kbd>+<kbd>Enter</kbd> to see the formatted version. If you need to edit a formatted cell, just double-click into it.
 
    Here is an example cell shown first in `markdown` format...
 
@@ -277,14 +296,16 @@ To delete a cell, select the cell by clicking to the left of it (i.e. by `[2]` i
 
 ![Select a cell](./images/delete_cell.png)
 
-Once the cell is selected, press "dd" on the keyboard and the cell will disappear.
+Once the cell is selected, press the <kbd>d</kbd> key twice on the keyboard and the cell will disappear.
 
 >  * Execute a cell with different outcomes
 
 You can control what happens when you execute a cell, as follows:
- * `Shift+Enter` - which executes the cell and moves to the next one.
+ * <kbd>Shift</kbd>+<kbd>Enter</kbd> - which executes the cell and moves to the next one.
                    If there isn't one below, it creates a new one for you.
- * `Ctrl+Enter`  - which executes the cell (and stays focussed on the current cell).
- * `Alt+Enter`   - which executes the cell and creates a new one for you.
+ * <kbd>Ctrl</kbd>+<kbd>Enter</kbd> - which executes the cell (and stays focussed on the current cell).
+    * This is <kbd>Cmd (⌘)</kbd>+<kbd>Enter</kbd> on Mac.
+ * <kbd>Alt</kbd>+<kbd>Enter</kbd> - which executes the cell and creates a new one for you.
+    * This is <kbd>Option (⌥)</kbd>+<kbd>Enter</kbd> on Mac.
 
 Clicking the `+` button in the toolbar will insert an empty cell below the currently selected cell.
