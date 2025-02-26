@@ -15,7 +15,7 @@ After completing this exercise I will be able to:
 
 - **execute** a computing task on the sci machine from a command line
 - **monitor** CPU and memory resources usage of my computing task
-- **understand** the modules environemnt e.g. JASPY and software on JASMIN
+- **understand** the modules environment e.g. JASPY and software on JASMIN
 - **learn** about the capabilities and limitations of the scientific analysis servers
 
 ### JASMIN resources
@@ -48,7 +48,7 @@ This is the outline of what you need to do. The recommended way of doing each st
 3. Execute the first Python example script on the sci server
    - Copy the first Python example script `random-number-gen.py`(shown in the JASMIN resources section) to your current working directory
    - Find out the software available on JASMIN via the module environment by executing the command `module avail`
-   - Enable a Python environemnt using the `jaspy` module by executing the command `module add jaspy`
+   - Enable a Python environment using the `jaspy` module by executing the command `module add jaspy`
    - Execute the command `python random-number-gen.py`
    - Check the process ID (pid), state, memory and CPU usage on the monitoring terminal
    - What is the CPU and memory used by the process during Run and Sleep state?
@@ -148,7 +148,7 @@ Usage of the storage:
 
 1. Execute the Python example script on the sci server
 
-   - Enable a Python environemnt via the module `jaspy` by executing  the command `module add jaspy`
+   - Enable a Python environment via the module `jaspy` by executing  the command `module add jaspy`
 
    ```bash
    $ module add jaspy
