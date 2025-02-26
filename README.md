@@ -10,7 +10,7 @@ Overview presentation
 
 | Slides with speaker's notes |
 | --- |
-[![](https://img.youtube.com/vi/HQjRDtgW3Fg/mqdefault.jpg )](https://docs.google.com/presentation/d/1OucWRi8oJ1kFcRNB7-IV0o2tW-B3ctLk39wjR-YPCP4/edit?usp=sharing)
+[![](https://img.youtube.com/vi/HQjRDtgW3Fg/mqdefault.jpg )](https://docs.google.com/presentation/d/1yk8Bwd0KknjsISejBEA_UpM3Nwm4Xj9fqgxbu71K2PQ/edit?usp=sharing)
 | (slides updated October 2024) |
 
 | Exercise | Topic |
