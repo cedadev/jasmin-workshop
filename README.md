@@ -11,7 +11,7 @@ Overview presentation
 | Slides with speaker's notes |
 | --- |
 [![](https://img.youtube.com/vi/HQjRDtgW3Fg/mqdefault.jpg )](https://docs.google.com/presentation/d/1yk8Bwd0KknjsISejBEA_UpM3Nwm4Xj9fqgxbu71K2PQ/edit?usp=sharing)
-| (slides updated October 2024) |
+| (slides updated February 2025) |
 
 | Exercise | Topic |
 | --- | --- |
