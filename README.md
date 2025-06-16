@@ -21,13 +21,11 @@ Overview presentation
 | [ex03](./exercises/ex03) | Transferring and sharing data |
 | [ex04](./exercises/ex04) | Extracting a variable from a file in the CEDA Archive |
 | [ex05](./exercises/ex05) | Batch computing - running a script on LOTUS |
-| ex06 | coming soon: Choosing the right storage for your workflow |
-| [ex07](./exercises/ex07) | Building your own python 3 environment |
+| [ex07](./exercises/ex07) | Building your own Python 3 environment |
 | [ex08](./exercises/ex08) | Compiling Fortran/C code on JASMIN |
 | [ex09](./exercises/ex09) | Using Jupyter Notebooks on JASMIN |
-| ex10 | coming soon: Advanced data transfers |
 | [ex11](./exercises/ex11) | MPI on JASMIN |
-| ex12 | coming soon: using R on JASMIN |
+
 
 <br>
 
@@ -38,6 +36,16 @@ The following tutorials are also available: these are not interactive like the e
 | tut01 | coming soon: Re-useable, re-runnable workflows |
 | [tut02](./tutorials/tut02) | Managing a multi-step workflow |
 
-If you are using the materials individually (outside of an organised workshop event) then you will need to use your own JASMIN account and a group workspace which you already belong to, rather than the training accounts, and `workshop` group workspace, respectively. Instead of the `workshop` LOTUS queue, please use the `test` queue in this case.
+The following advanced training exercises are a work in progress:
+
+| Exercise | Topic |
+| --- | --- |
+| ex06 | coming soon: Choosing the right storage for your workflow |
+| ex10 | coming soon: Advanced data transfers |
+| ex12 | coming soon: using R on JASMIN |
+
+<br>
+
+If you are using the materials individually (outside of an organised workshop event) then you will need to use your own JASMIN account and a group workspace which you already belong to, rather than the training accounts, and `workshop` group workspace, respectively. Instead of the `workshop` LOTUS account and QoS, please use the account of a group workspace you belong to and the `debug` QoS in this case.
 
 
