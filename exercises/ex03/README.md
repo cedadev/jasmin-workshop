@@ -57,6 +57,7 @@ We have looked at some basic methods suitable for small datasets or where speed 
 
 * In addition to `scp`, alternative tools `sftp` and `rsync` also enable simple data transfer.
 * We have seen that `rsync` can be used to synchronise a local and remote directory: it can be configured to only copy those data that are new or have changed: more efficient if you're running it repeatedly.
+  * `rsync` is not pre-installed on Windows, so instead of trying it out between your local machine and JASMIN, you could try `rsync` between two JASMIN machines.
 * `sftp` is very useful and is also the underlying protocol used in many third-party tools.
 * [rclone](https://rclone.org) can be configured to interace with various storage backends, including an SFTP server (like the transfer server used above), and can do synchronisation like `rsync`. It also talks to a whole variety of other storage backends such as cloud and object storage.
 * Please **don't** install DropBox or other file-sharing software on JASMIN.
