@@ -26,7 +26,7 @@ Let's get started...
 
 ## 1. Common instructions: downloading credentials
 
-(Click the arrow to expand the set of instructions)
+Click the arrow to expand the set of instructions.
 
 <details>
    <summary id="downloading">Downloading the credentials sent to your registered email</summary>
@@ -36,7 +36,7 @@ Let's get started...
    - Follow the link in the email from the JASMIN Team to provision your account on the JASMIN Accounts Portal.
    - **This is a one-time link** for secure credentials sharing! If you close the tab after clicking the link **your credentials will be lost**, even if you click on the link in the email again.
    - You should reach a page showing four important parts of your training account, like the image below.
-   
+
    ![training account provisioning page](images/Provision-your-training-account.png)
    - Open a plain-text editor (e.g. Notepad on Windows, TextEdit on Mac) and paste these first three details into a text file to keep them safe:
       - Username
