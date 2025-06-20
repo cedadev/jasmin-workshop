@@ -20,7 +20,7 @@ After completing this exercise I will be able to:
 
 - JASMIN account with SSH public key uploaded and `jasmin-login` privilege
 - login servers: `login-0[1-4].jasmin.ac.uk`
-- sci servers: `sci-vm-[1-6].jasmin.ac.uk`
+- sci servers: `sci-vm-0[1-6].jasmin.ac.uk`, `sci-ph-0[1-3]`
 - LOTUS batch processing cluster
 - common software: CDO (Climate Data Operators) tool
 - GWS (read/write): `/gws/pw/j07/workshop`
@@ -115,9 +115,9 @@ This demonstrates best practice:
 
 1. Your starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
 
-1. SSH to a scientific analysis server
+1. SSH to a scientific analysis server ([see above](#jasmin-resources))
 
-        ssh sci-vm-01.jasmin.ac.uk # Could use any of sci[1-6]
+        ssh sci-vm-01.jasmin.ac.uk
 
 1. Write an "`extract-era-data.sh`" wrapper script that calls the CDO extraction command, that:
     1. Takes a date string ("`YYYYMMDD`") as a command-line argument
@@ -144,7 +144,7 @@ This demonstrates best practice:
     1. Estimated duration - to hint the actual run-time of the job, e.g.: "`00:01`" (1 min)
         1. Setting a low estimate will increase the likelihood of the job being scheduled to run quickly.
 
-    1. The Help page on submitting LOTUS jobs is here:
+    1. The help page on submitting LOTUS jobs is here:
         [https://help.jasmin.ac.uk/article/4890-how-to-submit-a-job-to-slurm](https://help.jasmin.ac.uk/article/4890-how-to-submit-a-job-to-slurm)
 
     1. And use the "`sbatch`" command to submit each job.
@@ -173,17 +173,17 @@ This demonstrates best practice:
 
             scancel <job_id>
 
-#1. Job arrays are groups of jobs with the same executable and resource requirements, but different input files. Job arrays can be submitted, controlled, and monitored as #a single unit or as individual jobs or groups of jobs. Each job submitted from a job array shares the same job ID as the job array and is uniquely referenced using an #array index. This approach is useful for ‘high throughput’ tasks, for example where you want to run your simulation with different driving data or run the same #processing task on multiple data files.
+<!-- 1. Job arrays are groups of jobs with the same executable and resource requirements, but different input files. Job arrays can be submitted, controlled, and monitored as #a single unit or as individual jobs or groups of jobs. Each job submitted from a job array shares the same job ID as the job array and is uniquely referenced using an #array index. This approach is useful for ‘high throughput’ tasks, for example where you want to run your simulation with different driving data or run the same #processing task on multiple data files.
 
-#2. Copy the two Bash scripts  `extract-day.sh` and `extract-days-array.sh` to your home directory or to a GWS
-#3. Submit the job array:
+2. Copy the two Bash scripts  `extract-day.sh` and `extract-days-array.sh` to your home directory or to a GWS
+3. Submit the job array:
    ```
-#       sbatch extract-days-array.sh 
-#        Submitted batch job 50254437
-#        squeue -u train049
-#             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-#   50254437_[1-30]  workshop ex05_tes train049 PD       0:00      1 (None)
-   ```
+       sbatch extract-days-array.sh 
+        Submitted batch job 50254437
+        squeue -u train049
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+   50254437_[1-30]  workshop ex05_tes train049 PD       0:00      1 (None)
+   ``` -->
 
 
            
