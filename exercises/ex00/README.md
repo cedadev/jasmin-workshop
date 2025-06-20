@@ -34,14 +34,15 @@ Let's get started...
    - Locate the email sent by the JASMIN Accounts Portal. It should have `[jasmin-accounts] JASMIN Training Account Created` in the subject line.
       - If you can't find the email, search for this subject in your emails, but also check your spam/junk folders before asking for help.
    - Follow the link in the email from the JASMIN Team to provision your account on the JASMIN Accounts Portal.
-   - Please note, **this page can only be shown once**, even if you click on the link in the email again.
-   - You should reach a page showing four important parts of your training account:
+   - Please note, **this is a one-time link**. If you close the tab after clicking the link **your credentials will be lost**, even if you click on the link in the email again.
+   - You should reach a page showing four important parts of your training account, like the image below.
+   
+   ![training account provisioning page](images/Provision-your-training-account.png)
+   - Open a plain-text editor (e.g. Notepad on Windows, TextEdit on Mac) and paste these first three details into a text file to keep them safe:
       - Username
       - Accounts Portal Password
       - SSH Key Passphrase
-      - SSH Private Key
-   - Open a plain-text editor (e.g. Notepad on Windows, TextEdit on Mac) and paste the first three into a text file called to keep them safe.
-   - Click the "Download" link next to the SSH Private Key. It will save as `id_ecdsa` - please don't rename it, unless you have already used SSH and have an SSH keypair with the same name.
+   - Click the "Download" link next to the SSH Private Key. It will save the private key as `id_ecdsa` without a file extension - please don't rename it, unless you have already used SSH and have an SSH keypair with the same name.
    - Keep this file in your Downloads folder for now.
 
 </details>
