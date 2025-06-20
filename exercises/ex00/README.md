@@ -24,24 +24,26 @@ These instructions are in 3 parts:
 
 Let's get started...
 
-## 1. Common instructions: extracting credentials
+## 1. Common instructions: downloading credentials
 
 (Click the arrow to expand the set of instructions)
 
 <details>
-   <summary id="extracting">Extracting the credentials sent to your registered email</summary>
+   <summary id="downloading">Downloading the credentials sent to your registered email</summary>
 
-   - Locate the email sent by the JASMIN team using OneDrive. It should have "shared the folder" in the subject line.
-      - If you can't find the email, search for "shared the folder" in your emails, but also check your spam/junk folders before asking for help.
-   - Follow the "Open" link in the email from the JASMIN Team.
-   - It may ask you to comfirm the email address and enter a verification code: follow the instructions.
-   - You should eventually reach an online view of the folder containing the 4 credential file(s)
-      - `username`
-      - `passphrase`
-      - `id_edcsa_jasmin_training`
-      - `id_edcsa_jasmin_training.pub`
-   - Save each of these locally: hover over each item, a 3-dot menu should appear with a "Download" option. Use that to download the file to your default downloads location. We can move the files from there later.
-   - It's easiest to download each file separately, otherwise they'll get put into a zip file from where you'll have to extract them individually.
+   - Locate the email sent by the JASMIN Accounts Portal. It should have `[jasmin-accounts] JASMIN Training Account Created` in the subject line.
+      - If you can't find the email, search for this subject in your emails, but also check your spam/junk folders before asking for help.
+   - Follow the link in the email from the JASMIN Team to provision your account on the JASMIN Accounts Portal.
+   - Please note, **this page can only be shown once**, even if you click on the link in the email again.
+   - You should reach a page showing four important parts of your training account:
+      - Username
+      - Accounts Portal Password
+      - SSH Key Passphrase
+      - SSH Private Key
+   - Open a plain-text editor (e.g. Notepad on Windows, TextEdit on Mac) and paste the first three into a text file called to keep them safe.
+   - Click the "Download" link next to the SSH Private Key. It will save as `id_ecdsa` - please don't rename it, unless you have already used SSH and have an SSH keypair with the same name.
+   - Keep this file in your Downloads folder for now.
+
 </details>
 
 ## 2. Specific instructions: setting up your environment
@@ -97,11 +99,11 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
      ```powershell
      md "$env:UserProfile\.ssh"
      ```
-     then move the file `id_ecdsa_jasmin_training` key file from the Downloads folder to this directory.
+     then move the file `id_ecdsa` key file from the Downloads folder to this directory.
      ```powershell
-     mv "$env:UserProfile\Downloads\id_ecdsa_jasmin_training" "$env:UserProfile\.ssh\"
+     mv "$env:UserProfile\Downloads\id_ecdsa" "$env:UserProfile\.ssh\"
      ```
-   - Try opening the `username` and `passphrase` files in a text editor (e.g. Notepad): you'll need them shortly.
+   - Open the text file with the credentials you saved in Part 1: you'll need them shortly.
    - Check that the `ssh-agent` service is running
      ```powershell
      Get-Service ssh-agent
@@ -113,9 +115,9 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
      ```
    - Load your key into the agent
      ```powershell
-     ssh-add "$env:UserProfile\.ssh\id_ecdsa_jasmin_training"
+     ssh-add "$env:UserProfile\.ssh\id_ecdsa"
      ```
-     You'll be asked for the passphrase: copy and paste this (right-click in the PowerShell window, the text will not be displayed), then press return.
+     You'll be asked for the passphrase from the credentials: copy and paste this (right-click in the PowerShell window, the text will not be displayed), then press return.
    - Check that you have your key loaded.
      ```powershell
      ssh-add -l
@@ -128,13 +130,11 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
 
    <summary id="windows">Windows instructions: option 2</summary>
 
-   - Move the 2 `id_ecdsa_jasmin_training*` key files from the Downloads folder. The `username` and `passphrase` files can stay where they are.
-     - create an empty folder called `ssh` to put these files in: perhaps on your Desktop, but it's up to you.
-     - use File Explorer to drag & drop the 2 key files from the Downloads folder to the folder you just made.
-     - don't try to open either of the `id_ecdsa_jasmin_training*` files: they're not meant to be readable.
-     - try opening the `username` and `passphrase` files in a text editor (e.g. Notepad): you'll need them shortly.
+   - Locate the `id_ecdsa` private key file from the Downloads folder.
+     - don't try to open the `id_ecdsa` file: it's not meant to be readable.
+   - Open the text file with the credentials you saved in Part 1: you'll need them shortly.
 
-   - Option 2: Download and install "MobaXterm"
+   - Download and install "MobaXterm"
    
      This is an emulator of the terminal environment (Mac and Linux have this environment built-in), and provides the tools you need to connect. There are other options, but we'd recommend this one if you want us to help you with any problems.
 
@@ -145,7 +145,7 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
        - right-click the downloaded zip file and choose "extract all"
        - run the installer, then follow the instructions.
 
-   - Open Mobaxterm, and follow the steps in this video to load your private key and check it's loaded in a terminal session.
+   - Open MobaXterm, and follow the steps in this video to load your private key and check it's loaded in a terminal session.
      - [![mobaxterm setup (video)](https://img.youtube.com/vi/qm8PcD24Xsc/0.jpg)](https://youtu.be/qm8PcD24Xsc)
 
 </details>
@@ -155,7 +155,7 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
 
   In the Mac or Linux environments, it's best to put your SSH-related files in a standard place. This is a directory called `.ssh` in your home directory (the `.` means it's hidden).
 
-
+  - open the text file with the credentials you saved in Part 1: you'll need them shortly.
   - open the `Terminal` utility (use the search in the top menu bar to find this if you haven't used it before)
   - this should open a command-line terminal, starting in your home directory. The shorthand for your home directory is `~/`
 
@@ -177,16 +177,16 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
   chmod 700 ~/.ssh
   ```
 
-  Now, move the 2 key files `id_ecdsa_jasmin_training*` from your download location (where your browser puts downloaded files) to the directory you just created. The `username` and `passphrase` files can stay where they are.
+  Now, move the SSH private key `id_ecdsa` from your download location (where your browser puts downloaded files) to the directory you just created.
 
   ```
-  mv ~/Downloads/id_ecdsa_jasmin_training* ~/.ssh/
+  mv ~/Downloads/id_ecdsa ~/.ssh/
   ```
 
-  Set the permissions on these files to be only read/writable by you:
+  Set the permissions on this file to be only read/writable by you:
 
   ```
-  chmod 600 ~/.ssh/id_ecdsa_jasmin_training*
+  chmod 600 ~/.ssh/id_ecdsa
   ```
 
   Now, check whether you have an SSH-agent running:
@@ -211,12 +211,10 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
   You're now able to load your private key, as follows:
 
   ```
-  ssh-add ~/.ssh/id_ecdsa_jasmin_training
+  ssh-add ~/.ssh/id_ecdsa
   ```
 
-  Note that it's the private key file (without the `.pub`) extension, that we're loading here.
-
-  You will be prompted for your passphrase: don't try and type it in, copy and paste it from the `passphrase` file which you should have open in a text editor. Similarly, your `username` will be in the corresponding file, where you downloaded it. You can usually paste by <kbd>CTRL</kbd>+<kbd>V</kbd> or by right-clicking and choosing "paste", but this may vary depending on your system.
+  You will be prompted for your passphrase: don't try and type it in, copy and paste it from credentials file which you should have open in a text editor. You can usually paste with <kbd>Cmd (⌘)</kbd>+<kbd>V</kbd> on Mac, <kbd>CTRL</kbd>+<kbd>V</kbd> on Linux, or by right-clicking and choosing "Paste", but this may vary depending on your system and terminal.
 
   Be careful not to copy any whitespace either side of the passphrase.
   
@@ -226,7 +224,7 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
 
    ```
    ssh-add -l
-   521 SHA256:ZeddNKK5U3am1vyCaUCq4CgMRpvoyv+cJiviqz3zvfw ~/.ssh/id_ecdsa_jasmin_training (ECDSA)
+   521 SHA256:ZeddNKK5U3am1vyCaUCq4CgMRpvoyv+cJiviqz3zvfw ~/.ssh/id_ecdsa (ECDSA)
    ```
 
    If you don't see this, go back and check the steps above carefully before asking for help.
@@ -244,7 +242,7 @@ ssh-add -l
 You should see your key fingerprint, i.e. something like this:
 
 ```
-521 SHA256:ZeddNKK5U3am1vyCaUCq4CgMRpvoyv+cJiviqz3zvfw ~/.ssh/id_ecdsa_jasmin_training (ECDSA)
+521 SHA256:ZeddNKK5U3am1vyCaUCq4CgMRpvoyv+cJiviqz3zvfw ~/.ssh/id_ecdsa (ECDSA)
 ```
 
 Now try a connection to `login-01.jasmin.ac.uk`, replacing `USERNAME` with the name of your training account:
@@ -300,13 +298,14 @@ If not, check through the FAQ below, and make sure you've done everything as per
    </summary>
 
    - make sure you are checking in the email account which you gave to the course organisers: the training account will be set up with this email address.
-   - make sure you have searched for "shared the folder" in your email application. Sometimes emails from OneDrive get hidden.
-   - make sure you have checked your spam/junk folders
+   - make sure you have searched for "JASMIN Training Account" in your email application.
+   - make sure you have checked your spam/junk folders.
    - ask your course organiser for help if you still can't find it: it should be possible to get it re-sent.
 
 </details>
 
-<details>
+<!-- We can delete this if training account credentials no longer provide the public key -->
+<!-- <details>
 
    <summary>
    
@@ -316,7 +315,7 @@ If not, check through the FAQ below, and make sure you've done everything as per
 
    That's OK. It's not a file that you need to open. The `.pub` file extension is sometimes recognised by Windows as a Microsoft Publisher file, but this one isn't: it's your public key (part of your public/private key pair).
 
-</details>
+</details> -->
 
 <details>
 
@@ -327,13 +326,15 @@ If not, check through the FAQ below, and make sure you've done everything as per
    </summary>
 
    If you see a message like the following, this means that you need to restrict the permissions on your key file so that only you (and no other users on your system) can read your key.
-   This is usually solved by a) moving the file to the standard location (this matters, particularly on Windows) and b) changing its permissions.
+   This is usually solved by:
+   - a) moving the file to the standard location (this matters, particularly on Windows) and
+   - b) changing its permissions.
 
    ```
    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
    @         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-   Permissions 0644 for 'id_ecdsa_jasmin_training' are too open.
+   Permissions 0644 for 'id_ecdsa' are too open.
    It is required that your private key files are NOT accessible by others.
    This private key will be ignored.
 
@@ -366,7 +367,7 @@ If not, check through the FAQ below, and make sure you've done everything as per
 
   This means that you don't have an SSH-agent running, so there isn't an agent to load your key into.
 
-  For Windows/Mobaxterm, review the setup video to make sure you've got the key loaded correctly.
+  For Windows/MobaXterm, review the setup video to make sure you've got the key loaded correctly.
 
 
   For Mac/Linux, you may need to run the following command to start the agent:
