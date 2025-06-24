@@ -33,8 +33,10 @@ Click the arrow to expand the set of instructions.
 
    - Locate the email sent by the JASMIN Accounts Portal. It should have `[jasmin-accounts] JASMIN Training Account Created` in the subject line.
       - If you can't find the email, search for this subject in your emails, but also check your spam/junk folders before asking for help.
-   - Follow the link in the email from the JASMIN Team to provision your account on the JASMIN Accounts Portal.
-   - **This is a one-time link** for secure credentials sharing! If you close the tab after clicking the link **your credentials will be lost**, even if you click on the link in the email again.
+   - Follow the link in this email from the JASMIN Accounts Portal to provision your training account.
+   - Enter the event password, which the JASMIN Team will have sent you separately in the joining instructions.
+   - The training account will be set up upon entering the event password and clicking submit. Then, a new webpage is displayed with the training credentials.
+   - **This is a one-time link** for secure credentials sharing! If you close the tab after entering the event password, **your credentials will be lost**, even if you click on the link in the email again.
    - You should reach a page showing four important parts of your training account, like the image below.
 
    ![training account provisioning page](images/Provision-your-training-account.png)
