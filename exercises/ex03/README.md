@@ -144,7 +144,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
     We have set out the GWS so that it has a directory called `users` where you can make your own sub-directories
     for working through these exercises.
-    This helps keep things orgnanised. Make a directory for yourself, named as per your account
+    This helps keep things organised. Make a directory for yourself, named as per your account
     username:
     
     <table>
