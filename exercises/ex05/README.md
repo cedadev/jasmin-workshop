@@ -67,12 +67,13 @@ This exercise demonstrates how to:
 1. Define the command-line arguments for the `sbatch` command.
 1. Use other Slurm commands, such as `squeue` (to monitor progress) and `scancel` (to cancel jobs).
 
-Alternative approaches could include:
+#### Alternative approaches:
+
 1. Write the output to a `scratch` directory
     1. There are two main scenarios in which you might write the output to a scratch directory:
         1. You only need to store the output file for temporary use (such as intermediate files in your workflow).
         1. You want to write outputs to scratch before moving them to a GWS.
-    2. The Help page ([https://help.jasmin.ac.uk/article/176-storage#diskmount](https://help.jasmin.ac.uk/article/176-storage#diskmount)) tells us that there are two types of scratch space:
+    2. The [help page about storage on JASMIN](https://help.jasmin.ac.uk/docs/getting-started/storage/#jasmin-disk-mounts) tells us that there are two types of scratch space:
         1. `/work/scratch-pw2` – supports parallel writes (large, parallel file system scratch)
         1. `/work/scratch-nopw2` – does NOT support parallel writes (smaller SSD-based scratch)
     3.   Since we do not need parallel write capability, we can use the `nopw` version.
@@ -89,17 +90,18 @@ Alternative approaches could include:
     6.   When you have finished with the file, tidy up (good practice).
 
         rm $OUTPUT_FILE
- 
-    7.   Do not leave data on the "scratch" areas when you have finished your workflow.
-        1.   Please remove any temporary files/directories that you have created.
-        1.   You cannot rely on the data persisting in the "scratch" areas.
+    
+    7. Do not leave data on the "scratch" areas when you have finished your workflow.
+        1. Please remove any temporary files/directories that you have created.
+        1. You cannot rely on the data persisting in the "scratch" areas.
 
 2. Specify the memory requirements of your job:
     1. If your job has a significant memory footprint:
         1.   Run a single iteration on LOTUS and review the standard output file to examine the memory usage.
         1.   You can then reserve a memory allocation when you submit your subsequent jobs.
 
-This demonstrates best practice:
+#### Best practice
+
 1. Build up in stages before running your full workflow on LOTUS:
     1. Check your code - is it _really_ doing what you think it is doing?
     1. Run locally (on a `sci` server) for one iteration.
@@ -130,7 +132,7 @@ This demonstrates best practice:
 
         `/gws/pw/j07/workshop/exercises/ex05/code/extract-era-data.sh`
 
-        [ Source: [https://github.com/cedadev/jasmin-workshop/blob/master/exercises/ex05/code/extract-era-data.sh](https://github.com/cedadev/jasmin-workshop/blob/master/exercises/ex05/code/extract-era-data.sh) ]
+        Source file: [ex05/code/extract-era-data.sh](../ex05/code/extract-era-data.sh)
 
 1. Write a script, called "`submit-all.sh`", to loop over dates from 01/09/2018 to 02/09/2018 and submit the "`extract-era-data.sh`" script to LOTUS for each day:
 
@@ -144,16 +146,15 @@ This demonstrates best practice:
     1. Estimated duration - to hint the actual run-time of the job, e.g.: "`00:01`" (1 min)
         1. Setting a low estimate will increase the likelihood of the job being scheduled to run quickly.
 
-    1. The help page on submitting LOTUS jobs is here:
-        [https://help.jasmin.ac.uk/article/4890-how-to-submit-a-job-to-slurm](https://help.jasmin.ac.uk/article/4890-how-to-submit-a-job-to-slurm)
+    1. Have a look at [the help page on submitting LOTUS jobs](https://help.jasmin.ac.uk/article/4890-how-to-submit-a-job-to-slurm) for more options
 
-    1. And use the "`sbatch`" command to submit each job.
+    1. Use the "`sbatch`" command to submit each job.
 
     1. If you need some advice you can use the script at:
 
         `/gws/pw/j07/workshop/exercises/ex05/code/submit-all.sh`
 
-        [ Source: [https://github.com/cedadev/jasmin-workshop/blob/master/exercises/ex05/code/submit-all.sh](https://github.com/cedadev/jasmin-workshop/blob/master/exercises/ex05/code/submit-all.sh) ]
+        Source file: [ex05/code/submit-all.sh](../ex05/code/submit-all.sh)
 
 1. Run the "`submit-all.sh`" script
 
