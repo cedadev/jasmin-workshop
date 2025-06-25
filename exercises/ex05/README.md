@@ -46,14 +46,14 @@ This is the outline of what you need to do. The recommended way of doing each st
 1. Re-run the "`submit-all.sh`" script
 1. Examine which jobs are in the queue
 1. Kill one of the jobs - just to see how it is done
-#2. Job array submission
+<!-- 2. Job array submission -->
 
 ### Questions to test yourself
 
 All too easy? Here are some questions to test your knowledge an understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk)
 
 1. You have learnt about some basic commands to interact with Slurm scheduler (such as `sbatch` and `squeue`). This manages the submission and execution of jobs via the LOTUS queues. Which other commands might be useful when interacting with the scheduler? 
-2. Which queues are available on LOTUS? What is the difference between them? Why would you choose one over another?
+2. Which partitions and QoSs are available on LOTUS? What is the difference between them? Why would you choose one over another?
 3. How can you instruct Slurm to allocate CPUs and memory to specific jobs when you run them? Can you change the allocations when the job is queuing? 
 4. How can you cancel all your jobs in the Slurm queue?
 
@@ -139,9 +139,9 @@ This exercise demonstrates how to:
     1. You should define the following LOTUS directives:
         1. Standard output file - please ensure this is unique to each job by including the "`%j`" variable in the file name.
         1. Standard error file - please ensure this is unique to each job by including the "`%j`" variable in the file name.
-    1. Queue name:
-        1. We will use the main queue for quick serial jobs: `short-serial`
-        1. NOTE: if working with a training account, you might need: `--account=workshop --partition=workshop` in your arguments.
+    1. Partition and QoS:
+        1. You will need `--account=workshop --partition=standard --qos=workshop` in your arguments.
+        2. NOTE: if you are not working with a training account, use the `standard` partition and `short` QoS for quick serial jobs: `--account=mygws --partition=standard --qos=short`
     1. Job duration - to allocate a maximum run-time to the job, e.g.: "`00:05`" (5 mins)
     1. Estimated duration - to hint the actual run-time of the job, e.g.: "`00:01`" (1 min)
         1. Setting a low estimate will increase the likelihood of the job being scheduled to run quickly.
@@ -193,15 +193,16 @@ This exercise demonstrates how to:
 
 >  1. You have learnt about some basic commands to interact with Slurm scheduler (such as `sbatch` and `squeue`). This manages the submission and execution of jobs via the LOTUS queues. Which other commands might be useful when interacting with the scheduler? 
 
-Table 3 of this [help page](https://help.jasmin.ac.uk/article/4891-lsf-to-slurm-quick-reference) shows other Slurm commands, such as `scancel` and `scontrol`. You can find out more by typing `man <command>` at the command-line, e.g.: `man scancel`.
+There is a section in our [Slurm quick reference help page](https://help.jasmin.ac.uk/docs/batch-computing/slurm-quick-reference/#job-control-commands) which shows other Slurm commands, such as `scancel` and `scontrol`. You can find out more by typing `man <command>` at the command-line, e.g.: `man scancel`.
 
-> 2. Which queues are available on LOTUS? What is the difference between them? Why would you choose one over another?
+> 2. Which partitions and QoSs are available on LOTUS? What is the difference between them? Why would you choose one over another?
 
-There is a [LOTUS queues help page](https://help.jasmin.ac.uk/article/4881-lotus-queues) which explains the capabilities of each Slurm queue.
+<!--There is a [LOTUS queues help page](https://help.jasmin.ac.uk/article/4881-lotus-queues) which explains the capabilities of each Slurm queue. -->
+There is a section in our [help page about how to submit a job](https://help.jasmin.ac.uk/docs/batch-computing/how-to-submit-a-job/#partitions-and-qos) which explains the capabilities of each partitions and QoS.
 
 > 3. How can you instruct Slurm to allocate CPUs and memory to specific jobs when you run them? 
 
-Table 2 of this [help page](https://help.jasmin.ac.uk/article/4891-lsf-to-slurm-quick-reference) lists common command-line parameters that can be used to instruct Slurm how to allocate CPUs, memory and hosts to certain jobs.
+The [Slurm quick reference help page](https://help.jasmin.ac.uk/docs/batch-computing/slurm-quick-reference/) lists common command-line parameters that can be used to instruct Slurm how to allocate CPUs, memory, and hosts to certain jobs.
 
 > 4. How can you cancel all your jobs in the Slurm queue?
 
