@@ -21,7 +21,7 @@ After completing this exercise I will be able to:
 ### JASMIN resources
 
 - Scientific analysis servers: `sci-vm-0[1-5].jasmin.ac.uk`, 
-- Group workspace: `/gws/pw/j07/workshop`
+- Group workspace (GWS): `/gws/pw/j07/workshop`
 - Example Python scripts are provided:
   - `/gws/pw/j07/workshop/exercises/ex02/code/random-number-gen.py`
   - `/gws/pw/j07/workshop/exercises/ex02/code/dot-product-2arrays.py`
@@ -88,8 +88,8 @@ You will be able to run and test a script on the scientific analysis servers. Yo
 What tasks I can not run on the Sci server?
 
 - Do not run processes with execution time over two hours
-- Do not run parallel applications e.g. MPI or OpenMP, high threaded codes on the Sci servers
-- Do not run data transfer processes on the sci servers. Please use a transfer server e.g. `xfer-vm-01.jasmin.ac.uk` (Except when moving data from `/work/scratch-pw[2,3]` to a GWS because `/work/scratch-pw[2,3]` are not mounted on the `xfer` servers)
+- Do not run parallel applications e.g. MPI or OpenMP, high threaded codes on the sci servers
+- Do not run data transfer processes on the sci servers. Please use a transfer server e.g. `xfer-vm-01.jasmin.ac.uk` (Except when moving data from `/work/scratch-pw[2,3]` to a GWS (group workspace) because `/work/scratch-pw[2,3]` are not mounted on the `xfer` servers)
 - Use the high memory scientific analysis servers `sci-ph-0[1,2].jasmin.ac.uk` for testing high memory or multithreaded code
 - Only test multi-threaded code on the high memory servers and limit the number of threads
 - It is necessary to consider moving a processing task to the batch system LOTUS when the resource demand is high, e.g. CPU, memory and processing time

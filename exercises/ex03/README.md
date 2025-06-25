@@ -7,7 +7,7 @@ author: Matt Pritchard
 
 ### Scenario
 
-I want to copy some code from my own machine to my home directory on JASMIN. I also want to copy some data to a Group Workspace on JASMIN so that I can share it with colleagues. My colleagues and I all belong to the `workshop` Group Workspace.
+I want to copy some code from my own machine to my home directory on JASMIN. I also want to copy some data to a Group Workspace on JASMIN so that I can share it with colleagues. My colleagues and I all belong to the `workshop` Group Workspace (GWS).
 
 ### Objectives
 
