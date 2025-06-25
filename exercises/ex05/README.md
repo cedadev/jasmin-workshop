@@ -20,7 +20,7 @@ After completing this exercise I will be able to:
 
 - JASMIN account with SSH public key uploaded and `jasmin-login` privilege
 - login servers: `login-0[1-4].jasmin.ac.uk`
-- sci servers: `sci-vm-0[1-6].jasmin.ac.uk`, `sci-ph-0[1-3]`
+- sci servers: `sci-vm-0[1-5].jasmin.ac.uk`, `sci-ph-0[1-3]`
 - LOTUS batch processing cluster
 - common software: CDO (Climate Data Operators) tool
 - GWS (read/write): `/gws/pw/j07/workshop`

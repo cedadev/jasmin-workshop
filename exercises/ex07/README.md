@@ -21,7 +21,7 @@ After completing this exercise I will be able to:
 
 - JASMIN account with SSH public key uploaded and `jasmin-login` privilege
 - login servers: `login-0[1-4].jasmin.ac.uk`
-- sci servers: `sci-vm-0[1-6].jasmin.ac.uk`
+- sci servers: `sci-vm-0[1-5].jasmin.ac.uk`, `sci-ph-0[1-3]`
 - help documentation at https://help.jasmin.ac.uk
 
 ### Local resources
