@@ -7,7 +7,7 @@ author: Ag Stephens
 
 ### Scenario
 
-Having established (in exercise 4) that I can extract the total cloud cover (`TCC`) variable from a single ERA-Interim file I now wish to extract that data from an entire month. I will write some simple scripts to batch up separate processes that run CDO to extract the `TCC` variable from a series of ERA-Interim files. Each run of the script will loop through 4 x 6-hourly files for one day. I will run it 30 times, once for each day in September 2018. Each run will be submitted to the LOTUS cluster.
+Having established (in [exercise 04](../ex04)) that I can extract the total cloud cover (`TCC`) variable from a single ERA-Interim file I now wish to extract that data from an entire month. I will write some simple scripts to batch up separate processes that run CDO to extract the `TCC` variable from a series of ERA-Interim files. Each run of the script will loop through 4 x 6-hourly files for one day. I will run it 30 times, once for each day in September 2018. Each run will be submitted to the LOTUS cluster.
 
 ### Objectives
 
@@ -52,10 +52,10 @@ This is the outline of what you need to do. The recommended way of doing each st
 
 All too easy? Here are some questions to test your knowledge an understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk)
 
-1. You have learnt about some basic commands to interact with SLURM scheduler (such as `sbatch` and `squeue`). This manages the submission and execution of jobs via the LOTUS queues. Which other commands might be useful when interacting with the scheduler? 
+1. You have learnt about some basic commands to interact with Slurm scheduler (such as `sbatch` and `squeue`). This manages the submission and execution of jobs via the LOTUS queues. Which other commands might be useful when interacting with the scheduler? 
 2. Which queues are available on LOTUS? What is the difference between them? Why would you choose one over another?
-3. How can you instruct SLURM to allocate CPUs and memory to specific jobs when you run them? Can you change the allocations when the job is queuing? 
-4. How can you cancel all your jobs in the SLURM queue?
+3. How can you instruct Slurm to allocate CPUs and memory to specific jobs when you run them? Can you change the allocations when the job is queuing? 
+4. How can you cancel all your jobs in the Slurm queue?
 
 ### Review / alternative approaches / best practice
 
@@ -65,7 +65,7 @@ This exercise demonstrates how to:
 1. Create a wrapper script that loops through all the components that need to be processed.
 1. Submit each component as a LOTUS job using the `sbatch` command.
 1. Define the command-line arguments for the `sbatch` command.
-1. Use other SLURM commands, such as `squeue` (to monitor progress) and `scancel` (to cancel jobs).
+1. Use other Slurm commands, such as `squeue` (to monitor progress) and `scancel` (to cancel jobs).
 
 Alternative approaches could include:
 1. Write the output to a `scratch` directory
@@ -190,19 +190,19 @@ This demonstrates best practice:
 
 ### Answers to questions
 
->  1. You have learnt about some basic commands to interact with SLURM scheduler (such as `sbatch` and `squeue`). This manages the submission and execution of jobs via the LOTUS queues. Which other commands might be useful when interacting with the scheduler? 
+>  1. You have learnt about some basic commands to interact with Slurm scheduler (such as `sbatch` and `squeue`). This manages the submission and execution of jobs via the LOTUS queues. Which other commands might be useful when interacting with the scheduler? 
 
-Table 3 of this [help page](https://help.jasmin.ac.uk/article/4891-lsf-to-slurm-quick-reference) shows other SLURM commands, such as `scancel` and `scontrol`. You can find out more by typing `man <command>` at the command-line, e.g.: `man scancel`.
+Table 3 of this [help page](https://help.jasmin.ac.uk/article/4891-lsf-to-slurm-quick-reference) shows other Slurm commands, such as `scancel` and `scontrol`. You can find out more by typing `man <command>` at the command-line, e.g.: `man scancel`.
 
 > 2. Which queues are available on LOTUS? What is the difference between them? Why would you choose one over another?
 
-There is a [LOTUS queues help page](https://help.jasmin.ac.uk/article/4881-lotus-queues) which explains the capabilities of each SLURM queue.
+There is a [LOTUS queues help page](https://help.jasmin.ac.uk/article/4881-lotus-queues) which explains the capabilities of each Slurm queue.
 
-> 3. How can you instruct SLURM to allocate CPUs and memory to specific jobs when you run them? 
+> 3. How can you instruct Slurm to allocate CPUs and memory to specific jobs when you run them? 
 
-Table 2 of this [help page](https://help.jasmin.ac.uk/article/4891-lsf-to-slurm-quick-reference) lists common command-line parameters that can be used to instruct SLURM how to allocate CPUs, memory and hosts to certain jobs.
+Table 2 of this [help page](https://help.jasmin.ac.uk/article/4891-lsf-to-slurm-quick-reference) lists common command-line parameters that can be used to instruct Slurm how to allocate CPUs, memory and hosts to certain jobs.
 
-> 4. How can you cancel all your jobs in the SLURM queue?
+> 4. How can you cancel all your jobs in the Slurm queue?
 
 The following command will do it:
 
