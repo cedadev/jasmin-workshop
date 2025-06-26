@@ -95,10 +95,34 @@ Alternative approaches could include:
     - You can view notebooks directly in GitHub.
     - [Here](https://github.com/cedadev/ceda-notebooks/blob/master/notebooks/data-notebooks/cmip6/cmip6-zarr-jasmin.ipynb) is an example from our CEDA Notebooks repository demonstrating CEDA data and tools.
 
+#### Best practice
+
+##### Shutting down notebooks after use
+- Each time you open a new `.ipynb` Jupyter Notebook, the Notebook Service starts a new Python kernel to run any cells you click "play" on.
+- However when you close a notebook (by pressing the `x` on the tab), the kernel will remain running in the background.
+- We recommend shutting down these kernels in the sidebar (see the screenshot below) as they can take up memory as you keep opening new notebooks and slow your other notebooks down.
+![Shutting down unused notebook kernels](./images/shutdown_kernel.png)
+
+##### Restarting notebooks
+- You might find that you try running a cell, nothing happens, or it never finishes running for some reason.
+- In this case you can try restarting the kernel by choosing "Kernel > Restart Kernel..." in the menu at the top of the page, then click Restart in the pop up.
+- When you press this, the message in the status bar at the bottom of the screen will say "Python 3 + Jaspy | Restarting/Unknown/Busy" while the kernel loads, then it will say "Python 3 + Jaspy | Idle" when it is ready to use again.
+- You can even choose "Kernel > Restart Kernel and Run All Cells..." to restart the kernel and get back to the very last cell at the bottom of the notebook.
+![Restarting notebook kernels](./images/restart_kernel.png)
+
+##### Restarting your JupyterHub server
+- If you've tried restarting your kernel, opening a new notebook, refreshing the page and you still can't get the Notebook to work, you can restart your JupyterHub server.
+- To do this, in the File menu choose "Hub Control Panel" to return to the home page of the JASMIN Notebook Service.
+![Restart JupyterHub server](./images/restart_server.png)
+- Here you can press "Stop My Server", wait a few seconds, then press "Start My Server" to get a fresh JupyterHub server. It will redirect you but you can close this tab to get back to what you were working on.
+
 Learn more about our Notebook Service:
 
   - [Tutorial (in notebooks)](https://github.com/cedadev/ceda-notebooks/blob/master/notebooks/training/intro/notebook-tour.ipynb)
   - [Help pages about the Notebook Service](https://github.com/cedadev/ceda-notebooks/blob/master/notebooks/training/intro/notebook-tour.ipynb)
+
+Learn more about the kinds of Python libraries for data and visualisation that work really well with the Notebook Service:
+- [NCAS Introduction to Scientific Computing - Working with Data module](https://github.com/ncasuk/ncas-isc/#python---working-with-data) - lessons and Jupyter Notebook exercises to practice
 
 ### Cheat Sheet
 
@@ -301,8 +325,7 @@ Once the cell is selected, press the <kbd>d</kbd> key twice on the keyboard and 
 >  * Execute a cell with different outcomes
 
 You can control what happens when you execute a cell, as follows:
- * <kbd>Shift</kbd>+<kbd>Enter</kbd> - which executes the cell and moves to the next one.
-                   If there isn't one below, it creates a new one for you.
+ * <kbd>Shift</kbd>+<kbd>Enter</kbd> - which executes the cell and moves to the next one. If there isn't one below, it creates a new one for you.
  * <kbd>Ctrl</kbd>+<kbd>Enter</kbd> - which executes the cell (and stays focussed on the current cell).
     * This is <kbd>Cmd (⌘)</kbd>+<kbd>Enter</kbd> on Mac.
  * <kbd>Alt</kbd>+<kbd>Enter</kbd> - which executes the cell and creates a new one for you.
