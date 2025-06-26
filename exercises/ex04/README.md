@@ -54,7 +54,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
 This exercise demonstrates how to:
 
-- Login to JASMIN and access the scientific analysis servers (`sci-vm-0[1-6].jasmin.ac.uk`)
+- Login to JASMIN and access the scientific analysis servers (`sci-vm-0[1-5].jasmin.ac.uk`)
 - Run a command-line tool interactively to read data from the CEDA archive
 - Write outputs to a JASMIN Group Workspace
 
