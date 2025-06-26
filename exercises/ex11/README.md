@@ -27,7 +27,7 @@ There are a limited number of licences available for the Intel compiler so pleas
 After completing this exercise you will:
  * **know** about the MPI library available on JASMIN
  * **learn how to compile** an MPI parallel code on a LOTUS compute node interactively
- * **become aware** of the special SLURM submission options to request resources for an MPI parallel job 
+ * **become aware** of the special Slurm submission options to request resources for an MPI parallel job 
  
  
  ### JASMIN resources
@@ -59,19 +59,19 @@ This is the outline of what you need to do. The recommended way of doing each st
    > [!NOTE]
    > One terminal will be used for compiling and testing codes on LOTUS while the second terminal will be used for submitting and monitoring batch jobs. 
 1. Compile and test a Fortran code interactively on LOTUS 
-   * On terminal 1, invoke a pseudo-interactive session on LOTUS using the SLURM command `srun` with two CPU cores allocation: `srun --ntasks=2 --partition=workshop --account=workshop  --pty /bin/bash`
+   * On terminal 1, invoke a pseudo-interactive session on LOTUS using the Slurm command `srun` with two CPU cores allocation: `srun --ntasks=2 --partition=workshop --account=workshop  --pty /bin/bash`
    * What is the compute node allocated and what type of CPU model the node has?
    * On the LOTUS compute node, load the Intel compiler module `module load intel/20.0.0` and the OpenMPI library module: `module load eb/OpenMPI/intel/3.1.1` and check that the two modules are loaded.
    * Build the Fortran code executable using the command `mpif90 axpyMPI.f90 -o axpyMPI.exe`
    * Execute the binary on a single CPU core and then on two cores: `mpirun -np 2 axpyMPI.exe`
    * What is the ouput?
    * On terminal 2, check the job ID associated to this pseudo-interactive session on LOTUS 
-   * Exit the interactive session on LOTUS `exit`. The Job should be cleared from SLURM
-1. Prepare a script to submit the parallel MPI code to SLURM
+   * Exit the interactive session on LOTUS `exit`. The Job should be cleared from Slurm
+1. Prepare a script to submit the parallel MPI code to Slurm
    * On terminal 1, launch a text editor to prepare the job script e.g. `jobscriptMPI.sbatch` to submit the binary MPI compiled earlier.
    * Specify the number of parallel MPI tasks
-   * Submit the job to SLURM scheduler and note the job ID `sbatch axpyMPI.sbatch`
-   * On terminal 2, monitor the job state using SLURM command `squeue -u <username>`
+   * Submit the job to Slurm scheduler and note the job ID `sbatch axpyMPI.sbatch`
+   * On terminal 2, monitor the job state using Slurm command `squeue -u <username>`
    * What is the name of the compute node the job run on? is it the same node type on which the code was compiled?
    * Check the resources used by the job memory,CPU using `scontrol show job <jobID>`
 1. Explore MPI job requirements -**Optional**-
@@ -79,7 +79,7 @@ This is the outline of what you need to do. The recommended way of doing each st
    * Define a distribution of tasks across nodes using `--ntasks-per-node=ntasks` and `--nodes=<minnodes[-maxnodes]>` 
    > [!NOTE]
    > The `--ntasks` option will take  precedence  and the `--ntasks-per-node` will be treated as a maximum count of tasks per node.
-   * Submit the same job script but pass the new memory and core distribution arguments to SLURM `sbatch`
+   * Submit the same job script but pass the new memory and core distribution arguments to Slurm `sbatch`
    * What is the job wait time?
    * What is the elapsed time per job? 
    * Now add the node type specification `--constraint="intel"`
@@ -99,7 +99,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 
 ### Review / alternative approaches / best practice
 
-By completing this exercise you will be able to compile and test a parallel MPI Fortran code interactively on LOTUS.  You will be able to use the special submission flags to submit an MPI job to SLURM. You will be able to use compilers via the module environment. MPI message passing interface is a library to facilitate data sharing and communication between CPU cores -often called ranks- as each rank accesses its own data space. 
+By completing this exercise you will be able to compile and test a parallel MPI Fortran code interactively on LOTUS.  You will be able to use the special submission flags to submit an MPI job to Slurm. You will be able to use compilers via the module environment. MPI message passing interface is a library to facilitate data sharing and communication between CPU cores -often called ranks- as each rank accesses its own data space. 
 
 
 * `par-single` and `par-multi` are dedicated queues for MPI and OpenMP parallel codes
@@ -126,7 +126,7 @@ By completing this exercise you will be able to compile and test a parallel MPI 
    > [!NOTE]
    > One terminal will be used for compiling and testing codes on LOTUS while the second terminal will be used for submitting and monitoring batch jobs. 
 1. Compile and test a Fortran code interactively on LOTUS 
-   * On terminal 1, invoke a pseudo-interactive session on LOTUS using the SLURM command `srun` with two CPU cores allocation
+   * On terminal 1, invoke a pseudo-interactive session on LOTUS using the Slurm command `srun` with two CPU cores allocation
    ```
    $ srun --ntasks=2 --partition=workshop --account=workshop  --pty /bin/bash
    srun: job 64164115 queued and waiting for resources
@@ -136,7 +136,7 @@ By completing this exercise you will be able to compile and test a parallel MPI 
    ```
    * What is the compute node allocated and what is its CPU model?
 
-   From the command line prompt, the LOTUS compute node allocated is `host149`. The CPU model is Intel 'ivybridge' and the node has 128 GB memory. This info can be found from SLURM or from `/proc/cpuinfo` as shown below:
+   From the command line prompt, the LOTUS compute node allocated is `host149`. The CPU model is Intel 'ivybridge' and the node has 128 GB memory. This info can be found from Slurm or from `/proc/cpuinfo` as shown below:
    ```
    @host149 ] $ scontrol show node host149 | grep Features
     AvailableFeatures=ivybridge128G,lotus241,lotus2,intel
@@ -174,24 +174,24 @@ By completing this exercise you will be able to compile and test a parallel MPI 
              JOBID PARTITION     NAME    USER   ST     TIME  NODES NODELIST(REASON)
           64164115  workshop     bash   train049 R      24:17      1 host149
    ```
-   The number of nodes and CPUs allocated can also be found from this SLURM command:
+   The number of nodes and CPUs allocated can also be found from this Slurm command:
    ```
    @sci-ph-01 ~ ]$ scontrol show job 64164115 
    ...
    NumNodes=1 NumCPUs=2 NumTasks=2 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
    ...
    ```
-   * Exit the interactive session on LOTUS `exit`. The Job should be cleared from SLURM
+   * Exit the interactive session on LOTUS `exit`. The Job should be cleared from Slurm
    ```
     @host149 ] $ exit
     [train049@sci-ph-01 ~]$ 
    ```
-1. Prepare a script to submit the parallel MPI code to SLURM
+1. Prepare a script to submit the parallel MPI code to Slurm
    * On terminal 1, launch a text editor to prepare a Bash script to submit the MPI executable generated earlier (use the template jobscript `jobscriptMPI.sbatch` shown below)
    ```
    #!/bin/bash
 
-   # SLURM directives:
+   # Slurm directives:
    #SBATCH --partition=workshop
    #SBATCH --account=workshop
    #SBATCH --job-name=axpyMPI
@@ -213,12 +213,12 @@ By completing this exercise you will be able to compile and test a parallel MPI 
    ```
    #SBATCH --ntasks=4
    ```
-   * Submit the job to SLURM scheduler and note the job ID `sbatch axpyMPI.sbatch`
+   * Submit the job to Slurm scheduler and note the job ID `sbatch axpyMPI.sbatch`
    ```
    [train049@sci-ph-01 ~]$ sbatch axpyMPI.sbatch
     Submitted batch job 4815542
    ```
-   * On terminal 2, monitor the job state using SLURM command:
+   * On terminal 2, monitor the job state using Slurm command:
    ```
    [train049@sci-ph-02 ~]$ squeue -u train049
      JOBID PARTITION     NAME     USER ST    TIME  NODES NODELIST(REASON)
@@ -244,7 +244,7 @@ By completing this exercise you will be able to compile and test a parallel MPI 
    mem=200M,node=2
    ```
    The total memory allocated for the job is 200 MB. The specified memory `#SBATCH --mem=100` is the minimum memory required per node in MB units `MinMemoryNode=100M`.
-   To find out about the memory usage, use the SLURM command `sacct`:
+   To find out about the memory usage, use the Slurm command `sacct`:
    ```
     sacct -j 4815542  --format=jobid%20,reqmem,maxrss,nodelist,ncpu
                JobID     ReqMem     MaxRSS        NodeList      NCPUS 
@@ -256,7 +256,7 @@ By completing this exercise you will be able to compile and test a parallel MPI 
 1. Explore MPI job requirements -Optional-
    * Specify the memory required per core using `--mem-per-cpu=XXX`
    * Define a distribution of tasks across nodes using `--ntasks-per-node=XXX` and `--nodes=<minnodes[-maxnodes]>` 
-   * Submit the same job script but pass the new memory and core distribution arguments to SLURM `sbatch`
+   * Submit the same job script but pass the new memory and core distribution arguments to Slurm `sbatch`
    * What is the job wait time?
    * What is the elapsed time per job? 
    * Now add the node type specification `--constraint="intel"`

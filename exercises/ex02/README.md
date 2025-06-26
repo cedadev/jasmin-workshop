@@ -15,13 +15,13 @@ After completing this exercise I will be able to:
 
 - **execute** a computing task on the sci machine from a command line
 - **monitor** CPU and memory resources usage of my computing task
-- **understand** the modules environment e.g. JASPY and software on JASMIN
+- **understand** the modules environment e.g. [JASPY](https://help.jasmin.ac.uk/docs/software-on-jasmin/jaspy-envs/) and software on JASMIN
 - **learn** about the capabilities and limitations of the scientific analysis servers
 
 ### JASMIN resources
 
 - Scientific analysis servers: `sci-vm-0[1-5].jasmin.ac.uk`, 
-- Group workspace: `/gws/pw/j07/workshop`
+- Group workspace (GWS): `/gws/pw/j07/workshop`
 - Example Python scripts are provided:
   - `/gws/pw/j07/workshop/exercises/ex02/code/random-number-gen.py`
   - `/gws/pw/j07/workshop/exercises/ex02/code/dot-product-2arrays.py`
@@ -85,26 +85,26 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
 You will be able to run and test a script on the scientific analysis servers. You will be able to monitor the resources used by your script. You can scale up by using the high-memory scientific `sci-ph-0[1,2].jasmin.ac.uk` server for testing and then move your workflow to the batch cluster LOTUS.
 
-What tasks I can not run on the Sci server?
+##### What tasks I can not run on the sci server?
 
 - Do not run processes with execution time over two hours
-- Do not run parallel applications e.g. MPI or OpenMP, high threaded codes on the Sci servers
-- Do not run data transfer processes on the sci servers. Please use a transfer server e.g. `xfer-vm-01.jasmin.ac.uk` (Except when moving data from `/work/scratch-pw[2,3]` to a GWS because `/work/scratch-pw[2,3]` are not mounted on the `xfer` servers)
+- Do not run parallel applications e.g. MPI or OpenMP, high threaded codes on the sci servers
+- Do not run data transfer processes on the sci servers. Please use a transfer server e.g. `xfer-vm-01.jasmin.ac.uk` (Except when moving data from `/work/scratch-pw[2,3]` to a GWS (group workspace) because `/work/scratch-pw[2,3]` are not mounted on the `xfer` servers)
 - Use the high memory scientific analysis servers `sci-ph-0[1,2].jasmin.ac.uk` for testing high memory or multithreaded code
 - Only test multi-threaded code on the high memory servers and limit the number of threads
 - It is necessary to consider moving a processing task to the batch system LOTUS when the resource demand is high, e.g. CPU, memory and processing time
 
-Manage your processes on the Sci server
+##### Manage your processes on the sci server
 
 - If a process hangs, do not simply close the terminal window. Please contact the helpdesk and alert the team so that the process can be shut down. Otherwise hung processes build up and contribute to machine overloading.
 - Many instances of an application e.g., Ipython, can impact the performance of the scientific servers. 
 - Monitor the CPU and memory resources of your processes 
-- You might use STOP and CONT to delay execution of a process until a less-busy time like this: `kill -STOP <pid>`, `kill  -CONT <pid>` or kill the process `Kill -TERM <pid>`
-- Do not “hog” IDL development licenses on the Sci servers. A limited number of these are available for development and compilation of IDL code which should then be run on LOTUS using IDL runtime licenses, of which there are many more
+- You might use STOP and CONT to delay execution of a process until a less-busy time like this: `kill -STOP <pid>`, `kill  -CONT <pid>` or kill the process `kill -TERM <pid>`
+- Do not “hog” IDL development licenses on the sci servers. A limited number of these are available for development and compilation of IDL code which should then be run on LOTUS using IDL runtime licenses, of which there are many more
 
-Usage of the storage:
+#### Usage of the storage:
 
-- Do not use `/tmp` on the scientific servers. Using /tmp can cause the scientifiec analysis server to crash, resulting in loss of work. Set the environment variable TMPDIR to a temporary directory under a GWS area- `export TMPDIR=/GWS-path/<your_project>/<your_username>/tmp`
+- Do not use `/tmp` on the scientific servers. Using /tmp can cause the scientific analysis server to crash, resulting in loss of work. Set the environment variable TMPDIR to a temporary directory under a GWS area - `export TMPDIR=/GWS-path/<your_project>/<your_username>/tmp`
 - Do not generate huge numbers of files (>1000) in a single directory
 - The user home directory `/home/users/<username>` has a fixed quota of 100 GB
 - Manage your disk usage space regularly, e.g. delete unused files and archive files using the `tar` command
@@ -148,7 +148,7 @@ Usage of the storage:
 
 1. Execute the Python example script on the sci server
 
-   - Enable a Python environment via the module `jaspy` by executing  the command `module add jaspy`
+   - Enable a Python environment via the module `jaspy` by executing the command `module add jaspy`
 
    ```bash
    $ module add jaspy
@@ -167,7 +167,7 @@ Usage of the storage:
    Finished in 3.316218542982824 seconds  
    ```
 
-   - Check the process ID `PID`, state `S`, memory `%MEM%`and CPU `%CPU`usage on the monitoring terminal from the interactive `top` command:
+   - Check the process ID `PID`, state `S`, memory `%MEM%` and CPU `%CPU` usage on the monitoring terminal from the interactive `top` command:
 
    ```bash
    $ top -u <username> 
@@ -251,9 +251,9 @@ Usage of the storage:
 
 > 1. Is there a limit on the number of processes running on the sci server at any given time by a user?
 
-There is no limit on the number of processes launched by a user on the scientific analysis servers. However, the user should limit the number of processes to a maximum of 2 as the sci server is shared by other users. Distribute the processing tasks across other Sci servers and consider moving the tasks to the batch cluster LOTUS.
+There is no limit on the number of processes launched by a user on the scientific analysis servers. However, the user should limit the number of processes to a maximum of 2 as the sci server is shared by other users. Distribute the processing tasks across other sci servers and consider moving the tasks to the batch cluster LOTUS.
 
-> 2. What tasks are not suitable to run on the Sci servers?
+> 2. What tasks are not suitable to run on the sci servers?
 
  Long-running tasks and heavy processing, MPI parallel codes and multithreaded applications 
 
@@ -369,7 +369,7 @@ Cheat-sheet: Test for a potential multithreading
    sed -i 's/#os.environ/os.environ/'  dot-product-2arrays.py
    ```
    ![](images/Uncomment-line-threads.png)
-    Note: This setting must be done before numpy import -see screenshot above.
+    Note: This setting must be done before numpy import - see screenshot above.
    * Rerun the Python script 
    ```
    $ python dot-product-2arrays.py

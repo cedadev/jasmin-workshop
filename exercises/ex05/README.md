@@ -7,7 +7,7 @@ author: Ag Stephens
 
 ### Scenario
 
-Having established (in exercise 4) that I can extract the total cloud cover (`TCC`) variable from a single ERA-Interim file I now wish to extract that data from an entire month. I will write some simple scripts to batch up separate processes that run CDO to extract the `TCC` variable from a series of ERA-Interim files. Each run of the script will loop through 4 x 6-hourly files for one day. I will run it 30 times, once for each day in September 2018. Each run will be submitted to the LOTUS cluster.
+Having established (in [exercise 04](../ex04)) that I can extract the total cloud cover (`TCC`) variable from a single ERA-Interim file I now wish to extract that data from an entire month. I will write some simple scripts to batch up separate processes that run CDO to extract the `TCC` variable from a series of ERA-Interim files. Each run of the script will loop through 4 x 6-hourly files for one day. I will run it 30 times, once for each day in September 2018. Each run will be submitted to the LOTUS cluster.
 
 ### Objectives
 
@@ -46,16 +46,16 @@ This is the outline of what you need to do. The recommended way of doing each st
 1. Re-run the "`submit-all.sh`" script
 1. Examine which jobs are in the queue
 1. Kill one of the jobs - just to see how it is done
-#2. Job array submission
+<!-- 2. Job array submission -->
 
 ### Questions to test yourself
 
 All too easy? Here are some questions to test your knowledge an understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk)
 
-1. You have learnt about some basic commands to interact with SLURM scheduler (such as `sbatch` and `squeue`). This manages the submission and execution of jobs via the LOTUS queues. Which other commands might be useful when interacting with the scheduler? 
-2. Which queues are available on LOTUS? What is the difference between them? Why would you choose one over another?
-3. How can you instruct SLURM to allocate CPUs and memory to specific jobs when you run them? Can you change the allocations when the job is queuing? 
-4. How can you cancel all your jobs in the SLURM queue?
+1. You have learnt about some basic commands to interact with Slurm scheduler (such as `sbatch` and `squeue`). This manages the submission and execution of jobs via the LOTUS queues. Which other commands might be useful when interacting with the scheduler? 
+2. Which partitions and QoSs are available on LOTUS? What is the difference between them? Why would you choose one over another?
+3. How can you instruct Slurm to allocate CPUs and memory to specific jobs when you run them? Can you change the allocations when the job is queuing? 
+4. How can you cancel all your jobs in the Slurm queue?
 
 ### Review / alternative approaches / best practice
 
@@ -65,14 +65,15 @@ This exercise demonstrates how to:
 1. Create a wrapper script that loops through all the components that need to be processed.
 1. Submit each component as a LOTUS job using the `sbatch` command.
 1. Define the command-line arguments for the `sbatch` command.
-1. Use other SLURM commands, such as `squeue` (to monitor progress) and `scancel` (to cancel jobs).
+1. Use other Slurm commands, such as `squeue` (to monitor progress) and `scancel` (to cancel jobs).
 
-Alternative approaches could include:
+#### Alternative approaches:
+
 1. Write the output to a `scratch` directory
     1. There are two main scenarios in which you might write the output to a scratch directory:
         1. You only need to store the output file for temporary use (such as intermediate files in your workflow).
         1. You want to write outputs to scratch before moving them to a GWS.
-    2. The Help page ([https://help.jasmin.ac.uk/article/176-storage#diskmount](https://help.jasmin.ac.uk/article/176-storage#diskmount)) tells us that there are two types of scratch space:
+    2. The [help page about storage on JASMIN](https://help.jasmin.ac.uk/docs/getting-started/storage/#jasmin-disk-mounts) tells us that there are two types of scratch space:
         1. `/work/scratch-pw2` – supports parallel writes (large, parallel file system scratch)
         1. `/work/scratch-nopw2` – does NOT support parallel writes (smaller SSD-based scratch)
     3.   Since we do not need parallel write capability, we can use the `nopw` version.
@@ -89,17 +90,18 @@ Alternative approaches could include:
     6.   When you have finished with the file, tidy up (good practice).
 
         rm $OUTPUT_FILE
- 
-    7.   Do not leave data on the "scratch" areas when you have finished your workflow.
-        1.   Please remove any temporary files/directories that you have created.
-        1.   You cannot rely on the data persisting in the "scratch" areas.
+    
+    7. Do not leave data on the "scratch" areas when you have finished your workflow.
+        1. Please remove any temporary files/directories that you have created.
+        1. You cannot rely on the data persisting in the "scratch" areas.
 
 2. Specify the memory requirements of your job:
     1. If your job has a significant memory footprint:
         1.   Run a single iteration on LOTUS and review the standard output file to examine the memory usage.
         1.   You can then reserve a memory allocation when you submit your subsequent jobs.
 
-This demonstrates best practice:
+#### Best practice
+
 1. Build up in stages before running your full workflow on LOTUS:
     1. Check your code - is it _really_ doing what you think it is doing?
     1. Run locally (on a `sci` server) for one iteration.
@@ -130,30 +132,29 @@ This demonstrates best practice:
 
         `/gws/pw/j07/workshop/exercises/ex05/code/extract-era-data.sh`
 
-        [ Source: [https://github.com/cedadev/jasmin-workshop/blob/master/exercises/ex05/code/extract-era-data.sh](https://github.com/cedadev/jasmin-workshop/blob/master/exercises/ex05/code/extract-era-data.sh) ]
+        Source file: [ex05/code/extract-era-data.sh](../ex05/code/extract-era-data.sh)
 
 1. Write a script, called "`submit-all.sh`", to loop over dates from 01/09/2018 to 02/09/2018 and submit the "`extract-era-data.sh`" script to LOTUS for each day:
 
     1. You should define the following LOTUS directives:
         1. Standard output file - please ensure this is unique to each job by including the "`%j`" variable in the file name.
         1. Standard error file - please ensure this is unique to each job by including the "`%j`" variable in the file name.
-    1. Queue name:
-        1. We will use the main queue for quick serial jobs: `short-serial`
-        1. NOTE: if working with a training account, you might need: `--account=workshop --partition=workshop` in your arguments.
+    1. Partition and QoS:
+        1. You will need `--account=workshop --partition=standard --qos=workshop` in your arguments.
+        2. NOTE: if you are not working with a training account, use the `standard` partition and `short` QoS for quick serial jobs: `--account=mygws --partition=standard --qos=short`
     1. Job duration - to allocate a maximum run-time to the job, e.g.: "`00:05`" (5 mins)
     1. Estimated duration - to hint the actual run-time of the job, e.g.: "`00:01`" (1 min)
         1. Setting a low estimate will increase the likelihood of the job being scheduled to run quickly.
 
-    1. The help page on submitting LOTUS jobs is here:
-        [https://help.jasmin.ac.uk/article/4890-how-to-submit-a-job-to-slurm](https://help.jasmin.ac.uk/article/4890-how-to-submit-a-job-to-slurm)
+    1. Have a look at [the help page on submitting LOTUS jobs](https://help.jasmin.ac.uk/article/4890-how-to-submit-a-job-to-slurm) for more options
 
-    1. And use the "`sbatch`" command to submit each job.
+    1. Use the "`sbatch`" command to submit each job.
 
     1. If you need some advice you can use the script at:
 
         `/gws/pw/j07/workshop/exercises/ex05/code/submit-all.sh`
 
-        [ Source: [https://github.com/cedadev/jasmin-workshop/blob/master/exercises/ex05/code/submit-all.sh](https://github.com/cedadev/jasmin-workshop/blob/master/exercises/ex05/code/submit-all.sh) ]
+        Source file: [ex05/code/submit-all.sh](../ex05/code/submit-all.sh)
 
 1. Run the "`submit-all.sh`" script
 
@@ -190,19 +191,20 @@ This demonstrates best practice:
 
 ### Answers to questions
 
->  1. You have learnt about some basic commands to interact with SLURM scheduler (such as `sbatch` and `squeue`). This manages the submission and execution of jobs via the LOTUS queues. Which other commands might be useful when interacting with the scheduler? 
+>  1. You have learnt about some basic commands to interact with Slurm scheduler (such as `sbatch` and `squeue`). This manages the submission and execution of jobs via the LOTUS queues. Which other commands might be useful when interacting with the scheduler? 
 
-Table 3 of this [help page](https://help.jasmin.ac.uk/article/4891-lsf-to-slurm-quick-reference) shows other SLURM commands, such as `scancel` and `scontrol`. You can find out more by typing `man <command>` at the command-line, e.g.: `man scancel`.
+There is a section in our [Slurm quick reference help page](https://help.jasmin.ac.uk/docs/batch-computing/slurm-quick-reference/#job-control-commands) which shows other Slurm commands, such as `scancel` and `scontrol`. You can find out more by typing `man <command>` at the command-line, e.g.: `man scancel`.
 
-> 2. Which queues are available on LOTUS? What is the difference between them? Why would you choose one over another?
+> 2. Which partitions and QoSs are available on LOTUS? What is the difference between them? Why would you choose one over another?
 
-There is a [LOTUS queues help page](https://help.jasmin.ac.uk/article/4881-lotus-queues) which explains the capabilities of each SLURM queue.
+<!--There is a [LOTUS queues help page](https://help.jasmin.ac.uk/article/4881-lotus-queues) which explains the capabilities of each Slurm queue. -->
+There is a section in our [help page about how to submit a job](https://help.jasmin.ac.uk/docs/batch-computing/how-to-submit-a-job/#partitions-and-qos) which explains the capabilities of each partitions and QoS.
 
-> 3. How can you instruct SLURM to allocate CPUs and memory to specific jobs when you run them? 
+> 3. How can you instruct Slurm to allocate CPUs and memory to specific jobs when you run them? 
 
-Table 2 of this [help page](https://help.jasmin.ac.uk/article/4891-lsf-to-slurm-quick-reference) lists common command-line parameters that can be used to instruct SLURM how to allocate CPUs, memory and hosts to certain jobs.
+The [Slurm quick reference help page](https://help.jasmin.ac.uk/docs/batch-computing/slurm-quick-reference/) lists common command-line parameters that can be used to instruct Slurm how to allocate CPUs, memory, and hosts to certain jobs.
 
-> 4. How can you cancel all your jobs in the SLURM queue?
+> 4. How can you cancel all your jobs in the Slurm queue?
 
 The following command will do it:
 

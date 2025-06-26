@@ -10,8 +10,8 @@ Overview presentation
 
 | Slides with speaker's notes |
 | --- |
-[![](https://img.youtube.com/vi/HQjRDtgW3Fg/mqdefault.jpg )](https://docs.google.com/presentation/d/1yk8Bwd0KknjsISejBEA_UpM3Nwm4Xj9fqgxbu71K2PQ/edit?usp=sharing)
-| (slides updated February 2025) |
+[![](https://img.youtube.com/vi/HQjRDtgW3Fg/mqdefault.jpg )](https://docs.google.com/presentation/d/1_K7qZNOVA5erDXCdxgMtkml_goqjVBrk4esUr_LXm5A/edit?usp=sharing)
+| (slides updated June 2025) |
 
 | Exercise | Topic |
 | --- | --- |

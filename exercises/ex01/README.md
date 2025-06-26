@@ -32,8 +32,8 @@ At the end of this exercise I will be able to:
 ### JASMIN resources
 
 - JASMIN account with SSH public key uploaded and `jasmin-login` access role
-- login server: `login-01.jasmin.ac.uk`
-- help documentation at https://help.jasmin.ac.uk
+- Login server: `login-01.jasmin.ac.uk`
+- Help documentation at https://help.jasmin.ac.uk
 
 ### Local resources
 

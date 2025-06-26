@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# SLURM directives 
+# Slurm directives 
 #SBATCH --partition=workshop
 #SBATCH --account=workshop
 #SBATCH --job-name=axpy

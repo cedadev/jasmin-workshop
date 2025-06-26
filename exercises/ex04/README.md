@@ -7,7 +7,7 @@ author: Ag Stephens
 
 ### Scenario
 
-I am working on a project studying global cloud cover. I am looking at a case study and I have identified that the ERA-Interim data set is an appropriate source for my data. It is held on disk in the CEDA archive (located on JASMIN). Extract the total cloud cover ("TCC") variable for 1st January 2017 at midnight (00:00), from the ERA-Interim data set. The data files contain a large set of variables so I want to use the Climate Data Operators (CDO) tool in order to extract only the "TCC" variable.
+I am working on a project studying global cloud cover. I am looking at a case study and I have identified that the ERA-Interim data set is an appropriate source for my data. It is held on disk in the CEDA archive (located on JASMIN). Extract the total cloud cover ("TCC") variable for 1st January 2017 at midnight (00:00), from the ERA-Interim data set. The data files contain a large set of variables so I want to use the [Climate Data Operators (CDO) tool](https://code.mpimet.mpg.de/projects/cdo) in order to extract only the "TCC" variable.
 
 ### Objectives
 
@@ -21,7 +21,7 @@ After completing this exercise I will be able to:
 
 - JASMIN account with SSH public key uploaded and `jasmin-login` privilege
 - login server: `login-01.jasmin.ac.uk`
-- sci servers: `sci-vm-0[1-6].jasmin.ac.uk`
+- sci servers: `sci-vm-0[1-5].jasmin.ac.uk`, `sci-ph-0[1-3]`
 - common software: CDO (Climate Data Operators) tool
 - GWS (read/write): `/gws/pw/j07/workshop`
 - CEDA Archive (read-only): requires a CEDA account
