@@ -31,21 +31,22 @@ Click the arrow to expand the set of instructions.
 <details>
    <summary id="downloading">Downloading the credentials sent to your registered email</summary>
 
-   - Locate the email sent by the JASMIN Accounts Portal. It should have `[jasmin-accounts] JASMIN Training Account Created` in the subject line.
+   1. Locate the email sent by the JASMIN Accounts Portal (`noreply@jasmin.ac.uk`). It should have `[jasmin-accounts] JASMIN Training Account Created` in the subject line.
       - If you can't find the email, search for this subject in your emails, but also check your spam/junk folders before asking for help.
-   - Follow the link in this email from the JASMIN Accounts Portal to provision your training account.
-   - Enter the event password, which the JASMIN Team will have sent you separately in the joining instructions.
-   - The training account will be set up upon entering the event password and clicking submit. Then, a new webpage is displayed with the training credentials.
-   - **This is a one-time link** for secure credentials sharing! If you close the tab after entering the event password, **your credentials will be lost**, even if you click on the link in the email again.
-   - You should reach a page showing four important parts of your training account, like the image below.
+   2. Click the link in this email from the JASMIN Accounts Portal to provision your training account.
+         - **This is a one-time link** for secure credentials sharing! If you close the tab after entering the event password, **your credentials will be lost**, even if you click on the link in the email again.
+   3. Enter the event password, which the the event organiser will have given you separately.
+      - The training account will be set up upon entering the event password and clicking submit. Then, a new webpage is displayed with the training credentials.
+   4. You should reach a page showing four important parts of your training account, like the image below.
 
    ![training account provisioning page](images/Provision-your-training-account.png)
-   - Open a plain-text editor (e.g. Notepad on Windows, TextEdit on Mac) and paste these first three details into a text file to keep them safe:
+   
+   5. Open a plain-text editor (e.g. Notepad on Windows, TextEdit on Mac) and paste these first three details into a text file to keep them safe:
       - Username
       - Accounts Portal Password
       - SSH Key Passphrase
-   - Click the "Download" link next to the SSH Private Key. It will save the private key as `id_ecdsa` without a file extension - please don't rename it, unless you have already used SSH and have an SSH keypair with the same name.
-   - Keep this file in your Downloads folder for now.
+   6. Click the "Download" link next to the SSH Private Key. It will save the private key as `id_ecdsa` without a file extension - please don't rename it, unless you have already used SSH and have an SSH keypair with the same name.
+      - Keep this file in your Downloads folder for now.
 
 </details>
 
