@@ -33,13 +33,22 @@ Click the arrow to expand the set of instructions.
 
    1. Locate the email sent by the JASMIN Accounts Portal (`noreply@jasmin.ac.uk`). It should have `[jasmin-accounts] JASMIN Training Account Created` in the subject line.
       - If you can't find the email, search for this subject in your emails, but also check your spam/junk folders before asking for help.
+      
+   ![Training account email](images/Training-account-email.png)
+   _The email sent from the JASMIN Accounts Portal_
+
    2. Click the link in this email from the JASMIN Accounts Portal to provision your training account.
          - **This is a one-time link** for secure credentials sharing! If you close the tab after entering the event password, **your credentials will be lost**, even if you click on the link in the email again.
+
+   ![Event password page](images/Event-password.png)
+   _The landing page asking for the event password after clicking the link_
+
    3. Enter the event password, which the the event organiser will have given you separately.
       - The training account will be set up upon entering the event password and clicking submit. Then, a new webpage is displayed with the training credentials.
    4. You should reach a page showing four important parts of your training account, like the image below.
 
    ![training account provisioning page](images/Provision-your-training-account.png)
+   _The page with your account's details after entering the event password_
    
    5. Open a plain-text editor (e.g. Notepad on Windows, TextEdit on Mac) and paste these first three details into a text file to keep them safe:
       - Username
