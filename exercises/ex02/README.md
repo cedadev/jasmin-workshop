@@ -154,7 +154,7 @@ You will be able to run and test a script on the scientific analysis servers. Yo
    $ module add jaspy
    $ module list
    Currently Loaded Modulefiles:
-     1) jaspy/3.11/v20240815
+     1) jaspy/3.12/v20250704
    ```
 
    - Execute the Python script `python random-number-gen.py`
@@ -268,18 +268,18 @@ Here is an example of using the command "module switch" to enable a different ve
 ```
 $ module add jaspy
 $ python --version
-Python 3.11.9
+Python 3.12.11
 
 ```
-Now, we'll switch to a different version of JASPY to enable Python 3.10 
+Now, we'll switch to a different version of JASPY to enable Python 3.11 
 ```
-$ module switch jaspy/3.11 jaspy/3.10
+$ module switch jaspy/3.12 jaspy/3.11
 
 The following have been reloaded with a version change:
-  1) jaspy/3.11/v20240815 => jaspy/3.10/r20230718
+  1) jaspy/3.12/v20250704 => jaspy/3.11/v20240815
 
 $ python --version
-Python 3.10.8
+Python 3.11.9
 ```
 
 > 5. What text editor or IDE are available on JASMIN?
@@ -291,6 +291,10 @@ Emacs, vim, nedit, geany and nano
    - You can install software under your home directory for your own use. 
    - If you need to share a software environment with other JASMIN users and the software licence allows it then enquire on "small files" Group Workspace by contacting the JASMIN support helpdesk.
    - You **cannot** do actions which require `sudo` or `su` (elevated privileges)
+
+<!-- 
+
+Commented out as this mentions using jaspy/3.10/v20230718 which is no longer available on JASMIN - need to investigate if this works in 3.11/3.12
 
 ### Further learning (optional)
 
@@ -387,4 +391,4 @@ Cheat-sheet: Test for a potential multithreading
    ```
    $ logout
    Connection to sci-vm-<number>.jasmin.ac.uk closed.
-   ```
+   ``` -->
