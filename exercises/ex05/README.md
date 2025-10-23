@@ -46,7 +46,9 @@ This is the outline of what you need to do. The recommended way of doing each st
 1. Re-run the "`submit-all.sh`" script
 1. Examine which jobs are in the queue
 1. Kill one of the jobs - just to see how it is done
-<!-- 2. Job array submission -->
+
+### Recommended job array submission feature for processing muliple files
+2. Submit the "`array-job.sh`" script to Slurm: sbatch array-job.sh
 
 ### Questions to test yourself
 
