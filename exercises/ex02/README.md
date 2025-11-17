@@ -259,7 +259,7 @@ There is no limit on the number of processes launched by a user on the scientifi
 
 > 3. What software is available via the module environment?
 
-JASPY, jasmin_sci, Intel/GNU compiler, NetCDF library, NAG libray and IDL(Restricted)
+JASPY, jasmin_sci, Intel/GNU compiler, NetCDF library, NAG library and IDL (Restricted)
 
 > 4. How do you switch between different version of a software module?
 
