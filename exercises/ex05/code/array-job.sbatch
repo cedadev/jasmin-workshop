@@ -1,6 +1,9 @@
 #!/bin/bash 
 
-# extractall-job-array.sh
+# array-job.sbatch
+#
+# Usage:    sbatch array-job.sbatch
+#
 
 #SBATCH --partition=standard
 #SBATCH --account=workshop
