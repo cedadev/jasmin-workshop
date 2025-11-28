@@ -262,7 +262,7 @@ Once you have connected, try `ssh-add -l` again as above, to check that your key
 ### Success?
 
 If:
-- you have successfully logged in to the login server
+- you have successfully logged in to the `login` server
 - you have your key available for an onward connection as above
 
 ...then you're all set, and you're ready for the rest of the exercises in the workshop.
@@ -304,6 +304,27 @@ If not, check through the FAQ below, and make sure you've done everything as per
    - make sure you have searched for "JASMIN Training Account" in your email application.
    - make sure you have checked your spam/junk folders.
    - ask your course organiser for help if you still can't find it: it should be possible to get it re-sent.
+
+</details>
+
+<details>
+
+   <summary>
+   
+   #### I've lost my training account private key file!
+   
+   </summary>
+
+   Activation links sent to JASMIN workshop participants can only be accessed once, for security reasons. This means that if you lose the private key for your training account, a new pair of SSH keys must be generated.
+
+   To update the keys to your training account:
+   1. [Generate a new pair of SSH keys](https://help.jasmin.ac.uk/docs/getting-started/generate-ssh-key-pair/) with a new passphrase using the following command: 
+      ```bash
+      ssh-keygen -m PEM -t ecdsa -b 521 -C me@somewhere.ac.uk
+      ```
+   2. If you have also lost the password for your training account, [request a password reset](https://help.jasmin.ac.uk/docs/getting-started/reset-jasmin-account-password/) in order to access the JASMIN Accounts Portal
+   3. Log in to the [JASMIN Accounts Portal](https://accounts.jasmin.ac.uk/) using your training account details and [navigate to the profile page](https://accounts.jasmin.ac.uk/account/profile/)
+   4. Click the 'Update Key' button, copy the contents of your newly generated SSH public key (it should have a .pub file extension) to the text field, and click the 'Update SSH Key' button.
 
 </details>
 
