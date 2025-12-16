@@ -1,25 +1,24 @@
-[cylc]
-    UTC mode = True # Ignore DST
-    [[parameters]]
-        counter = 1..20
+[task parameters]
+    counter = 1..20
 
 [scheduling]
-    [[dependencies]]
-        graph = """
+    [[graph]]
+        R1 = """
             initialise => step1
             step1 => batch<counter>
-            batch<counter> => finish"""
+            batch<counter> => finish
+        """
 
 [runtime]
     [[root]]
         # This is applied before every task
         pre-script="""set -eu"""
-        [[[job]]]
-            batch system = slurm
-            execution time limit = PT5M
+        execution time limit = PT5M
+        platform = lotus # See options via `cylc config --platforms`, e.g. `localhost`, `lotus`
         [[[directives]]]
-            --partition = workshop
-            --account = workshop
+            --partition = debug
+            --qos = debug
+            --account = icenet
             --time = 05:00
     [[initialise]]
         script = """echo 'do something'"""
