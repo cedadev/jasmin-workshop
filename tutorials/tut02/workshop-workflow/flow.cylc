@@ -1,39 +1,40 @@
-[cylc]
-    UTC mode = True # Ignore DST
-    [[parameters]]
-        county = 1..10
+[task parameters]
+    county = 1..10
 
 [scheduling]
-    [[dependencies]]
-        graph = """
+    [[graph]]
+        # R1: Means run once
+        # P1: Means run every cycle
+        R1 = """
             clone_repo => get_counties
-            get_counties => process<county> 
-            process<county> => plot"""
+            get_counties => process<county>
+            process<county> => plot
+        """
 
 [runtime]
     [[root]]
         # This is applied before every task
         pre-script="""set -eu"""
-        [[[job]]]
-            batch system = slurm
-            execution time limit = PT10M
+        execution time limit = PT10M
+        platform = lotus # See options via `cylc config --platforms`, e.g. `localhost`, `lotus`
         [[[directives]]]
             --partition = workshop
+            --qos = workshop
             --account = workshop
     [[clone_repo]]
         script = """rm -fr workshop-repo
 git clone https://github.com/cedadev/jasmin-workshop workshop-repo
-cp workshop-repo/tutorials/tut02/code/* ${CYLC_SUITE_RUN_DIR}/
+cp workshop-repo/tutorials/tut02/code/* ${CYLC_WORKFLOW_RUN_DIR}/
 rm -fr workshop-repo"""
     [[get_counties]]
         script = """module load jaspy
-cd ${CYLC_SUITE_RUN_DIR}/
+cd ${CYLC_WORKFLOW_RUN_DIR}/
 python create-counties-file.py"""
     [[process<county>]]
         script = """module load jaspy
-cd ${CYLC_SUITE_RUN_DIR}/
+cd ${CYLC_WORKFLOW_RUN_DIR}/
 python extract-annual-max-series.py ${CYLC_TASK_PARAM_county}"""
     [[plot]]
         script = """module load jaspy
-cd ${CYLC_SUITE_RUN_DIR}/
+cd ${CYLC_WORKFLOW_RUN_DIR}/
 python plot-county-temps.py"""
