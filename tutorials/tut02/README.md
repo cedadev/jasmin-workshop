@@ -62,7 +62,7 @@ After completing this tutorial I will be able to:
 
  * JASMIN account with SSH public key uploaded and `jasmin-login` privilege
  * login servers: `login-0[1-4].jasmin.ac.uk`
- * Cylc server: `cylc.jasmin.ac.uk`
+ * Cylc server: `cylc2.jasmin.ac.uk`
  * LOTUS batch processing cluster
  * GWS (read/write): `/gws/pw/j07/workshop`
  * `$HOME` directory
@@ -103,7 +103,7 @@ Alternative approaches and good practice might include:
 2. SSH to the Rose & Cylc server (with the `-X` flag to forward X-windows)
    
       ```
-      ssh -X cylc
+      ssh -X cylc2
       ```
 
 3. In this example you are given the building blocks to construct a "suite file" for use with Rose & Cylc
