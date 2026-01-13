@@ -221,15 +221,15 @@ Note that in this example the 4 tasks have been renamed to:
  * `process<county>`
  * `plot`
 
-The full example suite is available at:
+The full example workflow is available at:
 
-        /gws/pw/j07/workshop/tutorials/tut02/workshop-suite
+        /gws/pw/j07/workshop/tutorials/tut02/workshop-workflow
 
 And on github at:
 
-  https://github.com/cedadev/jasmin-workshop/tree/master/tutorials/tut02/workshop-suite
+  https://github.com/cedadev/jasmin-workshop/tree/master/tutorials/tut02/workshop-workflow
 
-The Cylc GUI opens when you start running a suite (as long as you have used the `-X` flag when SSHing to the server).
+The Cylc GUI opens when you start running a workflow (as long as you have used the `-X` flag when SSHing to the server).
 
 ![Cylc GUI Screenshot 1](./images/gui1.png)
 
@@ -301,7 +301,7 @@ Each of the log files can be viewed within the GUI.
     Please check that you are not writing big files to that the directory and monitor the size 
     of the outputs.
 
-> 5. Tidy up your run suite directory (i.e. logs and task directories)
+> 5. Tidy up your run workflow directory (i.e. logs and task directories)
 
   * You can tell Cylc to tidy up (clear out) any logs and task directories by using the command:
   
@@ -309,7 +309,7 @@ Each of the log files can be viewed within the GUI.
       cylc clean <WORKFLOW>
       ```
 
-> 6. View the workflow graph of the suite
+> 6. View the workflow graph of the workflow
 
   * View the workflow graph of the workflow:
     * To view the workflow graph of your workflow without running it, use:
@@ -322,9 +322,9 @@ Each of the log files can be viewed within the GUI.
     * NOTE: the `-i` option means "install only" - so this will not run the suite.
       ![Image of workflow graph](./images/gui7.png)
 
-> 7. Understand different modes of stopping a running suite
+> 7. Understand different modes of stopping a running workflow
 
-  * Understand different modes of stopping a running suite:
+  * Understand different modes of stopping a running workflow:
     * If you need to stop a workflow that is running you can use:
 
       ```

@@ -18,7 +18,7 @@ This can be required before re-running.
 ## Working directory
 
 When Cylc runs the workflow it has a working directory where the workflow is run.
-This is referenced in the `workflow.rc` file with the environment variable
+This is referenced in the `flow.cylc` file with the environment variable
 `$CYLC_WORKFLOW_RUN_DIR`.
 
 By default this will be under:
