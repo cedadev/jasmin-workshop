@@ -78,22 +78,22 @@ This is the outline of the overall task. The recommended way of doing each step 
 
  1. The starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
  1. SSH to the Rose & Cylc server (with the `-X` flag to forward X-windows)
- 1. In this example you are given the building blocks to construct a "suite file" for use with Rose & Cylc
- 1. Wrap the scripts in a Rose suite by copying the example suite to a new directory called `my-suite` and modifying it
- 1. Run the Rose suite
- 1. If the suite partially runs and leaves log/working directories in place you can clean these up and run it again
- 1. If you need to stop the suite then you can instruct Cylc to stop it
+ 1. In this example you are given the building blocks to construct a "workflow file" for use with Cylc
+ 1. Wrap the scripts in a Cylc workflow by copying the example workflow to a new directory called `my-workflow` and modifying it
+ 1. Run the Cylc workflow
+ 1. If the workflow partially runs and leaves log/working directories in place you can clean these up and run it again
+ 1. If you need to stop the workflow then you can instruct Cylc to stop it
 
 ### Review / alternative approaches / best practice
 
 Alternative approaches and good practice might include:
- * Manage the process yourself (without Rose and Cylc)?
+ * Manage the process yourself (without Cylc)?
  * Set the `$PATH` environment variable in your `~/.bash_profile`
  * Write your outputs somewhere else
  * *Have any files been accidentally left on the system?* (e.g. in: `/tmp/` etc)
- * Tidy up your run suite directory (i.e. logs and task directories)
- * View the workflow graph of the suite
- * Understand different modes of stopping a running suite
+ * Tidy up your run workflow directory (i.e. logs and task directories)
+ * View the workflow graph of the workflow
+ * Understand different modes of stopping a running workflow
 
 ### Walkthrough
 
@@ -105,7 +105,7 @@ Alternative approaches and good practice might include:
       ssh -X cylc2
       ```
 
-3. In this example you are given the building blocks to construct a "suite file" for use with Rose & Cylc
+3. In this example you are given the building blocks to construct a "flow file" for use with Cylc
 
   * Script 1: `create-counties-file.py`
     1. Context: Python 3
@@ -129,86 +129,87 @@ Alternative approaches and good practice might include:
     * On JASMIN: `/gws/pw/j07/workshop/tutorials/tut02/code/`
     * On github: https://github.com/cedadev/jasmin-workshop/tree/master/tutorials/tut02/code
 
-4. Wrap the scripts in a Rose suite by copying the example suite to a new directory called
-   `my-suite` and modifying it.
+4. Wrap the scripts in a Cylc workflow by copying the example workflow to a new directory called
+   `my-workflow` and modifying it.
 
-  * The example suite is available at:
+  * The example workflow is available at:
 
-        /gws/pw/j07/workshop/tutorials/tut02/example-suite
+        /gws/pw/j07/workshop/tutorials/tut02/example-workflow
 
-  * Go to the directory where you have copied the suite.
+  * Go to the directory where you have copied the workflow.
 
-  * You can run the example suite to view how it works, with:
+  * You can run the example workflow to view how it works, with:
 
     ```
-    # Add the location of the rose/cylc executables to $PATH
+    # Add the location of the cylc executables to $PATH
     export PATH=/apps/jasmin/metomi/bin:$PATH
-    rose suite-run
+    cylc play .
     ```
 
   * All of the scripts operate on input/output data in the relative directory: `./outputs`. It
-    therefore makes sense to copy the Python scripts to the main suite "run directory" and 
-    ensure that each task runs from that directory. The suite run directory is specified by 
-    the Cylc environment variable: `$CYLC_SUITE_RUN_DIR`.
+    therefore makes sense to copy the Python scripts to the main workflow "run directory" and 
+    ensure that each task runs from that directory. The workflow run directory is specified by 
+    the Cylc environment variable: `$CYLC_WORKFLOW_RUN_DIR`.
 
     This variable is set for you by Cylc; a typical value would be 
-    `/home/users/$USER/cylc-run/my-suite`. Note that the current working directory for the 
+    `/home/users/$USER/cylc-run/my-workflow`. Note that the current working directory for the 
     individual steps is different for each step (for example 
-    `/home/users/$USER/cylc-run/my-suite/work/1/initialise` for the `initialise` step). For the 
+    `/home/users/$USER/cylc-run/my-workflow/work/1/initialise` for the `initialise` step). For the 
     workflow below, it is convenient for all steps to be run in the same directory, so the commands 
-    for each step will include changing directory to `$CYLC_SUITE_RUN_DIR` before running the 
+    for each step will include changing directory to `$CYLC_WORKFLOW_RUN_DIR` before running the 
     relevant script.
 
 
-  * Edit the `suite.rc` file as follows:
-    * In the `[[runtime]]` section of the suite file, modify each of the 4 processing steps as follows:
+  * Edit the `flow.cylc` file as follows:
+    * In the `[[runtime]]` section of the workflow file, modify each of the 4 processing steps as follows:
 
         * `[[initialise]]`
           1. Delete any existing `jasmin-workshop` sub-directory (in case the suite has 
              been run previously)
           2. Clone the GitHub repository: https://github.com/cedadev/jasmin-workshop
           3. Copy the files in the sub-directory `jasmin-workshop/tutorials/tut02/code/` to the 
-             suite run directory at: `$CYLC_SUITE_RUN_DIR`
+             workflow run directory at: `$CYLC_WORKFLOW_RUN_DIR`
 
         * `[[step1]]`
-          1. Delete any existing `outputs` sub-directory (in case the suite has been run 
+          1. Delete any existing `outputs` sub-directory (in case the workflow has been run 
              previously)
           2. Activate the standard JASMIN Python 3 environment.
-          3. Change directory to the `$CYLC_SUITE_RUN_DIR`
+          3. Change directory to the `$CYLC_WORKFLOW_RUN_DIR`
           4. Run the script
 
         * `[[batch<counter>]]`
           1. Activate the standard JASMIN Python 3 environment.
-          2. Change directory to the `$CYLC_SUITE_RUN_DIR`
+          2. Change directory to the `$CYLC_WORKFLOW_RUN_DIR`
           3. Run the script for each value of the `counter`:
              * The `counter` variable is accessible by the environment variable: `CYLC_TASK_PARAM_counter`
 
         * `[[final]]`
           1. Activate the standard JASMIN Python 3 environment.
-          2. Change directory to the `$CYLC_SUITE_RUN_DIR`
+          2. Change directory to the `$CYLC_WORKFLOW_RUN_DIR`
           3. Run the script
 
-5. Run the Rose suite with the command:
+5. Run the Cylc workflow with the command:
 
     ```
     export PATH=/apps/jasmin/metomi/bin:$PATH
-    rose suite-run
+    cylc play .
     ```
 
   * **NOTE:** It will take a couple of minutes to start up and then a GUI should appear that 
     shows the workflow in action.
 
-6. If the suite partially runs and leaves log/working directories in place you can clean these up and run it again with:
+6. If the workflow partially runs and leaves log/working directories in place you can clean these up and run it again with:
 
     ```
-    rose suite-run --new
+    cylc clean .
+    cylc play .
     ```
 
-7. If you need to stop the suite then you can instruct Cylc to stop it with:
+7. If you need to stop the workflow then you can instruct Cylc to stop it with:
    
     ```
-    cylc stop '<SUITE>'
-    # Where <SUITE> is the name of the suite directory
+    cylc stop '<WORKFLOW>'
+    # Where <WORKFLOW> is the name of the workflow directory
     ```
 
 ### What should the Cylc GUI look like?
@@ -257,11 +258,11 @@ Each of the log files can be viewed within the GUI.
 > 1. Manage the process yourself (without Rose and Cylc)?
 
   * Pros:
-    * You don't need to learn/configure Rose and Cylc
+    * You don't need to learn/configure Cylc
   * Cons:
     * You have to check the dependency tree yourself:
       * You need to check whether all tasks have run in a given stage before progressing to the next stage.
-      * With Rose and Cylc you can configure complex rules for responding to failures and retrying tasks.
+      * With Cylc you can configure complex rules for responding to failures and retrying tasks.
 
 > 2. Set the `$PATH` environment variable in your `~/.bash_profile`
 
@@ -292,9 +293,9 @@ Each of the log files can be viewed within the GUI.
 
 > 4. *Have any files been accidentally left on the system?* (e.g. in: `/tmp/` etc)
 
-  * Running a Rose suite will copy your suite to a "run suite directory" under:
+  * Running a Cylc workflow will copy your workflow to a "run workflow directory" under:
   
-        $HOME/cylc-run/<SUITE>/
+        $HOME/cylc-run/<WORKFLOW>/
 
   * This directory includes various files, directories and symbolic links related to your job. 
     Please check that you are not writing big files to that the directory and monitor the size 
@@ -302,21 +303,20 @@ Each of the log files can be viewed within the GUI.
 
 > 5. Tidy up your run suite directory (i.e. logs and task directories)
 
-  * You can tell Rose to tidy up (clear out) any logs and task directories by using the command:
+  * You can tell Cylc to tidy up (clear out) any logs and task directories by using the command:
   
       ```
-      rose suite-clean
+      cylc clean <WORKFLOW>
       ```
 
 > 6. View the workflow graph of the suite
 
-  * View the workflow graph of the suite:
-    * To view the workflow graph of your suite without running it, use:
+  * View the workflow graph of the workflow:
+    * To view the workflow graph of your workflow without running it, use:
   
       ```
-      rose suite-run -i
-      cylc graph '<SUITE>'
-      # Where <SUITE> is the name of the suite directory
+      cylc graph '<WORKFLOW>'
+      # Where <WORKFLOW> is the name of the workflow directory
       ```
 
     * NOTE: the `-i` option means "install only" - so this will not run the suite.
@@ -325,36 +325,35 @@ Each of the log files can be viewed within the GUI.
 > 7. Understand different modes of stopping a running suite
 
   * Understand different modes of stopping a running suite:
-    * If you need to stop a suite that is running you can use:
+    * If you need to stop a workflow that is running you can use:
 
       ```
-      cylc stop '<SUITE>'
-      # Where <SUITE> is the name of the suite directory
+      cylc stop '<WORKFLOW>'
+      # Where <WORKFLOW> is the name of the workflow directory
       ```
 
-    * The `cylc stop` command may not stop the suite immediately - because it will wait 
+    * The `cylc stop` command may not stop the workflow immediately - because it will wait 
       for submitted and running tasks to complete.
 
-    * To kill the submitted and running tasks before stopping the suite, use:
+    * To kill the submitted and running tasks before stopping the workflow, use:
 
       ```
-      cylc stop --kill '<SUITE>'
+      cylc stop --kill '<WORKFLOW>'
       ```
 
-    * To stop the suite regardless of submitted and running tasks, use:
+    * To stop the workflow regardless of submitted and running tasks, use:
 
       ```
-      cylc stop --now '<SUITE>'
+      cylc stop --now '<WORKFLOW>'
       ```
 
 ### Review and further info
 
 This tutorial demonstrates how to:
-  * Use the Rose and Cylc workflow management tools.
-  * Construct a Rose suite involving a multi-step workflow.
-  * Configure a Rose suite to work with the LOTUS batch cluster on JASMIN.
-  * Run a Rose suite and monitor its progress using the Cylc GUI.
+  * Use the Cylc workflow management tool.
+  * Construct a Cylc workflow involving a multi-step workflow.
+  * Configure a Cylc workflow to work with the LOTUS batch cluster on JASMIN.
+  * Run a Cylc workflow and monitor its progress using the Cylc GUI.
 
-Rose and Cylc are very versatile tools. We recommend that you study the documentation at:
-  * Rose: https://metomi.github.io/rose/doc/html/ 
-  * Cylc: https://cylc.github.io/doc/built-sphinx/
+Cylc is a very versatile tool. We recommend that you study the documentation at:
+  * Cylc: https://cylc.github.io/cylc-doc/stable/html/

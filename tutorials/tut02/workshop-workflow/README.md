@@ -52,7 +52,7 @@ You can view the output graph with this command (`display` command is only avail
 display $HOME/cylc-run/workshop-workflow/runN/outputs/annual-max-temp-time-series.png
 ```
 
-## Additional Rose & Cylc commands
+## Additional Cylc commands
 
 ### Stopping a workflow that is running
 
