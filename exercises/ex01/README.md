@@ -236,7 +236,7 @@ Your onward connection to the `sci` machine needs to "enable X11 forwarding" usi
 > ssh -AX train050@sci-vm-01.jasmin.ac.uk
 ```
 
-Once logged in to the `sci` machine, you can run a simple graphical command like `xeyes` or `xclock` and observe the output on the desktop. You can kill these applications with `CTRL-C`.
+Once logged in to the `sci` machine, you can run a simple graphical command like `xterm` or `xfce4-terminal` and observe the output on the desktop. You can kill these applications with `CTRL-C`.
 
 > [!NOTE]
 > As [described here](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx), the `nx` servers include a Firefox web browser, which can be used for using some web-based tools which may only be available within JASMIN. Please do not use them for general web browsing, and please use Firefox on the `nx` machines rather than the `sci` machines, to preserve resources for processing on the `sci` machines. The same article also discusses why using the NX client significantly improves performance for graphical applications run on JASMIN, if you're viewing the output somewhere remote to JASMIN.

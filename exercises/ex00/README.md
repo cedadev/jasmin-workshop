@@ -333,7 +333,7 @@ If not, check through the FAQ below, and make sure you've done everything as per
    To update the keys to your training account:
    1. [Generate a new pair of SSH keys](https://help.jasmin.ac.uk/docs/getting-started/generate-ssh-key-pair/) with a new passphrase using the following command: 
       ```bash
-      ssh-keygen -m PEM -t ecdsa -b 521 -C me@somewhere.ac.uk
+      ssh-keygen -m PEM -t ecdsa -b 521 -C me@somewhere.ac.uk -f ~/.ssh/id_ecdsa_jasmin
       ```
    2. If you have also lost the password for your training account, [request a password reset](https://help.jasmin.ac.uk/docs/getting-started/reset-jasmin-account-password/) in order to access the JASMIN Accounts Portal
    3. Log in to the [JASMIN Accounts Portal](https://accounts.jasmin.ac.uk/) using your training account details and [navigate to the profile page](https://accounts.jasmin.ac.uk/account/profile/)

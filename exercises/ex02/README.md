@@ -99,7 +99,7 @@ You will be able to run and test a script on the scientific analysis servers. Yo
 - If a process hangs, do not simply close the terminal window. Please contact the helpdesk and alert the team so that the process can be shut down. Otherwise, hung processes build up and contribute to machine overloading.
 - Many instances of an application, e.g., Ipython, can impact the performance of the scientific servers.
 - Monitor the CPU and memory resources of your processes.
-- You might use `STOP` and `CONT` to delay execution of a process until a less-busy time like this: `kill -STOP <pid>`, `kill  -CONT <pid>`, or kill the process like this: `kill -TERM <pid>`.
+- You might use `STOP` and `CONT` to delay execution of a process until a less-busy time like this: `kill -STOP <pid>`, `kill -CONT <pid>`, or kill the process like this: `kill -TERM <pid>`.
 - Do not “hog” IDL development licenses on the `sci` servers. A limited number of these are available for development and compilation of IDL code, which should then be run on LOTUS using IDL runtime licenses, of which there are many more.
 
 #### Usage of the storage
