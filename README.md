@@ -10,14 +10,14 @@ Overview presentation
 
 | Slides with speaker's notes |
 | --- |
-[![](https://img.youtube.com/vi/HQjRDtgW3Fg/mqdefault.jpg )](https://docs.google.com/presentation/d/1_K7qZNOVA5erDXCdxgMtkml_goqjVBrk4esUr_LXm5A/edit?usp=sharing)
-| (slides updated June 2025) |
+[![Opening slide for the overview presentation given during JASMIN workshops](https://img.youtube.com/vi/HQjRDtgW3Fg/mqdefault.jpg )](https://docs.google.com/presentation/d/1kxZRbhx7pI1TJtG7H_RkZ8l2GyBIhzIHbvr6TlRgfxc/edit?usp=sharing)
+| (slides updated November 2025) |
 
 | Exercise | Topic |
 | --- | --- |
 | [ex00](./exercises/ex00) | Getting set up for the JASMIN Workshop |
 | [ex01](./exercises/ex01) | Connecting to JASMIN |
-| [ex02](./exercises/ex02) | Interactive computing using a sci server |
+| [ex02](./exercises/ex02) | Interactive computing using a `sci` server |
 | [ex03](./exercises/ex03) | Transferring and sharing data |
 | [ex04](./exercises/ex04) | Extracting a variable from a file in the CEDA Archive |
 | [ex05](./exercises/ex05) | Batch computing - running a script on LOTUS |

@@ -70,7 +70,7 @@ We have looked at some basic methods suitable for small datasets or where speed 
 
 ### Questions to test yourself
 
-All too easy? Here are some questions to test your knowledge an understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk)
+All too easy? Here are some questions to test your knowledge an understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk).
 
 1. How would you set the permissions on a file/directory so that it can be
    * written by any other member of the workspace?
