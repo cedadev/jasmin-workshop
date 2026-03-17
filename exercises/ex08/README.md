@@ -32,7 +32,7 @@ After completing this exercise you will:
 
 ### JASMIN resources
 
-- Scientific analysis servers: `sci-vm-0[1-6].jasmin.ac.uk`, `sci-ph-0[12].jasmin.ac.uk`
+- Scientific analysis servers: `sci-vm-0[1-5].jasmin.ac.uk`, `sci-ph-0[1-3].jasmin.ac.uk`
 - Group workspace: `/gws/pw/j07/workshop`
 - LOTUS batch queues: `workshop` (`short-serial` outside the event)
 - Fortran source code is (available in the Github repository):
@@ -51,7 +51,7 @@ This is the outline of what you need to do. The recommended way of doing each st
 
 1. Login to a physical JASMIN scientific analysis server
    - Launch two terminal sessions
-   - Access a JASMIN login server on each terminal (see exercise 01)
+   - Access a JASMIN `login` server on each terminal (see exercise 01)
    - Choose one of physical sci servers `sci-ph-0[12]` with the lowest load
    - Login to the chosen sci server on each terminal
    - Copy the Fortran source code from the exercise directory (shown in the JASMIN resources section) to your current working directory
@@ -112,7 +112,7 @@ By completing this exercise you will be able to compile and test a serial Fortra
 ### Cheat Sheet
 
 1. Login to a JASMIN scientific analysis server
-   - Login to one of the physical sci `sci-ph-0[12]` machines from a JASMIN login server
+   - Login to one of the physical sci `sci-ph-0[1-3]` machines from a JASMIN `login` server
    ```
    $ ssh -A <username>@sci-ph-01.jasmin.ac.uk
    ```

@@ -32,7 +32,7 @@ After completing this exercise you will:
  
  ### JASMIN resources
 
- * Scientific analysis servers: `sci-vm-0[1-6].jasmin.ac.uk`, `sci-ph-0[1-2].jasmin.ac.uk`
+ * Scientific analysis servers: `sci-vm-0[1-5].jasmin.ac.uk`, `sci-ph-0[1-3].jasmin.ac.uk`
  * Group workspace: `/gws/pw/j07/workshop`
  * LOTUS batch queues: `workshop` (`par-single` or `par-multi` outside the event)
  * Fortran MPI source code is (available in the Github repository): 
@@ -52,7 +52,7 @@ This is the outline of what you need to do. The recommended way of doing each st
 
 1. Login to a JASMIN scientific analysis server 
    * Launch two terminal sessions: terminal 1 will be used for compiling and testing codes on LOTUS while terminal 2 will be used for submitting and monitoring jobs 
-   * Access a JASMIN login server on each terminal (see exercise 01)
+   * Access a JASMIN `login` server on each terminal (see exercise 01)
    * Choose a Sci server with the lowest load 
    * Login to the chosen sci server on each terminal
    * Copy the Fortran source code from the exercise directory (shown in the JASMIN resources section) to your current working directory            

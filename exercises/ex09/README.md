@@ -100,11 +100,11 @@ Alternative approaches could include:
 ##### Shutting down notebooks after use
 - Each time you open a new `.ipynb` Jupyter Notebook, the Notebook Service starts a new Python kernel to run any cells you click "play" on.
 - However when you close a notebook (by pressing the `x` on the tab), the kernel will remain running in the background.
-- We recommend shutting down these kernels in the sidebar (see the screenshot below) as they can take up memory as you keep opening new notebooks and slow your other notebooks down.
+- We recommend shutting down these kernels in the sidebar as shown in the screenshot below. They can take up memory as you keep opening new notebooks and slow your other notebooks down.
 ![Shutting down unused notebook kernels](./images/shutdown_kernel.png)
 
 ##### Restarting notebooks
-- You might find that you try running a cell, nothing happens, or it never finishes running for some reason.
+- You might find that when you try running a cell, nothing happens, or it never finishes running for some reason.
 - In this case you can try restarting the kernel by choosing "Kernel > Restart Kernel..." in the menu at the top of the page, then click Restart in the pop up.
 - When you press this, the message in the status bar at the bottom of the screen will say "Python 3 + Jaspy | Restarting/Unknown/Busy" while the kernel loads, then it will say "Python 3 + Jaspy | Idle" when it is ready to use again.
 - You can even choose "Kernel > Restart Kernel and Run All Cells..." to restart the kernel and get back to the very last cell at the bottom of the notebook.
@@ -308,10 +308,7 @@ Learn more about the kinds of Python libraries for data and visualisation that w
 
 > 1. How can you add extra software packages to your Notebook?
 
-This help article describes how to create your own `virtual environment` into 
-which you can install extra packages, and optionally how to make it into a kernel for future re-use:
-
-https://help.jasmin.ac.uk/article/5084-creating-a-virtual-environment-in-the-jasmin-notebooks-service
+[This JASMIN help article](https://help.jasmin.ac.uk/article/5084-creating-a-virtual-environment-in-the-jasmin-notebooks-service) describes how to create your own `virtual environment` into which you can install extra packages, and optionally how to make it into a kernel for future re-use.
 
 > 2. Can you figure out how to:
 >  * Delete a cell from a notebook

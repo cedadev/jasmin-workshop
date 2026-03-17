@@ -7,7 +7,7 @@ author: Ag Stephens
 
 ### Scenario
 
-I am working on a project studying global cloud cover. I am looking at a case study and I have identified that the ERA-Interim data set is an appropriate source for my data. It is held on disk in the CEDA archive (located on JASMIN). Extract the total cloud cover ("TCC") variable for 1st January 2017 at midnight (00:00), from the ERA-Interim data set. The data files contain a large set of variables so I want to use the [Climate Data Operators (CDO) tool](https://code.mpimet.mpg.de/projects/cdo) in order to extract only the "TCC" variable.
+I am working on a project studying global cloud cover. I am looking at a case study and I have identified that the ERA-Interim data set is an appropriate source for my data. It is held on disk in the CEDA archive (located on JASMIN). Extract the total cloud cover ("TCC") variable for 1st January 2017 at midnight (00:00), from the ERA-Interim data set. The data files contain a large set of variables, so I want to use the [Climate Data Operators (CDO) tool](https://code.mpimet.mpg.de/projects/cdo) in order to extract only the "TCC" variable.
 
 ### Objectives
 
@@ -19,13 +19,13 @@ After completing this exercise I will be able to:
 
 ### JASMIN resources
 
-- JASMIN account with SSH public key uploaded and `jasmin-login` privilege
-- login server: `login-01.jasmin.ac.uk`
-- sci servers: `sci-vm-0[1-5].jasmin.ac.uk`, `sci-ph-0[1-3]`
+- JASMIN account with SSH public key uploaded and active `jasmin-login` grant
+- `login` server: `login.jasmin.ac.uk`
+- `sci` servers: `sci-vm-0[1-5].jasmin.ac.uk`, `sci-ph-0[1-3]`
 - common software: CDO (Climate Data Operators) tool
 - GWS (read/write): `/gws/pw/j07/workshop`
 - CEDA Archive (read-only): requires a CEDA account
-- help documentation at https://help.jasmin.ac.uk
+- [JASMIN help documentation](https://help.jasmin.ac.uk)
 
 ### Local resources
 
@@ -33,9 +33,9 @@ After completing this exercise I will be able to:
 
 ### Your task
 
-This is the outline of what you need to do. The recommended way of doing each step is covered in the "Cheat Sheet" but you may wish to try solving it for yourself first.
+This is the outline of what you need to do. The recommended way of doing each step is covered in the "Cheat Sheet", but you may wish to try solving it for yourself first.
 
- 1. Your starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
+ 1. Your starting point is on the JASMIN `login` server (see [exercise 01](../ex01))
  1. SSH to a scientific analysis server
  1. Identify the path to the required data file e.g. `https://data.ceda.ac.uk/badc/ecmwf-era-interim/data/monthly-means/gg/as`
  1. Decide on the output file path
@@ -45,10 +45,10 @@ This is the outline of what you need to do. The recommended way of doing each st
 
 ### Questions to test yourself
 
-All too easy? Here are some questions to test your knowledge an understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk)
+All too easy? Here are some questions to test your knowledge and understanding. You might find the answers by exploring the [JASMIN Documentation](https://help.jasmin.ac.uk).
 
  1. Where can you find out more about the software environments available on JASMIN?
- 2. Can you find out which other packages are available within the "jaspy" environment?
+ 2. Can you find out which other packages are available within the "jaspy" environments?
 
 ### Review / alternative approaches / best practice
 
@@ -72,12 +72,12 @@ Best practice considerations:
 
 ### Cheat Sheet
 
-1. Your starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
+1. Your starting point is on the JASMIN `login` server (see [exercise 01](../ex01))
 
 2. SSH to a scientific analysis server
 
   ```
-  $ ssh sci-vm-01.jasmin.ac.uk # Could use any of sci-vm-0[1-6].jasmin.ac.uk
+  $ ssh sci-vm-01.jasmin.ac.uk # Could use any of sci-vm-0[1-5].jasmin.ac.uk
   ```
 
 3. Identify path to the required data file
@@ -88,7 +88,7 @@ Best practice considerations:
    /badc/ecmwf-era-interim/data/gg/as/
    ```
 
-  * Sub-directories under that are: `YYYY/MM/DD/`, locate file for 1st January 2017 at midnight (00:00).
+  * Sub-directories under that are in the format `YYYY/MM/DD/`, locate the file for 1st January 2017 at midnight (00:00).
   * Set the input file:
 
    ```
@@ -110,8 +110,7 @@ Best practice considerations:
 
 6. Run the CDO tool to subset the file and extract the `TCC` variable
 
-  - Consult the CDO manual to see how to extract a variable by name:
-    https://code.mpimet.mpg.de/projects/cdo/embedded/index.html#x1-1460002.3
+  - [Consult the CDO manual](https://code.mpimet.mpg.de/projects/cdo/embedded/index.html#x1-1460002.3) to see how to extract a variable by name
 
   - Run CDO:
 
@@ -142,6 +141,6 @@ Best practice considerations:
 
 The JASMIN Help pages include an article about [software on JASMIN](https://help.jasmin.ac.uk/docs/software-on-jasmin/software-overview/). This includes links to details of the "jaspy" and other software environments.
 
-> 2. Can you find out which other packages are available within the "jaspy" environment?
+> 2. Can you find out which other packages are available within the "jaspy" environments?
 
-The "jaspy" environments are listed on our [jaspy help page](https://help.jasmin.ac.uk/docs/software-on-jasmin/jaspy-envs/). You can follow links from there to find out about the different "jaspy" environments and the packages, and versions, they include.
+The "jaspy" environments are listed on our [jaspy help page](https://help.jasmin.ac.uk/docs/software-on-jasmin/jaspy-envs/). You can follow links from there to find out about the different "jaspy" environments, and the packages, and versions, they include.

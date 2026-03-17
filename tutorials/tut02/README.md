@@ -58,7 +58,7 @@ After completing this tutorial I will be able to:
 ### JASMIN resources
 
  * JASMIN account with SSH public key uploaded and `jasmin-login` privilege
- * login servers: `login-0[1-4].jasmin.ac.uk`
+ * login servers: `login.jasmin.ac.uk`
  * Cylc server: `cylc2.jasmin.ac.uk`
  * LOTUS batch processing cluster
  * GWS (read/write): `/gws/pw/j07/workshop`
@@ -95,7 +95,7 @@ Alternative approaches and good practice might include:
 
 ### Walkthrough
 
-1. The starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
+1. The starting point is on the JASMIN `login` server (see [exercise 01](../ex01))
 
 2. SSH to the Cylc server (with the `-X` flag to forward X-windows)
    

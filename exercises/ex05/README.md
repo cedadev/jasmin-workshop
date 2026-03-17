@@ -19,7 +19,7 @@ After completing this exercise I will be able to:
 ### JASMIN resources
 
 - JASMIN account with SSH public key uploaded and `jasmin-login` privilege
-- login servers: `login-0[1-4].jasmin.ac.uk`
+- `login` server: `login.jasmin.ac.uk`
 - sci servers: `sci-vm-0[1-5].jasmin.ac.uk`, `sci-ph-0[1-3]`
 - LOTUS batch processing cluster
 - common software: CDO (Climate Data Operators) tool
@@ -35,7 +35,7 @@ After completing this exercise I will be able to:
 
 This is the outline of what you need to do. The recommended way of doing each step is covered in the "Cheat Sheet" but you may wish to try solving it for yourself first.
 
-1. Your starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
+1. Your starting point is on the JASMIN `login` server (see [exercise 01](../ex01))
 1. SSH to a scientific analysis server
 1. Write an "`extract-era-data.sh`" wrapper script that calls the CDO extraction command
 1. Write a script, called "`submit-all.sh`", to loop over dates from **01**/09/2018 to **02**/09/2018 and submit the "`extract-era-data.sh`" script to LOTUS for each day
@@ -117,7 +117,7 @@ This exercise demonstrates how to:
 
 ### Cheat Sheet
 
-1. Your starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
+1. Your starting point is on the JASMIN `login` server (see [exercise 01](../ex01))
 
 1. SSH to a scientific analysis server ([see above](#jasmin-resources))
 
