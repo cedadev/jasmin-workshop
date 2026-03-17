@@ -24,7 +24,7 @@ flowchart TD
 
 At the end of this exercise I will be able to:
 
-- **Connect** to a JASMIN `login` server using a simple terminal client
+- **Connect** to the JASMIN `login` server using a simple terminal client
 - **Locate** my home directory
 - **Make an onward connection** to a `sci` server
 - **Run** a simple command
@@ -32,7 +32,7 @@ At the end of this exercise I will be able to:
 ### JASMIN resources
 
 - JASMIN account with SSH public key uploaded and `jasmin-login` access role
-- `login` server: `login-0[1-4].jasmin.ac.uk`
+- `login` server: `login.jasmin.ac.uk`
 - [JASMIN Help documentation](https://help.jasmin.ac.uk)
 
 ### Local resources
@@ -47,15 +47,15 @@ This is the outline of what you need to do. The recommended way of doing each st
 
 In the text below, you can see the steps needed to do this task, i.e:
 
-1. Connect to a `login` server using a terminal client
+1. Connect to the `login` server using a terminal client
    - (Your key should already be loaded, as per ex00)
-   - Initiate an SSH connection to a `login` server
+   - Initiate an SSH connection to the `login` server
    - Note the list of available `sci` servers
    - Check what directory you are in
    - Check usage of your home directory
    - Check that your SSH key is available to make an onward connection
 1. Make an onward connection to a `sci` server
-   - Login to the `sci` server
+   - Login to a `sci` server
    - Run a simple command
 
 ### Questions to test yourself
@@ -78,9 +78,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 > [!NOTE]
 > Please make sure you have read all the information in [exercise 0](../ex00), in particular the recommendation to use a preconfigured training account, and the reasons why. If you are using your **own** account, outside of one of our organised training events, you will need to have completed these steps yourself: [start here](https://help.jasmin.ac.uk/article/185-generate-ssh-key-pair), but be aware not all the steps can be done temporarily for a workshop event.
 
-1. Connect to a `login` server using a terminal client
-
-   * For the workshop, use server `login-01.jasmin.ac.uk` but the full list is in the [help doc](https://help.jasmin.ac.uk/article/191-login-servers).
+1. Connect to the `login` server using a terminal client
 
     * If you have set up your own machine as suggested in [exercise 0: Getting set up for the JASMIN workshop](../ex00), your SSH private key should already be loaded.
 
@@ -98,10 +96,10 @@ All too easy? Here are some questions to test your knowledge and understanding. 
       ```
       In this case, you will need to work out what is wrong before you will be able to connect. Please see the advice in [exercise 0](../ex00) before proceeding.
 
-    * Initiate an SSH connection to a `login` server
+    * Initiate an SSH connection to a `login` server via `login.jasmin.ac.uk`
 
       ```console
-      $ ssh -A train050@login-01.jasmin.ac.uk
+      $ ssh -A train050@login.jasmin.ac.uk
       ```
       <table>
         <thead>

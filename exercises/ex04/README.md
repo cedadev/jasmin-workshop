@@ -20,7 +20,7 @@ After completing this exercise I will be able to:
 ### JASMIN resources
 
 - JASMIN account with SSH public key uploaded and active `jasmin-login` grant
-- `login` server: `login-0[1-4].jasmin.ac.uk`
+- `login` server: `login.jasmin.ac.uk`
 - `sci` servers: `sci-vm-0[1-5].jasmin.ac.uk`, `sci-ph-0[1-3]`
 - common software: CDO (Climate Data Operators) tool
 - GWS (read/write): `/gws/pw/j07/workshop`
@@ -35,7 +35,7 @@ After completing this exercise I will be able to:
 
 This is the outline of what you need to do. The recommended way of doing each step is covered in the "Cheat Sheet", but you may wish to try solving it for yourself first.
 
- 1. Your starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
+ 1. Your starting point is on the JASMIN `login` server (see [exercise 01](../ex01))
  1. SSH to a scientific analysis server
  1. Identify the path to the required data file e.g. `https://data.ceda.ac.uk/badc/ecmwf-era-interim/data/monthly-means/gg/as`
  1. Decide on the output file path
@@ -72,7 +72,7 @@ Best practice considerations:
 
 ### Cheat Sheet
 
-1. Your starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
+1. Your starting point is on the JASMIN `login` server (see [exercise 01](../ex01))
 
 2. SSH to a scientific analysis server
 

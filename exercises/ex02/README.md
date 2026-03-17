@@ -20,7 +20,7 @@ After completing this exercise I will be able to:
 
 ### JASMIN resources
 
-- Scientific analysis servers: `sci-vm-0[1-5].jasmin.ac.uk`
+- Scientific analysis servers: `sci-vm-0[1-5].jasmin.ac.uk`, `sci-ph-0[1-3]`
 - Group workspace (GWS): `/gws/pw/j07/workshop`
 - Example Python scripts are provided:
   - `/gws/pw/j07/workshop/exercises/ex02/code/random-number-gen.py`
@@ -37,10 +37,10 @@ After completing this exercise I will be able to:
 
 This is the outline of what you need to do. The recommended way of doing each step is covered in the "Cheat Sheet", but you may wish to try solving it for yourself first.
 
-1. Your starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
+1. Your starting point is the JASMIN `login` server (see [exercise 01](../ex01))
 2. Login to a JASMIN scientific analysis server from the `login` server
    - Launch two terminal sessions
-   - Access a JASMIN `login` server on each terminal (see [exercise 01](../ex01))
+   - Access the JASMIN `login` server on each terminal (see [exercise 01](../ex01))
    - Choose a `sci` server with low load
    - Login to the chosen `sci` server in both terminal sessions
 
@@ -113,7 +113,7 @@ You will be able to run and test a script on the scientific analysis servers. Yo
 
 1. Login to a JASMIN scientific analysis server
 
-   - Login to the chosen `sci` server from a JASMIN `login` server
+   - Login to the chosen `sci` server from the JASMIN `login` server
 
    ```bash
    $ ssh -A <username>@sci<number>.jasmin.ac.uk

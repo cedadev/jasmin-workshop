@@ -20,7 +20,7 @@ After completing this exercise I will be able to:
 ### JASMIN resources
 
 - JASMIN account with SSH public key uploaded and `jasmin-login` privilege
-- login servers: `login-0[1-4].jasmin.ac.uk`
+- `login` server: `login.jasmin.ac.uk`
 - sci servers: `sci-vm-0[1-5].jasmin.ac.uk`, `sci-ph-0[1-3]`
 - help documentation at https://help.jasmin.ac.uk
 
@@ -32,7 +32,7 @@ After completing this exercise I will be able to:
 
 This is the outline of what you need to do. The recommended way of doing each step is covered in the "Cheat Sheet" but you may wish to try solving it for yourself first.
 
- 1. Your starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
+ 1. Your starting point is on the JASMIN `login` server (see [exercise 01](../ex01))
  1. SSH to a scientific analysis server
  1. Activate the Jaspy Python 3 environment with the `module` command
  1. Create a Python 3 virtual environment in your `$HOME` directory
@@ -90,7 +90,7 @@ Alternative approaches could include:
 
 ### Cheat Sheet
 
-1. Your starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
+1. Your starting point is on the JASMIN `login` server (see [exercise 01](../ex01))
 
 1. SSH to a scientific analysis server
 
