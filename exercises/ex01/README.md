@@ -15,8 +15,8 @@ I want to connect to JASMIN from my own computer to do some work.
 ```mermaid
 flowchart TD
    id1(My computer)
-   -- terminal client -->id2(`login` server)
-   -- terminal client -->id3(`sci` server)
+   -- terminal client -->id2(<code>login</code> server)
+   -- terminal client -->id3(<code>sci</code> server)
    -->id4(do some work)
 ```
 
@@ -212,15 +212,15 @@ Here's how this scenario (right) compares to our original scenario (left):
 ```mermaid
 flowchart TD
    id1(My computer)
-   -- terminal client -->id2(`login` server)
-   -- terminal client -->id3(`sci` server)
+   -- terminal client -->id2(<code>login</code> server)
+   -- terminal client -->id3(<code>sci</code> server)
    -->id4(do some work)
 
    id4-. view terminal output .->id1
 
    id5(My computer)
-   -- special client -->id6(nx server)
-   -- terminal client + X11-forwarding -->id7(`sci` server)
+   -- special client -->id6(<code>nx</code> server)
+   -- terminal client + X11-forwarding -->id7(<code>sci</code> server)
    -->id8(work using graphics)
    
    id8-. view graphics .->id5
