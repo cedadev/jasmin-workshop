@@ -41,6 +41,26 @@ Click the arrow to expand the set of instructions.
    2. Click the link in this email from the JASMIN Accounts Portal to provision your training account.
          - **This is a one-time link** for secure credentials sharing! If you close the tab after entering the event password, **your credentials will be lost**, even if you click on the link in the email again.
 
+   2. Click the link in this email from the JASMIN Accounts Portal to provision your training account.
+   
+   <table>
+      <thead>
+         <tr>
+         <td align="left">
+            ⚠️ Note
+         </td>
+         </tr>
+      </thead>
+
+      <tbody>
+         <tr>
+         <td>
+            <b>This is a one-time link</b> for secure credentials sharing! If you close the tab after entering the event password, <b>your credentials will be lost</b>, even if you click on the link in the email again.
+         </td>
+         </tr>
+      </tbody>
+   </table>
+
    ![Event password page](images/Event-password.png)
 
    _The landing page asking for the event password after clicking the link_
