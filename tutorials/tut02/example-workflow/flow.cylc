@@ -16,8 +16,8 @@
         execution time limit = PT5M
         platform = lotus # See options via `cylc config --platforms`, e.g. `localhost`, `lotus`
         [[[directives]]]
-            --partition = workshop
-            --qos = workshop
+            --partition = debug
+            --qos = debug
             --account = workshop
             --time = 05:00
     [[initialise]]

@@ -36,11 +36,9 @@ When they have all completed then the **(3)** finalisation task can be executed.
 
 The actual tasks are:
 
-  1. **Initialisation**: Clone the repository to get the extraction scripts; run the first script 
-     to generate a list of UK counties; write those to a text file.
+  1. **Initialisation**: Clone the repository to get the extraction scripts; run the first script to generate a list of UK counties; write those to a text file.
 
-  2. **Batch**: For each county: calculate a 2000-2017 time series of the annual maximum 
-     temperature across all stations.
+  2. **Batch**: For each county: calculate a 2000-2017 time series of the annual maximum temperature across all stations.
 
   3. **Finalisation**: Read in all the time series files and plot them on a line graph to a PNG file.
 
@@ -53,7 +51,7 @@ It may help to sketch out the process in a simple diagram, as shown here...
 After completing this tutorial I will be able to:
 
  * break down a multi-step workflow into independent tasks
- * configure a basic Rose/Cylc job that includes a multi-step workflow
+ * configure a basic Cylc job that includes a multi-step workflow
  * run the workflow on the `cylc` server on JASMIN
  * interact with the Cylc graphical user interface
 
@@ -77,7 +75,7 @@ After completing this tutorial I will be able to:
 This is the outline of the overall task. The recommended way of doing each step is covered in the "Walkthrough" below.
 
  1. The starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
- 1. SSH to the Rose & Cylc server (with the `-X` flag to forward X-windows)
+ 1. SSH to the Cylc server (with the `-X` flag to forward X-windows)
  1. In this example you are given the building blocks to construct a "workflow file" for use with Cylc
  1. Wrap the scripts in a Cylc workflow by copying the example workflow to a new directory called `my-workflow` and modifying it
  1. Run the Cylc workflow
@@ -99,7 +97,7 @@ Alternative approaches and good practice might include:
 
 1. The starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
 
-2. SSH to the Rose & Cylc server (with the `-X` flag to forward X-windows)
+2. SSH to the Cylc server (with the `-X` flag to forward X-windows)
    
       ```
       ssh -X cylc2
@@ -138,41 +136,48 @@ Alternative approaches and good practice might include:
 
   * Go to the directory where you have copied the workflow.
 
-  * You can run the example workflow to view how it works, with:
+    ```
+    cd my-workflow
+    ```
+
+  * Update the SLURM configuration file in `flow.cylc` to use your own account.
+
+    ```
+    # In flow.cylc
+    # Change:
+    #   --account=jasmin-workshop
+    # To:
+    #   --account=<YOUR_ACCOUNT>
+    ```
+
+  * You can run the copied example workflow to view how it works, with:
 
     ```
     # Add the location of the cylc executables to $PATH
     export PATH=/apps/jasmin/metomi/bin:$PATH
-    cylc play .
+    cylc validate .
+    cylc install .
+    cylc play my-workflow
     ```
 
-  * All of the scripts operate on input/output data in the relative directory: `./outputs`. It
-    therefore makes sense to copy the Python scripts to the main workflow "run directory" and 
-    ensure that each task runs from that directory. The workflow run directory is specified by 
-    the Cylc environment variable: `$CYLC_WORKFLOW_RUN_DIR`.
+    This is the same as running `cylc vip`
 
-    This variable is set for you by Cylc; a typical value would be 
-    `/home/users/$USER/cylc-run/my-workflow`. Note that the current working directory for the 
-    individual steps is different for each step (for example 
-    `/home/users/$USER/cylc-run/my-workflow/work/1/initialise` for the `initialise` step). For the 
-    workflow below, it is convenient for all steps to be run in the same directory, so the commands 
-    for each step will include changing directory to `$CYLC_WORKFLOW_RUN_DIR` before running the 
-    relevant script.
+  * All of the scripts operate on input/output data in the relative directory: `./outputs`. It therefore makes sense to copy the Python scripts to the main workflow "run directory" and ensure that each task runs from that directory. The workflow run directory is specified by the Cylc environment variable: `$CYLC_WORKFLOW_RUN_DIR`.
 
+    This variable is set for you by Cylc; a typical value would be `/home/users/$USER/cylc-run/my-workflow/run1`. Note that the current working directory for the individual steps is different for each step (for example `/home/users/$USER/cylc-run/my-workflow/run1/work/1/initialise` for the `initialise` step). For the workflow below, it is convenient for all steps to be run in the same directory, so the commands for each step will include changing directory to `$CYLC_WORKFLOW_RUN_DIR` before running the relevant script.
 
-  * Edit the `flow.cylc` file as follows:
+    Since the example workflow currently only uses `echo` placeholders, it does not generate any outputs yet.
+
+  * To make the workflow do something useful with the Python scripts, you would normally edit the `flow.cylc` file as follows:
     * In the `[[runtime]]` section of the workflow file, modify each of the 4 processing steps as follows:
 
         * `[[initialise]]`
-          1. Delete any existing `jasmin-workshop` sub-directory (in case the suite has 
-             been run previously)
+          1. Delete any existing `jasmin-workshop` sub-directory (in case the workflow has been run previously)
           2. Clone the GitHub repository: https://github.com/cedadev/jasmin-workshop
-          3. Copy the files in the sub-directory `jasmin-workshop/tutorials/tut02/code/` to the 
-             workflow run directory at: `$CYLC_WORKFLOW_RUN_DIR`
+          3. Copy the files in the sub-directory `jasmin-workshop/tutorials/tut02/code/` to the workflow run directory at: `$CYLC_WORKFLOW_RUN_DIR`.
 
         * `[[step1]]`
-          1. Delete any existing `outputs` sub-directory (in case the workflow has been run 
-             previously)
+          1. Delete any existing `outputs` sub-directory (in case the workflow has been run previously)
           2. Activate the standard JASMIN Python 3 environment.
           3. Change directory to the `$CYLC_WORKFLOW_RUN_DIR`
           4. Run the script
@@ -188,21 +193,25 @@ Alternative approaches and good practice might include:
           2. Change directory to the `$CYLC_WORKFLOW_RUN_DIR`
           3. Run the script
 
-5. Run the Cylc workflow with the command:
+  * **Instead of manually modifying the `my-workflow` configuration right now**, the repository already includes a fully configured workflow in the `workshop-workflow` directory that implements all of the above steps.
+
+5. Run the fully configured `workshop-workflow`:
 
     ```
+    # Add the location of the cylc executables to $PATH
     export PATH=/apps/jasmin/metomi/bin:$PATH
-    cylc play .
+    cd workshop-workflow/
+    # Remember to update the account in flow.cylc to <YOUR_ACCOUNT> as you did before.
+    cylc vip .
     ```
 
-  * **NOTE:** It will take a couple of minutes to start up and then a GUI should appear that 
-    shows the workflow in action.
+  * **NOTE:** It will take a couple of minutes to start up. To view the workflow in action, open the GUI with:
 
 6. If the workflow partially runs and leaves log/working directories in place you can clean these up and run it again with:
 
     ```
-    cylc clean .
-    cylc play .
+    cylc clean workshop-workflow
+    cylc vip .
     ```
 
 7. If you need to stop the workflow then you can instruct Cylc to stop it with:
@@ -229,7 +238,17 @@ And on github at:
 
   https://github.com/cedadev/jasmin-workshop/tree/master/tutorials/tut02/workshop-workflow
 
-The Cylc GUI opens when you start running a workflow (as long as you have used the `-X` flag when SSHing to the server).
+
+#### Cylc TUI
+
+The Cylc TUI can be opened by running `cylc tui`, and is an easily accessible alternative to the GUI that runs in the terminal and provides similar levels of functionality to the GUI and can act as a quick way to check on the status of your workflow.
+
+![Cylc TUI Screenshot 1](./images/tui1.png)
+
+
+#### Cylc GUI
+
+The Cylc GUI can be opened by running `cylc gui` (as long as you have used the `-X` flag when SSHing to the server), it will open up in a browser.
 
 ![Cylc GUI Screenshot 1](./images/gui1.png)
 
@@ -241,21 +260,34 @@ The graph view shows each of the tasks and the dependency graph that connects th
 
 ![Cylc GUI Screenshot 3](./images/gui3.png)
 
-Failed tasks are clearly indicated in red.
+Failed tasks are clearly indicated in red. To emulate this failure, you can edit the `flow.cylc` file and change the `command` for the `clone_repo` task to something that will fail, for example:
+
+```
+    [[clone_repo]]
+        script = """rm -fr workshop-repo
+git clone https://github.com/cedadev/jasmin-workshop workshop-repo
+cp workshop-repo/tutorials/tut02/code/* ${CYLC_WORKFLOW_RUN_DIR}/
+rm -fr workshop-repo
+exit 1""" # <-- Added exit 1 to emulate failure
+```
 
 ![Cylc GUI Screenshot 4](./images/gui4.png)
 
-Right-click on a failed task in order to view more information.
+Click on the menu button at the top for more options.
 
 ![Cylc GUI Screenshot 5](./images/gui5.png)
 
-Each of the log files can be viewed within the GUI.
+Each of the tasks has a log file that can be viewed within the GUI. By default, opening the logs will show the log for the entire workflow.
 
 ![Cylc GUI Screenshot 6](./images/gui6.png)
 
+You can opt to view the specific job logs by selecting the `JOB` tab instead of the default `WORKFLOW` tab, then, enter the `<CYCLE>/<TASK>` in the search box to get the logs corresponding to that task, in this case `1/clone_repo`.
+
+![Cylc GUI Screenshot 7](./images/gui7.png)
+
 ### Details of alternative approaches and best practice
 
-> 1. Manage the process yourself (without Rose and Cylc)?
+> 1. Manage the process yourself (without Cylc)?
 
   * Pros:
     * You don't need to learn/configure Cylc
@@ -266,10 +298,10 @@ Each of the log files can be viewed within the GUI.
 
 > 2. Set the `$PATH` environment variable in your `~/.bash_profile`
 
-  * In order to find the Rose/Cylc variables we needed to change the `$PATH` as follows:
+  * In order to find the Cylc variables we needed to change the `$PATH` as follows:
   
       ```
-      # Add the location of the rose/cylc executables to $PATH
+      # Add the location of the cylc executables to $PATH
       export PATH=/apps/jasmin/metomi/bin:$PATH
       ```
 
@@ -277,8 +309,8 @@ Each of the log files can be viewed within the GUI.
     automatically when you login to the cylc server:
 
       ```
-      if [[ $HOSTNAME = "cylc1.jasmin.ac.uk" ]]; then
-          # NOTE: "cylc" is an alias to the "cylc1" server
+      if [[ $HOSTNAME = "cylc2.jasmin.ac.uk" ]]; then
+          # NOTE: "cylc" is an alias to the "cylc2" server
           export PATH=/apps/jasmin/metomi/bin:$PATH
       fi
       ```
@@ -288,14 +320,14 @@ Each of the log files can be viewed within the GUI.
   * You might write outputs directly to a Group Workspace
   * You might write outputs to the default working directory for a task:
     * These are symbolically linked to the JASMIN `/work/scratch-pw/$USER` area.
-    * See more details in the Rose documentation:
-      https://metomi.github.io/rose/doc/html/tutorial/cylc/runtime/introduction.html#where-do-all-the-files-go
+    * See more details in the Cylc documentation:
+      https://cylc.github.io/cylc-doc/stable/html/workflow-design-guide/general-principles.html#self-contained-workflows
 
 > 4. *Have any files been accidentally left on the system?* (e.g. in: `/tmp/` etc)
 
   * Running a Cylc workflow will copy your workflow to a "run workflow directory" under:
   
-        $HOME/cylc-run/<WORKFLOW>/
+        $HOME/cylc-run/<WORKFLOW>/runN/
 
   * This directory includes various files, directories and symbolic links related to your job. 
     Please check that you are not writing big files to that the directory and monitor the size 
@@ -312,15 +344,15 @@ Each of the log files can be viewed within the GUI.
 > 6. View the workflow graph of the workflow
 
   * View the workflow graph of the workflow:
-    * To view the workflow graph of your workflow without running it, use:
+    * To view the workflow graph of your workflow without running it in the browser, use:
   
       ```
       cylc graph '<WORKFLOW>'
       # Where <WORKFLOW> is the name of the workflow directory
       ```
 
-    * NOTE: the `-i` option means "install only" - so this will not run the suite.
-      ![Image of workflow graph](./images/gui7.png)
+    * NOTE: this will only open and visualise the workflow graph in a browser and will not run the workflow.
+      ![Image of workflow graph](./images/gui8.png)
 
 > 7. Understand different modes of stopping a running workflow
 

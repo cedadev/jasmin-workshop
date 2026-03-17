@@ -18,8 +18,8 @@
         execution time limit = PT10M
         platform = lotus # See options via `cylc config --platforms`, e.g. `localhost`, `lotus`
         [[[directives]]]
-            --partition = workshop
-            --qos = workshop
+            --partition = debug
+            --qos = debug
             --account = workshop
     [[clone_repo]]
         script = """rm -fr workshop-repo

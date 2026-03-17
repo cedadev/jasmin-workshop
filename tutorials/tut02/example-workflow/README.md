@@ -2,8 +2,9 @@
 
 ## To run the workflow
 
-`cylc install`
-`cylc play`
+`cylc validate .`
+`cylc install .`
+`cylc play example-workflow`
 
 ## To stop the workflow (if failed/still running)
 
@@ -24,7 +25,7 @@ This is referenced in the `flow.cylc` file with the environment variable
 By default this will be under:
 
 ```
-$HOME/cylc-run/<workflow_name>/
+$HOME/cylc-run/<workflow_name>/runN/
 ```
 
 ### Stopping a workflow that is running
@@ -58,7 +59,7 @@ cylc stop --now '<WORKFLOW>'
 In the case of the `example-workflow` the working directory will be:
 
 ```
-$HOME/cylc-run/example-workflow/
+$HOME/cylc-run/example-workflow/runN/
 ```
 
 The example workflow uses this as the common location for all scripts and the outputs
@@ -73,7 +74,7 @@ cylc install
 cylc graph example-workflow
 ```
 
-NOTE: the `cylc install` only installs the workflow - so this will not run the workflow until `cylc play` is run.
+NOTE: `cylc install` only installs the workflow. This will not run the workflow until `cylc play` is run.
 
 
 ### Viewing available platform options on the system
