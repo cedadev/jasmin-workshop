@@ -61,7 +61,7 @@ After completing this tutorial I will be able to:
 ### JASMIN resources
 
  * JASMIN account with SSH public key uploaded and `jasmin-login` privilege
- * login servers: `login-0[1-4].jasmin.ac.uk`
+ * `login` server: `login.jasmin.ac.uk`
  * Cylc server: `cylc.jasmin.ac.uk`
  * LOTUS batch processing cluster
  * GWS (read/write): `/gws/pw/j07/workshop`
@@ -77,7 +77,7 @@ After completing this tutorial I will be able to:
 
 This is the outline of the overall task. The recommended way of doing each step is covered in the "Walkthrough" below.
 
- 1. The starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
+ 1. The starting point is on the JASMIN `login` server (see [exercise 01](../ex01))
  1. SSH to the Rose & Cylc server (with the `-X` flag to forward X-windows)
  1. In this example you are given the building blocks to construct a "suite file" for use with Rose & Cylc
  1. Wrap the scripts in a Rose suite by copying the example suite to a new directory called `my-suite` and modifying it
@@ -98,7 +98,7 @@ Alternative approaches and good practice might include:
 
 ### Walkthrough
 
-1. The starting point is on a JASMIN `login` server (see [exercise 01](../ex01))
+1. The starting point is on the JASMIN `login` server (see [exercise 01](../ex01))
 
 2. SSH to the Rose & Cylc server (with the `-X` flag to forward X-windows)
    

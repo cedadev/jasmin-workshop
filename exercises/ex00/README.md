@@ -12,7 +12,7 @@ It helps you set up your computer with the software and training account credent
 > [!NOTE]
 > For the [reasons explained below](#own-vs-training-account), we provide workshop participants with a temporary training account for the duration of the workshop event. Even if you have your own JASMIN account, please use the training account for the workshop event.
 
-Please also see the set of [FAQs](#faq) at the end of this page.
+Please also see [the set of FAQs](#faq) at the end of this page.
 
 ## Instructions
 
@@ -39,7 +39,23 @@ Click the arrow to expand the set of instructions.
    _The email sent from the JASMIN Accounts Portal_
 
    2. Click the link in this email from the JASMIN Accounts Portal to provision your training account.
-         - **This is a one-time link** for secure credentials sharing! If you close the tab after entering the event password, **your credentials will be lost**, even if you click on the link in the email again.
+   
+<table>
+   <thead>
+      <tr>
+      <td align="left">
+         ⚠️ Note
+      </td>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+      <td>
+         <b>This is a one-time link</b> for secure credentials sharing! If you close the tab after entering the event password, <b>your credentials will be lost</b>, even if you click on the link in the email again.
+      </td>
+      </tr>
+   </tbody>
+</table>
 
    ![Event password page](images/Event-password.png)
 
@@ -261,13 +277,13 @@ You should see your key fingerprint, i.e. something like this:
 521 SHA256:ZeddNKK5U3am1vyCaUCq4CgMRpvoyv+cJiviqz3zvfw ~/.ssh/id_ecdsa (ECDSA)
 ```
 
-Now try a connection to `login-01.jasmin.ac.uk`, replacing `USERNAME` with the name of your training account:
+Now try a connection to `login.jasmin.ac.uk`, replacing `USERNAME` with the name of your training account:
    
 > [!IMPORTANT]
 > Don't forget the `-A` option for "agent forwarding". This makes your key available to any onward connections you need to make, after connecting to the login node.
 
 ```bash
-ssh -A USERNAME@login-01.jasmin.ac.uk
+ssh -A USERNAME@login.jasmin.ac.uk
 ```
 
 Once you have connected, try `ssh-add -l` again as above, to check that your key is available for an onward connection.
