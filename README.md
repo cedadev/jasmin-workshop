@@ -8,10 +8,10 @@ You should also watch the following overview presentation which explains the pur
 
 Overview presentation 
 
-| Slides with speaker's notes |
+| Slides |
 | --- |
-[![Opening slide for the overview presentation given during JASMIN workshops](https://img.youtube.com/vi/HQjRDtgW3Fg/mqdefault.jpg )](https://docs.google.com/presentation/d/1kxZRbhx7pI1TJtG7H_RkZ8l2GyBIhzIHbvr6TlRgfxc/edit?usp=sharing)
-| (slides updated November 2025) |
+[![Opening slide for the overview presentation given during JASMIN workshops](/assets/overview/overview-title.jpeg)](/assets/overview/overview.pdf)
+| (slides updated April 2026) |
 
 | Exercise | Topic |
 | --- | --- |
