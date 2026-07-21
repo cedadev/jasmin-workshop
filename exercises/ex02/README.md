@@ -201,10 +201,10 @@ You will be able to run and test a script on the scientific analysis servers. Yo
    - To exit the monitoring tool `top`, press the keyboard letter `q`
 
 1. Make changes to the Python example and re-execute it
-   - Open the Python script file in a text editor, e.g., vim, emacs
+   - Open the Python script file in a text editor, e.g., nano, vim, emacs
 
    ```bash
-   $ vim random-number-gen.py
+   $ nano random-number-gen.py
    ```
 
    - Lower the size of the random numbers `nran` from `1024` to `500`
@@ -231,11 +231,13 @@ You will be able to run and test a script on the scientific analysis servers. Yo
    result = [np.random.bytes(nran*nran) for x in range(nran)]
    ```
   
-   - Save the file and exit the text editor `vim`. Press "Esc", then:
+   - Save the file and exit the text editor. If you are using `vim`, press "Esc", then:
 
    ```bash
    :wq
    ```
+
+   - If you are using `nano`, press "Ctrl-X", type "Y" and then "Enter" to save.
 
    - Execute `python random-number-gen.py`
 
