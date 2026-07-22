@@ -3,7 +3,7 @@ title: Connecting to JASMIN
 author: Matt Pritchard
 ---
 
-# Exercise 1: Connecting to JASMIN
+# Exercise 01: Connecting to JASMIN
 
 > [!NOTE]
 > This exercise assumes that you have already completed [exercise 0: Getting set up for the JASMIN workshop](../ex00), about setting up your local machine with everything you need to connect to JASMIN.

@@ -185,6 +185,8 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
 <details>
   <summary>Mac or Linux instructions</summary>
 
+  In the Mac or Linux environments, the `$` symbol is used to indicate the start of a terminal promt. It is in the example lines to help you practice writing out the commands rather than copying/pasting them.
+
   In the Mac or Linux environments, it's best to put your SSH-related files in a standard place. This is a directory called `.ssh` in your home directory (the `.` means it's hidden).
 
   - open the text file with the credentials you saved in Part 1: you'll need them shortly.
@@ -194,7 +196,7 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
   Check if you have a directory `~/.ssh` already:
 
   ```
-  ls ~/.ssh
+  $ ls ~/.ssh
   ```
 
   If this exists already, the `ls` command will list its contents (it could be empty, that's fine).
@@ -202,29 +204,29 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
   If you see `No such file or directory`, make this directory with the command:
 
   ```
-  mkdir -p ~/.ssh
+  $ mkdir -p ~/.ssh
   ```
   and set permissions on it so that it's only read/writable by you:
   ```
-  chmod 700 ~/.ssh
+  $ chmod 700 ~/.ssh
   ```
 
   Now, move the SSH private key `id_ecdsa` from your download location (where your browser puts downloaded files) to the directory you just created.
 
   ```
-  mv ~/Downloads/id_ecdsa ~/.ssh/
+  $ mv ~/Downloads/id_ecdsa ~/.ssh/
   ```
 
   Set the permissions on this file to be only read/writable by you:
 
   ```
-  chmod 600 ~/.ssh/id_ecdsa
+  $ chmod 600 ~/.ssh/id_ecdsa
   ```
 
   Now, check whether you have an SSH-agent running:
 
   ```
-  ssh-add -l
+  $ ssh-add -l
   ```
 
   If you see
@@ -237,13 +239,13 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
   If you see `Could not open a connection to your authentication agent` or `Error connecting to agent` this means you haven't got one running, so you need to start one with the following command:
 
   ```
-  eval $(ssh-agent -s)
+  $ eval $(ssh-agent -s)
   ```
 
   You're now able to load your private key, as follows:
 
   ```
-  ssh-add ~/.ssh/id_ecdsa
+  $ ssh-add ~/.ssh/id_ecdsa
   ```
 
   You will be prompted for your passphrase: don't try and type it in, copy and paste it from credentials file which you should have open in a text editor. You can usually paste with <kbd>Cmd (⌘)</kbd>+<kbd>V</kbd> on Mac, <kbd>CTRL</kbd>+<kbd>V</kbd> on Linux, or by right-clicking and choosing "Paste", but this may vary depending on your system and terminal.
@@ -255,8 +257,8 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
   Now, check with the `ssh-add -l` command as before, and the key fingerprint should be displayed, e.g.
 
    ```
-   ssh-add -l
-   521 SHA256:ZeddNKK5U3am1vyCaUCq4CgMRpvoyv+cJiviqz3zvfw ~/.ssh/id_ecdsa (ECDSA)
+  $ ssh-add -l
+  521 SHA256:ZeddNKK5U3am1vyCaUCq4CgMRpvoyv+cJiviqz3zvfw ~/.ssh/id_ecdsa (ECDSA)
    ```
 
    If you don't see this, go back and check the steps above carefully before asking for help.
@@ -268,7 +270,7 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
 First, check that your key is loaded:
 
 ```bash
-ssh-add -l
+$ ssh-add -l
 ```
 
 You should see your key fingerprint, i.e. something like this:
@@ -283,7 +285,7 @@ Now try a connection to `login.jasmin.ac.uk`, replacing `USERNAME` with the name
 > Don't forget the `-A` option for "agent forwarding". This makes your key available to any onward connections you need to make, after connecting to the login node.
 
 ```bash
-ssh -A USERNAME@login.jasmin.ac.uk
+$ ssh -A USERNAME@login.jasmin.ac.uk
 ```
 
 Once you have connected, try `ssh-add -l` again as above, to check that your key is available for an onward connection.

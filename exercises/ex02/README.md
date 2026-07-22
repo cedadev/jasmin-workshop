@@ -3,7 +3,7 @@ title: Interactive computing on a `sci` server
 author: Fatima Chami
 ---
 
-# Exercise 2: Interactive computing on a `sci` server
+# Exercise 02: Interactive computing on a `sci` server
 
 ### Scenario
 

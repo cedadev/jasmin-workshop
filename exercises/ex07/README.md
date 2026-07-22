@@ -94,40 +94,40 @@ Alternative approaches could include:
 
 1. SSH to a scientific analysis server
 
-        ssh sci-vm-01 # Could use any of sci-vm-0[1-6]
+        $ ssh sci-vm-01 # Could use any of sci-vm-0[1-6]
 
 1. Activate the Jaspy Python 3 environment with the `module` command
 
-        module load jaspy
+        $ module load jaspy
 
 1. Create a Python 3 virtual environment in your `$HOME` directory
 
-        python -m venv ~/my-workshop-venv --system-site-packages
+        $ python -m venv ~/my-workshop-venv --system-site-packages
 
 1. Activate the virtual environment
 
-        source ~/my-workshop-venv/bin/activate
+        $ source ~/my-workshop-venv/bin/activate
 
 1. Pip install the `fixnc` package from the PyPI remote repository
 
-        pip install fixnc
+        $ pip install fixnc
 
 1. Test that the package can be imported in a python session
 
-        python -c 'import fixnc; print(dir(fixnc))'
+        $ python -c 'import fixnc; print(dir(fixnc))'
 
 1. Deactivate the virtual environment and test the import again
 
-        deactivate                 # Deactivates the virtual environment
-        python -c 'import fixnc'   # Now fails to import because cannot find "fixnc"
+        $ deactivate                 # Deactivates the virtual environment
+        $ python -c 'import fixnc'   # Now fails to import because cannot find "fixnc"
         Traceback (most recent call last):
           File "<string>", line 1, in <module>
         ModuleNotFoundError: No module named 'fixnc'
 
 1. Write a setup script (`~/setup-workshop-env.sh`) so that you can activate the virtual environment in a single line each time you log in
 
-        echo "module load jaspy" > ~/setup-workshop-env.sh
-        echo "source ~/my-workshop-venv/bin/activate" >> ~/setup-workshop-env.sh
+        $ echo "module load jaspy" > ~/setup-workshop-env.sh
+        $ echo "source ~/my-workshop-venv/bin/activate" >> ~/setup-workshop-env.sh
 
 1. Now, whenever you login you can run `source ~/setup-workshop-env.sh` and your own Python 3 environment will be activated
 
