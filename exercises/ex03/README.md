@@ -3,7 +3,7 @@ title: Exercise 3 Transferring and sharing data
 author: Matt Pritchard
 ---
 
-# Exercise 3: Transferring and sharing data
+# Exercise 03: Transferring and sharing data
 
 ### Scenario
 
@@ -88,8 +88,8 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 1. Make a small text file on your local machine.
 
     ```
-    echo "This is a readme file" > README.txt
-    scp README.txt train050@xfer-vm-01.jasmin.ac.uk:~/
+    $ echo "This is a readme file" > README.txt
+    $ scp README.txt train050@xfer-vm-01.jasmin.ac.uk:~/
     ```
 
     The `echo` command makes the text file for us. Use some other small file if you have one handy, or create one
@@ -99,17 +99,17 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     Log into the xfer server itself, to see the file that you copied in place in the destination directory:
 
     ```
-    ssh -A train050@xfer-vm-01.jasmin.ac.uk
-    pwd
-    ls -l README.txt
+    $ ssh -A train050@xfer-vm-01.jasmin.ac.uk
+    $ pwd
+    $ ls -l README.txt
     ```
 
 2. Make a small tree of directories on your **local** machine and create 2 files somewhere in those directories.
 
     ```
-    mkdir -p mydata/01 mydata/02
-    echo "This is a test file" > mydata/01/file01.txt
-    echo "This is also a test file" > mydata/02/file02.txt
+    $ mkdir -p mydata/01 mydata/02
+    $ echo "This is a test file" > mydata/01/file01.txt
+    $ echo "This is also a test file" > mydata/02/file02.txt
     ```
 
     Check what you have created:
@@ -129,7 +129,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     SSH key is loaded: see [exercise 01](../ex01) ).
     
     ```
-    ssh -A train050@xfer-vm-01.jasmin.ac.uk
+    $ ssh -A train050@xfer-vm-01.jasmin.ac.uk
     ```
 
     Go to the workspace directory and make your own user directory there:
@@ -284,7 +284,7 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
     You can do this with the `chgrp` command, and it can be used recursively on a directory to change all the items in a directory tree (...but you have to have the right permissions to be able to modify them!)
 
     ```
-    chgrp -R gws_workshop mydata
+    $ chgrp -R gws_workshop mydata
     ```
 
 ### Answers to questions

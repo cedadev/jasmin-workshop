@@ -81,17 +81,17 @@ This exercise demonstrates how to:
     3.   Since we do not need parallel write capability, we can use the `nopw` version.
     4.   You need to set up a directory under "`/work/scratch-nopw2"` as your username:
 
-        MYSCRATCH=/work/scratch-nopw2/$USER
-        mkdir -p $MYSCRATCH
+        $ MYSCRATCH=/work/scratch-nopw2/$USER
+        $ mkdir -p $MYSCRATCH
   
     5.   Then you would write output files/directories under your scratch space, e.g.:
  
-        OUTPUT_FILE=$MYSCRATCH/output.nc
+        $ OUTPUT_FILE=$MYSCRATCH/output.nc
         ...some_process... > $OUTPUT_FILE
  
     6.   When you have finished with the file, tidy up (good practice).
 
-        rm $OUTPUT_FILE
+        $ rm $OUTPUT_FILE
     
     7. Do not leave data on the "scratch" areas when you have finished your workflow.
         1. Please remove any temporary files/directories that you have created.
@@ -121,7 +121,7 @@ This exercise demonstrates how to:
 
 1. SSH to a scientific analysis server ([see above](#jasmin-resources))
 
-        ssh sci-vm-01.jasmin.ac.uk
+        $ ssh sci-vm-01.jasmin.ac.uk
 
 1. Write an "`extract-era-data.sh`" wrapper script that calls the CDO extraction command, that:
     1. Takes a date string ("`YYYYMMDD`") as a command-line argument
@@ -174,18 +174,18 @@ This exercise demonstrates how to:
 1. Kill one of the jobs whilst it is still running - just to see how it is done:
     1. Use the "`scancel`" command:
 
-            scancel <job_id>
+            $ scancel <job_id>
 
 1. Job arrays are groups of jobs with the same executable and resource requirements, but different input files. Job arrays can be submitted, controlled, and monitored as a single unit or as individual jobs or groups of jobs. Each job submitted from a job array shares the same job ID as the job array and is uniquely referenced using an array index. This approach is useful for ‘high throughput’ tasks, for example where you want to run your simulation with different driving data or run the same processing task on multiple data files.
 
 2. Copy the two Bash scripts `extract-era-data.sh` and `array-job.sbatch` to your home directory or to a GWS
 3. Submit the job array:
-   ```
-       sbatch array-job.sbatch 
-        Submitted batch job 50254437
-        squeue -u train049
-             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-   50254437_[1-30]  workshop ex05_tes train049 PD       0:00      1 (None)
+   ```bash
+    $ sbatch array-job.sbatch 
+    Submitted batch job 50254437
+    $ squeue -u train049
+              JOBID PARTITION     NAME     USER  ST   TIME  NODES NODELIST(REASON)
+    50254437_[1-30] workshop  ex05_tes train049  PD   0:00      1 (None)
    ```
 
 
@@ -210,7 +210,7 @@ The [Slurm quick reference help page](https://help.jasmin.ac.uk/docs/batch-compu
 
 The following command will do it:
 
-`scancel -u $USER`
+`$ scancel -u $USER`
 
 ---
 
