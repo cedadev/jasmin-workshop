@@ -175,7 +175,7 @@ You will be able to run and test a script on the scientific analysis servers. Yo
    $ top -u <username> 
    ```
 
-1. Monitor your processes on the `sci` server
+1. Monitor your processes on the `sci` server by opening another tab side-by-side ,and logging into the same sci machine
    - Execute the Linux command `top -u <username>`
 
    ```bash
