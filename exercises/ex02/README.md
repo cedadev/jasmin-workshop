@@ -250,7 +250,7 @@ You will be able to run and test a script on the scientific analysis servers. Yo
    - Monitor and note the memory and CPU usage
 
    ```bash
-   $top -u <username>
+   $ top -u <username>
    ```
 
     ![A screenshot of a terminal running the top command while a Python script is in the Run state](images/Top-output-nran500-run.png)
