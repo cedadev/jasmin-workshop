@@ -183,6 +183,15 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
 </details>
 
 <details>
+   <summary id="windows">Windows instructions: option 3</summary>
+
+   - If you already have `wsl` installed you can follow the 'Mac or linux instructions' after completing the following steps
+   - Open file explorer and copy the `id_ecdsa` private key file from the Windows Downloads folder and paste it into your Linux home folder
+   - Open up the terminal and type `sudo chown $USER:$USER ~/.ssh/id_ecdsa` to change file ownership from root to you.
+      - then continue the exercise by following the instructions in the 'Mac or Linux instructions' drop-down menu
+</details>
+
+<details>
   <summary>Mac or Linux instructions</summary>
 
   In the Mac or Linux environments, the `$` symbol is used to indicate the start of a terminal prompt. We have put them in the example commands to help you practice writing them out rather than copying/pasting them.
