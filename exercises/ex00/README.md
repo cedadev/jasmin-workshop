@@ -185,7 +185,7 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
 <details>
   <summary>Mac or Linux instructions</summary>
 
-  In the Mac or Linux environments, the `$` symbol is used to indicate the start of a terminal promt. It is in the example lines to help you practice writing out the commands rather than copying/pasting them.
+  In the Mac or Linux environments, the `$` symbol is used to indicate the start of a terminal prompt. We have put them in the example commands to help you practice writing them out rather than copying/pasting them.
 
   In the Mac or Linux environments, it's best to put your SSH-related files in a standard place. This is a directory called `.ssh` in your home directory (the `.` means it's hidden).
 
