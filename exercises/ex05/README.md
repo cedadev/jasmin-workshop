@@ -180,12 +180,12 @@ This exercise demonstrates how to:
 
 2. Copy the two Bash scripts `extract-era-data.sh` and `array-job.sbatch` to your home directory or to a GWS
 3. Submit the job array:
-   ```
-       $ sbatch array-job.sbatch 
-        Submitted batch job 50254437
-       $ squeue -u train049
-             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-   50254437_[1-30]  workshop ex05_tes train049 PD       0:00      1 (None)
+   ```bash
+    $ sbatch array-job.sbatch 
+    Submitted batch job 50254437
+    $ squeue -u train049
+              JOBID PARTITION     NAME     USER  ST   TIME  NODES NODELIST(REASON)
+    50254437_[1-30] workshop  ex05_tes train049  PD   0:00      1 (None)
    ```
 
 
