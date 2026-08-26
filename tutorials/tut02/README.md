@@ -26,7 +26,42 @@ This workflow will generate a graph of a time series of maximum temperature data
 
 This tutorial follows a classic "diamond" structure as follows:
 
-![Diagram of diamond workflow structure](./images/diamond.png)
+```mermaid
+flowchart TB
+    Start([START])
+
+    subgraph BatchTasks["Many individual batch tasks"]
+        direction TB
+        T1[Task 1]
+        T2[Task 2]
+        T3[Task 3]
+        T4[Task 4]
+        T5[Task n]
+    end
+
+    End([END])
+
+    Start --> T1
+    Start --> T2
+    Start --> T3
+    Start --> T4
+    Start --> T5
+
+    T1 --> End
+    T2 --> End
+    T3 --> End
+    T4 --> End
+    T5 --> End
+
+    Init["1. Initialisation task"] --> Start
+    End --> Final["3. Finalisation task"]
+
+    classDef start fill:#ff0000,stroke:#ff0000,color:#fff;
+    classDef finish fill:#00aa44,stroke:#00aa44,color:#fff;
+     
+    class Start start;
+    class End finish;
+```
 
 The **(1)** initialisation tasks must be completed first. 
 
@@ -44,7 +79,27 @@ The actual tasks are:
 
 It may help to sketch out the process in a simple diagram, as shown here...
 
-![Diagram of the workflow phases](./images/workflow-phases.png)
+```mermaid
+flowchart TD
+
+    subgraph Subtitle_A["once"]
+      A["Get code from GitHub and copy to working directory"]
+    end
+    subgraph Subtitle_B["once"]
+      B["Activate env, enter dir, run:<br/><code>create-counties-file.py</code>"]
+    end
+    subgraph Subtitle_C["for 10 counties"]
+      C["Activate env, enter dir, run:<br/><code>extract-annual-max-series.py</code>"]
+    end
+    subgraph Subtitle_D["once"]
+      D["Activate env, enter dir, run:<br/><code>plot-county-temps.py</code>"]
+    end
+
+    A --> B
+    B --> C
+    C --> D
+```
+
 
 ### Objectives
  
@@ -58,7 +113,7 @@ After completing this tutorial I will be able to:
 ### JASMIN resources
 
  * JASMIN account with SSH public key uploaded and `jasmin-login` privilege
- * login servers: `login.jasmin.ac.uk`
+ * login server: `login.jasmin.ac.uk`
  * Cylc server: `cylc2.jasmin.ac.uk`
  * LOTUS batch processing cluster
  * GWS (read/write): `/gws/pw/j07/workshop`
@@ -86,7 +141,6 @@ This is the outline of the overall task. The recommended way of doing each step 
 
 Alternative approaches and good practice might include:
  * Manage the process yourself (without Cylc)?
- * Set the `$PATH` environment variable in your `~/.bash_profile`
  * Write your outputs somewhere else
  * *Have any files been accidentally left on the system?* (e.g. in: `/tmp/` etc)
  * Tidy up your run workflow directory (i.e. logs and task directories)
@@ -97,13 +151,20 @@ Alternative approaches and good practice might include:
 
 1. The starting point is on the JASMIN `login` server (see [exercise 01](../ex01))
 
-2. SSH to the Cylc server (with the `-X` flag to forward X-windows)
+1. So that your shell and Slurm can find the Cylc variables we need to change the `$PATH` as follows. Put the following lines in your `~/.bash_profile` file so that this will happen automatically when your shell is loaded:
+  
+      ```
+      # Add the location of the cylc executables to $PATH
+      export PATH=/apps/jasmin/metomi/bin:$PATH
+      ```
+
+1. SSH to the Cylc server (with the `-X` flag to forward X-windows)
    
       ```
       ssh -X cylc2
       ```
 
-3. In this example you are given the building blocks to construct a "flow file" for use with Cylc
+1. In this example you are given the building blocks to construct a "flow file" for use with Cylc:
 
   * Script 1: `create-counties-file.py`
     1. Context: Python 3
@@ -125,12 +186,12 @@ Alternative approaches and good practice might include:
 
   * The scripts are available at:
     * On JASMIN: `/gws/pw/j07/workshop/tutorials/tut02/code/`
-    * On github: https://github.com/cedadev/jasmin-workshop/tree/master/tutorials/tut02/code
+    * On GitHub [in this repository](https://github.com/cedadev/jasmin-workshop/tree/master/tutorials/tut02/code)
 
-4. Wrap the scripts in a Cylc workflow by copying the example workflow to a new directory called
+1. Wrap the scripts in a Cylc workflow by copying the example workflow to a new directory called
    `my-workflow` and modifying it.
 
-  * The example workflow is available at:
+  * The example workflow is available on JASMIN at:
 
         /gws/pw/j07/workshop/tutorials/tut02/example-workflow
 
@@ -140,27 +201,29 @@ Alternative approaches and good practice might include:
     cd my-workflow
     ```
 
-  * Update the SLURM configuration file in `flow.cylc` to use your own account.
+  * If you are following this tutorial outside of a workshop and without a training account, update the Slurm configuration in the directives section of `flow.cylc` to use [your own group workspace associated account](https://help.jasmin.ac.uk/docs/batch-computing/slurm-queues/#new-slurm-job-accounting-hierarchy), the standard partition, and the debug QoS:
 
     ```
     # In flow.cylc
     # Change:
-    #   --account=jasmin-workshop
+    #   --partition = standard
+    #   --qos = workshop
+    #   --account = workshop
     # To:
-    #   --account=<YOUR_ACCOUNT>
+    #   --partition = standard
+    #   --qos = debug
+    #   --account = <YOUR_ACCOUNT>
     ```
 
   * You can run the copied example workflow to view how it works, with:
 
     ```
-    # Add the location of the cylc executables to $PATH
-    export PATH=/apps/jasmin/metomi/bin:$PATH
     cylc validate .
     cylc install .
     cylc play my-workflow
     ```
 
-    This is the same as running `cylc vip`
+    You can also use the shortcut `cylc vip .` from inside the `my-workflow` folder.
 
   * All of the scripts operate on input/output data in the relative directory: `./outputs`. It therefore makes sense to copy the Python scripts to the main workflow "run directory" and ensure that each task runs from that directory. The workflow run directory is specified by the Cylc environment variable: `$CYLC_WORKFLOW_RUN_DIR`.
 
@@ -168,7 +231,7 @@ Alternative approaches and good practice might include:
 
     Since the example workflow currently only uses `echo` placeholders, it does not generate any outputs yet.
 
-  * To make the workflow do something useful with the Python scripts, you would normally edit the `flow.cylc` file as follows:
+  * To make the workflow do something useful with the Python scripts, you would normally edit the `flow.cylc` file as follows. (**Instead of manually modifying the `my-workflow` configuration right now**, see below for the fully-configured workflow.)
     * In the `[[runtime]]` section of the workflow file, modify each of the 4 processing steps as follows:
 
         * `[[initialise]]`
@@ -193,72 +256,86 @@ Alternative approaches and good practice might include:
           2. Change directory to the `$CYLC_WORKFLOW_RUN_DIR`
           3. Run the script
 
-  * **Instead of manually modifying the `my-workflow` configuration right now**, the repository already includes a fully configured workflow in the `workshop-workflow` directory that implements all of the above steps.
+  * The repository already includes a fully configured workflow in the `workshop-workflow` directory that implements all of the above steps.
 
-5. Run the fully configured `workshop-workflow`:
+    Note that in this example the 4 tasks have been renamed:
+    ```
+    initialise     → clone_repo
+    step1          → get_counties
+    batch<counter> → process<county>
+    final          → plot
+    ```
+
+  * The full example workflow is available on JASMIN at:
+
+        /gws/pw/j07/workshop/tutorials/tut02/workshop-workflow
+
+  * And on GitHub [in this repository](https://github.com/cedadev/jasmin-workshop/tree/master/tutorials/tut02/workshop-workflow)
+
+1. Run the fully configured `workshop-workflow`:
 
     ```
-    # Add the location of the cylc executables to $PATH
-    export PATH=/apps/jasmin/metomi/bin:$PATH
     cd workshop-workflow/
-    # Remember to update the account in flow.cylc to <YOUR_ACCOUNT> as you did before.
+    # Remember to update the Slurm directives in flow.cylc as you did before, if needed
     cylc vip .
     ```
 
-  * **NOTE:** It will take a couple of minutes to start up. To view the workflow in action, open the GUI with:
+  * **NOTE:** It will take a couple of minutes to start up. To view the workflow in action, see [the section below about visualising your workflow](#what-should-the-cylc-tuigui-look-like).
 
-6. If the workflow partially runs and leaves log/working directories in place you can clean these up and run it again with:
+1. If the workflow partially runs and leaves log/working directories in place you can clean these up and run it again with:
 
     ```
     cylc clean workshop-workflow
     cylc vip .
     ```
 
-7. If you need to stop the workflow then you can instruct Cylc to stop it with:
+1. If you need to stop the workflow then you can instruct Cylc to stop it with:
    
     ```
     cylc stop '<WORKFLOW>'
     # Where <WORKFLOW> is the name of the workflow directory
     ```
 
-### What should the Cylc GUI look like?
+### What should the Cylc TUI/GUI look like?
 
-Here is a quick walkthrough of what you should see in the GUI if the job runs successfully. 
-Note that in this example the 4 tasks have been renamed to:
- * `clone_repo`
- * `get_counties`
- * `process<county>`
- * `plot`
-
-The full example workflow is available at:
-
-        /gws/pw/j07/workshop/tutorials/tut02/workshop-workflow
-
-And on github at:
-
-  https://github.com/cedadev/jasmin-workshop/tree/master/tutorials/tut02/workshop-workflow
-
+Here is a quick walkthrough of what you should see in the TUI/GUI if the job runs successfully.
 
 #### Cylc TUI
 
 The Cylc TUI can be opened by running `cylc tui`, and is an easily accessible alternative to the GUI that runs in the terminal and provides similar levels of functionality to the GUI and can act as a quick way to check on the status of your workflow.
 
-![Cylc TUI Screenshot 1](./images/tui1.png)
+Use <kbd>↑↓</kbd> arrow keys to select your workflow, and then use <kbd>←→</kbd> arrow keys to expand the tree.
+
+Press `h` to see more information about what the icons and colours for each stage represent.
+
+![Cylc TUI showing a single `workshop-workflow` running](./images/tui1.png)
+
+The following screenshot shows that the `clone_repo` stage has completed successfully, `get_counties` has been submitted to Slurm and is waiting to run on LOTUS, and that the `process_county` steps are waiting for the previous step.
+
+![Cylc TUI showing a partially running `workshop-workflow` with one completed `clone_repo` stage, one submitted `get_counties` stage, and 10 greyed out `process_county` stages](./images/tui2.png)
+
+Below, we can see that the `process_county` steps have completed and that the `plot` step is preparing to run.
+
+![Cylc TUI showing the first 6 of the 10 `process_county` stages complete with further information about the first stage visible, and the `plot` stage preparing](./images/tui3.png)
+
+To see the graph view and more details, you may want to try the Cylc GUI.
 
 
 #### Cylc GUI
 
 The Cylc GUI can be opened by running `cylc gui` (as long as you have used the `-X` flag when SSHing to the server), it will open up in a browser.
 
-![Cylc GUI Screenshot 1](./images/gui1.png)
+It is recommended to forward X windows from [one of the NX servers](https://help.jasmin.ac.uk/docs/interactive-computing/graphical-linux-desktop-access-using-nx/) for a smoother connection.
+
+![Cylc GUI showing information about each of the tasks, colour-coding: green = succeeded, blue = in progress, red = failed; in this screenshot most of the ten `process_county` tasks have completed, with three in progress, and `plot` waiting to start](./images/gui1.png)
 
 You can select either a list view (as above) or a graph view (below) of the workflow.
 
-![Cylc GUI Screenshot 2](./images/gui2.png)
+![Cylc GUI showing a different run of the workflow with the graph button highlighted from the "Add View" dropdown](./images/gui2.png)
 
 The graph view shows each of the tasks and the dependency graph that connects them.
 
-![Cylc GUI Screenshot 3](./images/gui3.png)
+![Cylc GUI showing the graph view - including the dependencies between different tasks, if any task fails, then none of the subsequent tasks will run](./images/gui3.png)
 
 Failed tasks are clearly indicated in red. To emulate this failure, you can edit the `flow.cylc` file and change the `command` for the `clone_repo` task to something that will fail, for example:
 
@@ -271,19 +348,19 @@ rm -fr workshop-repo
 exit 1""" # <-- Added exit 1 to emulate failure
 ```
 
-![Cylc GUI Screenshot 4](./images/gui4.png)
+![Cylc GUI showing the `clone_repo` task failed in red with information about the job expanded](./images/gui4.png)
 
 Click on the menu button at the top for more options.
 
-![Cylc GUI Screenshot 5](./images/gui5.png)
+![Cylc GUI showing the same failed task with a dropdown expanded from the top of the screen with the "Log" option highlighted](./images/gui5.png)
 
 Each of the tasks has a log file that can be viewed within the GUI. By default, opening the logs will show the log for the entire workflow.
 
-![Cylc GUI Screenshot 6](./images/gui6.png)
+![Cylc GUI showing the logs for a run of the workflow where `clone_repo` failed](./images/gui6.png)
 
 You can opt to view the specific job logs by selecting the `JOB` tab instead of the default `WORKFLOW` tab, then, enter the `<CYCLE>/<TASK>` in the search box to get the logs corresponding to that task, in this case `1/clone_repo`.
 
-![Cylc GUI Screenshot 7](./images/gui7.png)
+![Cylc GUI showing just the logs for the `clone_repo` task - each task has its own logs, in this case the "<cycle>/<task>" is entered into the main field of the task that failed, here "1/clone_repo"; then "job.err" is selected to look into the error that caused this job to fail](./images/gui7.png)
 
 ### Details of alternative approaches and best practice
 
@@ -296,26 +373,7 @@ You can opt to view the specific job logs by selecting the `JOB` tab instead of 
       * You need to check whether all tasks have run in a given stage before progressing to the next stage.
       * With Cylc you can configure complex rules for responding to failures and retrying tasks.
 
-> 2. Set the `$PATH` environment variable in your `~/.bash_profile`
-
-  * In order to find the Cylc variables we needed to change the `$PATH` as follows:
-  
-      ```
-      # Add the location of the cylc executables to $PATH
-      export PATH=/apps/jasmin/metomi/bin:$PATH
-      ```
-
-  * You can put the following lines in your `~/.bash_profile` file so that this will happen
-    automatically when you login to the cylc server:
-
-      ```
-      if [[ $HOSTNAME = "cylc2.jasmin.ac.uk" ]]; then
-          # NOTE: "cylc" is an alias to the "cylc2" server
-          export PATH=/apps/jasmin/metomi/bin:$PATH
-      fi
-      ```
-
-> 3. Write your outputs somewhere else
+> 2. Write your outputs somewhere else
 
   * You might write outputs directly to a Group Workspace
   * You might write outputs to the default working directory for a task:
@@ -323,7 +381,7 @@ You can opt to view the specific job logs by selecting the `JOB` tab instead of 
     * See more details in the Cylc documentation:
       https://cylc.github.io/cylc-doc/stable/html/workflow-design-guide/general-principles.html#self-contained-workflows
 
-> 4. *Have any files been accidentally left on the system?* (e.g. in: `/tmp/` etc)
+> 3. *Have any files been accidentally left on the system?* (e.g. in: `/tmp/` etc)
 
   * Running a Cylc workflow will copy your workflow to a "run workflow directory" under:
   
@@ -333,7 +391,7 @@ You can opt to view the specific job logs by selecting the `JOB` tab instead of 
     Please check that you are not writing big files to that the directory and monitor the size 
     of the outputs.
 
-> 5. Tidy up your run workflow directory (i.e. logs and task directories)
+> 4. Tidy up your run workflow directory (i.e. logs and task directories)
 
   * You can tell Cylc to tidy up (clear out) any logs and task directories by using the command:
   
@@ -341,7 +399,7 @@ You can opt to view the specific job logs by selecting the `JOB` tab instead of 
       cylc clean <WORKFLOW>
       ```
 
-> 6. View the workflow graph of the workflow
+> 5. View the workflow graph of the workflow
 
   * View the workflow graph of the workflow:
     * To view the workflow graph of your workflow without running it in the browser, use:
@@ -352,9 +410,9 @@ You can opt to view the specific job logs by selecting the `JOB` tab instead of 
       ```
 
     * NOTE: this will only open and visualise the workflow graph in a browser and will not run the workflow.
-      ![Image of workflow graph](./images/gui8.png)
+      ![Image of workflow graph with one `clone_repo` stage that leads to a `get_counties` stage that branches out into 10 `process_county` stages which all lead back to a single `plot` stage](./images/gui8.png)
 
-> 7. Understand different modes of stopping a running workflow
+> 6. Understand different modes of stopping a running workflow
 
   * Understand different modes of stopping a running workflow:
     * If you need to stop a workflow that is running you can use:
