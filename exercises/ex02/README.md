@@ -20,7 +20,7 @@ After completing this exercise I will be able to:
 
 ### JASMIN resources
 
-- Scientific analysis servers: `sci-vm-0[1-5].jasmin.ac.uk`, `sci-ph-0[1-3]`
+- Scientific analysis servers: `sci-vm-0[1-4].jasmin.ac.uk`, `sci-ph-0[2,3]`
 - Group workspace (GWS): `/gws/pw/j07/workshop`
 - Example Python scripts are provided:
   - `/gws/pw/j07/workshop/exercises/ex02/code/random-number-gen.py`
@@ -83,14 +83,14 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
 ### Review / alternative approaches / best practice
 
-You will be able to run and test a script on the scientific analysis servers. You will be able to monitor the resources used by your script. You can scale up by using the high-memory scientific `sci-ph-0[1,2].jasmin.ac.uk` servers for testing, and then move your workflow to the batch cluster LOTUS.
+You will be able to run and test a script on the scientific analysis servers. You will be able to monitor the resources used by your script. You can scale up by using the high-memory scientific `sci-ph-0[2,3].jasmin.ac.uk` servers for testing, and then move your workflow to the batch cluster LOTUS.
 
 #### What tasks I can not run on the `sci` server?
 
 - Do not run processes with an execution time of over two hours
 - Do not run parallel applications, e.g., MPI or OpenMP, or high threaded codes on the `sci` servers
 - Do not run data transfer processes on the `sci` servers. Please use a transfer `xfer-vm-0[1-3].jasmin.ac.uk` server, except when moving data from `/work/scratch-pw[2,3]` to a GWS (group workspace), as `/work/scratch-pw[2,3]` are not mounted on the `xfer` servers
-- Use the high memory scientific analysis servers `sci-ph-0[1,2].jasmin.ac.uk` for testing high memory or multithreaded code
+- Use the high memory scientific analysis servers `sci-ph-0[2,3].jasmin.ac.uk` for testing high memory or multithreaded code
 - Only test multi-threaded code on the high memory servers, and limit the number of threads
 - It is necessary to consider moving a processing task to the batch system LOTUS when the resource demand (e.g., CPU, memory, processing time) is high
 
@@ -315,7 +315,7 @@ Commented out as this mentions using jaspy/3.10/v20230718 which is no longer ava
 
 #### Beware of implicit multithreading
 
-This additional section shows how multithreading can occur, which can result in mamy more processes than you intended, running on the `sci` server. Learn how to be aware of this and how to disable it.
+This additional section shows how multithreading can occur, which can result in many more processes than you intended, running on the `sci` server. Learn how to be aware of this and how to disable it.
 
 Your task: Test for a potential multithreading
 
@@ -402,7 +402,7 @@ Cheat-sheet: Test for a potential multithreading
    sed -i 's/#os.environ/os.environ/'  dot-product-2arrays.py
    ```
 
-   ![A screenshot of the edited scipt in a text editor](images/Uncomment-line-threads.png)
+   ![A screenshot of the edited script in a text editor](images/Uncomment-line-threads.png)
     Note: This setting must be done before `import numpy` - see screenshot above.
 
 - Rerun the Python script

@@ -32,7 +32,7 @@ After completing this exercise you will:
 
 ### JASMIN resources
 
-- Scientific analysis servers: `sci-vm-0[1-5].jasmin.ac.uk`, `sci-ph-0[1-3].jasmin.ac.uk`
+- Scientific analysis servers: `sci-vm-0[1-4].jasmin.ac.uk`, `sci-ph-0[2,3].jasmin.ac.uk`
 - Group workspace: `/gws/pw/j07/workshop`
 - LOTUS batch queues: `workshop` (`short-serial` outside the event)
 - Fortran source code is (available in the Github repository):
@@ -52,11 +52,11 @@ This is the outline of what you need to do. The recommended way of doing each st
 1. Login to a physical JASMIN scientific analysis server
    - Launch two terminal sessions
    - Access a JASMIN `login` server on each terminal (see exercise 01)
-   - Choose one of physical sci servers `sci-ph-0[12]` with the lowest load
+   - Choose one of physical sci servers `sci-ph-0[2,3]` with the lowest load
    - Login to the chosen sci server on each terminal
    - Copy the Fortran source code from the exercise directory (shown in the JASMIN resources section) to your current working directory
    > **_NOTE:_*-  One terminal will be used for compiling and testing codes on LOTUS while the second terminal will be used for submitting and monitoring batch jobs.
-1. Use the Intel compiler to test a Fortran code on a physical sci  `sci-ph-0[12]`
+1. Use the Intel compiler to test a Fortran code on a physical sci  `sci-ph-0[2,3]`
    - List all available Intel compilers `module avail intel/1 intel/2`
    - Load the Intel compiler module environment e.g. `module load intel/20.0.0`
    - Compile the Fortran source code `ifort axpySerial.f90 -o axpySerial_intel.exe`
@@ -112,20 +112,20 @@ By completing this exercise you will be able to compile and test a serial Fortra
 ### Cheat Sheet
 
 1. Login to a JASMIN scientific analysis server
-   - Login to one of the physical sci `sci-ph-0[1-3]` machines from a JASMIN `login` server
+   - Login to one of the physical sci `sci-ph-0[2,3]` machines from a JASMIN `login` server
    ```
-   $ ssh -A <username>@sci-ph-01.jasmin.ac.uk
+   $ ssh -A <username>@sci-ph-02.jasmin.ac.uk
    ```
-   For example the user `train049` connects to sci-ph-01:
+   For example the user `train049` connects to sci-ph-02:
    ```
-   $ ssh -A train049@sci-ph-01.jasmin.ac.uk
-   [train049@sci-ph-01 ~]$
+   $ ssh -A train049@sci-ph-02.jasmin.ac.uk
+   [train049@sci-ph-02 ~]$
    ```
    - Copy the Fortran source code from the exercise directory 
    ```
-   sci-ph-01 ~]$ cp /gws/pw/j07/workshop/exercises/ex08/code/axpySerial.f90 .
+   sci-ph-02 ~]$ cp /gws/pw/j07/workshop/exercises/ex08/code/axpySerial.f90 .
    ```
- 1. Use the Intel compiler on a physical Sci `sci-ph-01`
+ 1. Use the Intel compiler on a physical Sci `sci-ph-02`
     - List all available Intel compilers
     ```
      $ module avail intel/1 intel/2
@@ -188,7 +188,7 @@ By completing this exercise you will be able to compile and test a serial Fortra
      1.7589903551334058        0.0000000000000000 
    ```
 1. Compile a Fortran code interactively on LOTUS
-   - On a sci machine e.g. `sci-ph-01`, invoke a pseudo-interactive session on LOTUS using the Slurm command:
+   - On a sci machine e.g. `sci-ph-02`, invoke a pseudo-interactive session on LOTUS using the Slurm command:
    ```
    $ srun  --partition=workshop --account=workshop --pty /bin/bash
    srun: job 64104941 queued and waiting for resources
@@ -197,7 +197,7 @@ By completing this exercise you will be able to compile and test a serial Fortra
    ```
    - Note the compute node allocated and the job ID associated which are also shown from running Slurm command `squeue` from a Sci machine:
    ```
-   [train049@sci-ph-01.jasmin.ac.uk ~]$ squeue -u train049
+   [train049@sci-ph-02.jasmin.ac.uk ~]$ squeue -u train049
     JOBID PARTITION     NAME     USER    ST     TIME  NODES NODELIST(REASON)
     64104941  workshop  bash train049    R      0:21      1 host173
    ```
@@ -219,7 +219,7 @@ By completing this exercise you will be able to compile and test a serial Fortra
    ```
    [train049@host173 ~]$ exit
    exit
-   [train049@sci-ph-01.jasmin.ac.uk ~]$
+   [train049@sci-ph-02.jasmin.ac.uk ~]$
 
    ```
 1. Prepare and submit a Slurm job script
