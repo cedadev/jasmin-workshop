@@ -237,7 +237,7 @@ You will be able to run and test a script on the scientific analysis servers. Yo
    :wq
    ```
 
-   - If you are using `nano`, press "Ctrl-X", type "Y" and then "Enter" to save.
+   - If you are using `nano`, press <kbd>CTRL</kbd>+<kbd>X</kbd>, type "Y" and then <kbd>Enter</kbd> to save.
 
    - Execute `python random-number-gen.py`
 
