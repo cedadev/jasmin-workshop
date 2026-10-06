@@ -190,7 +190,7 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
    - Open File Explorer and copy the `id_ecdsa` private key file from your Downloads folder in Windows and paste it into your WSL home folder
    - Open a WSL terminal and run `sudo chown $USER:$USER ~/id_ecdsa` to change file ownership of the private key from root to you
 
-Then continue the exercise by following the instructions in the 'Mac or Linux instructions' section below.
+   Then continue the exercise by following the instructions in the 'Mac or Linux instructions' section below.
 </details>
 
 <details>
@@ -369,19 +369,6 @@ If not, check through the FAQ below, and make sure you've done everything as per
    4. Click the 'Update Key' button, copy the contents of your newly generated SSH public key (it should have a .pub file extension) to the text field, and click the 'Update SSH Key' button.
 
 </details>
-
-<!-- We can delete this if training account credentials no longer provide the public key -->
-<!-- <details>
-
-   <summary>
-   
-   #### I can't open the <code>*.pub</code> file when I double-click it (on Windows)
-   
-   </summary>
-
-   That's OK. It's not a file that you need to open. The `.pub` file extension is sometimes recognised by Windows as a Microsoft Publisher file, but this one isn't: it's your public key (part of your public/private key pair).
-
-</details> -->
 
 <details>
 
