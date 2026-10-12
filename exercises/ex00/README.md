@@ -40,7 +40,7 @@ Click the arrow to expand the set of instructions.
 
    2. Click the link in this email from the JASMIN Accounts Portal to provision your training account.
    
-<table>
+<table border="3" bordercolor="orange">
    <thead>
       <tr>
       <td align="left">
