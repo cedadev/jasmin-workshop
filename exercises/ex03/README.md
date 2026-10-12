@@ -32,7 +32,7 @@ After completing this exercise I will be able to:
     * SSH client application (use a command-line client for this exercise: you won't need the graphical desktop)
     * SSH key and JASMIN credentials
     * suitable network connection
-*  Directory on your local machine: `/Users/fredbloggs/` (choose your own)
+*  Directory on your local machine: e.g. `/Users/username/` (choose your own)
 
 ### Instructions
 

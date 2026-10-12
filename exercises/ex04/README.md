@@ -21,7 +21,7 @@ After completing this exercise I will be able to:
 
 - JASMIN account with SSH public key uploaded and active `jasmin-login` grant
 - `login` server: `login.jasmin.ac.uk`
-- `sci` servers: `sci-vm-0[1-5].jasmin.ac.uk`, `sci-ph-0[1-3]`
+- `sci` servers: `sci-vm-0[1-4].jasmin.ac.uk`, `sci-ph-0[2,3]`
 - common software: CDO (Climate Data Operators) tool
 - GWS (read/write): `/gws/pw/j07/workshop`
 - CEDA Archive (read-only): requires a CEDA account
@@ -54,7 +54,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 
 This exercise demonstrates how to:
 
-- Login to JASMIN and access the scientific analysis servers (`sci-vm-0[1-5].jasmin.ac.uk`)
+- Login to JASMIN and access the scientific analysis servers ([listed above](#jasmin-resources))
 - Run a command-line tool interactively to read data from the CEDA archive
 - Write outputs to a JASMIN Group Workspace
 
@@ -77,7 +77,7 @@ Best practice considerations:
 2. SSH to a scientific analysis server
 
   ```
-  $ ssh sci-vm-01.jasmin.ac.uk # Could use any of sci-vm-0[1-5].jasmin.ac.uk
+  $ ssh sci-vm-01.jasmin.ac.uk # Could use any of sci-vm-0[1-4].jasmin.ac.uk
   ```
 
 3. Identify path to the required data file

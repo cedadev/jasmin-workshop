@@ -70,7 +70,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 - Your SSH key must be protected with a strong passphrase.
 - You must not share your SSH key with any other user.
 - You must not edit your `~/.ssh/authorized_keys` file on JASMIN. This is populated automatically with the (one) most recent key you have uploaded to your JASMIN account profile, which will be over-written if you edit it.
-- The `login` servers perform one simple function and **should not be used for any processing**, only as a "hop" to other systems within JASMIN.
+- The `login` server performs one simple function and **should not be used for any processing**, only as a "hop" to other systems within JASMIN.
 - Check for a less-busy `sci` machine before connecting. Setting up an alias to one particular machine can be counter-productive.
 
 ### Cheat Sheet
@@ -85,7 +85,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
     * Check that your key is loaded with `ssh-add -l`. You should see a key fingerprint, similar to this (with either an email address or path after the random text, but won't be exactly the same!)
       ```console
       $ ssh-add -l
-      2048 SHA256:e1rIzWgm0BAF396xNAYc8TdjjSs8IuMyr+iwSryHeb4 fred.bloggs@ncas.ac.uk (RSA)
+      2048 SHA256:e1rIzWgm0BAF396xNAYc8TdjjSs8IuMyr+iwSryHeb4 user.name@ncas.ac.uk (RSA)
       ```
       Note that the path, if included, is the path where the key was loaded from on your **local** machine.
 
@@ -113,7 +113,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
         <tbody>
           <tr>
             <td>
-              Your username on JASMIN (<code>train050</code> in this example, but yours may be different) may not be the same as your username on your local machine (<code>fredbloggs</code>). In the <code>ssh</code> command, you must specify the username associated with your JASMIN account.
+              Your username on JASMIN (<code>train050</code> in this example, but yours may be different) may not be the same as your username on your local machine. In the <code>ssh</code> command, you must specify the username associated with your JASMIN account.
               The <code>-A</code> option is needed for "agent forwarding", which enables your key to be made available for an onward connection to a subsequent server: we need this for our connection to a <code>sci</code> machine.
             </td>
           </tr>
@@ -146,7 +146,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 
       ```console
       $ ssh-add -l
-      2048 SHA256:iqX3NkPCpschVdqPxVde/ujap2cM0mYaAYYedzBGPaI /home/fredbloggs/.ssh/id_rsa_jasmin (RSA)
+      2048 SHA256:iqX3NkPCpschVdqPxVde/ujap2cM0mYaAYYedzBGPaI /home/username/.ssh/id_rsa_jasmin (RSA)
       ```
 
       Don't worry if this output includes the following message:
@@ -158,7 +158,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
       ```
       Could not open a connection to your authentication agent.
       ```
-      then you'll need to go back and try again (did you forget to enable "agent forwarding" on your initial connection? `-A` option or tickbox, depending on your client)
+      then you'll need to go back and try again (did you forget to enable "agent forwarding" on your initial connection? `-A` option or tick box, depending on your client)
 
 1. Make an onward connection to a `sci` server
      * Login to the `sci` server
@@ -169,7 +169,9 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 
         But remember to a) replace with your own username and b) choose which of the `sci` machines to connect to
 
-        If you get "permission denied", it can be useful to repeat the `ssh-add -l` command to check that your SSH key is still available (now on the `login` server) before making your onward connection. You should get a similar result to that above. If not, go back and check that you enabled "forward authentication" in the NX connection profile settings for this `login` server.
+        If you get "permission denied", it can be useful to repeat the `ssh-add -l` command to check that your SSH key is still available (now on the `login` server) before making your onward connection. You should get a similar result to that above.
+        
+          - If not, go back and check that you used `-A` in each SSH command (both when connecting to the login server and when connecting to the sci server). If that doesn't help, repeat [the steps to set up your environment in ex00](../ex00#2.-Specific-instructions:-setting-up-your-environment) and try again.
 
      * Run a simple command
 
@@ -226,7 +228,7 @@ flowchart TD
 
 The service is [fully documented here](https://help.jasmin.ac.uk/docs/interactive-computing/graphical-linux-desktop-access-using-nx/), including installation and troubleshooting tips, so we recommend you follow those to get set up.
 
-Once you have estabished a connection to an `nx` server, return here to complete the rest of this exercise.
+Once you have established a connection to an `nx` server, return here to complete the rest of this exercise.
 
 Your onward connection to the `sci` machine needs to "enable X11 forwarding" using the `-X` option, as well as the `-A` option relating to the key:
 
@@ -234,7 +236,7 @@ Your onward connection to the `sci` machine needs to "enable X11 forwarding" usi
 > ssh -AX train050@sci-vm-01.jasmin.ac.uk
 ```
 
-Once logged in to the `sci` machine, you can run a simple graphical command like `xterm` or `xfce4-terminal` and observe the output on the desktop. You can kill these applications with `CTRL-C`.
+Once logged in to the `sci` machine, you can run a simple graphical command like `xterm` or `xfce4-terminal` and observe the output on the desktop. You can kill these applications with <kbd>CTRL</kbd>+<kbd>C</kbd>.
 
 > [!NOTE]
 > As [described here](https://help.jasmin.ac.uk/article/4810-graphical-linux-desktop-access-using-nx), the `nx` servers include a Firefox web browser, which can be used for using some web-based tools which may only be available within JASMIN. Please do not use them for general web browsing, and please use Firefox on the `nx` machines rather than the `sci` machines, to preserve resources for processing on the `sci` machines. The same article also discusses why using the NX client significantly improves performance for graphical applications run on JASMIN, if you're viewing the output somewhere remote to JASMIN.
