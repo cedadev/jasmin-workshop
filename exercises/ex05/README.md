@@ -199,8 +199,7 @@ There is a section in our [Slurm quick reference help page](https://help.jasmin.
 
 > 2. Which partitions and QoSs are available on LOTUS? What is the difference between them? Why would you choose one over another?
 
-<!--There is a [LOTUS queues help page](https://help.jasmin.ac.uk/article/4881-lotus-queues) which explains the capabilities of each Slurm queue. -->
-There is a section in our [help page about how to submit a job](https://help.jasmin.ac.uk/docs/batch-computing/how-to-submit-a-job/#partitions-and-qos) which explains the capabilities of each partitions and QoS.
+There is a [page in our documentation](https://help.jasmin.ac.uk/docs/batch-computing/slurm-queues/) which explains the capabilities of each partition and QoS.
 
 > 3. How can you instruct Slurm to allocate CPUs and memory to specific jobs when you run them? 
 
