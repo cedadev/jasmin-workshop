@@ -79,7 +79,7 @@ Alternative approaches could include:
  2. Request that your software dependencies are added to the common Python 3 "jaspy" environment on JASMIN:
 
      See more details at:
-        https://help.jasmin.ac.uk/article/4729-jaspy-envs#request-updates
+        https://help.jasmin.ac.uk/docs/software-on-jasmin/jaspy-envs/#requesting-updates-to-a-jaspy-environment
 
  3. Set up a virtual environment _without_ "system site packages":
 

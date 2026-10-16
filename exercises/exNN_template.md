@@ -68,7 +68,7 @@ output would show here
 ### Formatting
 
 Hopefully the examples above show how basic MarkDown formatting works.
-Looking at the MarkDown source for this file shows how to format a [link](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf), while following the link itself takes you to a MarkDown Syntax CheatSheet.
+Looking at the MarkDown source for this file shows [how to format a link](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax), while following the link itself takes you to a MarkDown Syntax CheatSheet.
 
 > [!NOTE]
 > You can make important notes stand out like this. They will appear as a block with a highlight at the side.
