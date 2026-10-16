@@ -10,9 +10,9 @@ This exercise is for participants of JASMIN Workshop training events.
 It helps you set up your computer with the software and training account credentials needed to undertake the exercises in the workshop.
 
 > [!NOTE]
-> For the [reasons explained below](#own-vs-training-account), we provide workshop participants with a temporary training account for the duration of the workshop event. Even if you have your own JASMIN account, please use the training account for the workshop event.
+> Training accounts are set up for participation at specific events and are completely separate from the standard JASMIN account created when you register using the Accounts Portal. For the [reasons explained below](#own-vs-training-account), please use your assigned training account for the event you are attending, even if you have your own JASMIN account. [You can find out more about training accounts in our documentation](https://help.jasmin.ac.uk/docs/getting-started/jasmin-training-accounts/).
 
-Please also see [the set of FAQs](#faq) at the end of this page.
+If you get stuck during this exercise, please see [the set of FAQs](#faq) at the end of this page.
 
 ## Instructions
 
@@ -76,8 +76,8 @@ Click the arrow to expand the set of instructions.
       - Username
       - Accounts Portal Password
       - SSH Key Passphrase
-   6. Click the "Download" link next to the SSH Private Key. It will save the private key as `id_ecdsa` without a file extension - please don't rename it, unless you have already used SSH and have an SSH keypair with the same name.
-      - Keep this file in your Downloads folder for now.
+   6. Click the "Download" link next to the SSH Private Key. It will save the private key as `id_ecdsa` without a file extension - **be careful not to overwrite any of your existing keys with the same name**.
+   7. Keep this file in your Downloads folder for now.
 
 </details>
 
