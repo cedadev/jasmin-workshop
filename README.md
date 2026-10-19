@@ -24,6 +24,7 @@ Overview presentation
 | [ex07](./exercises/ex07) | Building your own Python 3 environment |
 | [ex08](./exercises/ex08) | Compiling Fortran/C code on JASMIN |
 | [ex09](./exercises/ex09) | Using Jupyter Notebooks on JASMIN |
+| [ex10](./exercises/ex10) | Data Transfers using Globus | 
 | [ex11](./exercises/ex11) | MPI on JASMIN |
 
 
@@ -41,7 +42,6 @@ The following advanced training exercises are a work in progress:
 | Exercise | Topic |
 | --- | --- |
 | ex06 | coming soon: Choosing the right storage for your workflow |
-| ex10 | coming soon: Advanced data transfers |
 | ex12 | coming soon: using R on JASMIN |
 
 <br>
