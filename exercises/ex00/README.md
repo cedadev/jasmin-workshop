@@ -10,9 +10,9 @@ This exercise is for participants of JASMIN Workshop training events.
 It helps you set up your computer with the software and training account credentials needed to undertake the exercises in the workshop.
 
 > [!NOTE]
-> For the [reasons explained below](#own-vs-training-account), we provide workshop participants with a temporary training account for the duration of the workshop event. Even if you have your own JASMIN account, please use the training account for the workshop event.
+> Training accounts are set up for participation at specific events and are completely separate from the standard JASMIN account created when you register using the Accounts Portal. For the [reasons explained below](#own-vs-training-account), please use your assigned training account for the event you are attending, even if you have your own JASMIN account. [You can find out more about training accounts in our documentation](https://help.jasmin.ac.uk/docs/getting-started/jasmin-training-accounts/).
 
-Please also see [the set of FAQs](#faq) at the end of this page.
+If you get stuck during this exercise, please see [the set of FAQs](#faq) at the end of this page.
 
 ## Instructions
 
@@ -33,14 +33,25 @@ Click the arrow to expand the set of instructions.
 
    1. Locate the email sent by the JASMIN Accounts Portal (`noreply@jasmin.ac.uk`). It should have `[jasmin-accounts] JASMIN Training Account Created` in the subject line.
       - If you can't find the email, search for this subject in your emails, but also check your spam/junk folders before asking for help.
-      
-   ![Training account email](images/Training-account-email.png)
-
-   _The email sent from the JASMIN Accounts Portal_
+   
+<table>
+   <tbody>
+      <tr>
+      <td>
+         <img src="images/Training-account-email.png" alt="Email from the JASMIN Accounts Portal with a link to provision your training account">
+      </td>
+      </tr>
+      <tr>
+      <td align="center">
+         <i>The email sent from the JASMIN Accounts Portal</i>
+      </td>
+      </tr>
+   </tbody>
+</table>
 
    2. Click the link in this email from the JASMIN Accounts Portal to provision your training account.
    
-<table>
+<table border="3" bordercolor="orange">
    <thead>
       <tr>
       <td align="left">
@@ -57,24 +68,46 @@ Click the arrow to expand the set of instructions.
    </tbody>
 </table>
 
-   ![Event password page](images/Event-password.png)
-
-   _The landing page asking for the event password after clicking the link_
+<table>
+   <tbody>
+      <tr>
+      <td>
+         <img src="images/Event-password.png" alt="Landing page on the JASMIN Accounts Portal asking for the event password">
+      </td>
+      </tr>
+      <tr>
+      <td align="center">
+         <i>The landing page asking for the event password after clicking the link</i>
+      </td>
+      </tr>
+   </tbody>
+</table>
 
    3. Enter the event password, which the the event organiser will have given you separately.
       - The training account will be set up upon entering the event password and clicking submit. Then, a new webpage is displayed with the training credentials.
    4. You should reach a page showing four important parts of your training account, like the image below.
 
-   ![training account provisioning page](images/Provision-your-training-account.png)
-   
-   _The page with your account's details after entering the event password_
+<table>
+   <tbody>
+      <tr>
+      <td>
+         <img src="images/Provision-your-training-account.png" alt="Page on the JASMIN Accounts Portal with your training account's details">
+      </td>
+      </tr>
+      <tr>
+      <td align="center">
+         <i>The page with your account's details after entering the event password</i>
+      </td>
+      </tr>
+   </tbody>
+</table>
    
    5. Open a plain-text editor (e.g. Notepad on Windows, TextEdit on Mac) and paste these first three details into a text file to keep them safe:
       - Username
       - Accounts Portal Password
       - SSH Key Passphrase
-   6. Click the "Download" link next to the SSH Private Key. It will save the private key as `id_ecdsa` without a file extension - please don't rename it, unless you have already used SSH and have an SSH keypair with the same name.
-      - Keep this file in your Downloads folder for now.
+   6. Click the "Download" link next to the SSH Private Key. It will save the private key as `id_ecdsa` without a file extension - **be careful not to overwrite any of your existing keys with the same name**.
+   7. Keep this file in your Downloads folder for now.
 
 </details>
 

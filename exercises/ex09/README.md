@@ -119,7 +119,7 @@ Alternative approaches could include:
 Learn more about our Notebook Service:
 
   - [Tutorial (in notebooks)](https://github.com/cedadev/ceda-notebooks/blob/master/notebooks/training/intro/notebook-tour.ipynb)
-  - [Help pages about the Notebook Service](https://github.com/cedadev/ceda-notebooks/blob/master/notebooks/training/intro/notebook-tour.ipynb)
+  - Our documentation on [using the Notebook Service](https://help.jasmin.ac.uk/docs/interactive-computing/jasmin-notebooks-service/), and [using the Notebook Service with GPUs enabled](https://help.jasmin.ac.uk/docs/interactive-computing/jasmin-notebooks-service-with-gpus/)
 
 Learn more about the kinds of Python libraries for data and visualisation that work really well with the Notebook Service:
 - [NCAS Introduction to Scientific Computing - Working with Data module](https://github.com/ncasuk/ncas-isc/#python---working-with-data) - lessons and Jupyter Notebook exercises to practice
@@ -286,7 +286,7 @@ Learn more about the kinds of Python libraries for data and visualisation that w
    it is interpreted as a mark-up language called `markdown`. This allows sophisticated formatting of
    text, images, code blocks, etc.
    
-   GitHub has a [documentation page](https://guides.github.com/features/mastering-markdown/) describing some of the main features you can use with Markdown.
+   GitHub has a [documentation page](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) describing some of the main features you can use with Markdown.
 
    In order to add Markdown cells to an existing notebook, click on the cell above the one you wish to
    annotate, then click the `+` button on the toolbar. Then change the cell format to "Markdown" in the
