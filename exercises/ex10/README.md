@@ -11,7 +11,8 @@ I want to do some data transfers using a method that's convenient, fast and suit
 
 I want it to retry automatically if there are issues, and I want to get a notification when a transfer task completes. I don't want to have to stay connected as I want to close my laptop and go somewhere else once I've set a transfer going.
 
-> [!NOTE] IMPORTANT - If you use the JASMIN collection, at the end of the exercise, please remember to unlink the training account you have used from your own Globus identity. See step 23.
+> [!NOTE]
+> IMPORTANT - If you authenticate with your JASMIN account during this exercise, you MUST remember to unlink the training account you have used from your own Globus identity. See step 23.
 
 ### Objectives
 
@@ -91,6 +92,9 @@ It should tell you whether the task is started, completed, or has some other sta
 
 23. **IMPORTANT please don't forget this step**
 
+> [!NOTE]
+> ** DO NOT FORGET TO DO THIS if you are using a training account **
+
 **UNLINK** your training account identity from your Globus identity.
   - Go to the globus web interface
   - Go to Settings (bottom of left menu bar)
@@ -121,4 +125,5 @@ See also:
 
 - Full details of commands available in the [Globus command-line interface](https://docs.globus.org/cli/reference/)
 
-> [!NOTE] IMPORTANT - Another reminder to please remember to unlink the training account you have used from your own Globus identity. See step 23.
+> [!NOTE]
+> IMPORTANT - Another reminder to unlink the training account you have used from your own Globus identity. See step 23.
