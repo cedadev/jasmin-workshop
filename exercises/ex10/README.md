@@ -12,7 +12,7 @@ I want to do some data transfers using a method that's convenient, fast and suit
 I want it to retry automatically if there are issues, and I want to get a notification when a transfer task completes. I don't want to have to stay connected as I want to close my laptop and go somewhere else once I've set a transfer going.
 
 > [!NOTE]
-> IMPORTANT - If you authenticate with your JASMIN account during this exercise, you MUST remember to unlink the training account you have used from your own Globus identity when you've finished. See step 23.
+> IMPORTANT - If you authenticate with your JASMIN account during this exercise, you MUST remember to unlink the training account you have used from your own Globus identity when you've finished. See [step 23](#unlink).
 
 ### Objectives
 
