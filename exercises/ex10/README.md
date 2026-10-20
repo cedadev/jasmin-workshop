@@ -46,10 +46,10 @@ After completing this exercise I will be able to:
 1. In the pane with Globus Tutorial Collection 2, navigate instead to `/home/share/godata`. You can either type the path and hit return, or use the navigation tools in the window below. You should see 3 simple files listed: `file1.txt, file2.txt, file3.txt`
 1. Select one or more of the files. **Before** you click `Start`, look at the options in the drop-down "Transfer and timer options" (centre, between the 2 panes). Leave them as they are for now, but note the extra functionality they provide.
 1. Cick `Start` to initiate the transfer. You should see a green confirmation box telling you that the task was submitted.
-1. As these are small files, the task should complete quicky, but you can check on progress of a transfer with the "Activity" button in the left menu bar. This lists all your current & recent transfers. Click on the most recent one to see details.
+1. As these are small files, the task should complete quickly, but you can check on progress of a transfer with the "Activity" button in the left menu bar. This lists all your current & recent transfers. Click on the most recent one to see details.
 1. Close the "Globus Tutorial Collection 2" by clicking the cross-in-circle icon to "close this collection".
 1. Search for "JASMIN Default Collection". Either click its name to open it, or inspect its details before and select "Open in File Manager".
-1. Since this is a new collection for you, there will be a series of steps to consent & authenticate with the new collection. You will need the username and password of your JASMIN training account. **IMPORTANT: If you do this, please remember to unlink at the end, see Step 23.**
+1. Since this is a new collection for you, there will be a series of steps to consent & authenticate with the new collection. You will need the username and password of your JASMIN training account. **IMPORTANT: If you do this, please remember to unlink at the end, see [Step 23](#unlink).**
 1. Once the process has successfully linked your Globus identity with your JASMIN identity (there are several steps the first time: please be patient), you should see a listing of your training account home directory (which might be empty), but the path should be `/home/users/<username>`.
 1. Do the same in the other pane, so that you have both connected to "JASMIN Default Collection". You should not need to go through all the steps this time.
 1. In that pane (where you have also now accessed JASMIN Default Collection), navigate to `/gws/pw/j07/workshop/users/` and then the directory corresponding to your training account username, that you created in earlier exercises.
@@ -90,7 +90,7 @@ You should see a transfer task ID each time a transfer task is submitted. You ca
   ```
 It should tell you whether the task is started, completed, or has some other status.
 
-23. **IMPORTANT unlink the training account from your Globus identity**
+23. **IMPORTANT unlink the training account from your Globus identity** <a name="unlink"></a>
 
 > [!NOTE]
 > ** DO NOT FORGET TO DO THIS if you are using a training account **
@@ -126,4 +126,4 @@ See also:
 - Full details of commands available in the [Globus command-line interface](https://docs.globus.org/cli/reference/)
 
 > [!NOTE]
-> IMPORTANT - Another reminder to unlink the training account you have used from your own Globus identity. See step 23.
+> IMPORTANT - Another reminder to unlink the training account you have used from your own Globus identity. See [step 23](#unlink).
