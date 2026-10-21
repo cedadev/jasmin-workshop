@@ -110,7 +110,8 @@ Best practice considerations:
 
 6. Run the CDO tool to subset the file and extract the `TCC` variable
 
-  - [Consult the CDO manual](https://code.mpimet.mpg.de/projects/cdo/embedded/index.html#x1-1460002.3) to see how to extract a variable by name
+  - For more information about this tool, you can [consult the CDO manual](https://code.mpimet.mpg.de/projects/cdo/embedded/index.html#x1-1460002.3), [specifically `selname`](https://mpim-sw.gitlab-pages.dkrz.de/cdo/modules/man/Selvar.html#selvar:~:text=selname,-%3A) to see how to extract a variable by name.
+    - Don't worry if you're not sure what this tool does! This is mainly to demonstrate using a program included in Jaspy to work with data in the CEDA Archive.
 
   - Run CDO:
 
