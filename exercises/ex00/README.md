@@ -201,17 +201,22 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
 
    - Download and install "MobaXterm"
    
-     This is an emulator of the terminal environment (Mac and Linux have this environment built-in), and provides the tools you need to connect. There are other options, but we'd recommend this one if you want us to help you with any problems.
+     This is an emulator of the terminal environment (Mac and Linux have this environment built-in), and provides the tools you need to connect. There are other options, but we'd recommend this one if you do not have administrator permissions on your Windows device.
 
-     - Go to https://mobaxterm.mobatek.net/
-       - go to [Download](https://mobaxterm.mobatek.net/download.html)
-       - choose the "Home edition", then "Download now"
-       - Choose the **installer edition**
-       - right-click the downloaded zip file and choose "extract all"
-       - run the installer, then follow the instructions.
+     - Follow the steps in the JASMIN help site to download and install MobaXterm: 
+       - [Downloading and installing MobaXterm](https://help.jasmin.ac.uk/docs/uncategorized/mobaxterm/#downloading-and-installing-mobaxterm)
 
-   - Open MobaXterm, and follow the steps in this video to load your private key and check it's loaded in a terminal session.
-     - [![mobaxterm setup (video)](https://img.youtube.com/vi/qm8PcD24Xsc/0.jpg)](https://youtu.be/qm8PcD24Xsc)
+   - Open MobaXterm, and follow the steps on the JASMIN help site to load your private key and check it's loaded in a terminal session.
+     - [MobaXterm setup guide with screenshots](https://help.jasmin.ac.uk/docs/uncategorized/mobaxterm/#steps-with-screenshots)
+
+   - If you're done, running the `ssh-add -l` command below should show your SSH key is successfully loaded:
+
+   ```
+  $ ssh-add -l
+  521 SHA256:ZeddNKK5U3am1vyCaUCq4CgMRpvoyv+cJiviqz3zvfw ~/.ssh/id_ecdsa (ECDSA)
+   ```
+
+   If you don't see this, go back and check the steps above carefully before asking for help.
 
 </details>
 

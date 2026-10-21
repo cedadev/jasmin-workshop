@@ -42,9 +42,6 @@ After completing this exercise I will be able to:
 - The [JASMIN Notebook Service](https://notebooks.jasmin.ac.uk)
 - [Help documentation for the Notebook Service](https://help.jasmin.ac.uk/docs/interactive-computing/jasmin-notebooks-service/)
 
-> [!NOTE]
-> If you are using one of our training accounts rather than your own JASMIN account, you will need to use the ["Forgotten password"](https://accounts.jasmin.ac.uk/account/password_reset/) function of the JASMIN Accounts Portal to set a password on your training account. The training accounts do not have a password set on them, by default. Any confirmation emails will be sent to the address which you provided to the event organiser for use with your training account.
-
 ### Local resources
 
 - Web browser (such as Firefox, Chrome, Safari)
@@ -126,7 +123,7 @@ Learn more about the kinds of Python libraries for data and visualisation that w
 
 ### Cheat Sheet
 
-1. Log into the JASMIN Notebook Service in your browser
+1. Log into the JASMIN Notebook Service in your browser. If you are using a training account, please use the username and password you noted down from [ex00](./exercises/ex00) when you downloaded your credentials.
 
    Visit: https://notebooks.jasmin.ac.uk/
 
