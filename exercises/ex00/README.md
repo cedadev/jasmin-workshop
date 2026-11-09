@@ -144,9 +144,9 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
 
 <details>
 
-   <summary id="windows">Windows instructions: option 1</summary>
+   <summary id="windows">Windows Option 1: PowerShell (recommended)</summary>
 
-   If you use this option, other services will be easier to use later on. But look at option 2 if you think that looks easier for now.
+   If you can set up a connection using PowerShell, other services will be easier to use later on. Otherwise, try MobaXterm (option 2 below).
 
    - Check that the right tools are installed
      - Open a PowerShell window using "run as administrator"
@@ -154,7 +154,7 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
        ```powershell
        Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH.Client*'
        ```
-       If it's installed, continue. If not, either ask for help, or choose option 2.
+       If it's installed, continue. If not, either ask for help, or go to Windows Option 2 below.
 
    - Check that the directory `.ssh` exists within your user directory:
      ```powershell
@@ -193,10 +193,10 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
 
 <details>
 
-   <summary id="windows">Windows instructions: option 2</summary>
+   <summary id="windows">Windows Option 2: MobaXterm</summary>
 
    - Locate the `id_ecdsa` private key file from the Downloads folder.
-     - don't try to open the `id_ecdsa` file: it's not meant to be readable.
+     - Don't try to open the `id_ecdsa` file: it's not meant to be readable.
    - Open the text file with the credentials you saved in Part 1: you'll need them shortly.
 
    - Download and install "MobaXterm"
@@ -221,22 +221,22 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
 </details>
 
 <details>
-   <summary id="windows">Windows instructions: option 3</summary>
+   <summary id="windows">Windows Option 3: Windows Subsystem for Linux (WSL)</summary>
 
-   If you already have [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install) (WSL) installed you can follow the 'Mac or Linux instructions' after completing the following steps:
+   If you already have [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install) (WSL) installed, you can follow the instructions for Mac/Linux users after completing the following steps:
 
-   - Open File Explorer and copy the `id_ecdsa` private key file from your Downloads folder in Windows and paste it into your WSL home folder
+   - In File Explorer, copy the `id_ecdsa` private key file from your Downloads folder in Windows, and paste it into your WSL home folder
    - Open a WSL terminal and run `sudo chown $USER:$USER ~/id_ecdsa` to change file ownership of the private key from root to you
 
-   Then continue the exercise by following the instructions in the 'Mac or Linux instructions' section below.
+   Then continue the exercise by following the instructions in the 'Mac or Linux' section below.
 </details>
 
 <details>
-  <summary>Mac or Linux instructions</summary>
+  <summary>Mac or Linux</summary>
 
-  In the Mac or Linux environments, the `$` symbol is used to indicate the start of a terminal prompt. We have put them in the example commands to help you practice writing them out rather than copying/pasting them.
+  In a Mac or Linux environment, the `$` symbol is used to indicate the start of a terminal prompt. We have put them in the example commands to help you practice writing them out rather than copying/pasting them.
 
-  In the Mac or Linux environments, it's best to put your SSH-related files in a standard place. This is a directory called `.ssh` in your home directory (the `.` means it's hidden).
+  In a Mac or Linux environment, it's best to put your SSH-related files in a standard place. This is a directory called `.ssh` in your home directory (the `.` means it's hidden).
 
   - open the text file with the credentials you saved in Part 1: you'll need them shortly.
   - open the `Terminal` utility (use the search in the top menu bar to find this if you haven't used it before)
@@ -458,7 +458,7 @@ If not, check through the FAQ below, and make sure you've done everything as per
 
   This means that you don't have an SSH-agent running, so there isn't an agent to load your key into.
 
-  For Windows/MobaXterm, review the setup video to make sure you've got the key loaded correctly.
+  Review the setup instructions above for your operating system to make sure you've got the agent running correctly.
 
 
   For Mac/Linux, you may need to run the following command to start the agent:
