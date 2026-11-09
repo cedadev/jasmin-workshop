@@ -144,7 +144,7 @@ https://help.jasmin.ac.uk/docs/getting-started/present-ssh-key/
 
 <details>
 
-   <summary id="windows">Window Option 1: PowerShell (recommended)</summary>
+   <summary id="windows">Windows Option 1: PowerShell (recommended)</summary>
 
    If you can set up a connection using PowerShell, other services will be easier to use later on. Otherwise, try MobaXterm (option 2 below).
 
