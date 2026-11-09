@@ -458,7 +458,7 @@ If not, check through the FAQ below, and make sure you've done everything as per
 
   This means that you don't have an SSH-agent running, so there isn't an agent to load your key into.
 
-  For Windows, review the setup video to make sure you've got the key loaded correctly.
+  Review the setup instructions above for your operating system to make sure you've got the agent running correctly.
 
 
   For Mac/Linux, you may need to run the following command to start the agent:
