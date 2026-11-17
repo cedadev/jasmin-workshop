@@ -198,6 +198,16 @@ The `bash` shell is used on JASMIN. Please refer to [official documentation](htt
 
 ### Further learning (optional)
 
+#### Connecting directly to a sci machine
+
+Although it is recommended to check the "message of the day" (MOTD) from a login machine to decide which sci machine to connect to, if you want to connect directly to a machine in one command, you can use the `-J` (`ProxyJump`) option:
+
+```console
+$ ssh -A USERNAME@sci-vm-01.jasmin.ac.uk -J USERNAME@login.jasmin.ac.uk
+```
+
+More information about [using the `ProxyJump` option](https://help.jasmin.ac.uk/docs/interactive-computing/login-servers/#connecting-to-a-sci-server-via-a-login-server) can be found on our help site.
+
 #### Graphical linux desktop access using NoMachine NX
 
 This is an alternative way of connecting to JASMIN that provides a virtual desktop within JASMIN, useful if:
