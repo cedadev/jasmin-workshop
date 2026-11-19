@@ -21,7 +21,7 @@ After completing this exercise I will be able to:
 
 - JASMIN account with SSH public key uploaded and active `jasmin-login` grant
 - `login` server: `login.jasmin.ac.uk`
-- `sci` servers: `sci-vm-0[1-4].jasmin.ac.uk`, `sci-ph-0[2,3]`
+- `sci` servers: `sci-vm-*.jasmin.ac.uk`, `sci-ph-*` ([full list here](https://help.jasmin.ac.uk/docs/interactive-computing/sci-servers/))
 - common software: CDO (Climate Data Operators) tool
 - GWS (read/write): `/gws/pw/j07/workshop`
 - CEDA Archive (read-only): requires a CEDA account
@@ -77,7 +77,7 @@ Best practice considerations:
 2. SSH to a scientific analysis server
 
   ```
-  $ ssh sci-vm-01.jasmin.ac.uk # Could use any of sci-vm-0[1-4].jasmin.ac.uk
+  $ ssh sci-vm-02.jasmin.ac.uk # Pick any available sci machine from the table under the welcome message
   ```
 
 3. Identify path to the required data file

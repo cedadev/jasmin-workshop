@@ -126,7 +126,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
 
       ![](images/motd-r9.png)
 
-      Here we can see that `sci-vm-01` has 25 active user sessions, with 8G of free memory, and a 15-minute average load of 1.007. Compare that to the other machines listed and choose one which suits the needs of what you plan to do. Note that some (not shown here, named `sci-ph-*`) are physical servers, and have more memory to start with (see [`sci` servers documentation](https://help.jasmin.ac.uk/article/121-sci-servers))
+      Here we can see that the first server in the list has 25 active user sessions, with 8G of free memory, and a 15-minute average load of 1.007. Compare that to the other machines listed and choose one which suits the needs of what you plan to do. Note that some (not shown here, named `sci-ph-*`) are physical servers, and have more memory to start with (see [`sci` servers documentation](https://help.jasmin.ac.uk/article/121-sci-servers))
 
     * Check what directory you are in
       ```console
@@ -164,7 +164,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
      * Login to the `sci` server
 
         ```console
-        $ ssh -A USERNAME@sci-vm-01.jasmin.ac.uk
+        $ ssh -A USERNAME@sci-vm-02.jasmin.ac.uk
         ```
 
         But remember to a) replace with your own username and b) choose which of the `sci` machines to connect to
@@ -178,7 +178,7 @@ All too easy? Here are some questions to test your knowledge and understanding. 
         We are now able to run a simple command on the `sci` server (you should also see that the prompt has changed, and since this command returns the name of the host, it should confirm that you are now on the `sci` server).
         ```console
         $ hostname
-        sci-vm-01.jasmin.ac.uk
+        sci-vm-02.jasmin.ac.uk
         ```
 
   ### Answers to questions
@@ -203,7 +203,7 @@ The `bash` shell is used on JASMIN. Please refer to [official documentation](htt
 Although it is recommended to check the "message of the day" (MOTD) from a login machine to decide which sci machine to connect to, if you want to connect directly to a machine in one command, you can use the `-J` (`ProxyJump`) option:
 
 ```console
-$ ssh -A USERNAME@sci-vm-01.jasmin.ac.uk -J USERNAME@login.jasmin.ac.uk
+$ ssh -A USERNAME@sci-vm-02.jasmin.ac.uk -J USERNAME@login.jasmin.ac.uk
 ```
 
 More information about [using the `ProxyJump` option](https://help.jasmin.ac.uk/docs/interactive-computing/login-servers/#connecting-to-a-sci-server-via-a-login-server) can be found on our help site.
@@ -243,7 +243,7 @@ Once you have established a connection to an `nx` server, return here to complet
 Your onward connection to the `sci` machine needs to "enable X11 forwarding" using the `-X` option, as well as the `-A` option relating to the key:
 
 ```console
-> ssh -AX train050@sci-vm-01.jasmin.ac.uk
+$ ssh -AX train050@sci-vm-02.jasmin.ac.uk
 ```
 
 Once logged in to the `sci` machine, you can run a simple graphical command like `xterm` or `xfce4-terminal` and observe the output on the desktop. You can kill these applications with <kbd>CTRL</kbd>+<kbd>C</kbd>.

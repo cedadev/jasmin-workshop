@@ -32,7 +32,7 @@ After completing this exercise you will:
 
 ### JASMIN resources
 
-- Scientific analysis servers: `sci-vm-0[1-4].jasmin.ac.uk`, `sci-ph-0[2,3].jasmin.ac.uk`
+- Scientific analysis servers: `sci-vm-*.jasmin.ac.uk`, `sci-ph-*` ([full list here](https://help.jasmin.ac.uk/docs/interactive-computing/sci-servers/))
 - Group workspace: `/gws/pw/j07/workshop`
 - LOTUS batch queues: `workshop` (`short-serial` outside the event)
 - Fortran source code is (available in the Github repository):
@@ -52,11 +52,11 @@ This is the outline of what you need to do. The recommended way of doing each st
 1. Login to a physical JASMIN scientific analysis server
    - Launch two terminal sessions
    - Access a JASMIN `login` server on each terminal (see exercise 01)
-   - Choose one of physical sci servers `sci-ph-0[2,3]` with the lowest load
+   - Choose one of physical sci servers `sci-ph-*` with the lowest load
    - Login to the chosen sci server on each terminal
    - Copy the Fortran source code from the exercise directory (shown in the JASMIN resources section) to your current working directory
    > **_NOTE:_*-  One terminal will be used for compiling and testing codes on LOTUS while the second terminal will be used for submitting and monitoring batch jobs.
-1. Use the Intel compiler to test a Fortran code on a physical sci  `sci-ph-0[2,3]`
+1. Use the Intel compiler to test a Fortran code on a physical sci server `sci-ph-*`
    - List all available Intel compilers `module avail intel/1 intel/2`
    - Load the Intel compiler module environment e.g. `module load intel/20.0.0`
    - Compile the Fortran source code `ifort axpySerial.f90 -o axpySerial_intel.exe`
@@ -112,7 +112,7 @@ By completing this exercise you will be able to compile and test a serial Fortra
 ### Cheat Sheet
 
 1. Login to a JASMIN scientific analysis server
-   - Login to one of the physical sci `sci-ph-0[2,3]` machines from a JASMIN `login` server
+   - Login to one of the physical sci `sci-ph-*` machines from a JASMIN `login` server
    ```
    $ ssh -A <username>@sci-ph-02.jasmin.ac.uk
    ```
@@ -125,7 +125,7 @@ By completing this exercise you will be able to compile and test a serial Fortra
    ```
    sci-ph-02 ~]$ cp /gws/pw/j07/workshop/exercises/ex08/code/axpySerial.f90 .
    ```
- 1. Use the Intel compiler on a physical Sci `sci-ph-02`
+ 1. Use the Intel compiler on a physical sci `sci-ph-02`
     - List all available Intel compilers
     ```
      $ module avail intel/1 intel/2

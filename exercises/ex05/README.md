@@ -20,7 +20,7 @@ After completing this exercise I will be able to:
 
 - JASMIN account with SSH public key uploaded and `jasmin-login` privilege
 - `login` server: `login.jasmin.ac.uk`
-- sci servers: `sci-vm-0[1-4].jasmin.ac.uk`, `sci-ph-0[2,3]`
+- sci servers: `sci-vm-*.jasmin.ac.uk`, `sci-ph-*` ([full list here](https://help.jasmin.ac.uk/docs/interactive-computing/sci-servers/))
 - LOTUS batch processing cluster
 - common software: CDO (Climate Data Operators) tool
 - GWS (read/write): `/gws/pw/j07/workshop`
@@ -121,7 +121,7 @@ This exercise demonstrates how to:
 
 1. SSH to a scientific analysis server ([see above](#jasmin-resources))
 
-        $ ssh sci-vm-01.jasmin.ac.uk
+        $ ssh sci-vm-02.jasmin.ac.uk
 
 1. Write an "`extract-era-data.sh`" wrapper script that calls the CDO extraction command, that:
     1. Takes a date string ("`YYYYMMDD`") as a command-line argument
