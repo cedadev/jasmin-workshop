@@ -47,7 +47,7 @@ $HOME/cylc-run/workshop-workflow/runN/outputs/annual-max-temp-time-series.png
 
 ### View the final time series graph of maximum temperatures
 
-You can view the output graph with this command (`display` command is only available on login-0? and sci-vm-0? servers, not the cylc2.jasmin.ac.uk):
+You can view the output graph with this command (`display` command is only available on the sci servers, not cylc2.jasmin.ac.uk):
 
 ```
 display $HOME/cylc-run/workshop-workflow/runN/outputs/annual-max-temp-time-series.png

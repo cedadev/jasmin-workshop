@@ -21,7 +21,7 @@ After completing this exercise I will be able to:
 
 - JASMIN account with SSH public key uploaded and `jasmin-login` privilege
 - `login` server: `login.jasmin.ac.uk`
-- sci servers: `sci-vm-0[1-4].jasmin.ac.uk`, `sci-ph-0[2,3]`
+- sci servers: `sci-vm-*.jasmin.ac.uk`, `sci-ph-*` ([full list here](https://help.jasmin.ac.uk/docs/interactive-computing/sci-servers/))
 - help documentation at https://help.jasmin.ac.uk
 
 ### Local resources
@@ -94,7 +94,7 @@ Alternative approaches could include:
 
 1. SSH to a scientific analysis server
 
-        $ ssh sci-vm-01 # Could use any of sci-vm-0[1-4]
+        $ ssh sci-vm-02 # Pick any from the table under the welcome message
 
 1. Activate the Jaspy Python 3 environment with the `module` command
 

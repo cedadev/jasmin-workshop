@@ -32,7 +32,7 @@ After completing this exercise you will:
  
  ### JASMIN resources
 
- * Scientific analysis servers: `sci-vm-0[1-4].jasmin.ac.uk`, `sci-ph-0[2,3].jasmin.ac.uk`
+ * Scientific analysis servers: `sci-vm-*.jasmin.ac.uk`, `sci-ph-*` ([full list here](https://help.jasmin.ac.uk/docs/interactive-computing/sci-servers/))
  * Group workspace: `/gws/pw/j07/workshop`
  * LOTUS batch queues: `workshop` (`par-single` or `par-multi` outside the event)
  * Fortran MPI source code is (available in the Github repository): 

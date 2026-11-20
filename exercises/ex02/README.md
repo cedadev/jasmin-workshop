@@ -20,7 +20,7 @@ After completing this exercise I will be able to:
 
 ### JASMIN resources
 
-- Scientific analysis servers: `sci-vm-0[1-4].jasmin.ac.uk`, `sci-ph-0[2,3]`
+- Scientific analysis servers: `sci-vm-*.jasmin.ac.uk`, `sci-ph-*` ([full list here](https://help.jasmin.ac.uk/docs/interactive-computing/sci-servers/))
 - Group workspace (GWS): `/gws/pw/j07/workshop`
 - Example Python scripts are provided:
   - `/gws/pw/j07/workshop/exercises/ex02/code/random-number-gen.py`
@@ -83,14 +83,14 @@ All too easy? Here are some questions to test your knowledge an understanding. Y
 
 ### Review / alternative approaches / best practice
 
-You will be able to run and test a script on the scientific analysis servers. You will be able to monitor the resources used by your script. You can scale up by using the high-memory scientific `sci-ph-0[2,3].jasmin.ac.uk` servers for testing, and then move your workflow to the batch cluster LOTUS.
+You will be able to run and test a script on the scientific analysis servers. You will be able to monitor the resources used by your script. You can scale up by using the high-memory scientific `sci-ph-*.jasmin.ac.uk` servers for testing, and then move your workflow to the batch cluster LOTUS.
 
 #### What tasks I can not run on the `sci` server?
 
 - Do not run processes with an execution time of over two hours
 - Do not run parallel applications, e.g., MPI or OpenMP, or high threaded codes on the `sci` servers
-- Do not run data transfer processes on the `sci` servers. Please use a transfer `xfer-vm-0[1-3].jasmin.ac.uk` server, except when moving data from `/work/scratch-pw[2,3]` to a GWS (group workspace), as `/work/scratch-pw[2,3]` are not mounted on the `xfer` servers
-- Use the high memory scientific analysis servers `sci-ph-0[2,3].jasmin.ac.uk` for testing high memory or multithreaded code
+- Do not run data transfer processes on the `sci` servers. Please use a [transfer `xfer-vm-*.jasmin.ac.uk` server](https://help.jasmin.ac.uk/docs/interactive-computing/transfer-servers/), except when moving data from [the scratch areas](https://help.jasmin.ac.uk/docs/getting-started/storage/#scratch) to a GWS (group workspace), as the scratch areas are [not mounted on the `xfer` servers](https://help.jasmin.ac.uk/docs/getting-started/storage/#jasmin-disk-mounts).
+- Use the high memory scientific analysis servers `sci-ph-*.jasmin.ac.uk` for testing high memory or multithreaded code
 - Only test multi-threaded code on the high memory servers, and limit the number of threads
 - It is necessary to consider moving a processing task to the batch system LOTUS when the resource demand (e.g., CPU, memory, processing time) is high
 
@@ -116,14 +116,14 @@ You will be able to run and test a script on the scientific analysis servers. Yo
    - Login to the chosen `sci` server from the JASMIN `login` server
 
    ```bash
-   $ ssh -A <username>@sci<number>.jasmin.ac.uk
+   $ ssh -A <username>@sci-vm-<number>.jasmin.ac.uk
    ```
 
-   For example the user `train049` connects to `sci-vm-01`:
+   For example the user `train049` connects to `sci-vm-02`:
 
    ```bash
-   $ ssh -A train049@sci-vm-01.jasmin.ac.uk
-   [train049@sci-vm-01 ~]$
+   $ ssh -A train049@sci-vm-02.jasmin.ac.uk
+   [train049@sci-vm-02 ~]$
    ```
 
 1. Change directory to the `workshop` GWS, and make a directory for your username under `users`:
